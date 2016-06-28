@@ -232,6 +232,9 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Base\frmItem_Import.resx">
@@ -342,6 +345,37 @@
       <DependentUpon>frmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\BHair.Base.frmConfig.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Base.frmItem.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Base.frmItem_Import.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Base.frmItem_List.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Base.frmMember.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Base.frmMember_EmployeeID.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Base.frmMember_Import.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Base.frmMember_List.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Base.frmStore.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Base.frmStore_List.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmAddApplication.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmAddApplicationEn.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmAlterApplication.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmAppApprovalDetail.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmAppApprovalDetail2.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmAppAproval.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmAppAproval2.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmAppStaff.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmAppStaffDetail.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmEditReason.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmEditRemark.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmHistoryDetail.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmHistoryInfo.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmRecharge.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmStoreApplication.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmStoreApplicationInfo.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.frmStoreApprovalDetail.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Business.Login.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.frmMain.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Debug\BHair.SystemSet.ComboDate.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -359,6 +393,23 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="bin\Debug\BHair.exe.config" />
+    <None Include="bin\Debug\BHair.vshost.exe.config" />
+    <None Include="bin\Debug\BHair.vshost.exe.manifest" />
+    <None Include="bin\Debug\templet\2015 Staff Purchase Form-in HK -templet .xls" />
+    <None Include="bin\Debug\templet\2016国内员购申请表-模板.xls" />
+    <None Include="bin\Debug\tempPDF\tempExcel.xls" />
+    <None Include="bin\Debug\tempPDF\tempPDF.pdf" />
+    <None Include="obj\Debug\BHair.csproj.GenerateResource.Cache" />
+    <None Include="obj\Debug\BHair.csproj.ResolveComReference.cache" />
+    <None Include="obj\Debug\BHair.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\build.force" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\ResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\TP_Base.csproj.GenerateResource.Cache" />
+    <None Include="obj\Debug\TP_Base.csproj.ResolveComReference.cache" />
+    <None Include="obj\Debug\TP_Base.csprojResolveAssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -377,7 +428,31 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bhair.ico" />
+    <Content Include="bin\Debug\BarcodeLib.dll" />
+    <Content Include="bin\Debug\BHair.Business.dll" />
+    <Content Include="bin\Debug\BHair.Business.pdb" />
+    <Content Include="bin\Debug\BHair.exe" />
+    <Content Include="bin\Debug\BHair.pdb" />
+    <Content Include="bin\Debug\BHair.vshost.exe" />
+    <Content Include="bin\Debug\Microsoft.Office.Interop.Excel.dll" />
+    <Content Include="bin\Debug\Microsoft.Vbe.Interop.dll" />
+    <Content Include="bin\Debug\office.dll" />
+    <Content Include="bin\Debug\stdole.dll" />
+    <Content Include="bin\Debug\WinFormsUI.Docking.dll" />
+    <Content Include="bin\Debug\XLuSharpLibrary.dll" />
+    <Content Include="bin\Debug\zxing.dll" />
+    <Content Include="bin\Debug\内购SQLQueue.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\员工内购数据库.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dll\BarcodeLib.dll" />
+    <Content Include="obj\Debug\BHair.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\BHair.exe" />
+    <Content Include="obj\Debug\BHair.pdb" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="obj\Debug\TP_Base.csproj.FileListAbsolute.txt" />
     <Content Include="内购SQLQueue.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -392,6 +467,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\Refactor\" />
     <Folder Include="Report\" />
   </ItemGroup>
   <ItemGroup>
