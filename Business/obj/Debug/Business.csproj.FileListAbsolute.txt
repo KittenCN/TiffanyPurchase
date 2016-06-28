@@ -66,3 +66,16 @@ E:\workstation\项目\用蝶项目\Tiffany\员工内购20160626\员工内购2016
 E:\workstation\项目\用蝶项目\Tiffany\员工内购20160626\员工内购20160626\内购系统\Business\obj\Debug\Business.csproj.ResolveComReference.cache
 E:\workstation\项目\用蝶项目\Tiffany\员工内购20160626\员工内购20160626\内购系统\Business\obj\Debug\BHair.Business.dll
 E:\workstation\项目\用蝶项目\Tiffany\员工内购20160626\员工内购20160626\内购系统\Business\obj\Debug\BHair.Business.pdb
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\BHair.Business.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\BHair.Business.pdb
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\Microsoft.Office.Interop.Excel.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\XLuSharpLibrary.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\zxing.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\office.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\Microsoft.Vbe.Interop.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\stdole.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\office.xml
+G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
+G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Debug\Business.csproj.ResolveComReference.cache
+G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Debug\BHair.Business.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Debug\BHair.Business.pdb
