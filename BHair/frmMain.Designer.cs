@@ -455,8 +455,7 @@
             // 
             // AlertTimer
             // 
-            this.AlertTimer.Enabled = true;
-            this.AlertTimer.Interval = 86400000;
+            this.AlertTimer.Interval = 43200000;
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
             // 
             // frmMain

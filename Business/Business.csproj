@@ -75,6 +75,7 @@
     <Compile Include="StaticValue.cs" />
     <Compile Include="Table\ApplicationDetail.cs" />
     <Compile Include="Table\ApplicationInfo.cs" />
+    <Compile Include="XMLHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
