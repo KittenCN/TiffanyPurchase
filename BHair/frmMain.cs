@@ -167,7 +167,7 @@ namespace BHair
         }
 
         /// <summary>
-        /// 财务部审核
+        /// 经理审核
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -175,6 +175,17 @@ namespace BHair
         {
             frmAppAproval2 objfrmAppAproval2 = new frmAppAproval2();
             this.ShowWindows_Click(objfrmAppAproval2);
+        }
+
+        /// <summary>
+        /// 财务部审核
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 财务部审核ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAppAproval3 objfrmAppAproval3 = new frmAppAproval3();
+            this.ShowWindows_Click(objfrmAppAproval3);
         }
 
         /// <summary>
@@ -432,6 +443,8 @@ namespace BHair
                     menuMain_System_Item.Visible = true;
                     menuMain_System_Log.Visible = true;
                     购买确认ToolStripMenuItem.Visible = true;
+                    财务部审核ToolStripMenuItem.Visible = true;
+                    tsbtnCW.Visible = true;
                     toolStripButton13.Visible = true;
                     toolStripButton8.Visible = true;
                     toolStripButton2.Visible = true;
@@ -572,10 +585,11 @@ namespace BHair
                 menuMain_Manage_Store.Visible = false;
                 menuMain_System_Item.Visible = false;
                 menuMain_System_Log.Visible = false;
-                购买确认ToolStripMenuItem.Visible = true;
+                购买确认ToolStripMenuItem.Visible = false;
                 menuMain_System_Setup.Visible = false;
                 menuMain_Table.Visible = false;
                 menuMain_System_Pwd.Visible = true;
+                财务部审核ToolStripMenuItem.Visible = true;
 
                 toolStripButton4.Visible = true;
                 toolStripButton12.Visible = true;
@@ -586,6 +600,7 @@ namespace BHair
                 toolStripButton13.Visible = false;
                 toolStripButton5.Visible = false;
                 toolStripButton6.Visible = true;
+                tsbtnCW.Visible = true;
             }
             else
             {
@@ -707,13 +722,9 @@ namespace BHair
             }
         }
 
-
-
-
-
-
-
-
-
+        private void tsbtnCW_Click(object sender, EventArgs e)
+        {
+            财务部审核ToolStripMenuItem_Click(null, null);
+        }
     }
 }

@@ -136,6 +136,18 @@
     <Compile Include="Business\frmAlterApplication.Designer.cs">
       <DependentUpon>frmAlterApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Business\frmAppApprovalDetail3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\frmAppApprovalDetail3.Designer.cs">
+      <DependentUpon>frmAppApprovalDetail3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\frmAppAproval3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\frmAppAproval3.Designer.cs">
+      <DependentUpon>frmAppAproval3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Business\frmEditRemark.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +295,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Business\frmAlterApplication.resx">
       <DependentUpon>frmAlterApplication.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\frmAppApprovalDetail3.resx">
+      <DependentUpon>frmAppApprovalDetail3.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\frmAppAproval3.resx">
+      <DependentUpon>frmAppAproval3.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Business\frmEditRemark.resx">

@@ -71,6 +71,8 @@
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.AccessQueueTimer = new System.Windows.Forms.Timer(this.components);
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
+            this.tsbtnCW = new System.Windows.Forms.ToolStripButton();
+            this.财务部审核ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.ssrMain.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -113,7 +115,8 @@
             this.menuMain_Manage_StoreApp,
             this.menuMain_Manage_Approval2App,
             this.menuMain_Manage_ApprovalApp,
-            this.购买确认ToolStripMenuItem});
+            this.购买确认ToolStripMenuItem,
+            this.财务部审核ToolStripMenuItem});
             this.menuMain_Day.Name = "menuMain_Day";
             this.menuMain_Day.Size = new System.Drawing.Size(85, 21);
             this.menuMain_Day.Text = "内购流程(&D)";
@@ -296,11 +299,12 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton4,
             this.toolStripSeparator1,
+            this.toolStripButton4,
             this.toolStripButton12,
             this.toolStripButton1,
             this.toolStripButton5,
+            this.tsbtnCW,
             this.toolStripButton13,
             this.toolStripButton3,
             this.toolStripSeparator2,
@@ -458,6 +462,27 @@
             this.AlertTimer.Interval = 43200000;
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
             // 
+            // tsbtnCW
+            // 
+            this.tsbtnCW.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnCW.Image")));
+            this.tsbtnCW.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbtnCW.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnCW.Name = "tsbtnCW";
+            this.tsbtnCW.Size = new System.Drawing.Size(72, 69);
+            this.tsbtnCW.Text = "财务部审核";
+            this.tsbtnCW.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnCW.ToolTipText = "财务部审核";
+            this.tsbtnCW.Visible = false;
+            this.tsbtnCW.Click += new System.EventHandler(this.tsbtnCW_Click);
+            // 
+            // 财务部审核ToolStripMenuItem
+            // 
+            this.财务部审核ToolStripMenuItem.Name = "财务部审核ToolStripMenuItem";
+            this.财务部审核ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.财务部审核ToolStripMenuItem.Text = "财务部审核";
+            this.财务部审核ToolStripMenuItem.Visible = false;
+            this.财务部审核ToolStripMenuItem.Click += new System.EventHandler(this.财务部审核ToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -531,5 +556,7 @@
         private System.Windows.Forms.Timer AccessQueueTimer;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.Timer AlertTimer;
+        private System.Windows.Forms.ToolStripButton tsbtnCW;
+        private System.Windows.Forms.ToolStripMenuItem 财务部审核ToolStripMenuItem;
     }
 }

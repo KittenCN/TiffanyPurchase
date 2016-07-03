@@ -101,19 +101,33 @@ namespace BHair.Business.Table
             get { return _approvalDate; }
             set { _approvalDate = value; }
         }
-        //审批人（财务部
+        //审批人（经理
         private string _approvalName2;
         public string ApprovalName2
         {
             get { return _approvalName2; }
             set { _approvalName2 = value; }
         }
-        //审批时间（财务部
+        //审批时间（经理
         private string _approvalDate2;
         public string ApprovalDate2
         {
             get { return _approvalDate2; }
             set { _approvalDate2 = value; }
+        }
+        //审批人（财务
+        private string _approvalName3;
+        public string ApprovalName3
+        {
+            get { return _approvalName3; }
+            set { _approvalName3 = value; }
+        }
+        //审批时间（财务
+        private string _approvalDate3;
+        public string ApprovalDate3
+        {
+            get { return _approvalDate3; }
+            set { _approvalDate3 = value; }
         }
         //店面确认状态
         private string _staffApproval;
@@ -201,7 +215,7 @@ namespace BHair.Business.Table
         public DataTable SelectApplicationByApplicants(string Applicants,string sql)
         {
             AccessHelper ah = new AccessHelper();
-            string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState<4 and Applicants = '{0}' {1} order by [ApplicantsDate] desc", Applicants, sql);
+            string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState<5 and AppState<>4 and Applicants = '{0}' {1} order by [ApplicantsDate] desc", Applicants, sql);
             DataTable Result = ah.SelectToDataTable(sqlString);
             ah.Close();
             return Result;
@@ -263,6 +277,19 @@ namespace BHair.Business.Table
         }
 
         /// <summary>
+        /// 财务部查询ApplicationInfo
+        /// </summary>
+        /// <returns></returns>
+        public DataTable cwSelectApplicationByApproval(string sql)
+        {
+            AccessHelper ah = new AccessHelper();
+            string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState=2 {0} order by [ApplicantsDate] desc", sql);
+            DataTable Result = ah.SelectToDataTable(sqlString);
+            ah.Close();
+            return Result;
+        }
+
+        /// <summary>
         /// 商品部查询生成唯一码未确认购买
         /// </summary>
         /// <param name="sql"></param>
@@ -297,7 +324,7 @@ namespace BHair.Business.Table
         public DataTable SelectNotPassedApplication(string sql)
         {
             AccessHelper ah = new AccessHelper();
-            string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>3 and AppState<9  {0}order by [ApplicantsDate] desc", sql);
+            string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>3 and AppState<>5 and AppState<9  {0}order by [ApplicantsDate] desc", sql);
             DataTable Result = ah.SelectToDataTable(sqlString);
             ah.Close();
             return Result;
@@ -311,6 +338,19 @@ namespace BHair.Business.Table
         {
             AccessHelper ah = new AccessHelper();
             string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState=0 and Approval2='{1}' {0} order by [ApplicantsDate] desc", sql, Approval2);
+            DataTable Result = ah.SelectToDataTable(sqlString);
+            ah.Close();
+            return Result;
+        }
+
+        /// <summary>
+        /// 财务查询自己下属ApplicationInfo
+        /// </summary>
+        /// <returns></returns>
+        public DataTable SelectApplicationByApproval3(string Approval2, string sql)
+        {
+            AccessHelper ah = new AccessHelper();
+            string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState=2 {0} order by [ApplicantsDate] desc", sql);
             DataTable Result = ah.SelectToDataTable(sqlString);
             ah.Close();
             return Result;
@@ -337,6 +377,19 @@ namespace BHair.Business.Table
         {
             AccessHelper ah = new AccessHelper();
             string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>0 and Approval2='{1}'  {0} order by [ApplicantsDate] desc", sql, users.UID);
+            DataTable Result = ah.SelectToDataTable(sqlString);
+            ah.Close();
+            return Result;
+        }
+
+        /// <summary>
+        /// 财务查询已审核ApplicationInfo
+        /// </summary>
+        /// <returns></returns>
+        public DataTable SelectHistoryApplicationByApproval3(string sql, Users users)
+        {
+            AccessHelper ah = new AccessHelper();
+            string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>0 and Approval3='{1}'  {0} order by [ApplicantsDate] desc", sql, users.UID);
             DataTable Result = ah.SelectToDataTable(sqlString);
             ah.Close();
             return Result;
@@ -526,12 +579,37 @@ namespace BHair.Business.Table
         /// <returns></returns>
         public int ApprovalApplication(string TransNo, Users users, int ApprovalState, DateTime dt)
         {
+            //string unCode = GetSHA1(TransNo);
+            int rows = 0;
+            try
+            {
+                SqlQueue sq = new SqlQueue();
+                string sql = string.Format("Update ApplicationInfo Set ApprovalDate = '{3}', AppState = 2 ,Approval='{1}' , ApprovalName='{2}' where   AppState=1 and IsDelete = 0 and TransNo='{0}'", TransNo, users.UID, users.UserName, dt);
+                sq.InsertQuery(sql, "", "", 0, 0);
+                sq.Close();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                return 0;
+            }
+            return rows;
+        }
+
+        /// <summary>
+        /// 财务部审批
+        /// </summary>
+        /// <param name="CtrlID">控制号</param>
+        /// <returns></returns>
+        public int ApprovalApplication3(string TransNo, Users users, int ApprovalState, DateTime dt)
+        {
             string unCode = GetSHA1(TransNo);
             int rows = 0;
             try
             {
                 SqlQueue sq = new SqlQueue();
-                string sql = string.Format("Update ApplicationInfo Set ApprovalDate = '{3}', AppState = 4 ,Approval='{1}' , ApprovalName='{2}',UnCode='{4}' where   AppState=1 and IsDelete = 0 and TransNo='{0}'", TransNo, users.UID, users.UserName, dt, unCode);
+                string sql = string.Format("Update ApplicationInfo Set ApprovalDate = '{3}', AppState = 4 ,Approval='{1}' , ApprovalName='{2}',UnCode='{4}' where   AppState=2 and IsDelete = 0 and TransNo='{0}'", TransNo, users.UID, users.UserName, dt, unCode);
                 sq.InsertQuery(sql, "", "", 0, 0);
                 sq.Close();
                 return 1;
