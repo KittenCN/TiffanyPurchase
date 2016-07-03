@@ -26,7 +26,7 @@ namespace BHair.Base
             InitializeComponent();
             this.Text = "新增用户信息";
             LoadComBox();
-            if (Login.LoginUser.IsAdmin == 1)
+            if (Login.LoginUser.IsAdmin == 1 || Login.LoginUser.Character==5)
             {
                 cboCharacter.Enabled = true;
                 txtEmployeeID.Enabled = true;
@@ -57,7 +57,7 @@ namespace BHair.Base
             this.UID = memberid;
             LoadComBox();
             LoadData();
-            if(Login.LoginUser.IsAdmin==1)
+            if(Login.LoginUser.IsAdmin==1 || Login.LoginUser.Character == 5)
             {
                 cboCharacter.Enabled = true;
                 txtEmployeeID.Enabled = true;
@@ -148,6 +148,8 @@ namespace BHair.Base
             if (user.UsersDT.Rows[0]["Character"].ToString() == "2") cboCharacter.SelectedIndex = 1;
             if (user.UsersDT.Rows[0]["Character"].ToString() == "3") cboCharacter.SelectedIndex = 2;
             if (user.UsersDT.Rows[0]["Character"].ToString() == "4") cboCharacter.SelectedIndex = 3;
+            if (user.UsersDT.Rows[0]["Character"].ToString() == "5") cboCharacter.SelectedIndex = 4;
+            if (user.UsersDT.Rows[0]["Character"].ToString() == "6") cboCharacter.SelectedIndex = 5;
         }
 
         /// <summary>保存用户信息</summary>
@@ -209,6 +211,8 @@ namespace BHair.Base
             cboCharacter.Items.Add("经理");
             cboCharacter.Items.Add("员工");
             cboCharacter.Items.Add("店面");
+            cboCharacter.Items.Add("HR");
+            cboCharacter.Items.Add("财务");
             cboCharacter.SelectedIndex = 2;
 
             cbMoneyUnit.Items.Add("人民币");
@@ -249,11 +253,12 @@ namespace BHair.Base
             user.MoneyUnit = cbMoneyUnit.SelectedIndex + 1;
             user.TotalAmount = (double)txtTotalAmount.Value;
             user.RestAmount = (double)txtRestAmount.Value;
-            if (user.Character == 3||user.Character==2)
-            {
-                user.ManagerID = cbManagerID.SelectedValue.ToString();
-            }
-            if(user.Character==4)
+            //if (user.Character == 3||user.Character==2)
+            //{
+            //    user.ManagerID = cbManagerID.SelectedValue.ToString();
+            //}
+            user.ManagerID = cbManagerID.SelectedValue.ToString();
+            if (user.Character==4)
             {
                 user.Store = cbStore.SelectedValue.ToString();
             }
@@ -324,8 +329,8 @@ namespace BHair.Base
             }
             else
             {
-                label7.Visible = false;
-                cbManagerID.Visible = false;
+                //label7.Visible = false;
+                //cbManagerID.Visible = false;
             }
             if(cboCharacter.SelectedIndex==3)
             {
@@ -351,6 +356,11 @@ namespace BHair.Base
             {
                 MessageBox.Show("重置密码失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void cbManagerID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

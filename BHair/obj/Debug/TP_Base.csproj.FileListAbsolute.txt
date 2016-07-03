@@ -46,8 +46,6 @@ E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\obj\Debug\BHair.fr
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\obj\Debug\BHair.Properties.Resources.resources
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\obj\Debug\BHair.SystemSet.ComboDate.resources
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\obj\Debug\TP_Base.csproj.GenerateResource.Cache
-E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\内购SQLQueue.accdb
-E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\员工内购数据库.accdb
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\bin\Debug\BHair.exe.config
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\TP_Base.csproj.ResolveComReference.cache
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\BHair.exe
@@ -97,6 +95,4 @@ G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\BHair.Properties.Resources
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\BHair.SystemSet.ComboDate.resources
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\TP_Base.csproj.GenerateResource.Cache
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\BHair.pdb
-E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\bin\Debug\内购SQLQueue.accdb
-E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\bin\Debug\员工内购数据库.accdb
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\office.xml

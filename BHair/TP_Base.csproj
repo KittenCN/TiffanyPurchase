@@ -441,12 +441,8 @@
     <Content Include="bin\Debug\WinFormsUI.Docking.dll" />
     <Content Include="bin\Debug\XLuSharpLibrary.dll" />
     <Content Include="bin\Debug\zxing.dll" />
-    <Content Include="bin\Debug\内购SQLQueue.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="bin\Debug\员工内购数据库.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="bin\Debug\内购SQLQueue.accdb" />
+    <Content Include="bin\Debug\员工内购数据库.accdb" />
     <Content Include="Config.xml" />
     <Content Include="Dll\BarcodeLib.dll" />
     <Content Include="obj\Debug\BHair.csproj.FileListAbsolute.txt" />
@@ -454,12 +450,8 @@
     <Content Include="obj\Debug\BHair.pdb" />
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
     <Content Include="obj\Debug\TP_Base.csproj.FileListAbsolute.txt" />
-    <Content Include="内购SQLQueue.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="员工内购数据库.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="内购SQLQueue.accdb" />
+    <Content Include="员工内购数据库.accdb" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj">

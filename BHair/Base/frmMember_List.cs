@@ -110,6 +110,8 @@ namespace BHair.Base
                     case "2": e.Value = "经理"; break;
                     case "3": e.Value = "员工"; break;
                     case "4": e.Value = "店面"; break;
+                    case "5": e.Value = "HR"; break;
+                    case "6": e.Value = "财务"; break;
                     default:
                         e.Value = "无";
                         break;

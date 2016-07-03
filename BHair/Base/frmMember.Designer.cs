@@ -43,6 +43,8 @@
             this.lblRemark = new System.Windows.Forms.Label();
             this.txtDetail = new System.Windows.Forms.TextBox();
             this.grpNotNull = new System.Windows.Forms.GroupBox();
+            this.cbStore = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.cbManagerID = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -67,8 +69,6 @@
             this.lblCard = new System.Windows.Forms.Label();
             this.cbIsAdmin = new System.Windows.Forms.CheckBox();
             this.cbIsAble = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbStore = new System.Windows.Forms.ComboBox();
             this.tabMember.SuspendLayout();
             this.tabDetail.SuspendLayout();
             this.grpNotNull.SuspendLayout();
@@ -243,6 +243,27 @@
             this.grpNotNull.TabStop = false;
             this.grpNotNull.Text = "用户信息(必填)";
             // 
+            // cbStore
+            // 
+            this.cbStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStore.Enabled = false;
+            this.cbStore.FormattingEnabled = true;
+            this.cbStore.Location = new System.Drawing.Point(227, 90);
+            this.cbStore.Name = "cbStore";
+            this.cbStore.Size = new System.Drawing.Size(80, 20);
+            this.cbStore.TabIndex = 31;
+            this.cbStore.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(157, 93);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "所属店面：";
+            this.label8.Visible = false;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(384, 90);
@@ -263,6 +284,7 @@
             this.cbManagerID.Size = new System.Drawing.Size(80, 20);
             this.cbManagerID.TabIndex = 29;
             this.cbManagerID.Visible = false;
+            this.cbManagerID.SelectedIndexChanged += new System.EventHandler(this.cbManagerID_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -464,7 +486,7 @@
             // txtUID
             // 
             this.txtUID.Location = new System.Drawing.Point(71, 25);
-            this.txtUID.MaxLength = 12;
+            this.txtUID.MaxLength = 255;
             this.txtUID.Name = "txtUID";
             this.txtUID.ReadOnly = true;
             this.txtUID.Size = new System.Drawing.Size(80, 21);
@@ -500,27 +522,6 @@
             this.cbIsAble.Text = "是否冻结该用户";
             this.cbIsAble.UseVisualStyleBackColor = true;
             this.cbIsAble.Visible = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(157, 93);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 12);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "所属店面：";
-            this.label8.Visible = false;
-            // 
-            // cbStore
-            // 
-            this.cbStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStore.Enabled = false;
-            this.cbStore.FormattingEnabled = true;
-            this.cbStore.Location = new System.Drawing.Point(227, 90);
-            this.cbStore.Name = "cbStore";
-            this.cbStore.Size = new System.Drawing.Size(80, 20);
-            this.cbStore.TabIndex = 31;
-            this.cbStore.Visible = false;
             // 
             // frmMember
             // 
