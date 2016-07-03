@@ -82,9 +82,10 @@ namespace BHair.Business
             int row = dgvApplyInfo.CurrentCell.RowIndex;
             if (dgvApplyInfo.RowCount > 0 && dgvApplyInfo.SelectedRows.Count>0)
             {
-                if ((int)dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value >=4) txtApprovalState.Text = "通过"; else txtApprovalState.Text = "未审批";
-                if ((int)dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value >0) txtApprovalState2.Text = "通过"; else txtApprovalState2.Text = "未审批";
-                if (dgvApplyInfo.SelectedRows[0].Cells["UnCode"].Value!=null) txtUnCode.Text = dgvApplyInfo.SelectedRows[0].Cells["UnCode"].Value.ToString();
+                if ((int)dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value > 0) txtApprovalState2.Text = "通过"; else txtApprovalState2.Text = "未审批";
+                if ((int)dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value >= 2) txtApprovalState.Text = "通过"; else txtApprovalState.Text = "未审批";
+                if ((int)dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value >= 4) txtApprovalState3.Text = "通过"; else txtApprovalState3.Text = "未审批";
+                if (dgvApplyInfo.SelectedRows[0].Cells["UnCode"].Value != null) txtUnCode.Text = dgvApplyInfo.SelectedRows[0].Cells["UnCode"].Value.ToString();
                 if ((int)dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value > 5) txtStaffApproval.Text = "已确认"; else txtStaffApproval.Text = "未确认";
                 if ((int)dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value == 9) txtFinish.Text = "已完成"; else txtFinish.Text = "未完成";
 
@@ -107,9 +108,10 @@ namespace BHair.Business
             }
             if(row!=null)
             {
-                 if ((int)dgvApplyInfo.Rows[row].Cells["AppState"].Value >=4) txtApprovalState.Text = "通过"; else txtApprovalState.Text = "未审批";
-                if ((int)dgvApplyInfo.Rows[row].Cells["AppState"].Value >0) txtApprovalState2.Text = "通过"; else txtApprovalState2.Text = "未审批";
-                if (dgvApplyInfo.Rows[row].Cells["UnCode"].Value!=null) txtUnCode.Text = dgvApplyInfo.Rows[row].Cells["UnCode"].Value.ToString();
+                if ((int)dgvApplyInfo.Rows[row].Cells["AppState"].Value > 0) txtApprovalState2.Text = "通过"; else txtApprovalState2.Text = "未审批";
+                if ((int)dgvApplyInfo.Rows[row].Cells["AppState"].Value >= 2) txtApprovalState.Text = "通过"; else txtApprovalState.Text = "未审批";
+                if ((int)dgvApplyInfo.Rows[row].Cells["AppState"].Value >= 4) txtApprovalState3.Text = "通过"; else txtApprovalState3.Text = "未审批";
+                if (dgvApplyInfo.Rows[row].Cells["UnCode"].Value != null) txtUnCode.Text = dgvApplyInfo.Rows[row].Cells["UnCode"].Value.ToString();
                 if ((int)dgvApplyInfo.Rows[row].Cells["AppState"].Value > 5) txtStaffApproval.Text = "已确认"; else txtStaffApproval.Text = "未确认";
                 if ((int)dgvApplyInfo.Rows[row].Cells["AppState"].Value == 9) txtFinish.Text = "已完成"; else txtFinish.Text = "未完成";
 
@@ -304,6 +306,10 @@ namespace BHair.Business
                 }
             }
         }
-        
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

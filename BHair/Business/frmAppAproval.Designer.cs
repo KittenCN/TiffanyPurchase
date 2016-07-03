@@ -49,12 +49,6 @@
             this.BtnRefresh = new System.Windows.Forms.Button();
             this.BtnSelect = new System.Windows.Forms.Button();
             this.dgvApplyInfo = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnSelectAll = new System.Windows.Forms.Button();
-            this.cbCtrlType = new System.Windows.Forms.ComboBox();
-            this.TxtChoose = new System.Windows.Forms.TextBox();
-            this.BtnChoose = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.ApprovalState = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.FinalState = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +81,14 @@
             this.EditRemark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FinalException = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FinalExceptionFilter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSelectAll = new System.Windows.Forms.Button();
+            this.cbCtrlType = new System.Windows.Forms.ComboBox();
+            this.TxtChoose = new System.Windows.Forms.TextBox();
+            this.BtnChoose = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtApprovalState3 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -101,32 +103,36 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.txtStaffApproval, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtApprovalState3, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtStaffApproval, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtApprovalState, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtApprovalState2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtUnCode, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.txtFinish, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtUnCode, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.txtFinish, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 31);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 232);
             this.tableLayoutPanel1.TabIndex = 1;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // txtStaffApproval
             // 
-            this.txtStaffApproval.Location = new System.Drawing.Point(103, 117);
+            this.txtStaffApproval.Location = new System.Drawing.Point(103, 135);
             this.txtStaffApproval.Name = "txtStaffApproval";
             this.txtStaffApproval.ReadOnly = true;
             this.txtStaffApproval.Size = new System.Drawing.Size(94, 21);
@@ -134,7 +140,7 @@
             // 
             // txtApprovalState
             // 
-            this.txtApprovalState.Location = new System.Drawing.Point(103, 41);
+            this.txtApprovalState.Location = new System.Drawing.Point(103, 36);
             this.txtApprovalState.Name = "txtApprovalState";
             this.txtApprovalState.ReadOnly = true;
             this.txtApprovalState.Size = new System.Drawing.Size(94, 21);
@@ -143,7 +149,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 38);
+            this.label2.Location = new System.Drawing.Point(3, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 1;
@@ -152,7 +158,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 76);
+            this.label3.Location = new System.Drawing.Point(3, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 2;
@@ -161,7 +167,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 114);
+            this.label4.Location = new System.Drawing.Point(3, 132);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 3;
@@ -186,7 +192,7 @@
             // 
             // txtUnCode
             // 
-            this.txtUnCode.Location = new System.Drawing.Point(103, 79);
+            this.txtUnCode.Location = new System.Drawing.Point(103, 102);
             this.txtUnCode.Name = "txtUnCode";
             this.txtUnCode.ReadOnly = true;
             this.txtUnCode.Size = new System.Drawing.Size(94, 21);
@@ -195,7 +201,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 152);
+            this.label6.Location = new System.Drawing.Point(3, 165);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 9;
@@ -204,14 +210,14 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 190);
+            this.label1.Location = new System.Drawing.Point(3, 198);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 12);
             this.label1.TabIndex = 0;
             // 
             // txtFinish
             // 
-            this.txtFinish.Location = new System.Drawing.Point(103, 155);
+            this.txtFinish.Location = new System.Drawing.Point(103, 168);
             this.txtFinish.Name = "txtFinish";
             this.txtFinish.ReadOnly = true;
             this.txtFinish.Size = new System.Drawing.Size(94, 21);
@@ -354,70 +360,6 @@
             this.dgvApplyInfo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplyInfo_CellClick);
             this.dgvApplyInfo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvApplyInfo_CellMouseDoubleClick);
             this.dgvApplyInfo.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvApplyInfo_DataBindingComplete);
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.btnSelectAll);
-            this.panel3.Controls.Add(this.cbCtrlType);
-            this.panel3.Controls.Add(this.TxtChoose);
-            this.panel3.Controls.Add(this.BtnChoose);
-            this.panel3.Location = new System.Drawing.Point(248, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(733, 76);
-            this.panel3.TabIndex = 128;
-            // 
-            // btnSelectAll
-            // 
-            this.btnSelectAll.Location = new System.Drawing.Point(3, 50);
-            this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
-            this.btnSelectAll.TabIndex = 4;
-            this.btnSelectAll.Text = "全选/反选";
-            this.btnSelectAll.UseVisualStyleBackColor = true;
-            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
-            // 
-            // cbCtrlType
-            // 
-            this.cbCtrlType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCtrlType.FormattingEnabled = true;
-            this.cbCtrlType.Location = new System.Drawing.Point(0, 12);
-            this.cbCtrlType.Name = "cbCtrlType";
-            this.cbCtrlType.Size = new System.Drawing.Size(121, 20);
-            this.cbCtrlType.TabIndex = 3;
-            this.cbCtrlType.SelectedIndexChanged += new System.EventHandler(this.cbCtrlType_SelectedIndexChanged);
-            // 
-            // TxtChoose
-            // 
-            this.TxtChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtChoose.Location = new System.Drawing.Point(509, 10);
-            this.TxtChoose.Name = "TxtChoose";
-            this.TxtChoose.Size = new System.Drawing.Size(119, 21);
-            this.TxtChoose.TabIndex = 1;
-            this.TxtChoose.TextChanged += new System.EventHandler(this.TxtChoose_TextChanged);
-            // 
-            // BtnChoose
-            // 
-            this.BtnChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnChoose.Location = new System.Drawing.Point(646, 9);
-            this.BtnChoose.Name = "BtnChoose";
-            this.BtnChoose.Size = new System.Drawing.Size(75, 23);
-            this.BtnChoose.TabIndex = 0;
-            this.BtnChoose.Text = "查询";
-            this.BtnChoose.UseVisualStyleBackColor = true;
-            this.BtnChoose.Click += new System.EventHandler(this.BtnChoose_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.dgvApplyInfo);
-            this.panel4.Location = new System.Drawing.Point(249, 88);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(732, 385);
-            this.panel4.TabIndex = 129;
             // 
             // ApprovalState
             // 
@@ -681,6 +623,87 @@
             this.FinalExceptionFilter.ReadOnly = true;
             this.FinalExceptionFilter.Visible = false;
             // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.btnSelectAll);
+            this.panel3.Controls.Add(this.cbCtrlType);
+            this.panel3.Controls.Add(this.TxtChoose);
+            this.panel3.Controls.Add(this.BtnChoose);
+            this.panel3.Location = new System.Drawing.Point(248, 6);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(733, 76);
+            this.panel3.TabIndex = 128;
+            // 
+            // btnSelectAll
+            // 
+            this.btnSelectAll.Location = new System.Drawing.Point(3, 50);
+            this.btnSelectAll.Name = "btnSelectAll";
+            this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectAll.TabIndex = 4;
+            this.btnSelectAll.Text = "全选/反选";
+            this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
+            // 
+            // cbCtrlType
+            // 
+            this.cbCtrlType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCtrlType.FormattingEnabled = true;
+            this.cbCtrlType.Location = new System.Drawing.Point(0, 12);
+            this.cbCtrlType.Name = "cbCtrlType";
+            this.cbCtrlType.Size = new System.Drawing.Size(121, 20);
+            this.cbCtrlType.TabIndex = 3;
+            this.cbCtrlType.SelectedIndexChanged += new System.EventHandler(this.cbCtrlType_SelectedIndexChanged);
+            // 
+            // TxtChoose
+            // 
+            this.TxtChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtChoose.Location = new System.Drawing.Point(509, 10);
+            this.TxtChoose.Name = "TxtChoose";
+            this.TxtChoose.Size = new System.Drawing.Size(119, 21);
+            this.TxtChoose.TabIndex = 1;
+            this.TxtChoose.TextChanged += new System.EventHandler(this.TxtChoose_TextChanged);
+            // 
+            // BtnChoose
+            // 
+            this.BtnChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnChoose.Location = new System.Drawing.Point(646, 9);
+            this.BtnChoose.Name = "BtnChoose";
+            this.BtnChoose.Size = new System.Drawing.Size(75, 23);
+            this.BtnChoose.TabIndex = 0;
+            this.BtnChoose.Text = "查询";
+            this.BtnChoose.UseVisualStyleBackColor = true;
+            this.BtnChoose.Click += new System.EventHandler(this.BtnChoose_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.dgvApplyInfo);
+            this.panel4.Location = new System.Drawing.Point(249, 88);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(732, 385);
+            this.panel4.TabIndex = 129;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 66);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "财务部审批";
+            // 
+            // txtApprovalState3
+            // 
+            this.txtApprovalState3.Location = new System.Drawing.Point(103, 69);
+            this.txtApprovalState3.Name = "txtApprovalState3";
+            this.txtApprovalState3.ReadOnly = true;
+            this.txtApprovalState3.Size = new System.Drawing.Size(94, 21);
+            this.txtApprovalState3.TabIndex = 12;
+            // 
             // frmAppAproval
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -773,7 +796,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EditRemark;
         private System.Windows.Forms.DataGridViewTextBoxColumn FinalException;
         private System.Windows.Forms.DataGridViewTextBoxColumn FinalExceptionFilter;
-
-
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtApprovalState3;
     }
 }
