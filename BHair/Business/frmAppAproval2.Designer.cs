@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtApprovalState3 = new System.Windows.Forms.TextBox();
             this.txtStaffApproval = new System.Windows.Forms.TextBox();
             this.txtApprovalState = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFinish = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -78,12 +80,9 @@
             this.TxtChoose = new System.Windows.Forms.TextBox();
             this.BtnChoose = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtApprovalState3 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyInfo)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -120,6 +119,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 232);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // txtApprovalState3
+            // 
+            this.txtApprovalState3.Location = new System.Drawing.Point(103, 69);
+            this.txtApprovalState3.Name = "txtApprovalState3";
+            this.txtApprovalState3.ReadOnly = true;
+            this.txtApprovalState3.Size = new System.Drawing.Size(94, 21);
+            this.txtApprovalState3.TabIndex = 13;
             // 
             // txtStaffApproval
             // 
@@ -214,6 +221,15 @@
             this.txtFinish.Size = new System.Drawing.Size(94, 21);
             this.txtFinish.TabIndex = 10;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 66);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "财务部审核";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
@@ -238,8 +254,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.BtnRefresh);
-            this.panel2.Controls.Add(this.BtnSelect);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(509, 0);
             this.panel2.Name = "panel2";
@@ -249,7 +263,7 @@
             // BtnRefresh
             // 
             this.BtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRefresh.Location = new System.Drawing.Point(39, 38);
+            this.BtnRefresh.Location = new System.Drawing.Point(130, 10);
             this.BtnRefresh.Name = "BtnRefresh";
             this.BtnRefresh.Size = new System.Drawing.Size(75, 23);
             this.BtnRefresh.TabIndex = 1;
@@ -260,7 +274,7 @@
             // BtnSelect
             // 
             this.BtnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSelect.Location = new System.Drawing.Point(140, 38);
+            this.BtnSelect.Location = new System.Drawing.Point(231, 10);
             this.BtnSelect.Name = "BtnSelect";
             this.BtnSelect.Size = new System.Drawing.Size(75, 23);
             this.BtnSelect.TabIndex = 0;
@@ -526,7 +540,9 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.BtnRefresh);
             this.panel3.Controls.Add(this.cbCtrlType);
+            this.panel3.Controls.Add(this.BtnSelect);
             this.panel3.Controls.Add(this.TxtChoose);
             this.panel3.Controls.Add(this.BtnChoose);
             this.panel3.Location = new System.Drawing.Point(248, 6);
@@ -575,23 +591,6 @@
             this.panel4.Size = new System.Drawing.Size(733, 412);
             this.panel4.TabIndex = 129;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 66);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "财务部审核";
-            // 
-            // txtApprovalState3
-            // 
-            this.txtApprovalState3.Location = new System.Drawing.Point(103, 69);
-            this.txtApprovalState3.Name = "txtApprovalState3";
-            this.txtApprovalState3.ReadOnly = true;
-            this.txtApprovalState3.Size = new System.Drawing.Size(94, 21);
-            this.txtApprovalState3.TabIndex = 13;
-            // 
             // frmAppAproval2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -614,7 +613,6 @@
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyInfo)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

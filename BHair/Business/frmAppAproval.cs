@@ -306,10 +306,5 @@ namespace BHair.Business
                 }
             }
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
