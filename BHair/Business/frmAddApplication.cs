@@ -33,7 +33,7 @@ namespace BHair.Business
             txtApplicantsName.Text = Login.LoginUser.UserName;
             txtApplicantsNo.Text = Login.LoginUser.EmployeeID;
             txtDeadline.Value = DateTime.Now.AddDays(14);
-
+            txtLocation.Text = Login.LoginUser.Department + "::" + Login.LoginUser.Store;
 
             groupBox1.Text = string.Format("如果产品作为赠礼且零售价超过{0}人民币，请填写以下信息",EmailControl.config.CNY);
             groupBox3.Text = string.Format("赠礼明细(超过{0}人民币必填)", EmailControl.config.CNY);
