@@ -11,7 +11,7 @@ namespace BHair.Business
 {
     public class ExcelHelper
     {
-        public DataTable ExcelToDataTable_Items(string filePath,DataTable Result)
+        public DataTable ExcelToDataTable_Items(string filePath, DataTable Result)
         {
             Excel.Application app = new Excel.Application();
             Excel.Sheets sheets;
@@ -40,7 +40,7 @@ namespace BHair.Business
                     DataRow dr = Result.NewRow();
 
                     dr["ItemID"] = ((Excel.Range)worksheet.Cells[iRow, 1]).Text;
-                    
+
                     double price = 0;
                     if (!double.TryParse(((Excel.Range)worksheet.Cells[iRow, 2]).Text.ToString(), out price))
                         validate++;
@@ -64,7 +64,7 @@ namespace BHair.Business
                     if (dr["Price"].ToString() == "") validate++;
                     if (dr["Price2"].ToString() == "") validate++;
                     if (dr["Price3"].ToString() == "") validate++;
-                    if (dr["IsSpecial"].ToString() != "0" &&dr["IsSpecial"].ToString() != "1") validate++;
+                    if (dr["IsSpecial"].ToString() != "0" && dr["IsSpecial"].ToString() != "1") validate++;
 
                     if (validate == 0) Result.Rows.Add(dr);
                 }
@@ -133,23 +133,30 @@ namespace BHair.Business
                     dr["Department"] = ((Excel.Range)worksheet.Cells[iRow, 9]).Text;
                     dr["Email"] = ((Excel.Range)worksheet.Cells[iRow, 10]).Text;
                     dr["Detail"] = ((Excel.Range)worksheet.Cells[iRow, 11]).Text;
-                    
-                    
+                    dr["RestAmount"] = ((Excel.Range)worksheet.Cells[iRow, 12]).Text;
+
                     dr["IsDelete"] = 0;
                     dr["IsAble"] = 0;
                     dr["IsAdmin"] = 0;
                     dr["TotalAmount"] = 0;
                     dr["UsedAmount"] = 0;
-                    dr["RestAmount"] = 0;
+                    //dr["RestAmount"] = 0;
                     dr["UserPwd"] = sha1pwd;
 
-                    if (dr["UID"].ToString() == "") validate++;
-                    if (dr["UserName"].ToString() == "") validate++;
-                    if (dr["EmployeeID"].ToString() == "")  validate++;
-                    if (dr["Character"].ToString() != "1" && dr["Character"].ToString() != "2" && dr["Character"].ToString() != "3" && dr["Character"].ToString() != "4") validate++;
-                    if (dr["MoneyUnit"].ToString() != "1" && dr["MoneyUnit"].ToString() != "2" && dr["MoneyUnit"].ToString() != "3") validate++;
-                    if ((dr["Character"].ToString() == "3" && dr["ManagerID"].ToString() == "") || (dr["Character"].ToString() == "2" && dr["ManagerID"].ToString() == "")) validate++;
-                    if (dr["Character"].ToString() == "4" && dr["Store"].ToString() == "") validate++;
+                    if (dr["UID"].ToString() == "")
+                    { validate++; }
+                    if (dr["UserName"].ToString() == "")
+                    { validate++; }
+                    if (dr["EmployeeID"].ToString() == "")
+                    { validate++; }
+                    if (dr["Character"].ToString() != "1" && dr["Character"].ToString() != "2" && dr["Character"].ToString() != "3" && dr["Character"].ToString() != "4" && dr["Character"].ToString() != "5" && dr["Character"].ToString() != "6")
+                    { validate++; }
+                    if (dr["MoneyUnit"].ToString() != "1" && dr["MoneyUnit"].ToString() != "2" && dr["MoneyUnit"].ToString() != "3")
+                    { validate++; }
+                    if ((dr["Character"].ToString() == "3" && dr["ManagerID"].ToString() == "") || (dr["Character"].ToString() == "2" && dr["ManagerID"].ToString() == ""))
+                    { validate++; }
+                    if (dr["Character"].ToString() == "4" && dr["Store"].ToString() == "")
+                    { validate++; }
 
                     if (validate == 0) Result.Rows.Add(dr);
                 }
@@ -222,9 +229,9 @@ namespace BHair.Business
         {
             bool Result = false;
 
-            Excel.Application app ;
+            Excel.Application app;
             Excel.Workbooks wbs;
-            Excel.Workbook wb ;
+            Excel.Workbook wb;
             app = new Excel.Application();
             wbs = app.Workbooks;
             wb = wbs.Add(true);
@@ -232,7 +239,7 @@ namespace BHair.Business
 
             Excel.Worksheet s = (Excel.Worksheet)wb.Worksheets.get_Item(1);
 
-            s.Cells[1,1]="交易号";
+            s.Cells[1, 1] = "交易号";
             s.Cells[1, 2] = "申请时间";
             s.Cells[1, 3] = "申请人";
             s.Cells[1, 4] = "货号";
@@ -241,7 +248,7 @@ namespace BHair.Business
             s.Cells[1, 7] = "货币单位";
 
             int i = 1;
-            foreach(DataRow dr in ReportDT.Rows)
+            foreach (DataRow dr in ReportDT.Rows)
             {
                 s.Cells[1 + i, 1] = dr["TransNo"].ToString();
                 s.Cells[1 + i, 2] = dr["ApplicantsDate"].ToString();
@@ -270,6 +277,22 @@ namespace BHair.Business
 
 
             return true;
+        }
+        public DataTable SelectUsersByUID(string UID)
+        {
+            AccessHelper ah = new AccessHelper();
+            string sqlString = string.Format("select * from Users where IsDelete = 0 and UID='{0}'", UID);
+            DataTable Result = ah.SelectToDataTable(sqlString);
+            ah.Close();
+            return Result;
+        }
+        public DataTable SelectAllUsers(string sql)
+        {
+            AccessHelper ah = new AccessHelper();
+            string sqlString = string.Format("select * from [Users] where IsDelete = 0 {0}", sql);
+            DataTable Result = ah.SelectToDataTable(sqlString);
+            ah.Close();
+            return Result;
         }
     }
 }

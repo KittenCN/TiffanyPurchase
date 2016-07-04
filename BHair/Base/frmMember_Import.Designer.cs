@@ -321,7 +321,6 @@
             this.RestAmount.HeaderText = "剩余额度";
             this.RestAmount.Name = "RestAmount";
             this.RestAmount.ReadOnly = true;
-            this.RestAmount.Visible = false;
             // 
             // MoneyUnit
             // 

@@ -37,7 +37,7 @@ namespace BHair.Base
 
         }
 
-        
+
 
 
         private void ShowMember()
@@ -111,6 +111,7 @@ namespace BHair.Base
                         label1.Text = "正在导入Excel数据....";
                         filePath = openFileDialog.FileName;
                         DataTable resultDT = users.SelectUsersByUID("");
+                        DataTable sourceDT = users.SelectAllUsers("");
                         resultDT.Clear();
                         ExcelHelper eh = new ExcelHelper();
                         memberDT = eh.ExcelToDataTable_Member(filePath, resultDT, sha1pwd);
@@ -118,49 +119,87 @@ namespace BHair.Base
 
                         foreach (DataRow dr in memberDT.Rows)
                         {
-                            
+
                             Business.BaseData.Store stores = new Business.BaseData.Store();
                             stores.StoreDT = stores.SelectAllStoreInfo();
+
                             //上属经理
-                            if (dr["Character"].ToString() == "3" || dr["Character"].ToString() == "2")
+                            Boolean boolFlag = true;
+                            foreach (DataRow drUsers in memberDT.Rows)
                             {
-                                foreach (DataRow drUsers in memberDT.Rows)
+                                if (dr["ManagerID"].ToString() == drUsers["UID"].ToString() && dr["UID"].ToString() != "Administrator")
+                                {
+                                    //所属店铺
+                                    if (dr["Character"].ToString() == "4")
+                                    {
+                                        foreach (DataRow drStore in stores.StoreDT.Rows)
+                                        {
+                                            if (dr["Store"].ToString() == drStore["StoreName"].ToString())
+                                            {
+                                                MemberDT.Rows.Add(dr.ItemArray);
+                                                boolFlag = false;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MemberDT.Rows.Add(dr.ItemArray);
+                                        boolFlag = false;
+                                        break;
+                                    }
+
+                                }
+                            }
+                            if (boolFlag)
+                            {
+                                Boolean boolFlag2 = true;
+                                foreach (DataRow drUsers in sourceDT.Rows)
                                 {
                                     if (dr["ManagerID"].ToString() == drUsers["UID"].ToString() && dr["UID"].ToString() != "Administrator")
                                     {
-                                        MemberDT.Rows.Add(dr.ItemArray);
+                                        //所属店铺
+                                        if (dr["Character"].ToString() == "4")
+                                        {
+                                            foreach (DataRow drStore in stores.StoreDT.Rows)
+                                            {
+                                                if (dr["Store"].ToString() == drStore["StoreName"].ToString())
+                                                {
+                                                    MemberDT.Rows.Add(dr.ItemArray);
+                                                    boolFlag2 = false;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MemberDT.Rows.Add(dr.ItemArray);
+                                            boolFlag2 = false;
+                                            break;
+                                        }
                                     }
                                 }
-                            }
-                            //所属店铺
-                            else if (dr["Character"].ToString() == "4" && dr["UID"].ToString() != "Administrator")
-                            {
-                                foreach (DataRow drStore in stores.StoreDT.Rows)
+                                //所属店铺
+                                if (dr["Character"].ToString() == "4" && boolFlag2)
                                 {
-                                    if (dr["Store"].ToString() == drStore["StoreName"].ToString())
+                                    foreach (DataRow drStore in stores.StoreDT.Rows)
                                     {
-                                        MemberDT.Rows.Add(dr.ItemArray);
+                                        if (dr["Store"].ToString() == drStore["StoreName"].ToString())
+                                        {
+                                            MemberDT.Rows.Add(dr.ItemArray);
+                                            break;
+                                        }
                                     }
                                 }
                             }
-                            else
-                            {
-                                if(dr["UID"].ToString() != "Administrator")
-                                {
-                                    MemberDT.Rows.Add(dr.ItemArray);
-                                }
+
                             }
-
-                            
-                          
-
-                        }
 
                         dgvMember.AutoGenerateColumns = false;
                         dgvMember.DataSource = MemberDT;
                         label1.Text = "Excel数据导入完成";
                     }
-                    catch
+                    catch (Exception ex)
                     {
                         label1.Text = "Excel数据导入失败";
                     }
