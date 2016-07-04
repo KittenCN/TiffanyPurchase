@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtApprovalState3 = new System.Windows.Forms.TextBox();
             this.txtStaffApproval = new System.Windows.Forms.TextBox();
             this.txtApprovalState = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFinish = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnApprovalAll = new System.Windows.Forms.Button();
@@ -87,8 +89,6 @@
             this.TxtChoose = new System.Windows.Forms.TextBox();
             this.BtnChoose = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtApprovalState3 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -129,6 +129,14 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 232);
             this.tableLayoutPanel1.TabIndex = 1;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // txtApprovalState3
+            // 
+            this.txtApprovalState3.Location = new System.Drawing.Point(103, 69);
+            this.txtApprovalState3.Name = "txtApprovalState3";
+            this.txtApprovalState3.ReadOnly = true;
+            this.txtApprovalState3.Size = new System.Drawing.Size(94, 21);
+            this.txtApprovalState3.TabIndex = 12;
             // 
             // txtStaffApproval
             // 
@@ -223,6 +231,15 @@
             this.txtFinish.Size = new System.Drawing.Size(94, 21);
             this.txtFinish.TabIndex = 10;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 66);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "财务部审批";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
@@ -256,7 +273,6 @@
             this.btnApprovalAll.TabIndex = 4;
             this.btnApprovalAll.Text = "批量审批通过";
             this.btnApprovalAll.UseVisualStyleBackColor = true;
-            this.btnApprovalAll.Visible = false;
             this.btnApprovalAll.Click += new System.EventHandler(this.btnApprovalAll_Click);
             // 
             // btnAlter
@@ -686,23 +702,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(732, 385);
             this.panel4.TabIndex = 129;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 66);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "财务部审批";
-            // 
-            // txtApprovalState3
-            // 
-            this.txtApprovalState3.Location = new System.Drawing.Point(103, 69);
-            this.txtApprovalState3.Name = "txtApprovalState3";
-            this.txtApprovalState3.ReadOnly = true;
-            this.txtApprovalState3.Size = new System.Drawing.Size(94, 21);
-            this.txtApprovalState3.TabIndex = 12;
             // 
             // frmAppAproval
             // 
