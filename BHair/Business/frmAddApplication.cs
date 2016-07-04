@@ -26,10 +26,7 @@ namespace BHair.Business
         {
             InitializeComponent();
             GetDataTable();
-
             LoadComBox();
-
-
             txtApplicantsName.Text = Login.LoginUser.UserName;
             txtApplicantsNo.Text = Login.LoginUser.EmployeeID;
             txtDeadline.Value = DateTime.Now.AddDays(14);
@@ -56,15 +53,8 @@ namespace BHair.Business
             dgvApplyProducts.DataSource = AddApplicationDT;
 
             dgvApplyGift.AutoGenerateColumns = false;
-            dgvApplyGift.DataSource = AddApplicationDT;
-            
+            dgvApplyGift.DataSource = AddApplicationDT;           
         }
-
-
-
-     
-
-
 
         void LoadComBox()
         {

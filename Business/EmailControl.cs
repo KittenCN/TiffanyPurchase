@@ -210,7 +210,7 @@ namespace BHair.Business
             string Body = string.Format("内购申请详情：\r\n交易号：{0}\r\n申请人：{1}\r\n申请日期：{2}\r\n", TransNo, ApplicantsName, ApplicantsDate);
             foreach (DataRow dr in users.UsersDT.Rows)
 
-                    SendEmail(Subject, Body, "gzsjysczyy@163.com" );
+                    SendEmail(Subject, Body, "candy.lv@longint.net" );
 
             return isSuccess;
         }
