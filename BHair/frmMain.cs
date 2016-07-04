@@ -399,6 +399,33 @@ namespace BHair
         /// </summary>
         void InitMenu()
         {
+            //初始化
+            menuMain_Flow_add.Visible = false;
+            menuMain_Manage_StoreApp.Visible = false;
+            menuMain_Manage_Approval2App.Visible = false;
+            menuMain_Manage_ApprovalApp.Visible = false;
+            menuMain_Manage_History.Visible = false;
+            menuMain_System_Member.Visible = false;
+            menuMain_Manage_Store.Visible = false;
+            menuMain_System_Item.Visible = false;
+            menuMain_System_Log.Visible = false;
+            购买确认ToolStripMenuItem.Visible = false;
+            menuMain_System_Setup.Visible = false;
+            menuMain_Table.Visible = false;
+            menuMain_System_Pwd.Visible = false;
+            财务部审核ToolStripMenuItem.Visible = false;
+
+            toolStripButton4.Visible = false;
+            toolStripButton12.Visible = false;
+            toolStripButton1.Visible = false;
+            toolStripButton3.Visible = false;
+            toolStripButton8.Visible = false;
+            toolStripButton2.Visible = false;
+            toolStripButton13.Visible = false;
+            toolStripButton5.Visible = false;
+            toolStripButton6.Visible = false;
+            tsbtnCW.Visible = false;
+
             if (Login.LoginUser.UID == null || Login.LoginUser.UID == "")
             {
                 menuMain_Flow_add.Visible = false;
@@ -627,6 +654,19 @@ namespace BHair
                 toolStripButton13.Visible = false;
                 toolStripButton5.Visible = false;
                 toolStripButton6.Visible = false;
+            }
+            ExcelHelper eh = new ExcelHelper();
+            if(eh.boolIsManager(Login.LoginUser.UID))
+            {
+                menuMain_Flow_add.Visible = true;
+                menuMain_Manage_StoreApp.Visible = true;
+                menuMain_Manage_Approval2App.Visible = true;
+                menuMain_Manage_History.Visible = true;
+                menuMain_System_Pwd.Visible = true;
+
+                toolStripButton4.Visible = true;
+                toolStripButton1.Visible = true;
+                toolStripButton6.Visible = true;
             }
         }
         #endregion

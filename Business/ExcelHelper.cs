@@ -294,5 +294,16 @@ namespace BHair.Business
             ah.Close();
             return Result;
         }
+
+        public Boolean boolIsManager(string UID)
+        {
+            Boolean boolResult = false;
+            AccessHelper ah = new AccessHelper();
+            string sqlString = string.Format("select * from Users where IsDelete = 0 and ManagerID='{0}'", UID);
+            DataTable Result = ah.SelectToDataTable(sqlString);
+            ah.Close();
+            if (Result.Rows.Count > 0) { boolResult = true; }
+            return boolResult;
+        }
     }
 }
