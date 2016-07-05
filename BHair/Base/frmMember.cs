@@ -262,6 +262,10 @@ namespace BHair.Base
             {
                 user.Store = cbStore.SelectedValue.ToString();
             }
+            else
+            {
+                user.Store = "";
+            }
             user.IsDelete = 0;
             if (cbIsAdmin.Checked) user.IsAdmin = 1; else user.IsAdmin = 0;
             if (cbIsAble.Checked) user.IsAble = 0; else user.IsAble = 1;

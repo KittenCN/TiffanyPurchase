@@ -75,7 +75,6 @@ G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\office.dll
 G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\Microsoft.Vbe.Interop.dll
 G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\stdole.dll
 G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\office.xml
-G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
 G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Debug\Business.csproj.ResolveComReference.cache
 G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Debug\BHair.Business.dll
 G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Debug\BHair.Business.pdb

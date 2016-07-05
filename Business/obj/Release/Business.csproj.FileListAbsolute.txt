@@ -1,0 +1,13 @@
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Release\BHair.Business.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Release\BHair.Business.pdb
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Release\Microsoft.Office.Interop.Excel.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Release\XLuSharpLibrary.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Release\zxing.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Release\office.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Release\Microsoft.Vbe.Interop.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Release\stdole.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Release\office.xml
+G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Release\Business.csprojResolveAssemblyReference.cache
+G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Release\Business.csproj.ResolveComReference.cache
+G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Release\BHair.Business.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Release\BHair.Business.pdb
