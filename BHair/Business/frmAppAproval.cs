@@ -40,7 +40,6 @@ namespace BHair.Business
         public void GetApplicationDetail()
         {
             ApplicationInfoTable = new DataTable();
-            
             switch (CtrlType)
             {
                 case "未审核": ApplicationInfoTable = applicationInfo.SelectApplicationByApproval(""); break;

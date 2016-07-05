@@ -96,3 +96,5 @@ G:\WorkStation\GitHub\TiffanyPurchase\BHair\bin\Debug\TiffanyPurchase.pdb
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\TiffanyPurchase.Properties.Resources.resources
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\TiffanyPurchase.exe
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\TiffanyPurchase.pdb
+E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\TiffanyPurchase.exe.config
+E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\obj\Debug\TiffanyPurchase.exe
