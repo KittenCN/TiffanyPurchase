@@ -69,6 +69,7 @@
             this.lblCard = new System.Windows.Forms.Label();
             this.cbIsAdmin = new System.Windows.Forms.CheckBox();
             this.cbIsAble = new System.Windows.Forms.CheckBox();
+            this.cbAbleMode = new System.Windows.Forms.ComboBox();
             this.tabMember.SuspendLayout();
             this.tabDetail.SuspendLayout();
             this.grpNotNull.SuspendLayout();
@@ -522,12 +523,23 @@
             this.cbIsAble.Text = "是否冻结该用户";
             this.cbIsAble.UseVisualStyleBackColor = true;
             this.cbIsAble.Visible = false;
+            this.cbIsAble.CheckedChanged += new System.EventHandler(this.cbIsAble_CheckedChanged);
+            // 
+            // cbAbleMode
+            // 
+            this.cbAbleMode.FormattingEnabled = true;
+            this.cbAbleMode.Location = new System.Drawing.Point(264, 353);
+            this.cbAbleMode.Name = "cbAbleMode";
+            this.cbAbleMode.Size = new System.Drawing.Size(48, 20);
+            this.cbAbleMode.TabIndex = 10;
+            this.cbAbleMode.Visible = false;
             // 
             // frmMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 384);
+            this.Controls.Add(this.cbAbleMode);
             this.Controls.Add(this.cbIsAble);
             this.Controls.Add(this.cbIsAdmin);
             this.Controls.Add(this.btnCancel);
@@ -598,5 +610,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbStore;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbAbleMode;
     }
 }

@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using XLuSharpLibrary.DbAccess;
-using System.Data.OleDb; 
+using System.Data.OleDb;
 
 namespace BHair.Business.BaseData
 {
@@ -71,6 +71,56 @@ namespace BHair.Business.BaseData
             get { return _CNY; }
             set { _CNY = value; }
         }
+
+        private decimal _MOP;
+        public decimal MOP
+        {
+            get { return _MOP; }
+            set { _MOP = value; }
+        }
+
+        private decimal _SGD;
+        public decimal SGD
+        {
+            get { return _SGD; }
+            set { _SGD = value; }
+        }
+
+        private decimal _MYR;
+        public decimal MYR
+        {
+            get { return _MYR; }
+            set { _MYR = value; }
+        }
+
+        private decimal _GBP;
+        public decimal GBP
+        {
+            get { return _GBP; }
+            set { _GBP = value; }
+        }
+
+        private decimal _EUR;
+        public decimal EUR
+        {
+            get { return _EUR; }
+            set { _EUR = value; }
+        }
+
+        private decimal _JPY;
+        public decimal JPY
+        {
+            get { return _JPY; }
+            set { _JPY = value; }
+        }
+
+        private decimal _TWD;
+        public decimal TWD
+        {
+            get { return _TWD; }
+            set { _TWD = value; }
+        }
+
         //美元汇率
         private decimal _USrate;
         public decimal USrate
@@ -84,6 +134,55 @@ namespace BHair.Business.BaseData
         {
             get { return _HKrate; }
             set { _HKrate = value; }
+        }
+
+        private decimal _MOPrate;
+        public decimal MOPrate
+        {
+            get { return _MOPrate; }
+            set { _MOPrate = value; }
+        }
+
+        private decimal _SGDrate;
+        public decimal SGDrate
+        {
+            get { return _SGDrate; }
+            set { _SGDrate = value; }
+        }
+
+        private decimal _MYRrate;
+        public decimal MYRrate
+        {
+            get { return _MYRrate; }
+            set { _MYRrate = value; }
+        }
+
+        private decimal _GBPrate;
+        public decimal GBPrate
+        {
+            get { return _GBPrate; }
+            set { _GBPrate = value; }
+        }
+
+        private decimal _EURrate;
+        public decimal EURrate
+        {
+            get { return _EURrate; }
+            set { _EURrate = value; }
+        }
+
+        private decimal _JPYrate;
+        public decimal JPYrate
+        {
+            get { return _JPYrate; }
+            set { _JPYrate = value; }
+        }
+
+        private decimal _TWDrate;
+        public decimal TWDrate
+        {
+            get { return _TWDrate; }
+            set { _TWDrate = value; }
         }
         #endregion
 
@@ -115,19 +214,33 @@ namespace BHair.Business.BaseData
             {
                 SqlQueue sq = new SqlQueue();
 
-                    StringBuilder insertSql = new StringBuilder();
-                    insertSql.Append("Update [SetupConfig] set ");
-                    insertSql.AppendFormat(" [EmailID]='{0}',", EmailID);
-                    insertSql.AppendFormat(" [EmailPwd]='{0}',", EmailPwd);
-                    insertSql.AppendFormat(" [EmailAddress]='{0}',", EmailAddress);
-                    insertSql.AppendFormat(" [EmailSMTP]='{0}',", EmailSMTP);
-                    insertSql.AppendFormat(" [HKD]={0},", HKD);
-                    insertSql.AppendFormat(" [USD]={0},", USD);
-                    insertSql.AppendFormat(" [CNY]={0},", CNY);
-                    insertSql.AppendFormat(" [USrate]={0},", USrate);
-                    insertSql.AppendFormat(" [HKrate]={0}", HKrate);
-                    //insertSql.AppendFormat(" where [ID]={0}", ID);
-                    sq.InsertQuery(insertSql.ToString(), "", "", 0, 0);
+                StringBuilder insertSql = new StringBuilder();
+                insertSql.Append("Update [SetupConfig] set ");
+                insertSql.AppendFormat(" [EmailID]='{0}',", EmailID);
+                insertSql.AppendFormat(" [EmailPwd]='{0}',", EmailPwd);
+                insertSql.AppendFormat(" [EmailAddress]='{0}',", EmailAddress);
+                insertSql.AppendFormat(" [EmailSMTP]='{0}',", EmailSMTP);
+                insertSql.AppendFormat(" [HKD]={0},", HKD);
+                insertSql.AppendFormat(" [USD]={0},", USD);
+                insertSql.AppendFormat(" [CNY]={0},", CNY);
+                insertSql.AppendFormat(" [EUR]={0},", EUR);
+                insertSql.AppendFormat(" [GBP]={0},", GBP);
+                insertSql.AppendFormat(" [JPY]={0},", JPY);
+                insertSql.AppendFormat(" [MOP]={0},", MOP);
+                insertSql.AppendFormat(" [MYR]={0},", MYR);
+                insertSql.AppendFormat(" [SGD]={0},", SGD);
+                insertSql.AppendFormat(" [TWD]={0},", TWD);
+                insertSql.AppendFormat(" [USrate]={0},", USrate);
+                insertSql.AppendFormat(" [HKrate]={0}", HKrate);
+                insertSql.AppendFormat(" [EURrate]={0}", EURrate);
+                insertSql.AppendFormat(" [GBPrate]={0}", GBPrate);
+                insertSql.AppendFormat(" [JPYrate]={0}", JPYrate);
+                insertSql.AppendFormat(" [MOPrate]={0}", MOPrate);
+                insertSql.AppendFormat(" [MYRrate]={0}", MYRrate);
+                insertSql.AppendFormat(" [SGDrate]={0}", SGDrate);
+                insertSql.AppendFormat(" [TWDrate]={0}", TWDrate);
+                //insertSql.AppendFormat(" where [ID]={0}", ID);
+                sq.InsertQuery(insertSql.ToString(), "", "", 0, 0);
 
                 sq.Close();
                 return 1;

@@ -75,6 +75,7 @@ namespace BHair.Base
                 txtTotalAmount.Enabled = true;
                 txtRestAmount.Enabled = true;
                 cbStore.Enabled = true;
+                cbAbleMode.Visible = true;
             }
         }
 
@@ -136,6 +137,14 @@ namespace BHair.Base
             cbMoneyUnit.SelectedIndex=(int)user.UsersDT.Rows[0]["MoneyUnit"]-1;
             cbManagerID.SelectedValue = user.UsersDT.Rows[0]["ManagerID"].ToString();
             cbStore.SelectedValue = user.UsersDT.Rows[0]["Store"].ToString();
+            if((int)user.UsersDT.Rows[0]["AbleMode"]-1>=0)
+            {
+                cbAbleMode.SelectedIndex = (int)user.UsersDT.Rows[0]["AbleMode"] - 1;
+            }
+            else
+            {
+                cbAbleMode.SelectedIndex = 0;
+            }
 
             if(user.UsersDT.Rows[0]["IsAdmin"].ToString()=="1")
             { cbIsAdmin.Checked = true; }
@@ -150,6 +159,15 @@ namespace BHair.Base
             if (user.UsersDT.Rows[0]["Character"].ToString() == "4") cboCharacter.SelectedIndex = 3;
             if (user.UsersDT.Rows[0]["Character"].ToString() == "5") cboCharacter.SelectedIndex = 4;
             if (user.UsersDT.Rows[0]["Character"].ToString() == "6") cboCharacter.SelectedIndex = 5;
+
+            if (cbIsAble.Checked == true)
+            {
+                cbAbleMode.Enabled = true;
+            }
+            else
+            {
+                cbAbleMode.Enabled = false;
+            }
         }
 
         /// <summary>保存用户信息</summary>
@@ -218,6 +236,13 @@ namespace BHair.Base
             cbMoneyUnit.Items.Add("人民币");
             cbMoneyUnit.Items.Add("美元");
             cbMoneyUnit.Items.Add("港币");
+            cbMoneyUnit.Items.Add("澳元");
+            cbMoneyUnit.Items.Add("新元");
+            cbMoneyUnit.Items.Add("马币");
+            cbMoneyUnit.Items.Add("英镑");
+            cbMoneyUnit.Items.Add("欧元");
+            cbMoneyUnit.Items.Add("日元");
+            cbMoneyUnit.Items.Add("台币");
             cbMoneyUnit.SelectedIndex = 0;
 
             AllUsers = user.SelectAllUsers("");
@@ -235,6 +260,9 @@ namespace BHair.Base
                 cbStore.DisplayMember = "StoreName";
                 cbStore.ValueMember = "StoreName";
             }
+            cbAbleMode.Items.Add("临时冻结");
+            cbAbleMode.Items.Add("永久冻结");
+            cbAbleMode.SelectedIndex = 0;
         }
 
         
@@ -268,7 +296,16 @@ namespace BHair.Base
             }
             user.IsDelete = 0;
             if (cbIsAdmin.Checked) user.IsAdmin = 1; else user.IsAdmin = 0;
-            if (cbIsAble.Checked) user.IsAble = 0; else user.IsAble = 1;
+            if (cbIsAble.Checked)
+            {
+                user.IsAble = 0;
+                user.AbleMode = cbAbleMode.SelectedIndex + 1;
+            }
+            else
+            {
+                user.IsAble = 1;
+                user.AbleMode = 0;
+            }
 
 
             //user.UsersDT = user.SelectUsersByUID(UID);
@@ -365,6 +402,18 @@ namespace BHair.Base
         private void cbManagerID_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbIsAble_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbIsAble.Checked==true)
+            {
+                cbAbleMode.Enabled = true;
+            }
+            else
+            {
+                cbAbleMode.Enabled = false;
+            }
         }
     }
 }

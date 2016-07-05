@@ -38,7 +38,7 @@ namespace BHair.Business
 
                 if (UserDT.Rows.Count > 0)
                 {
-                    if (UserDT.Rows[0]["IsAble"] == "0")
+                    if (UserDT.Rows[0]["IsAble"].ToString() == "0")
                     {
                         MessageBox.Show("用户已被冻结", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }

@@ -61,6 +61,13 @@ namespace BHair.Business
             txtMoneyUnit.Items.Add("人民币");
             txtMoneyUnit.Items.Add("美元");
             txtMoneyUnit.Items.Add("港币");
+            txtMoneyUnit.Items.Add("澳元");
+            txtMoneyUnit.Items.Add("新元");
+            txtMoneyUnit.Items.Add("马币");
+            txtMoneyUnit.Items.Add("英镑");
+            txtMoneyUnit.Items.Add("欧元");
+            txtMoneyUnit.Items.Add("日元");
+            txtMoneyUnit.Items.Add("台币");
             txtMoneyUnit.SelectedIndex = 0;
             if (Login.LoginUser.MoneyUnit>1) txtMoneyUnit.SelectedIndex = Login.LoginUser.MoneyUnit - 1;
 

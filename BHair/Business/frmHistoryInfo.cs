@@ -30,6 +30,13 @@ namespace BHair.Business
             cbMoneyUnit.Items.Add("人民币");
             cbMoneyUnit.Items.Add("美元");
             cbMoneyUnit.Items.Add("港币");
+            cbMoneyUnit.Items.Add("澳元");
+            cbMoneyUnit.Items.Add("新元");
+            cbMoneyUnit.Items.Add("马币");
+            cbMoneyUnit.Items.Add("英镑");
+            cbMoneyUnit.Items.Add("欧元");
+            cbMoneyUnit.Items.Add("日元");
+            cbMoneyUnit.Items.Add("台币");
             cbMoneyUnit.SelectedIndex = 0;
         }
 
@@ -170,9 +177,45 @@ namespace BHair.Business
             {
                 if (dgvr.Cells["MoneyUnit"] != null && dgvr.Cells["MoneyUnit"].Value != null && dgvr.Cells["MoneyUnit"].Value.ToString() != "")
                 {
-                    if ((int)dgvr.Cells["MoneyUnit"].Value == 2) dgvr.Cells["MoneyUnitFilter"].Value = "美元";
-                    if ((int)dgvr.Cells["MoneyUnit"].Value == 3) dgvr.Cells["MoneyUnitFilter"].Value = "港币";
-                    else dgvr.Cells["MoneyUnitFilter"].Value = "人民币";
+                    //if ((int)dgvr.Cells["MoneyUnit"].Value == 2) dgvr.Cells["MoneyUnitFilter"].Value = "美元";
+                    //if ((int)dgvr.Cells["MoneyUnit"].Value == 3) dgvr.Cells["MoneyUnitFilter"].Value = "港币";
+                    //else dgvr.Cells["MoneyUnitFilter"].Value = "人民币";
+                    switch ((int)dgvr.Cells["MoneyUnit"].Value)
+                    {
+                        case 1:
+                            dgvr.Cells["MoneyUnitShow"].Value = "人民币";
+                            break;
+                        case 2:
+                            dgvr.Cells["MoneyUnitShow"].Value = "美元";
+                            break;
+                        case 3:
+                            dgvr.Cells["MoneyUnitShow"].Value = "港币";
+                            break;
+                        case 4:
+                            dgvr.Cells["MoneyUnitShow"].Value = "澳元";
+                            break;
+                        case 5:
+                            dgvr.Cells["MoneyUnitShow"].Value = "新元";
+                            break;
+                        case 6:
+                            dgvr.Cells["MoneyUnitShow"].Value = "马币";
+                            break;
+                        case 7:
+                            dgvr.Cells["MoneyUnitShow"].Value = "英镑";
+                            break;
+                        case 8:
+                            dgvr.Cells["MoneyUnitShow"].Value = "欧元";
+                            break;
+                        case 9:
+                            dgvr.Cells["MoneyUnitShow"].Value = "日元";
+                            break;
+                        case 10:
+                            dgvr.Cells["MoneyUnitShow"].Value = "台币";
+                            break;
+                        default:
+                            dgvr.Cells["MoneyUnitShow"].Value = "人民币";
+                            break;
+                    }
                 }
             }
         }

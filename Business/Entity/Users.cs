@@ -183,6 +183,13 @@ namespace BHair.Business.BaseData
             set { _isAble = value; }
         }
 
+        private int _AbleMode;
+        public int AbleMode
+        {
+            get { return _AbleMode; }
+            set { _AbleMode = value; }
+        }
+
         public DataTable UsersDT = new DataTable();
 
         #endregion
@@ -293,7 +300,8 @@ namespace BHair.Business.BaseData
                 insertSql.AppendFormat(" [MoneyUnit]={0},", user.MoneyUnit);
                 insertSql.AppendFormat(" [ManagerID]='{0}',", user.ManagerID);
                 insertSql.AppendFormat(" [Store]='{0}',", user.Store);
-                insertSql.AppendFormat(" [IsAble]={0}", user.IsAble);
+                insertSql.AppendFormat(" [IsAble]={0},", user.IsAble);
+                insertSql.AppendFormat(" [AbleMode]={0}", user.AbleMode);
                 insertSql.AppendFormat(" where [UID]='{0}'", user.UID);
                 sq.InsertQuery(insertSql.ToString(), "", "", 0, 0);
 

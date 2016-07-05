@@ -29,6 +29,13 @@ namespace BHair.Business
             cbMoneyUnit.Items.Add("人民币");
             cbMoneyUnit.Items.Add("美元");
             cbMoneyUnit.Items.Add("港币");
+            cbMoneyUnit.Items.Add("澳元");
+            cbMoneyUnit.Items.Add("新元");
+            cbMoneyUnit.Items.Add("马币");
+            cbMoneyUnit.Items.Add("英镑");
+            cbMoneyUnit.Items.Add("欧元");
+            cbMoneyUnit.Items.Add("日元");
+            cbMoneyUnit.Items.Add("台币");
             cbMoneyUnit.SelectedIndex = 0;
         }
 

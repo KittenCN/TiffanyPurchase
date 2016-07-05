@@ -90,3 +90,4 @@ E:\workstation\项目\用蝶项目\Tiffany\员工内购\Business\obj\Debug\Busin
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\Business\obj\Debug\Business.csproj.ResolveComReference.cache
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\Business\obj\Debug\BHair.Business.dll
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\Business\obj\Debug\BHair.Business.pdb
+G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
