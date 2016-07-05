@@ -735,11 +735,12 @@ namespace BHair
 
         private void AlertTimer_Tick(object sender, EventArgs e)
         {
-            if (Login.LoginUser.IsAdmin == 1)
-            {
-                Thread thread = new Thread(new ThreadStart(SendEmail));
-                thread.Start();
-            }
+            ///不需要超时提醒
+            //if (Login.LoginUser.IsAdmin == 1)
+            //{
+            //    Thread thread = new Thread(new ThreadStart(SendEmail));
+            //    thread.Start();
+            //}
         }
 
         void SendEmail()
