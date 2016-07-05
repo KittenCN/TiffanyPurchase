@@ -6,6 +6,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Core;
 using System.IO;
 using System.Data;
+using System.Windows.Forms;
 
 namespace BHair.Business
 {
@@ -191,7 +192,7 @@ namespace BHair.Business
         /// <param name="sourcePath">源文件路径</param>
         /// <param name="targetPath">目标文件路径</param>
         /// <returns>true=转换成功</returns>
-        private bool XLSConvertToPDF(string sourcePath, string targetPath)
+        public bool XLSConvertToPDF(string sourcePath, string targetPath)
         {
             bool result = false;
             Excel.XlFixedFormatType targetType = Excel.XlFixedFormatType.xlTypePDF;
@@ -235,5 +236,149 @@ namespace BHair.Business
             if (application != null) application.Quit();
             return result;
         }
+
+        public void WriteToExcel(DataTable thisTable, string FileName, string sheetName)
+        {
+            string strFilePath = FileName;
+            string XLSName = System.IO.Directory.GetCurrentDirectory() + @"\templet\报告模板.xls";
+            Excel.Application app = new Excel.Application();
+            app.DisplayAlerts = false;
+            Excel.Workbooks wbks = app.Workbooks;
+            Excel._Workbook _wbk = wbks.Add(XLSName);
+            Excel.Sheets shs = _wbk.Sheets;
+            Excel._Worksheet _wsh = (Excel._Worksheet)shs.get_Item(1);
+            try
+            {
+                int sheetRowsCount = _wsh.UsedRange.Rows.Count;
+                int count = thisTable.Columns.Count;
+
+                //设置列名
+                //foreach (DataColumn myNewColumn in thisTable.Columns)
+                //{
+                //    _wsh.Cells[0, count] = myNewColumn.ColumnName;
+                //    count = count + 1;
+                //}er
+                for (int i = 0; i < count; i++)
+                {
+                    _wsh.Cells[1, i + 1] = thisTable.Columns[i].ColumnName;
+                }
+
+                //加入內容
+                for (int i = 1; i <= thisTable.Rows.Count; i++)
+                {
+                    for (int j = 1; j <= thisTable.Columns.Count; j++)
+                    {
+                        _wsh.Cells[i + sheetRowsCount, j] = thisTable.Rows[i - 1][j - 1];
+                    }
+                }
+                _wsh.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
+                _wsh.Cells.Columns.AutoFit();
+                _wsh.Cells.Rows.AutoFit();
+                //若為EXCEL2000, 將最後一個參數拿掉即可             
+                _wbk.SaveAs(strFilePath, Excel.XlFileFormat.xlWorkbookNormal,
+                    null, null, false, false, Excel.XlSaveAsAccessMode.xlShared,
+                    false, false, null, null, null);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                //關閉文件
+                _wbk.Close(false, Type.Missing, Type.Missing);
+                app.Workbooks.Close();
+                app.Quit();
+
+                //釋放資源
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(app);
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(_wsh);
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(_wbk);
+                _wsh = null;
+                _wbk = null;
+                app = null;
+            }
+        }
+
+        public DataTable exporeDataToTable(DataGridView dataGridView)
+        {
+            //将datagridview中的数据导入到表中
+            DataTable tempTable = new DataTable("tempTable");
+            //定义一个模板表，专门用来获取列名
+            DataTable modelTable = new DataTable("ModelTable");
+            //创建列
+            for (int column = 0; column < dataGridView.Columns.Count; column++)
+            {
+                //可见的列才显示出来
+                if (dataGridView.Columns[column].Visible == true)
+                {
+                    DataColumn tempColumn = new DataColumn(dataGridView.Columns[column].HeaderText, typeof(string));
+                    tempTable.Columns.Add(tempColumn);
+                    DataColumn modelColumn = new DataColumn(dataGridView.Columns[column].Name, typeof(string));
+                    modelTable.Columns.Add(modelColumn);
+                }
+            }
+            //添加datagridview中行的数据到表
+            for (int row = 0; row < dataGridView.Rows.Count; row++)
+            {
+                if (dataGridView.Rows[row].Visible == false)
+                {
+                    continue;
+                }
+                DataRow tempRow = tempTable.NewRow();
+                for (int i = 0; i < tempTable.Columns.Count; i++)
+                {
+                    tempRow[i] = dataGridView.Rows[row].Cells[modelTable.Columns[i].ColumnName].Value;
+                }
+                tempTable.Rows.Add(tempRow);
+            }
+            return tempTable;
+        }
+
+        //public bool XLSConvertToPDF(string sourcePath, string targetPath)
+        //{
+        //    bool result = false;
+        //    Excel.XlFixedFormatType targetType = Excel.XlFixedFormatType.xlTypePDF;
+        //    object missing = Type.Missing;
+        //    Excel.ApplicationClass application = null;
+        //    Excel.Workbook workBook = null;
+        //    try
+        //    {
+        //        application = new Excel.ApplicationClass();
+        //        object target = targetPath;
+        //        object type = targetType;
+        //        workBook = application.Workbooks.Open(sourcePath, missing, missing, missing, missing, missing,
+        //                missing, missing, missing, missing, missing, missing, missing, missing, missing);
+
+        //        workBook.ExportAsFixedFormat(targetType, target, Excel.XlFixedFormatQuality.xlQualityStandard, true, false, missing, missing, missing, missing);
+        //        result = true;
+        //    }
+        //    catch
+        //    {
+        //        result = false;
+        //    }
+        //    finally
+        //    {
+        //        if (workBook != null)
+        //        {
+        //            workBook.Close(true, missing, missing);
+        //            workBook = null;
+        //        }
+        //        if (application != null)
+        //        {
+        //            application.Quit();
+        //            application = null;
+        //        }
+        //        GC.Collect();
+        //        GC.WaitForPendingFinalizers();
+        //        GC.Collect();
+        //        GC.WaitForPendingFinalizers();
+        //    }
+
+        //    if (workBook != null) workBook.Close();
+        //    if (application != null) application.Quit();
+        //    return result;
+        //}
     }
 }

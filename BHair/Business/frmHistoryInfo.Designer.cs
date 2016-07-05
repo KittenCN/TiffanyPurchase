@@ -79,16 +79,17 @@
             this.MoneyUnitFilter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnExportEXCEL = new System.Windows.Forms.Button();
+            this.txtEDate = new System.Windows.Forms.DateTimePicker();
+            this.txtSDate = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.cbMoneyUnit = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.TxtChoose = new System.Windows.Forms.TextBox();
             this.BtnChoose = new System.Windows.Forms.Button();
             this.cbCtrlType = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtSDate = new System.Windows.Forms.DateTimePicker();
-            this.txtEDate = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -326,7 +327,7 @@
             this.dgvApplyInfo.Name = "dgvApplyInfo";
             this.dgvApplyInfo.RowTemplate.Height = 23;
             this.dgvApplyInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvApplyInfo.Size = new System.Drawing.Size(733, 395);
+            this.dgvApplyInfo.Size = new System.Drawing.Size(730, 395);
             this.dgvApplyInfo.TabIndex = 127;
             this.dgvApplyInfo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplyInfo_CellClick);
             this.dgvApplyInfo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvApplyInfo_CellMouseDoubleClick);
@@ -577,6 +578,7 @@
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.btnExportEXCEL);
             this.panel4.Controls.Add(this.txtEDate);
             this.panel4.Controls.Add(this.txtSDate);
             this.panel4.Controls.Add(this.label10);
@@ -590,6 +592,50 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(585, 81);
             this.panel4.TabIndex = 5;
+            // 
+            // btnExportEXCEL
+            // 
+            this.btnExportEXCEL.Location = new System.Drawing.Point(501, 45);
+            this.btnExportEXCEL.Name = "btnExportEXCEL";
+            this.btnExportEXCEL.Size = new System.Drawing.Size(75, 23);
+            this.btnExportEXCEL.TabIndex = 11;
+            this.btnExportEXCEL.Text = "转存PDF";
+            this.btnExportEXCEL.UseVisualStyleBackColor = true;
+            this.btnExportEXCEL.Click += new System.EventHandler(this.btnExportEXCEL_Click);
+            // 
+            // txtEDate
+            // 
+            this.txtEDate.Location = new System.Drawing.Point(75, 42);
+            this.txtEDate.Name = "txtEDate";
+            this.txtEDate.Size = new System.Drawing.Size(134, 21);
+            this.txtEDate.TabIndex = 10;
+            // 
+            // txtSDate
+            // 
+            this.txtSDate.Location = new System.Drawing.Point(75, 11);
+            this.txtSDate.Name = "txtSDate";
+            this.txtSDate.Size = new System.Drawing.Size(134, 21);
+            this.txtSDate.TabIndex = 9;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 45);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 12);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "结束时间：";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 14);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 12);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "开始时间：";
             // 
             // cbMoneyUnit
             // 
@@ -633,7 +679,7 @@
             // BtnChoose
             // 
             this.BtnChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnChoose.Location = new System.Drawing.Point(501, 47);
+            this.BtnChoose.Location = new System.Drawing.Point(501, 9);
             this.BtnChoose.Name = "BtnChoose";
             this.BtnChoose.Size = new System.Drawing.Size(75, 23);
             this.BtnChoose.TabIndex = 0;
@@ -650,40 +696,6 @@
             this.cbCtrlType.Size = new System.Drawing.Size(121, 20);
             this.cbCtrlType.TabIndex = 3;
             this.cbCtrlType.SelectedIndexChanged += new System.EventHandler(this.cbCtrlType_SelectedIndexChanged);
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 14);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 12);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "开始时间：";
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 45);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 12);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "结束时间：";
-            // 
-            // txtSDate
-            // 
-            this.txtSDate.Location = new System.Drawing.Point(75, 11);
-            this.txtSDate.Name = "txtSDate";
-            this.txtSDate.Size = new System.Drawing.Size(134, 21);
-            this.txtSDate.TabIndex = 9;
-            // 
-            // txtEDate
-            // 
-            this.txtEDate.Location = new System.Drawing.Point(75, 42);
-            this.txtEDate.Name = "txtEDate";
-            this.txtEDate.Size = new System.Drawing.Size(134, 21);
-            this.txtEDate.TabIndex = 10;
             // 
             // frmHistoryInfo
             // 
@@ -780,7 +792,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker txtEDate;
         private System.Windows.Forms.DateTimePicker txtSDate;
-
-
+        private System.Windows.Forms.Button btnExportEXCEL;
     }
 }

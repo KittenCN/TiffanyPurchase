@@ -183,37 +183,37 @@ namespace BHair.Business
                     switch ((int)dgvr.Cells["MoneyUnit"].Value)
                     {
                         case 1:
-                            dgvr.Cells["MoneyUnitShow"].Value = "人民币";
+                            dgvr.Cells["MoneyUnitFilter"].Value = "人民币";
                             break;
                         case 2:
-                            dgvr.Cells["MoneyUnitShow"].Value = "美元";
+                            dgvr.Cells["MoneyUnitFilter"].Value = "美元";
                             break;
                         case 3:
-                            dgvr.Cells["MoneyUnitShow"].Value = "港币";
+                            dgvr.Cells["MoneyUnitFilter"].Value = "港币";
                             break;
                         case 4:
-                            dgvr.Cells["MoneyUnitShow"].Value = "澳元";
+                            dgvr.Cells["MoneyUnitFilter"].Value = "澳元";
                             break;
                         case 5:
-                            dgvr.Cells["MoneyUnitShow"].Value = "新元";
+                            dgvr.Cells["MoneyUnitFilter"].Value = "新元";
                             break;
                         case 6:
-                            dgvr.Cells["MoneyUnitShow"].Value = "马币";
+                            dgvr.Cells["MoneyUnitFilter"].Value = "马币";
                             break;
                         case 7:
-                            dgvr.Cells["MoneyUnitShow"].Value = "英镑";
+                            dgvr.Cells["MoneyUnitFilter"].Value = "英镑";
                             break;
                         case 8:
-                            dgvr.Cells["MoneyUnitShow"].Value = "欧元";
+                            dgvr.Cells["MoneyUnitFilter"].Value = "欧元";
                             break;
                         case 9:
-                            dgvr.Cells["MoneyUnitShow"].Value = "日元";
+                            dgvr.Cells["MoneyUnitFilter"].Value = "日元";
                             break;
                         case 10:
-                            dgvr.Cells["MoneyUnitShow"].Value = "台币";
+                            dgvr.Cells["MoneyUnitFilter"].Value = "台币";
                             break;
                         default:
-                            dgvr.Cells["MoneyUnitShow"].Value = "人民币";
+                            dgvr.Cells["MoneyUnitFilter"].Value = "人民币";
                             break;
                     }
                 }
@@ -234,7 +234,50 @@ namespace BHair.Business
             }
         }
 
+        private void btnExportEXCEL_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PDF文件(*.pdf)|*.pdf";
+            // Show save file dialog box
+            DialogResult result = saveFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    string strRandom = getRandomString(12);
+                    string tempFilePath = System.IO.Directory.GetCurrentDirectory() + @"\tempPDF\" + strRandom + ".xls";
+                    PrintPDF pe = new PrintPDF();
+                    pe.WriteToExcel(pe.exporeDataToTable(dgvApplyInfo), tempFilePath, "Sheet1");
+                    string localFilePath = saveFileDialog.FileName.ToString();
+                    PrintPDF pp = new PrintPDF();
+                    pp.XLSConvertToPDF(tempFilePath, localFilePath);
+                    MessageBox.Show("保存成功", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("保存失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
 
-
+        Random m_rnd = new Random();
+        public char getRandomChar()
+        {
+            int ret = m_rnd.Next(122);
+            while (ret < 48 || (ret > 57 && ret < 65) || (ret > 90 && ret < 97))
+            {
+                ret = m_rnd.Next(122);
+            }
+            return (char)ret;
+        }
+        public string getRandomString(int length)
+        {
+            StringBuilder sb = new StringBuilder(length);
+            for (int i = 0; i < length; i++)
+            {
+                sb.Append(getRandomChar());
+            }
+            return sb.ToString();
+        }
     }
 }
