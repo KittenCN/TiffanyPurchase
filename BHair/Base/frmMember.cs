@@ -137,7 +137,7 @@ namespace BHair.Base
             cbMoneyUnit.SelectedIndex=(int)user.UsersDT.Rows[0]["MoneyUnit"]-1;
             cbManagerID.SelectedValue = user.UsersDT.Rows[0]["ManagerID"].ToString();
             cbStore.SelectedValue = user.UsersDT.Rows[0]["Store"].ToString();
-            if((int)user.UsersDT.Rows[0]["AbleMode"]-1>=0)
+            if(user.UsersDT.Rows[0]["AbleMode"] != null && user.UsersDT.Rows[0]["AbleMode"].ToString() != "" && (int)user.UsersDT.Rows[0]["AbleMode"]-1 >= 0)
             {
                 cbAbleMode.SelectedIndex = (int)user.UsersDT.Rows[0]["AbleMode"] - 1;
             }
