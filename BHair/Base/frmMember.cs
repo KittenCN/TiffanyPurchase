@@ -183,6 +183,11 @@ namespace BHair.Base
                 MessageBox.Show("请输入用户名", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            if(cbManagerID.SelectedValue == null || cbManagerID.SelectedValue.ToString() == "")
+            {
+                MessageBox.Show("请选择直属经理", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             if (this.Text == "编辑用户信息")
             {
                 try
