@@ -139,7 +139,7 @@ namespace BHair.Business.BaseData
             try
             {
                 SqlQueue sq = new SqlQueue();
-                string sql = string.Format("Update StoreInfo Set IsDelete =1 Where ID='{0}'", ID);
+                string sql = string.Format("Update StoreInfo Set IsDelete =1 Where ID={0}", ID);
                 sq.InsertQuery(sql, "", "", 0, 0);
                 sq.Close();
                 return 1;
