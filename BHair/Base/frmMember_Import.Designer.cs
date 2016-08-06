@@ -28,14 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblMember = new System.Windows.Forms.Label();
             this.txtPwd = new System.Windows.Forms.TextBox();
             this.dgvMember = new System.Windows.Forms.DataGridView();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +56,9 @@
             this.UsedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RestAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MoneyUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMember)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,39 +118,11 @@
             this.dgvMember.Name = "dgvMember";
             this.dgvMember.RowTemplate.Height = 23;
             this.dgvMember.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMember.Size = new System.Drawing.Size(872, 337);
+            this.dgvMember.Size = new System.Drawing.Size(1149, 503);
             this.dgvMember.TabIndex = 6;
             this.dgvMember.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMember_CellFormatting);
             this.dgvMember.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvMember_DataBindingComplete);
             this.dgvMember.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMember_RowPostPaint);
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.Location = new System.Drawing.Point(12, 10);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(98, 23);
-            this.btnExcel.TabIndex = 7;
-            this.btnExcel.Text = "选择Excel文件";
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // btnImport
-            // 
-            this.btnImport.Location = new System.Drawing.Point(786, 389);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(98, 23);
-            this.btnImport.TabIndex = 8;
-            this.btnImport.Text = "导入到数据库";
-            this.btnImport.UseVisualStyleBackColor = true;
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 394);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 12);
-            this.label1.TabIndex = 9;
             // 
             // UID
             // 
@@ -203,9 +175,9 @@
             // Position
             // 
             this.Position.DataPropertyName = "Position";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Position.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Position.DefaultCellStyle = dataGridViewCellStyle3;
             this.Position.HeaderText = "职位";
             this.Position.Name = "Position";
             this.Position.ReadOnly = true;
@@ -227,9 +199,9 @@
             // Detail
             // 
             this.Detail.DataPropertyName = "Detail";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Detail.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Detail.DefaultCellStyle = dataGridViewCellStyle4;
             this.Detail.HeaderText = "用户信息描述";
             this.Detail.MinimumWidth = 20;
             this.Detail.Name = "Detail";
@@ -330,17 +302,47 @@
             this.MoneyUnit.ReadOnly = true;
             this.MoneyUnit.Visible = false;
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(12, 10);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(98, 23);
+            this.btnExcel.TabIndex = 7;
+            this.btnExcel.Text = "选择Excel文件";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.Location = new System.Drawing.Point(1063, 548);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(98, 23);
+            this.btnImport.TabIndex = 8;
+            this.btnImport.Text = "导入到数据库";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 553);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 12);
+            this.label1.TabIndex = 9;
+            // 
             // frmMember_Import
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 424);
+            this.ClientSize = new System.Drawing.Size(1173, 583);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.dgvMember);
             this.Controls.Add(this.txtPwd);
             this.Controls.Add(this.lblMember);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(912, 463);
             this.Name = "frmMember_Import";
             this.TabText = "用户导入";

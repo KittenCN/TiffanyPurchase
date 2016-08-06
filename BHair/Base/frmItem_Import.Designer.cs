@@ -78,7 +78,7 @@
             this.dgvItem.Name = "dgvItem";
             this.dgvItem.RowTemplate.Height = 23;
             this.dgvItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItem.Size = new System.Drawing.Size(702, 350);
+            this.dgvItem.Size = new System.Drawing.Size(1294, 549);
             this.dgvItem.TabIndex = 4;
             // 
             // ItemID
@@ -199,7 +199,7 @@
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(612, 395);
+            this.btnImport.Location = new System.Drawing.Point(1204, 594);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(102, 23);
             this.btnImport.TabIndex = 6;
@@ -210,7 +210,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 400);
+            this.label1.Location = new System.Drawing.Point(10, 599);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 12);
             this.label1.TabIndex = 7;
@@ -219,11 +219,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 428);
+            this.ClientSize = new System.Drawing.Size(1318, 627);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.dgvItem);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(742, 467);
             this.Name = "frmItem_Import";
             this.TabText = "商品导入";
