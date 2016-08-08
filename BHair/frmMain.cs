@@ -668,6 +668,11 @@ namespace BHair
                 toolStripButton1.Visible = true;
                 toolStripButton6.Visible = true;
             }
+            else
+            {
+                toolStripButton1.Visible = false;
+                menuMain_Manage_Approval2App.Visible = false;
+            }
         }
         #endregion
 
