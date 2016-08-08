@@ -567,7 +567,7 @@ namespace BHair
 
                 toolStripButton4.Visible = true;
                 toolStripButton12.Visible = true;
-                toolStripButton1.Visible = true;
+                toolStripButton1.Visible = false;
                 toolStripButton3.Visible = false;
                 toolStripButton8.Visible = false;
                 toolStripButton2.Visible = false;
@@ -593,7 +593,7 @@ namespace BHair
 
                 toolStripButton4.Visible = true;
                 toolStripButton12.Visible = true;
-                toolStripButton1.Visible = true;
+                toolStripButton1.Visible = false;
                 toolStripButton3.Visible = false;
                 toolStripButton8.Visible = false;
                 toolStripButton2.Visible = true;
@@ -620,7 +620,7 @@ namespace BHair
 
                 toolStripButton4.Visible = true;
                 toolStripButton12.Visible = true;
-                toolStripButton1.Visible = true;
+                toolStripButton1.Visible = false;
                 toolStripButton3.Visible = false;
                 toolStripButton8.Visible = false;
                 toolStripButton2.Visible = true;
