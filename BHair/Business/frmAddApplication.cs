@@ -79,6 +79,13 @@ namespace BHair.Business
             txtPurchaseLocation.DataSource = store.StoreDT;
             txtPurchaseLocation.DisplayMember = "StoreName";
             txtPurchaseLocation.ValueMember = "StoreName";
+
+            cbDiscount.Items.Add("100%");
+            cbDiscount.Items.Add("80%");
+            cbDiscount.Items.Add("75%");
+            cbDiscount.Items.Add("60%");
+            cbDiscount.Items.Add("50%");
+            cbDiscount.SelectedIndex = 0; 
         }
 
         //填写物品ID获取信息
@@ -375,6 +382,28 @@ namespace BHair.Business
         private void txtPrice_ValueChanged(object sender, EventArgs e)
         {
             txtCount_ValueChanged(null, null);
+        }
+
+        private void cbDiscount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(cbDiscount.SelectedIndex)
+            {
+                case 0:
+                    txtApprovalDiscount.Value = 100;  
+                    break;
+                case 1:
+                    txtApprovalDiscount.Value = 80;
+                    break;
+                case 2:
+                    txtApprovalDiscount.Value = 75;
+                    break;
+                case 3:
+                    txtApprovalDiscount.Value = 60;
+                    break;
+                case 4:
+                    txtApprovalDiscount.Value = 50;
+                    break;
+            }
         }
     }
 }

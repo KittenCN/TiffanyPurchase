@@ -73,6 +73,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtApprovalDiscount = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnDel = new System.Windows.Forms.Button();
@@ -93,10 +94,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtSelforGift = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.txtApprovalCount = new System.Windows.Forms.NumericUpDown();
-            this.txtApprovalDiscount = new System.Windows.Forms.NumericUpDown();
             this.txtFinalPrice = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cbDiscount = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txtReason = new System.Windows.Forms.TextBox();
@@ -113,6 +114,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyGift)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtApprovalDiscount)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -120,7 +122,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApprovalCount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtApprovalDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFinalPrice)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -484,6 +485,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.txtApprovalDiscount);
             this.panel2.Location = new System.Drawing.Point(5, 526);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(959, 35);
@@ -561,6 +563,26 @@
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "总价：";
+            // 
+            // txtApprovalDiscount
+            // 
+            this.txtApprovalDiscount.DecimalPlaces = 2;
+            this.txtApprovalDiscount.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.txtApprovalDiscount.Location = new System.Drawing.Point(791, 9);
+            this.txtApprovalDiscount.Name = "txtApprovalDiscount";
+            this.txtApprovalDiscount.Size = new System.Drawing.Size(61, 21);
+            this.txtApprovalDiscount.TabIndex = 25;
+            this.txtApprovalDiscount.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.txtApprovalDiscount.Visible = false;
+            this.txtApprovalDiscount.ValueChanged += new System.EventHandler(this.txtApprovalDiscount_ValueChanged);
             // 
             // groupBox2
             // 
@@ -640,10 +662,10 @@
             this.tableLayoutPanel2.Controls.Add(this.label12, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.txtSelforGift, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.label15, 0, 6);
-            this.tableLayoutPanel2.Controls.Add(this.label19, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.txtApprovalCount, 1, 6);
-            this.tableLayoutPanel2.Controls.Add(this.txtApprovalDiscount, 1, 7);
             this.tableLayoutPanel2.Controls.Add(this.txtFinalPrice, 1, 8);
+            this.tableLayoutPanel2.Controls.Add(this.label19, 0, 7);
+            this.tableLayoutPanel2.Controls.Add(this.cbDiscount, 1, 7);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 7);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 9;
@@ -811,15 +833,6 @@
             this.label15.Text = "批准数量";
             this.label15.Visible = false;
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(3, 168);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(53, 12);
-            this.label19.TabIndex = 22;
-            this.label19.Text = "申请折扣";
-            // 
             // txtApprovalCount
             // 
             this.txtApprovalCount.Location = new System.Drawing.Point(123, 147);
@@ -833,25 +846,6 @@
             this.txtApprovalCount.TabIndex = 24;
             this.txtApprovalCount.Visible = false;
             this.txtApprovalCount.ValueChanged += new System.EventHandler(this.txtApprovalCount_ValueChanged);
-            // 
-            // txtApprovalDiscount
-            // 
-            this.txtApprovalDiscount.DecimalPlaces = 2;
-            this.txtApprovalDiscount.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.txtApprovalDiscount.Location = new System.Drawing.Point(123, 171);
-            this.txtApprovalDiscount.Name = "txtApprovalDiscount";
-            this.txtApprovalDiscount.Size = new System.Drawing.Size(151, 21);
-            this.txtApprovalDiscount.TabIndex = 25;
-            this.txtApprovalDiscount.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.txtApprovalDiscount.ValueChanged += new System.EventHandler(this.txtApprovalDiscount_ValueChanged);
             // 
             // txtFinalPrice
             // 
@@ -870,6 +864,24 @@
             this.txtFinalPrice.Name = "txtFinalPrice";
             this.txtFinalPrice.Size = new System.Drawing.Size(151, 21);
             this.txtFinalPrice.TabIndex = 26;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(3, 168);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(53, 12);
+            this.label19.TabIndex = 22;
+            this.label19.Text = "申请折扣";
+            // 
+            // cbDiscount
+            // 
+            this.cbDiscount.FormattingEnabled = true;
+            this.cbDiscount.Location = new System.Drawing.Point(123, 171);
+            this.cbDiscount.Name = "cbDiscount";
+            this.cbDiscount.Size = new System.Drawing.Size(151, 20);
+            this.cbDiscount.TabIndex = 27;
+            this.cbDiscount.SelectedIndexChanged += new System.EventHandler(this.cbDiscount_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -996,6 +1008,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtApprovalDiscount)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -1004,7 +1017,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApprovalCount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtApprovalDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFinalPrice)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -1094,7 +1106,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IsSuccess;
         private System.Windows.Forms.NumericUpDown txtTotalPrice;
         private System.Windows.Forms.ComboBox txtPurchaseLocation;
-
-
+        private System.Windows.Forms.ComboBox cbDiscount;
     }
 }
