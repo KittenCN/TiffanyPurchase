@@ -89,6 +89,14 @@ namespace BHair.Business
             txtSelforGift.Items.Add("自用");
             txtSelforGift.Items.Add("送礼");
             txtSelforGift.SelectedIndex = 0;
+
+
+            cbDiscount.Items.Add("100%");
+            cbDiscount.Items.Add("80%");
+            cbDiscount.Items.Add("75%");
+            cbDiscount.Items.Add("60%");
+            cbDiscount.Items.Add("50%");
+            cbDiscount.SelectedIndex = 0;
         }
 
         //填写物品ID获取信息
@@ -405,8 +413,8 @@ namespace BHair.Business
             {
                 txtItemID.Text = dgvApplyProducts.SelectedRows[0].Cells["ItemID"].Value.ToString();
                 txtDetail.Text = dgvApplyProducts.SelectedRows[0].Cells["Detail"].Value.ToString();
-                txtPrice.Value = decimal.Parse(dgvApplyProducts.SelectedRows[0].Cells["Price"].Value.ToString());
-                txtMoneyUnit.SelectedIndex = int.Parse(dgvApplyProducts.SelectedRows[0].Cells["MoneyUnit"].Value.ToString()) -1;
+                txtMoneyUnit.SelectedIndex = int.Parse(dgvApplyProducts.SelectedRows[0].Cells["MoneyUnit"].Value.ToString()) - 1;
+                txtPrice.Value = decimal.Parse(dgvApplyProducts.SelectedRows[0].Cells["Price"].Value.ToString());                
                 txtCount.Value = decimal.Parse(dgvApplyProducts.SelectedRows[0].Cells["Count"].Value.ToString());
                 txtSelforGift.SelectedIndex = int.Parse(dgvApplyProducts.SelectedRows[0].Cells["SelforGift"].Value.ToString()) -1;
                 txtApprovalCount.Value = decimal.Parse(dgvApplyProducts.SelectedRows[0].Cells["ApprovalCount"].Value.ToString());
@@ -415,6 +423,25 @@ namespace BHair.Business
                 txtRecipient.Text = dgvApplyProducts.SelectedRows[0].Cells["Recipient"].Value.ToString();
                 txtRelationship.Text = dgvApplyProducts.SelectedRows[0].Cells["Relationship"].Value.ToString();
                 txtReason.Text = dgvApplyProducts.SelectedRows[0].Cells["Reason"].Value.ToString();
+                switch(txtApprovalDiscount.Value.ToString())
+                {
+                    case "100":
+                    default:
+                        cbDiscount.SelectedIndex = 0;
+                        break;
+                    case "80":
+                        cbDiscount.SelectedIndex = 1;
+                        break;
+                    case "75":
+                        cbDiscount.SelectedIndex = 2;
+                        break;
+                    case "60":
+                        cbDiscount.SelectedIndex = 3;
+                        break;
+                    case "50":
+                        cbDiscount.SelectedIndex = 4;
+                        break;
+                }
             }
         }
 
@@ -478,6 +505,33 @@ namespace BHair.Business
         private void txtPrice_ValueChanged(object sender, EventArgs e)
         {
             GetFinalPrice();
+        }
+
+        private void cbDiscount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbDiscount.SelectedIndex)
+            {
+                case 0:
+                    txtApprovalDiscount.Value = 100;
+                    break;
+                case 1:
+                    txtApprovalDiscount.Value = 80;
+                    break;
+                case 2:
+                    txtApprovalDiscount.Value = 75;
+                    break;
+                case 3:
+                    txtApprovalDiscount.Value = 60;
+                    break;
+                case 4:
+                    txtApprovalDiscount.Value = 50;
+                    break;
+            }
+        }
+
+        private void dgvApplyProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

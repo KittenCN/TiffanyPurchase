@@ -876,6 +876,7 @@
             // 
             // cbDiscount
             // 
+            this.cbDiscount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDiscount.FormattingEnabled = true;
             this.cbDiscount.Location = new System.Drawing.Point(123, 171);
             this.cbDiscount.Name = "cbDiscount";
