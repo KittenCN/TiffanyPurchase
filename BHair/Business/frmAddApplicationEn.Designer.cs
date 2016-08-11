@@ -106,6 +106,7 @@
             this.txtRecipient = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.cbDiscount = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyProducts)).BeginInit();
@@ -483,6 +484,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.txtApprovalDiscount);
             this.panel2.Location = new System.Drawing.Point(5, 526);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(959, 35);
@@ -640,8 +642,8 @@
             this.tableLayoutPanel2.Controls.Add(this.label15, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.label19, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.txtApprovalCount, 1, 6);
-            this.tableLayoutPanel2.Controls.Add(this.txtApprovalDiscount, 1, 7);
             this.tableLayoutPanel2.Controls.Add(this.txtFinalPrice, 1, 8);
+            this.tableLayoutPanel2.Controls.Add(this.cbDiscount, 1, 7);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 7);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 9;
@@ -834,7 +836,7 @@
             0,
             0,
             131072});
-            this.txtApprovalDiscount.Location = new System.Drawing.Point(123, 171);
+            this.txtApprovalDiscount.Location = new System.Drawing.Point(719, 9);
             this.txtApprovalDiscount.Name = "txtApprovalDiscount";
             this.txtApprovalDiscount.Size = new System.Drawing.Size(151, 21);
             this.txtApprovalDiscount.TabIndex = 25;
@@ -843,6 +845,7 @@
             0,
             0,
             0});
+            this.txtApprovalDiscount.Visible = false;
             this.txtApprovalDiscount.ValueChanged += new System.EventHandler(this.txtApprovalDiscount_ValueChanged);
             // 
             // txtFinalPrice
@@ -961,6 +964,15 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(654, 414);
             this.panel6.TabIndex = 6;
+            // 
+            // cbDiscount
+            // 
+            this.cbDiscount.FormattingEnabled = true;
+            this.cbDiscount.Location = new System.Drawing.Point(123, 171);
+            this.cbDiscount.Name = "cbDiscount";
+            this.cbDiscount.Size = new System.Drawing.Size(150, 20);
+            this.cbDiscount.TabIndex = 27;
+            this.cbDiscount.SelectedIndexChanged += new System.EventHandler(this.cbDiscount_SelectedIndexChanged);
             // 
             // frmAddApplicationEn
             // 
@@ -1086,7 +1098,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Relationship2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Reason2;
         private System.Windows.Forms.DataGridViewTextBoxColumn SelforGift2;
-
-
+        private System.Windows.Forms.ComboBox cbDiscount;
     }
 }

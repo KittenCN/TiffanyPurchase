@@ -62,6 +62,13 @@ namespace BHair.Business
             txtSelforGift.Items.Add("Self");
             txtSelforGift.Items.Add("Gift");
             txtSelforGift.SelectedIndex = 0;
+
+            cbDiscount.Items.Add("100%");
+            cbDiscount.Items.Add("80%");
+            cbDiscount.Items.Add("75%");
+            cbDiscount.Items.Add("60%");
+            cbDiscount.Items.Add("50%");
+            cbDiscount.SelectedIndex = 0;
         }
 
         //填写物品ID获取信息
@@ -298,6 +305,28 @@ namespace BHair.Business
         void SendEmail()
         {
             EmailControl.ToApplicantSubmit2(txtTransNo.Text, Login.LoginUser.UID, txtApplicantsName.Text, DateTime.Now.ToString());
+        }
+
+        private void cbDiscount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbDiscount.SelectedIndex)
+            {
+                case 0:
+                    txtApprovalDiscount.Value = 100;
+                    break;
+                case 1:
+                    txtApprovalDiscount.Value = 80;
+                    break;
+                case 2:
+                    txtApprovalDiscount.Value = 75;
+                    break;
+                case 3:
+                    txtApprovalDiscount.Value = 60;
+                    break;
+                case 4:
+                    txtApprovalDiscount.Value = 50;
+                    break;
+            }
         }
     }
 }
