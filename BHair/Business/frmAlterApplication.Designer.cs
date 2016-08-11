@@ -39,26 +39,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtApplicantsName = new System.Windows.Forms.TextBox();
             this.dgvApplyProducts = new System.Windows.Forms.DataGridView();
-            this.dgvCodeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Detail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.店铺现有库存 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelforGiftState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelforGift = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApprovalCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApprovalDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FinalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoneyUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsDelete = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Recipient = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Relationship = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsSuccess = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsSuccessState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvApplyGift = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -111,9 +91,30 @@
             this.CodeID2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Recipient2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Relationship2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNum2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reason2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SelforGift2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCodeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Detail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.店铺现有库存 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelforGiftState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelforGift = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApprovalCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApprovalDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FinalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TransNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoneyUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsDelete = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Recipient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Relationship = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsSuccess = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsSuccessState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyProducts)).BeginInit();
@@ -261,6 +262,7 @@
             this.Recipient,
             this.Relationship,
             this.Reason,
+            this.PhoneNum,
             this.IsSuccess,
             this.IsSuccessState});
             this.dgvApplyProducts.Location = new System.Drawing.Point(3, 3);
@@ -273,153 +275,6 @@
             this.dgvApplyProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplyProducts_CellClick);
             this.dgvApplyProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplyProducts_CellContentClick);
             this.dgvApplyProducts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvApplyProducts_DataBindingComplete);
-            // 
-            // dgvCodeID
-            // 
-            this.dgvCodeID.DataPropertyName = "CodeID";
-            this.dgvCodeID.HeaderText = "项目号";
-            this.dgvCodeID.Name = "dgvCodeID";
-            this.dgvCodeID.ReadOnly = true;
-            // 
-            // ItemID
-            // 
-            this.ItemID.DataPropertyName = "ItemID";
-            this.ItemID.HeaderText = "货号";
-            this.ItemID.Name = "ItemID";
-            this.ItemID.ReadOnly = true;
-            // 
-            // Detail
-            // 
-            this.Detail.DataPropertyName = "Detail";
-            this.Detail.HeaderText = "产品描述";
-            this.Detail.Name = "Detail";
-            this.Detail.ReadOnly = true;
-            // 
-            // 店铺现有库存
-            // 
-            this.店铺现有库存.HeaderText = "店铺现有库存";
-            this.店铺现有库存.Name = "店铺现有库存";
-            this.店铺现有库存.ReadOnly = true;
-            this.店铺现有库存.Visible = false;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "零售价";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            // 
-            // Count
-            // 
-            this.Count.DataPropertyName = "Count";
-            this.Count.HeaderText = "购买数量";
-            this.Count.Name = "Count";
-            this.Count.ReadOnly = true;
-            // 
-            // SelforGiftState
-            // 
-            this.SelforGiftState.HeaderText = "自用 / 送礼";
-            this.SelforGiftState.Name = "SelforGiftState";
-            this.SelforGiftState.ReadOnly = true;
-            // 
-            // SelforGift
-            // 
-            this.SelforGift.DataPropertyName = "SelforGift";
-            this.SelforGift.HeaderText = "SelforGift";
-            this.SelforGift.Name = "SelforGift";
-            this.SelforGift.ReadOnly = true;
-            this.SelforGift.Visible = false;
-            // 
-            // ApprovalCount
-            // 
-            this.ApprovalCount.DataPropertyName = "ApprovalCount";
-            this.ApprovalCount.HeaderText = "批准数量";
-            this.ApprovalCount.Name = "ApprovalCount";
-            this.ApprovalCount.ReadOnly = true;
-            // 
-            // ApprovalDiscount
-            // 
-            this.ApprovalDiscount.DataPropertyName = "ApprovalDiscount";
-            this.ApprovalDiscount.HeaderText = "批准折扣";
-            this.ApprovalDiscount.Name = "ApprovalDiscount";
-            this.ApprovalDiscount.ReadOnly = true;
-            // 
-            // FinalPrice
-            // 
-            this.FinalPrice.DataPropertyName = "FinalPrice";
-            this.FinalPrice.HeaderText = "折后价";
-            this.FinalPrice.Name = "FinalPrice";
-            this.FinalPrice.ReadOnly = true;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // TransNo
-            // 
-            this.TransNo.DataPropertyName = "TransNo";
-            this.TransNo.HeaderText = "TransNo";
-            this.TransNo.Name = "TransNo";
-            this.TransNo.ReadOnly = true;
-            this.TransNo.Visible = false;
-            // 
-            // MoneyUnit
-            // 
-            this.MoneyUnit.DataPropertyName = "MoneyUnit";
-            this.MoneyUnit.HeaderText = "MoneyUnit";
-            this.MoneyUnit.Name = "MoneyUnit";
-            this.MoneyUnit.ReadOnly = true;
-            this.MoneyUnit.Visible = false;
-            // 
-            // IsDelete
-            // 
-            this.IsDelete.DataPropertyName = "IsDelete";
-            this.IsDelete.HeaderText = "IsDelete";
-            this.IsDelete.Name = "IsDelete";
-            this.IsDelete.ReadOnly = true;
-            this.IsDelete.Visible = false;
-            // 
-            // Recipient
-            // 
-            this.Recipient.DataPropertyName = "Recipient";
-            this.Recipient.HeaderText = "Recipient";
-            this.Recipient.Name = "Recipient";
-            this.Recipient.ReadOnly = true;
-            this.Recipient.Visible = false;
-            // 
-            // Relationship
-            // 
-            this.Relationship.DataPropertyName = "Relationship";
-            this.Relationship.HeaderText = "Relationship";
-            this.Relationship.Name = "Relationship";
-            this.Relationship.ReadOnly = true;
-            this.Relationship.Visible = false;
-            // 
-            // Reason
-            // 
-            this.Reason.DataPropertyName = "Reason";
-            this.Reason.HeaderText = "Reason";
-            this.Reason.Name = "Reason";
-            this.Reason.ReadOnly = true;
-            this.Reason.Visible = false;
-            // 
-            // IsSuccess
-            // 
-            this.IsSuccess.DataPropertyName = "IsSuccess";
-            this.IsSuccess.HeaderText = "IsSuccess";
-            this.IsSuccess.Name = "IsSuccess";
-            this.IsSuccess.ReadOnly = true;
-            this.IsSuccess.Visible = false;
-            // 
-            // IsSuccessState
-            // 
-            this.IsSuccessState.HeaderText = "成功购买";
-            this.IsSuccessState.Name = "IsSuccessState";
-            this.IsSuccessState.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -446,7 +301,7 @@
             this.CodeID2,
             this.Recipient2,
             this.Relationship2,
-            this.PhoneNum,
+            this.PhoneNum2,
             this.Reason2,
             this.SelforGift2});
             this.dgvApplyGift.Location = new System.Drawing.Point(3, 20);
@@ -1031,11 +886,11 @@
             this.Relationship2.Name = "Relationship2";
             this.Relationship2.ReadOnly = true;
             // 
-            // PhoneNum
+            // PhoneNum2
             // 
-            this.PhoneNum.DataPropertyName = "PhoneNum";
-            this.PhoneNum.HeaderText = "联系电话";
-            this.PhoneNum.Name = "PhoneNum";
+            this.PhoneNum2.DataPropertyName = "PhoneNum";
+            this.PhoneNum2.HeaderText = "联系电话";
+            this.PhoneNum2.Name = "PhoneNum2";
             // 
             // Reason2
             // 
@@ -1051,6 +906,160 @@
             this.SelforGift2.Name = "SelforGift2";
             this.SelforGift2.ReadOnly = true;
             this.SelforGift2.Visible = false;
+            // 
+            // dgvCodeID
+            // 
+            this.dgvCodeID.DataPropertyName = "CodeID";
+            this.dgvCodeID.HeaderText = "项目号";
+            this.dgvCodeID.Name = "dgvCodeID";
+            this.dgvCodeID.ReadOnly = true;
+            // 
+            // ItemID
+            // 
+            this.ItemID.DataPropertyName = "ItemID";
+            this.ItemID.HeaderText = "货号";
+            this.ItemID.Name = "ItemID";
+            this.ItemID.ReadOnly = true;
+            // 
+            // Detail
+            // 
+            this.Detail.DataPropertyName = "Detail";
+            this.Detail.HeaderText = "产品描述";
+            this.Detail.Name = "Detail";
+            this.Detail.ReadOnly = true;
+            // 
+            // 店铺现有库存
+            // 
+            this.店铺现有库存.HeaderText = "店铺现有库存";
+            this.店铺现有库存.Name = "店铺现有库存";
+            this.店铺现有库存.ReadOnly = true;
+            this.店铺现有库存.Visible = false;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "零售价";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // Count
+            // 
+            this.Count.DataPropertyName = "Count";
+            this.Count.HeaderText = "购买数量";
+            this.Count.Name = "Count";
+            this.Count.ReadOnly = true;
+            // 
+            // SelforGiftState
+            // 
+            this.SelforGiftState.HeaderText = "自用 / 送礼";
+            this.SelforGiftState.Name = "SelforGiftState";
+            this.SelforGiftState.ReadOnly = true;
+            // 
+            // SelforGift
+            // 
+            this.SelforGift.DataPropertyName = "SelforGift";
+            this.SelforGift.HeaderText = "SelforGift";
+            this.SelforGift.Name = "SelforGift";
+            this.SelforGift.ReadOnly = true;
+            this.SelforGift.Visible = false;
+            // 
+            // ApprovalCount
+            // 
+            this.ApprovalCount.DataPropertyName = "ApprovalCount";
+            this.ApprovalCount.HeaderText = "批准数量";
+            this.ApprovalCount.Name = "ApprovalCount";
+            this.ApprovalCount.ReadOnly = true;
+            // 
+            // ApprovalDiscount
+            // 
+            this.ApprovalDiscount.DataPropertyName = "ApprovalDiscount";
+            this.ApprovalDiscount.HeaderText = "批准折扣";
+            this.ApprovalDiscount.Name = "ApprovalDiscount";
+            this.ApprovalDiscount.ReadOnly = true;
+            // 
+            // FinalPrice
+            // 
+            this.FinalPrice.DataPropertyName = "FinalPrice";
+            this.FinalPrice.HeaderText = "折后价";
+            this.FinalPrice.Name = "FinalPrice";
+            this.FinalPrice.ReadOnly = true;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // TransNo
+            // 
+            this.TransNo.DataPropertyName = "TransNo";
+            this.TransNo.HeaderText = "TransNo";
+            this.TransNo.Name = "TransNo";
+            this.TransNo.ReadOnly = true;
+            this.TransNo.Visible = false;
+            // 
+            // MoneyUnit
+            // 
+            this.MoneyUnit.DataPropertyName = "MoneyUnit";
+            this.MoneyUnit.HeaderText = "MoneyUnit";
+            this.MoneyUnit.Name = "MoneyUnit";
+            this.MoneyUnit.ReadOnly = true;
+            this.MoneyUnit.Visible = false;
+            // 
+            // IsDelete
+            // 
+            this.IsDelete.DataPropertyName = "IsDelete";
+            this.IsDelete.HeaderText = "IsDelete";
+            this.IsDelete.Name = "IsDelete";
+            this.IsDelete.ReadOnly = true;
+            this.IsDelete.Visible = false;
+            // 
+            // Recipient
+            // 
+            this.Recipient.DataPropertyName = "Recipient";
+            this.Recipient.HeaderText = "Recipient";
+            this.Recipient.Name = "Recipient";
+            this.Recipient.ReadOnly = true;
+            this.Recipient.Visible = false;
+            // 
+            // Relationship
+            // 
+            this.Relationship.DataPropertyName = "Relationship";
+            this.Relationship.HeaderText = "Relationship";
+            this.Relationship.Name = "Relationship";
+            this.Relationship.ReadOnly = true;
+            this.Relationship.Visible = false;
+            // 
+            // Reason
+            // 
+            this.Reason.DataPropertyName = "Reason";
+            this.Reason.HeaderText = "Reason";
+            this.Reason.Name = "Reason";
+            this.Reason.ReadOnly = true;
+            this.Reason.Visible = false;
+            // 
+            // PhoneNum
+            // 
+            this.PhoneNum.DataPropertyName = "PhoneNum";
+            this.PhoneNum.HeaderText = "PhoneNum";
+            this.PhoneNum.Name = "PhoneNum";
+            this.PhoneNum.Visible = false;
+            // 
+            // IsSuccess
+            // 
+            this.IsSuccess.DataPropertyName = "IsSuccess";
+            this.IsSuccess.HeaderText = "IsSuccess";
+            this.IsSuccess.Name = "IsSuccess";
+            this.IsSuccess.ReadOnly = true;
+            this.IsSuccess.Visible = false;
+            // 
+            // IsSuccessState
+            // 
+            this.IsSuccessState.HeaderText = "成功购买";
+            this.IsSuccessState.Name = "IsSuccessState";
+            this.IsSuccessState.ReadOnly = true;
             // 
             // frmAlterApplication
             // 
@@ -1153,6 +1162,11 @@
         private System.Windows.Forms.NumericUpDown txtApprovalCount;
         private System.Windows.Forms.NumericUpDown txtTotalPrice;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.TextBox txtEditReason;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbDiscount;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtPhoneNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvCodeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Detail;
@@ -1171,17 +1185,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Recipient;
         private System.Windows.Forms.DataGridViewTextBoxColumn Relationship;
         private System.Windows.Forms.DataGridViewTextBoxColumn Reason;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsSuccess;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsSuccessState;
-        private System.Windows.Forms.TextBox txtEditReason;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cbDiscount;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txtPhoneNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodeID2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Recipient2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Relationship2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNum2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Reason2;
         private System.Windows.Forms.DataGridViewTextBoxColumn SelforGift2;
     }

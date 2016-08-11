@@ -131,9 +131,9 @@ namespace BHair.Business.Table
                 {
                     StringBuilder insertSql = new StringBuilder();
                     insertSql.Append("Insert into [ApplicationDetail]");
-                    insertSql.Append(" ([CodeID],[TransNo],[ItemID],[Detail],[Price],[MoneyUnit],[Count],[IsDelete],[SelforGift],[ApprovalCount],[ApprovalDiscount],[FinalPrice],[Recipient],[Relationship],[Reason],[IsSuccess]) ");
+                    insertSql.Append(" ([CodeID],[TransNo],[ItemID],[Detail],[Price],[MoneyUnit],[Count],[IsDelete],[SelforGift],[ApprovalCount],[ApprovalDiscount],[FinalPrice],[Recipient],[Relationship],[Reason],[IsSuccess],[PhoneNum]) ");
                     insertSql.Append("values");
-                    insertSql.AppendFormat(" ('{0}','{1}','{2}','{3}',{4},{5},{6},{7},{8},{9},{10},{11},'{12}','{13}','{14}',{15})", dr["CodeID"], dr["TransNo"], dr["ItemID"], dr["Detail"], dr["Price"], dr["MoneyUnit"], dr["Count"], dr["IsDelete"], dr["SelforGift"], dr["ApprovalCount"], dr["ApprovalDiscount"], dr["FinalPrice"], dr["Recipient"], dr["Relationship"], dr["Reason"], dr["IsSuccess"]);
+                    insertSql.AppendFormat(" ('{0}','{1}','{2}','{3}',{4},{5},{6},{7},{8},{9},{10},{11},'{12}','{13}','{14}',{15},'{16}')", dr["CodeID"], dr["TransNo"], dr["ItemID"], dr["Detail"], dr["Price"], dr["MoneyUnit"], dr["Count"], dr["IsDelete"], dr["SelforGift"], dr["ApprovalCount"], dr["ApprovalDiscount"], dr["FinalPrice"], dr["Recipient"], dr["Relationship"], dr["Reason"], dr["IsSuccess"],dr["PhoneNum"]);
                     sq.InsertQuery(insertSql.ToString(), "","",0,0);
                 }
                 sq.Close();
@@ -167,9 +167,9 @@ namespace BHair.Business.Table
                     if(dr.RowState==DataRowState.Added)
                     {
                         insertSql.Append("Insert into [ApplicationDetail]");
-                        insertSql.Append(" ([CodeID],[TransNo],[ItemID],[Detail],[Price],[MoneyUnit],[Count],[IsDelete],[SelforGift],[ApprovalCount],[ApprovalDiscount],[FinalPrice],[Recipient],[Relationship],[Reason],[IsSuccess]) ");
+                        insertSql.Append(" ([CodeID],[TransNo],[ItemID],[Detail],[Price],[MoneyUnit],[Count],[IsDelete],[SelforGift],[ApprovalCount],[ApprovalDiscount],[FinalPrice],[Recipient],[Relationship],[Reason],[IsSuccess],[PhoneNum]) ");
                         insertSql.Append("values");
-                        insertSql.AppendFormat(" ('{0}','{1}','{2}','{3}',{4},{5},{6},{7},{8},{9},{10},{11},'{12}','{13}','{14}',{15})", dr["CodeID"], dr["TransNo"], dr["ItemID"], dr["Detail"], dr["Price"], dr["MoneyUnit"], dr["Count"], dr["IsDelete"], dr["SelforGift"], dr["ApprovalCount"], dr["ApprovalDiscount"], dr["FinalPrice"], dr["Recipient"], dr["Relationship"], dr["Reason"], dr["IsSuccess"]);
+                        insertSql.AppendFormat(" ('{0}','{1}','{2}','{3}',{4},{5},{6},{7},{8},{9},{10},{11},'{12}','{13}','{14}',{15},'{16}')", dr["CodeID"], dr["TransNo"], dr["ItemID"], dr["Detail"], dr["Price"], dr["MoneyUnit"], dr["Count"], dr["IsDelete"], dr["SelforGift"], dr["ApprovalCount"], dr["ApprovalDiscount"], dr["FinalPrice"], dr["Recipient"], dr["Relationship"], dr["Reason"], dr["IsSuccess"],dr["PhoneNum"]);
                   
                     }
                     else if (dr.RowState == DataRowState.Deleted)
@@ -196,7 +196,8 @@ namespace BHair.Business.Table
                         insertSql.AppendFormat(" [Recipient]='{0}',", dr["Recipient"]);
                         insertSql.AppendFormat(" [Relationship]='{0}',", dr["Relationship"]);
                         insertSql.AppendFormat(" [Reason]='{0}',", dr["Reason"]);
-                        insertSql.AppendFormat(" [IsSuccess]='{0}'", dr["IsSuccess"]);
+                        insertSql.AppendFormat(" [IsSuccess]='{0}',", dr["IsSuccess"]);
+                        insertSql.AppendFormat(" [PhoneNum]='{0}'", dr["PhoneNum"]);
                         insertSql.AppendFormat(" where [ID]={0}", dr["ID"]);
                     }
 
@@ -250,7 +251,8 @@ namespace BHair.Business.Table
                         insertSql.AppendFormat(" [Recipient]='{0}',", dr["Recipient"]);
                         insertSql.AppendFormat(" [Relationship]='{0}',", dr["Relationship"]);
                         insertSql.AppendFormat(" [Reason]='{0}',", dr["Reason"]);
-                        insertSql.AppendFormat(" [IsSuccess]='{0}'", dr["IsSuccess"]);
+                        insertSql.AppendFormat(" [IsSuccess]='{0}',", dr["IsSuccess"]);
+                        insertSql.AppendFormat(" [PhoneNum]='{0}'", dr["PhoneNum"]);
                         insertSql.AppendFormat(" where [ID]={0}", dr["ID"]);
 
                         sq.InsertQuery(insertSql.ToString(), "确认唯一码", TransNo, 1, int.Parse(dr["ID"].ToString()));

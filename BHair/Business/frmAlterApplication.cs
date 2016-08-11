@@ -483,7 +483,7 @@ namespace BHair.Business
                             dr["Recipient"] = txtRecipient.Text;
                             dr["Relationship"] = txtRelationship.Text;
                             dr["Reason"] = txtReason.Text;
-                            dr["PhoneNum"] = txtPhoneNum;
+                            dr["PhoneNum"] = txtPhoneNum.Text;
                         }
                     }
                 }
