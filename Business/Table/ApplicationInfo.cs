@@ -390,6 +390,7 @@ namespace BHair.Business.Table
         {
             AccessHelper ah = new AccessHelper();
             string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>0 and Approval3='{1}'  {0} order by [ApplicantsDate] desc", sql, users.UID);
+            //string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>0  {0} order by [ApplicantsDate] desc", sql);
             DataTable Result = ah.SelectToDataTable(sqlString);
             ah.Close();
             return Result;
