@@ -107,6 +107,8 @@
             this.txtRecipient = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtPhoneNum = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyProducts)).BeginInit();
@@ -890,9 +892,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.tableLayoutPanel3);
-            this.groupBox3.Location = new System.Drawing.Point(-1, 242);
+            this.groupBox3.Location = new System.Drawing.Point(-1, 233);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(282, 94);
+            this.groupBox3.Size = new System.Drawing.Size(282, 99);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "赠礼明细(超过2000人民币必填)";
@@ -911,28 +913,31 @@
             this.tableLayoutPanel3.Controls.Add(this.label18, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.txtRecipient, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label16, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label11, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.txtPhoneNum, 1, 3);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 20);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.40741F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.78378F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.72973F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.48649F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(282, 68);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(282, 79);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // txtReason
             // 
-            this.txtReason.Location = new System.Drawing.Point(123, 47);
+            this.txtReason.Location = new System.Drawing.Point(123, 39);
             this.txtReason.Name = "txtReason";
             this.txtReason.Size = new System.Drawing.Size(152, 21);
             this.txtReason.TabIndex = 13;
             // 
             // txtRelationship
             // 
-            this.txtRelationship.Location = new System.Drawing.Point(123, 25);
+            this.txtRelationship.Location = new System.Drawing.Point(123, 22);
             this.txtRelationship.Name = "txtRelationship";
             this.txtRelationship.Size = new System.Drawing.Size(152, 21);
             this.txtRelationship.TabIndex = 12;
@@ -940,7 +945,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 22);
+            this.label17.Location = new System.Drawing.Point(3, 19);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(41, 12);
             this.label17.TabIndex = 8;
@@ -949,7 +954,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(3, 44);
+            this.label18.Location = new System.Drawing.Point(3, 36);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(77, 12);
             this.label18.TabIndex = 9;
@@ -982,6 +987,22 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(654, 414);
             this.panel6.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 57);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 12);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "联系电话:";
+            // 
+            // txtPhoneNum
+            // 
+            this.txtPhoneNum.Location = new System.Drawing.Point(123, 60);
+            this.txtPhoneNum.Name = "txtPhoneNum";
+            this.txtPhoneNum.Size = new System.Drawing.Size(153, 21);
+            this.txtPhoneNum.TabIndex = 15;
             // 
             // frmAddApplication
             // 
@@ -1108,5 +1129,7 @@
         private System.Windows.Forms.NumericUpDown txtTotalPrice;
         private System.Windows.Forms.ComboBox txtPurchaseLocation;
         private System.Windows.Forms.ComboBox cbDiscount;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtPhoneNum;
     }
 }
