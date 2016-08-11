@@ -144,7 +144,7 @@ namespace BHair.Business
             {
                 MessageBox.Show("超过五项，无法添加", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (txtSelforGift.SelectedIndex == 1 && txtPrice.Value * txtCount.Value > GiftTotal && (txtReason.Text == "" || txtRecipient.Text == "" || txtRelationship.Text == ""))
+            else if (txtSelforGift.SelectedIndex == 1 && txtPrice.Value * txtCount.Value > GiftTotal && (txtReason.Text == "" || txtRecipient.Text == "" || txtRelationship.Text == "" || txtPhoneNum.Text == ""))
             {
                 MessageBox.Show("请填写赠礼明细", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -169,6 +169,7 @@ namespace BHair.Business
                     dr["Recipient"] = txtRecipient.Text;
                     dr["Relationship"] = txtRelationship.Text;
                     dr["Reason"] = txtReason.Text;
+                    dr["PhoneNum"] = txtPhoneNum.Text;
 
                     dr["IsSuccess"] = 0;
                     dr["IsDelete"] = 0;
@@ -245,12 +246,14 @@ namespace BHair.Business
                 txtRecipient.ReadOnly = true;
                 txtRelationship.ReadOnly = true;
                 txtReason.ReadOnly = true;
+                txtPhoneNum.ReadOnly = true;
             }
             else
             {
                 txtRecipient.ReadOnly = false;
                 txtRelationship.ReadOnly = false;
                 txtReason.ReadOnly = false;
+                txtPhoneNum.ReadOnly = false;
             }
 
         }
@@ -423,6 +426,7 @@ namespace BHair.Business
                 txtRecipient.Text = dgvApplyProducts.SelectedRows[0].Cells["Recipient"].Value.ToString();
                 txtRelationship.Text = dgvApplyProducts.SelectedRows[0].Cells["Relationship"].Value.ToString();
                 txtReason.Text = dgvApplyProducts.SelectedRows[0].Cells["Reason"].Value.ToString();
+                txtPhoneNum.Text = dgvApplyProducts.SelectedRows[0].Cells["PhoneNum"].Value.ToString();
                 switch(txtApprovalDiscount.Value.ToString())
                 {
                     case "100":
@@ -479,6 +483,7 @@ namespace BHair.Business
                             dr["Recipient"] = txtRecipient.Text;
                             dr["Relationship"] = txtRelationship.Text;
                             dr["Reason"] = txtReason.Text;
+                            dr["PhoneNum"] = txtPhoneNum;
                         }
                     }
                 }

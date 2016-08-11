@@ -60,11 +60,6 @@
             this.IsSuccess = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvApplyGift = new System.Windows.Forms.DataGridView();
-            this.CodeID2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Recipient2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Relationship2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Reason2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelforGift2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTotalPrice = new System.Windows.Forms.NumericUpDown();
             this.btnOK = new System.Windows.Forms.Button();
@@ -109,6 +104,12 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.txtPhoneNum = new System.Windows.Forms.TextBox();
+            this.CodeID2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Recipient2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Relationship2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reason2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelforGift2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyProducts)).BeginInit();
@@ -434,6 +435,7 @@
             this.CodeID2,
             this.Recipient2,
             this.Relationship2,
+            this.PhoneNum,
             this.Reason2,
             this.SelforGift2});
             this.dgvApplyGift.Location = new System.Drawing.Point(3, 20);
@@ -441,39 +443,6 @@
             this.dgvApplyGift.RowTemplate.Height = 23;
             this.dgvApplyGift.Size = new System.Drawing.Size(639, 137);
             this.dgvApplyGift.TabIndex = 0;
-            // 
-            // CodeID2
-            // 
-            this.CodeID2.DataPropertyName = "CodeID";
-            this.CodeID2.HeaderText = "项目号";
-            this.CodeID2.Name = "CodeID2";
-            this.CodeID2.ReadOnly = true;
-            // 
-            // Recipient2
-            // 
-            this.Recipient2.DataPropertyName = "Recipient";
-            this.Recipient2.HeaderText = "礼品接收者";
-            this.Recipient2.Name = "Recipient2";
-            // 
-            // Relationship2
-            // 
-            this.Relationship2.DataPropertyName = "Relationship";
-            this.Relationship2.HeaderText = "关系";
-            this.Relationship2.Name = "Relationship2";
-            // 
-            // Reason2
-            // 
-            this.Reason2.DataPropertyName = "Reason";
-            this.Reason2.HeaderText = "送礼的原因";
-            this.Reason2.Name = "Reason2";
-            // 
-            // SelforGift2
-            // 
-            this.SelforGift2.DataPropertyName = "SelforGift";
-            this.SelforGift2.HeaderText = "SelforGift";
-            this.SelforGift2.Name = "SelforGift2";
-            this.SelforGift2.ReadOnly = true;
-            this.SelforGift2.Visible = false;
             // 
             // panel2
             // 
@@ -1004,6 +973,45 @@
             this.txtPhoneNum.Size = new System.Drawing.Size(153, 21);
             this.txtPhoneNum.TabIndex = 15;
             // 
+            // CodeID2
+            // 
+            this.CodeID2.DataPropertyName = "CodeID";
+            this.CodeID2.HeaderText = "项目号";
+            this.CodeID2.Name = "CodeID2";
+            this.CodeID2.ReadOnly = true;
+            // 
+            // Recipient2
+            // 
+            this.Recipient2.DataPropertyName = "Recipient";
+            this.Recipient2.HeaderText = "礼品接收者";
+            this.Recipient2.Name = "Recipient2";
+            // 
+            // Relationship2
+            // 
+            this.Relationship2.DataPropertyName = "Relationship";
+            this.Relationship2.HeaderText = "关系";
+            this.Relationship2.Name = "Relationship2";
+            // 
+            // PhoneNum
+            // 
+            this.PhoneNum.DataPropertyName = "PhoneNum";
+            this.PhoneNum.HeaderText = "联系电话";
+            this.PhoneNum.Name = "PhoneNum";
+            // 
+            // Reason2
+            // 
+            this.Reason2.DataPropertyName = "Reason";
+            this.Reason2.HeaderText = "送礼的原因";
+            this.Reason2.Name = "Reason2";
+            // 
+            // SelforGift2
+            // 
+            this.SelforGift2.DataPropertyName = "SelforGift";
+            this.SelforGift2.HeaderText = "SelforGift";
+            this.SelforGift2.Name = "SelforGift2";
+            this.SelforGift2.ReadOnly = true;
+            this.SelforGift2.Visible = false;
+            // 
             // frmAddApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1101,11 +1109,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.NumericUpDown txtApprovalDiscount;
         private System.Windows.Forms.NumericUpDown txtFinalPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodeID2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Recipient2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Relationship2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Reason2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SelforGift2;
         private System.Windows.Forms.NumericUpDown txtApprovalCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn 项目号;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
@@ -1131,5 +1134,11 @@
         private System.Windows.Forms.ComboBox cbDiscount;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtPhoneNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodeID2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Recipient2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Relationship2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reason2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SelforGift2;
     }
 }
