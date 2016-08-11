@@ -629,6 +629,32 @@ namespace BHair
                 toolStripButton6.Visible = true;
                 tsbtnCW.Visible = true;
             }
+            else if (Login.LoginUser.Character == 7)
+            {
+                menuMain_Flow_add.Visible = false;
+                menuMain_Manage_StoreApp.Visible = false;
+                menuMain_Manage_Approval2App.Visible = false;
+                menuMain_Manage_ApprovalApp.Visible = false;
+                menuMain_Manage_History.Visible = false;
+                menuMain_System_Member.Visible = false;
+                menuMain_Manage_Store.Visible = false;
+                menuMain_System_Item.Visible = false;
+                menuMain_System_Log.Visible = false;
+                购买确认ToolStripMenuItem.Visible = false;
+                menuMain_System_Setup.Visible = false;
+                menuMain_Table.Visible = false;
+                menuMain_System_Pwd.Visible = true;
+
+                toolStripButton4.Visible = true;
+                toolStripButton12.Visible = true;
+                toolStripButton1.Visible = false;
+                toolStripButton3.Visible = false;
+                toolStripButton8.Visible = false;
+                toolStripButton2.Visible = true;
+                toolStripButton13.Visible = false;
+                toolStripButton5.Visible = false;
+                toolStripButton6.Visible = true;
+            }
             else
             {
                 menuMain_Flow_add.Visible = false;

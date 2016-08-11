@@ -24,6 +24,13 @@ namespace BHair.Base
         private void frmMember_List_Load(object sender, EventArgs e)
         {
             this.LoadMemberList();
+            if(Login.LoginUser.Character==7)
+            {
+                button1.Enabled = false;
+                btnPermission.Enabled = false;
+                btnAdd.Enabled = false;
+                btnDelete.Enabled = false;
+            }
         }
 
         /// <summary>加载用户信息列表。</summary>
@@ -112,6 +119,7 @@ namespace BHair.Base
                     case "4": e.Value = "店面"; break;
                     case "5": e.Value = "HR"; break;
                     case "6": e.Value = "财务"; break;
+                    case "7": e.Value = "IT Help"; break;
                     default:
                         e.Value = "无";
                         break;

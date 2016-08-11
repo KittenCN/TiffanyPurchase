@@ -46,6 +46,29 @@ namespace BHair.Base
                 txtRestAmount.Enabled = true;
                 cbStore.Enabled = true;
             }
+            else if(Login.LoginUser.Character==7)
+            {
+                cboCharacter.Enabled = false;
+                txtEmployeeID.Enabled = false;
+                txtUID.ReadOnly = true;
+                txtUserName.ReadOnly = true;
+                cbIsAdmin.Visible = false;
+                txtEmployeeID.ReadOnly = true;
+                txtTotalAmount.ReadOnly = true;
+                txtRestAmount.ReadOnly = true;
+                cbMoneyUnit.Enabled = false;
+                cbManagerID.Enabled = false;
+                cbIsAble.Visible = false;
+                txtPosition.ReadOnly = true;
+                txtDepartment.ReadOnly = true;
+                txtEmail.ReadOnly = true;
+                txtTotalAmount.Enabled = false;
+                txtRestAmount.Enabled = false;
+                cbStore.Enabled = false;
+                txtTel.ReadOnly = true;
+                txtPassword.Enabled = false;
+                txtAffirm.Enabled = false;
+            }
         }
 
         /// <summary>编辑用户信息。</summary>
@@ -76,6 +99,30 @@ namespace BHair.Base
                 txtRestAmount.Enabled = true;
                 cbStore.Enabled = true;
                 cbAbleMode.Visible = true;
+            }
+            else if (Login.LoginUser.Character == 7)
+            {
+                cboCharacter.Enabled = false;
+                txtEmployeeID.Enabled = false;
+                txtUID.ReadOnly = true;
+                txtUserName.ReadOnly = true;
+                cbIsAdmin.Visible = false;
+                txtEmployeeID.ReadOnly = true;
+                txtTotalAmount.ReadOnly = true;
+                txtRestAmount.ReadOnly = true;
+                cbMoneyUnit.Enabled = false;
+                cbManagerID.Enabled = false;
+                cbIsAble.Visible = false;
+                txtPosition.ReadOnly = true;
+                txtDepartment.ReadOnly = true;
+                txtEmail.ReadOnly = true;
+                txtTotalAmount.Enabled = false;
+                txtRestAmount.Enabled = false;
+                cbStore.Enabled = false;
+                txtTel.ReadOnly = true;
+                txtPassword.Enabled = false;
+                txtAffirm.Enabled = false;
+                txtDetail.Enabled = false;
             }
         }
 
@@ -159,6 +206,7 @@ namespace BHair.Base
             if (user.UsersDT.Rows[0]["Character"].ToString() == "4") cboCharacter.SelectedIndex = 3;
             if (user.UsersDT.Rows[0]["Character"].ToString() == "5") cboCharacter.SelectedIndex = 4;
             if (user.UsersDT.Rows[0]["Character"].ToString() == "6") cboCharacter.SelectedIndex = 5;
+            if (user.UsersDT.Rows[0]["Character"].ToString() == "7") cboCharacter.SelectedIndex = 6;
 
             if (cbIsAble.Checked == true)
             {
@@ -236,6 +284,7 @@ namespace BHair.Base
             cboCharacter.Items.Add("店面");
             cboCharacter.Items.Add("HR");
             cboCharacter.Items.Add("财务");
+            cboCharacter.Items.Add("IT Help");
             cboCharacter.SelectedIndex = 2;
 
             cbMoneyUnit.Items.Add("人民币");
@@ -393,15 +442,17 @@ namespace BHair.Base
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                user.ResetPwd(txtUID.Text);
-                MessageBox.Show("重置成功", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch
-            {
-                MessageBox.Show("重置密码失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    user.ResetPwd(txtUID.Text);
+            //    MessageBox.Show("重置成功", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("重置密码失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            txtPassword.Text = "88888888";
+            txtAffirm.Text = "88888888";
         }
 
         private void cbManagerID_SelectedIndexChanged(object sender, EventArgs e)
