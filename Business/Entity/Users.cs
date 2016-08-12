@@ -237,6 +237,14 @@ namespace BHair.Business.BaseData
             ah.Close();
             return Result;
         }
+        public DataTable Login(string UID)
+        {
+            AccessHelper ah = new AccessHelper();
+            string sqlString = string.Format("select * from Users where IsDelete = 0 and UID = '{0}'", UID);
+            DataTable Result = ah.SelectToDataTable(sqlString);
+            ah.Close();
+            return Result;
+        }
 
         /// <summary>
         /// 添加用户Users

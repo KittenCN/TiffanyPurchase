@@ -94,16 +94,16 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.txtStaffApproval, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txtApprovalState, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtApprovalState2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtApprovalState2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtUnCode, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.txtFinish, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtApprovalState, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 31);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
@@ -126,7 +126,7 @@
             // 
             // txtApprovalState
             // 
-            this.txtApprovalState.Location = new System.Drawing.Point(103, 41);
+            this.txtApprovalState.Location = new System.Drawing.Point(103, 3);
             this.txtApprovalState.Name = "txtApprovalState";
             this.txtApprovalState.ReadOnly = true;
             this.txtApprovalState.Size = new System.Drawing.Size(94, 21);
@@ -170,7 +170,7 @@
             // 
             // txtApprovalState2
             // 
-            this.txtApprovalState2.Location = new System.Drawing.Point(103, 3);
+            this.txtApprovalState2.Location = new System.Drawing.Point(103, 41);
             this.txtApprovalState2.Name = "txtApprovalState2";
             this.txtApprovalState2.ReadOnly = true;
             this.txtApprovalState2.Size = new System.Drawing.Size(94, 21);
