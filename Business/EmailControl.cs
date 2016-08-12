@@ -106,11 +106,12 @@ namespace BHair.Business
             string Subject = string.Format("员工内购系统：收到内购申请");
             string Body = string.Format("内购申请详情：\r\n交易号：{0}\r\n申请人：{1}\r\n申请日期：{2}\r\n", TransNo, ApplicantsName, ApplicantsDate);
             DataTable applications = users.SelectUsersByUID(ApplicantsID);
+            DataTable ManagerInfo = users.SelectUsersByUID(applications.Rows[0]["ManagerID"].ToString());
             if (applications.Rows.Count > 0)
             {
-                foreach (DataRow dr in users.UsersDT.Rows)
+                foreach (DataRow dr in ManagerInfo.Rows)
                 {
-                    if (dr["Character"].ToString() == "2" && applications.Rows[0]["ManagerID"].ToString() == dr["UID"].ToString())
+                    if (applications.Rows[0]["ManagerID"].ToString() == dr["UID"].ToString())
                     {
                         SendEmail(Subject, Body, dr["Email"].ToString());
                         return isSuccess;

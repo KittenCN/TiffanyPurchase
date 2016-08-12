@@ -21,6 +21,7 @@ namespace BHair.Business
         DataTable AddApplicationDT;
         ApplicationInfo applicationInfo = new ApplicationInfo();
         ApplicationDetail applicationDetail = new ApplicationDetail();
+        public static string transNo = "NG" + DateTime.Now.ToString("yyyyMMddHHmmssffff");
         /// <summary>内购申请单</summary>
         public frmAddApplication()
         {
@@ -85,7 +86,9 @@ namespace BHair.Business
             cbDiscount.Items.Add("75%");
             cbDiscount.Items.Add("60%");
             cbDiscount.Items.Add("50%");
-            cbDiscount.SelectedIndex = 0; 
+            cbDiscount.SelectedIndex = 0;
+
+            txtTransNo.Text = transNo;
         }
 
         //填写物品ID获取信息
@@ -317,8 +320,7 @@ namespace BHair.Business
                 MessageBox.Show("当前余额不足");
             }
             else
-            {
-                string transNo = "NG" + DateTime.Now.ToString("yyyyMMddHHmmssffff");
+            {                
                 DataTable AddAppInfoDT = applicationInfo.SelectApplicationByTransNo("0");
                 DataRow dr = AddAppInfoDT.NewRow();
                 dr["TransNo"] = transNo;
