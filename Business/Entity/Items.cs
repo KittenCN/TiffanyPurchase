@@ -41,6 +41,14 @@ namespace BHair.Business.BaseData
             ah.Close();
             return Result;
         }
+        public DataTable SelectAllItem(string sql)
+        {
+            AccessHelper ah = new AccessHelper();
+            string sqlString = string.Format("select * from Items where IsDelete=0 {0}", sql);
+            DataTable Result = ah.SelectToDataTable(sqlString);
+            ah.Close();
+            return Result;
+        }
 
         /// <summary>
         /// 通过货号查询Item表

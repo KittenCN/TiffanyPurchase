@@ -96,7 +96,12 @@ namespace BHair.Base
             }
         }
 
-        
-
+        private void txtSN_TextChanged(object sender, EventArgs e)
+        {
+            string sql = string.Format(" and [ItemID] like '%{0}%'", txtSN.Text);
+            items.ItemsDT = items.SelectAllItem(sql);
+            dgvItem.AutoGenerateColumns = false;
+            dgvItem.DataSource = items.ItemsDT;
+        }
     }
 }
