@@ -115,14 +115,14 @@ namespace BHair.Business
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (int.Parse(dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value.ToString())>=6)
+            if (int.Parse(dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value.ToString()) > 0)
             {
-                MessageBox.Show("已确认购买，无法撤销", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("已进入审批流程，无法撤销", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (((DateTime)(dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value)).AddDays(3).Date < DateTime.Now.Date)
-            {
-                MessageBox.Show("超过修改时间，无法撤销", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //else if (((DateTime)(dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value)).AddDays(3).Date < DateTime.Now.Date)
+            //{
+            //    MessageBox.Show("超过修改时间，无法撤销", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
             else if (applicationInfo.TransNo != null )
             {
                 try
@@ -148,10 +148,10 @@ namespace BHair.Business
             {
                 MessageBox.Show("已进入流程，无法修改", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (((DateTime)(dgvApplyInfo.SelectedRows[0].Cells["ApplicantsDate"].Value)).AddDays(3).Date < DateTime.Now.Date)
-            {
-                MessageBox.Show("超过修改时间，无法修改", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //else if (((DateTime)(dgvApplyInfo.SelectedRows[0].Cells["ApplicantsDate"].Value)).AddDays(3).Date < DateTime.Now.Date)
+            //{
+            //    MessageBox.Show("超过修改时间，无法修改", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
             else
             {
                 if (applicationInfo.TransNo != null)
