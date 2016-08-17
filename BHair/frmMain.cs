@@ -691,7 +691,7 @@ namespace BHair
                 menuMain_Manage_History.Visible = true;
                 menuMain_System_Pwd.Visible = true;
 
-                toolStripButton4.Visible = true;
+                //toolStripButton4.Visible = true;
                 toolStripButton1.Visible = true;
                 toolStripButton6.Visible = true;
             }
