@@ -646,8 +646,8 @@ namespace BHair
                 menuMain_Table.Visible = false;
                 menuMain_System_Pwd.Visible = true;
 
-                toolStripButton4.Visible = true;
-                toolStripButton12.Visible = true;
+                toolStripButton4.Visible = false;
+                toolStripButton12.Visible = false;
                 toolStripButton1.Visible = false;
                 toolStripButton3.Visible = false;
                 toolStripButton8.Visible = false;
