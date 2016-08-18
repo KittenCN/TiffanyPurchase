@@ -63,7 +63,17 @@ namespace BHair.Business
             _wsh.Cells[5, 3] = AppDT.Rows[0]["Location"].ToString();
             _wsh.Cells[5, 10] = AppDT.Rows[0]["PurchaseLocation"].ToString();
             _wsh.Cells[22, 11] = AppDT.Rows[0]["TotalPrice"].ToString();
+            _wsh.Cells[23, 11] = AppDT.Rows[0]["TransNo"].ToString();
+            _wsh.Cells[24, 11] = DateTime.Now.ToShortDateString();
 
+            _wsh.Cells[31, 4] = AppDT.Rows[0]["ApplicantsName"].ToString();
+            _wsh.Cells[31, 6] = DateTime.Parse(AppDT.Rows[0]["ApplicantsDate"].ToString()).ToShortDateString();
+            _wsh.Cells[32, 4] = AppDT.Rows[0]["ApprovalName2"].ToString();
+            _wsh.Cells[32, 6] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate2"].ToString()).ToShortDateString();
+            _wsh.Cells[33, 4] = AppDT.Rows[0]["ApprovalName"].ToString();
+            _wsh.Cells[33, 6] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate"].ToString()).ToShortDateString();
+            _wsh.Cells[34, 4] = AppDT.Rows[0]["ApprovalName3"].ToString();
+            _wsh.Cells[34, 6] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate3"].ToString()).ToShortDateString();
             int j = 0;
             int i = 0;
             foreach(DataRow dr in DetailDT.Rows)
