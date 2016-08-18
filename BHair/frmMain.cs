@@ -700,6 +700,45 @@ namespace BHair
                 toolStripButton1.Visible = false;
                 menuMain_Manage_Approval2App.Visible = false;
             }
+
+            if (Login.LoginUser.IsAdmin == 1)
+            {
+                menuMain_System_Member.Visible = true;
+                menuMain_Manage_Store.Visible = true;
+                menuMain_System_Item.Visible = true;
+                menuMain_System_Log.Visible = true;
+                购买确认ToolStripMenuItem.Visible = true;
+                财务部审核ToolStripMenuItem.Visible = true;
+                tsbtnCW.Visible = true;
+                toolStripButton13.Visible = true;
+                toolStripButton8.Visible = true;
+                toolStripButton2.Visible = true;
+                menuMain_System_Setup.Visible = true;
+
+                menuMain_Flow_add.Visible = true;
+                menuMain_Manage_StoreApp.Visible = true;
+                menuMain_Manage_Approval2App.Visible = true;
+                menuMain_Manage_ApprovalApp.Visible = true;
+                menuMain_Manage_History.Visible = true;
+                menuMain_System_Member.Visible = true;
+                menuMain_Manage_Store.Visible = true;
+                menuMain_System_Item.Visible = true;
+                menuMain_System_Log.Visible = true;
+                购买确认ToolStripMenuItem.Visible = true;
+                menuMain_System_Setup.Visible = true;
+                menuMain_Table.Visible = true;
+                menuMain_System_Pwd.Visible = true;
+
+                toolStripButton4.Visible = true;
+                toolStripButton12.Visible = true;
+                toolStripButton1.Visible = true;
+                toolStripButton3.Visible = true;
+                toolStripButton8.Visible = true;
+                toolStripButton2.Visible = true;
+                toolStripButton13.Visible = true;
+                toolStripButton5.Visible = true;
+                toolStripButton6.Visible = true;
+            }
         }
         #endregion
 
