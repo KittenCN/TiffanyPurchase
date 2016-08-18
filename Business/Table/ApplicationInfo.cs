@@ -395,7 +395,15 @@ namespace BHair.Business.Table
             ah.Close();
             return Result;
         }
-
+        public DataTable SelectHistoryApplicationByApproval3(string sql)
+        {
+            AccessHelper ah = new AccessHelper();
+            string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>0  {0} order by [ApplicantsDate] desc", sql);
+            //string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>0  {0} order by [ApplicantsDate] desc", sql);
+            DataTable Result = ah.SelectToDataTable(sqlString);
+            ah.Close();
+            return Result;
+        }
 
         /// <summary>
         /// 确认店面根据唯一码查询ApplicationInfo

@@ -45,7 +45,8 @@ namespace BHair.Business
                     //else  ApplicationInfoTable = applicationInfo.SelectApplicationByApproval3(Login.LoginUser.UID,""); break;
                     ApplicationInfoTable = applicationInfo.SelectApplicationByApproval3(Login.LoginUser.UID, ""); break;
                 case "已审核":
-                    ApplicationInfoTable = applicationInfo.SelectHistoryApplicationByApproval3("",Login.LoginUser); break;
+                    //ApplicationInfoTable = applicationInfo.SelectHistoryApplicationByApproval3("",Login.LoginUser); break;
+                    ApplicationInfoTable = applicationInfo.SelectHistoryApplicationByApproval3(""); break;
                 default:
                     //if (Login.LoginUser.IsAdmin == 1) ApplicationInfoTable = applicationInfo.SelectAllApplicationByApproval2("");
                     //else  ApplicationInfoTable = applicationInfo.SelectApplicationByApproval3(Login.LoginUser.UID,""); break;
@@ -118,7 +119,8 @@ namespace BHair.Business
                     //else ApplicationInfoTable = applicationInfo.SelectApplicationByApproval3(Login.LoginUser.UID, SelectStr); break;
                     ApplicationInfoTable = applicationInfo.SelectApplicationByApproval3(Login.LoginUser.UID, ""); break;
                 case "已审核":
-                    ApplicationInfoTable = applicationInfo.SelectHistoryApplicationByApproval3(SelectStr, Login.LoginUser); break;
+                    //ApplicationInfoTable = applicationInfo.SelectHistoryApplicationByApproval3(SelectStr, Login.LoginUser); break;
+                    ApplicationInfoTable = applicationInfo.SelectHistoryApplicationByApproval3(SelectStr); break;
                 default:
                     //if (Login.LoginUser.IsAdmin == 1) ApplicationInfoTable = applicationInfo.SelectAllApplicationByApproval2(SelectStr);
                     //else ApplicationInfoTable = applicationInfo.SelectApplicationByApproval3(Login.LoginUser.UID, SelectStr); break;

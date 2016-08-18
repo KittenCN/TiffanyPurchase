@@ -602,7 +602,7 @@ namespace BHair
                 toolStripButton5.Visible = false;
                 toolStripButton6.Visible = true;
             }
-            else if (Login.LoginUser.Character == 6)
+            else if (Login.LoginUser.Character == 6)  //    财务
             {
                 menuMain_Flow_add.Visible = false;
                 menuMain_Manage_StoreApp.Visible = false;
@@ -624,13 +624,13 @@ namespace BHair
                 toolStripButton1.Visible = false;
                 toolStripButton3.Visible = false;
                 toolStripButton8.Visible = false;
-                toolStripButton2.Visible = true;
+                toolStripButton2.Visible = false;
                 toolStripButton13.Visible = false;
                 toolStripButton5.Visible = false;
                 toolStripButton6.Visible = true;
                 tsbtnCW.Visible = true;
             }
-            else if (Login.LoginUser.Character == 7)
+            else if (Login.LoginUser.Character == 7)  //IT
             {
                 menuMain_Flow_add.Visible = false;
                 menuMain_Manage_StoreApp.Visible = false;
