@@ -63,8 +63,8 @@ namespace BHair.Business
             _wsh.Cells[5, 3] = AppDT.Rows[0]["Location"].ToString();
             _wsh.Cells[5, 10] = AppDT.Rows[0]["PurchaseLocation"].ToString();
             _wsh.Cells[22, 11] = AppDT.Rows[0]["TotalPrice"].ToString();
-            _wsh.Cells[23, 11] = AppDT.Rows[0]["TransNo"].ToString();
-            _wsh.Cells[24, 11] = DateTime.Now.ToShortDateString();
+            _wsh.Cells[24, 11] = AppDT.Rows[0]["TransNo"].ToString();
+            _wsh.Cells[23, 11] = DateTime.Now.ToShortDateString();
 
             _wsh.Cells[31, 4] = AppDT.Rows[0]["ApplicantsName"].ToString();
             _wsh.Cells[31, 6] = DateTime.Parse(AppDT.Rows[0]["ApplicantsDate"].ToString()).ToShortDateString();

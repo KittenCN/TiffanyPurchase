@@ -618,7 +618,7 @@ namespace BHair.Business.Table
             try
             {
                 SqlQueue sq = new SqlQueue();
-                string sql = string.Format("Update ApplicationInfo Set ApprovalDate = '{3}', AppState = 4 ,Approval='{1}' , ApprovalName='{2}',UnCode='{4}' where   AppState=2 and IsDelete = 0 and TransNo='{0}'", TransNo, users.UID, users.UserName, dt, unCode);
+                string sql = string.Format("Update ApplicationInfo Set ApprovalDate3 = '{3}', AppState = 4 ,Approval3='{1}' , ApprovalName3='{2}',UnCode='{4}' where   AppState=2 and IsDelete = 0 and TransNo='{0}'", TransNo, users.UID, users.UserName, dt, unCode);
                 sq.InsertQuery(sql, "", "", 0, 0);
                 sq.Close();
                 return 1;
