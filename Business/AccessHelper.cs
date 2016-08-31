@@ -137,7 +137,7 @@ namespace BHair.Business
                 cmd.ExecuteNonQuery();    
                 return true;    
             }    
-            catch  
+            catch  (Exception ex)
             {
                 //this.Close();
                 return false;    

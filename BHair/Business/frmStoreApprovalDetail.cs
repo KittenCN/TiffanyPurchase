@@ -157,7 +157,7 @@ namespace BHair.Business
                     int exc = 0;
                     foreach(DataRow dr in ApplicationDetailTable.Rows)
                     {
-                        if(dr["IsSuccess"]=="0")
+                        if(dr["IsSuccess"].ToString()=="0")
                         {
                             exc++;
                         }

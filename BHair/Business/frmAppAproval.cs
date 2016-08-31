@@ -39,11 +39,12 @@ namespace BHair.Business
 
         public void GetApplicationDetail()
         {
+            btnDiff.Visible = false;
             ApplicationInfoTable = new DataTable();
             switch (CtrlType)
             {
                 case "未审核": ApplicationInfoTable = applicationInfo.SelectApplicationByApproval(""); break;
-                case "最终确认": ApplicationInfoTable = applicationInfo.SelectNotPassedApplication(""); break;
+                case "最终确认": ApplicationInfoTable = applicationInfo.SelectNotPassedApplication(""); btnDiff.Visible = true; break;
                 case "已生成唯一码未购买": ApplicationInfoTable = applicationInfo.SelectUnCodedApplication(""); break;
                 case "全部": ApplicationInfoTable = applicationInfo.SelectAllApplication(""); break;
                 default: ApplicationInfoTable = applicationInfo.SelectApplicationByApproval(""); break;
@@ -138,7 +139,7 @@ namespace BHair.Business
             switch (CtrlType)
             {
                 case "未审核": ApplicationInfoTable = applicationInfo.SelectApplicationByApproval(SelectStr); break;
-                case "最终确认": ApplicationInfoTable = applicationInfo.SelectNotPassedApplication(SelectStr); break;
+                case "最终确认": ApplicationInfoTable = applicationInfo.SelectNotPassedApplication(SelectStr); btnDiff.Visible = true; break;
                 case "已生成唯一码未购买": ApplicationInfoTable = applicationInfo.SelectUnCodedApplication(SelectStr); break;
                 case "全部": ApplicationInfoTable = applicationInfo.SelectAllApplication(SelectStr); break;
                 default: ApplicationInfoTable = applicationInfo.SelectApplicationByApproval(SelectStr); break;
@@ -303,6 +304,47 @@ namespace BHair.Business
                         dr["FinalState"] = 1;
                     }
                 }
+            }
+        }
+
+        private void btnDiff_Click(object sender, EventArgs e)
+        {
+            if(dgvApplyInfo.Rows.Count>0)
+            {
+                foreach(DataGridViewRow dr in dgvApplyInfo.Rows)
+                {
+                    if(dr.Cells["FinalExceptionFilter"].Value.ToString()=="异常")
+                    {
+                        Boolean boolDiff = false;
+                        AccessHelper ah = new AccessHelper();
+                        string sql = "select * from ApplicationDetail where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' ";
+                        DataTable dtsql = ah.SelectToDataTable(sql);
+                        for(int x=0;x<dtsql.Rows.Count;x++)
+                        {
+                            AccessHelper tempah = new AccessHelper();
+                            string tempsql = "select * from ApplicationDetail where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' and ItemID='" + dtsql.Rows[x]["ItemID"].ToString() + "' ";
+                            DataTable dttempsql = tempah.SelectToDataTable(tempsql);
+                            if(dttempsql.Rows.Count>1)
+                            {
+                                boolDiff = true;
+                            }
+                            else
+                            {
+                                AccessHelper tempah2 = new AccessHelper();
+                                string tempsql2 = "update ApplicationDetail set IsRepetition=0 where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' and ItemID='" + dtsql.Rows[x]["ItemID"].ToString() + "' ";
+                                tempah2.ExecuteSQLNonquery(tempsql2);
+                            }
+                        }
+                        if(boolDiff==false)
+                        {
+                            AccessHelper tempah = new AccessHelper();
+                            string tempsql = "update ApplicationInfo set FinalException=0 where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' ";
+                            tempah.ExecuteSQLNonquery(tempsql);
+                        }
+                    }
+                }
+                GetApplicationDetail();
+                MessageBox.Show("计算完成!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

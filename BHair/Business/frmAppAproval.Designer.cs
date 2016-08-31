@@ -77,16 +77,17 @@
             this.FinalException = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FinalExceptionFilter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnSelectAll = new System.Windows.Forms.Button();
-            this.cbCtrlType = new System.Windows.Forms.ComboBox();
-            this.TxtChoose = new System.Windows.Forms.TextBox();
-            this.BtnChoose = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnApprovalAll = new System.Windows.Forms.Button();
-            this.btnAlter = new System.Windows.Forms.Button();
-            this.BtnSelect = new System.Windows.Forms.Button();
             this.BtnRefresh = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.BtnSelect = new System.Windows.Forms.Button();
+            this.btnSelectAll = new System.Windows.Forms.Button();
+            this.cbCtrlType = new System.Windows.Forms.ComboBox();
+            this.btnAlter = new System.Windows.Forms.Button();
+            this.TxtChoose = new System.Windows.Forms.TextBox();
+            this.btnApprovalAll = new System.Windows.Forms.Button();
+            this.BtnChoose = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnDiff = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyInfo)).BeginInit();
@@ -562,6 +563,7 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.btnDiff);
             this.panel3.Controls.Add(this.BtnRefresh);
             this.panel3.Controls.Add(this.btnDelete);
             this.panel3.Controls.Add(this.BtnSelect);
@@ -575,6 +577,38 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(733, 76);
             this.panel3.TabIndex = 128;
+            // 
+            // BtnRefresh
+            // 
+            this.BtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRefresh.Location = new System.Drawing.Point(553, 47);
+            this.BtnRefresh.Name = "BtnRefresh";
+            this.BtnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.BtnRefresh.TabIndex = 1;
+            this.BtnRefresh.Text = "刷新";
+            this.BtnRefresh.UseVisualStyleBackColor = true;
+            this.BtnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(277, 50);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(91, 23);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "撤销该申请单";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // BtnSelect
+            // 
+            this.BtnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSelect.Location = new System.Drawing.Point(646, 47);
+            this.BtnSelect.Name = "BtnSelect";
+            this.BtnSelect.Size = new System.Drawing.Size(75, 23);
+            this.BtnSelect.TabIndex = 0;
+            this.BtnSelect.Text = "查看详细";
+            this.BtnSelect.UseVisualStyleBackColor = true;
+            this.BtnSelect.Click += new System.EventHandler(this.BtnSelect_Click);
             // 
             // btnSelectAll
             // 
@@ -596,6 +630,16 @@
             this.cbCtrlType.TabIndex = 3;
             this.cbCtrlType.SelectedIndexChanged += new System.EventHandler(this.cbCtrlType_SelectedIndexChanged);
             // 
+            // btnAlter
+            // 
+            this.btnAlter.Location = new System.Drawing.Point(180, 50);
+            this.btnAlter.Name = "btnAlter";
+            this.btnAlter.Size = new System.Drawing.Size(91, 23);
+            this.btnAlter.TabIndex = 3;
+            this.btnAlter.Text = "修改该申请单";
+            this.btnAlter.UseVisualStyleBackColor = true;
+            this.btnAlter.Click += new System.EventHandler(this.btnAlter_Click);
+            // 
             // TxtChoose
             // 
             this.TxtChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -604,6 +648,17 @@
             this.TxtChoose.Size = new System.Drawing.Size(119, 21);
             this.TxtChoose.TabIndex = 1;
             this.TxtChoose.TextChanged += new System.EventHandler(this.TxtChoose_TextChanged);
+            // 
+            // btnApprovalAll
+            // 
+            this.btnApprovalAll.Location = new System.Drawing.Point(83, 50);
+            this.btnApprovalAll.Name = "btnApprovalAll";
+            this.btnApprovalAll.Size = new System.Drawing.Size(91, 23);
+            this.btnApprovalAll.TabIndex = 4;
+            this.btnApprovalAll.Text = "批量审批通过";
+            this.btnApprovalAll.UseVisualStyleBackColor = true;
+            this.btnApprovalAll.Visible = false;
+            this.btnApprovalAll.Click += new System.EventHandler(this.btnApprovalAll_Click);
             // 
             // BtnChoose
             // 
@@ -627,58 +682,16 @@
             this.panel4.Size = new System.Drawing.Size(732, 385);
             this.panel4.TabIndex = 129;
             // 
-            // btnApprovalAll
+            // btnDiff
             // 
-            this.btnApprovalAll.Location = new System.Drawing.Point(83, 50);
-            this.btnApprovalAll.Name = "btnApprovalAll";
-            this.btnApprovalAll.Size = new System.Drawing.Size(91, 23);
-            this.btnApprovalAll.TabIndex = 4;
-            this.btnApprovalAll.Text = "批量审批通过";
-            this.btnApprovalAll.UseVisualStyleBackColor = true;
-            this.btnApprovalAll.Visible = false;
-            this.btnApprovalAll.Click += new System.EventHandler(this.btnApprovalAll_Click);
-            // 
-            // btnAlter
-            // 
-            this.btnAlter.Location = new System.Drawing.Point(180, 50);
-            this.btnAlter.Name = "btnAlter";
-            this.btnAlter.Size = new System.Drawing.Size(91, 23);
-            this.btnAlter.TabIndex = 3;
-            this.btnAlter.Text = "修改该申请单";
-            this.btnAlter.UseVisualStyleBackColor = true;
-            this.btnAlter.Click += new System.EventHandler(this.btnAlter_Click);
-            // 
-            // BtnSelect
-            // 
-            this.BtnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSelect.Location = new System.Drawing.Point(646, 47);
-            this.BtnSelect.Name = "BtnSelect";
-            this.BtnSelect.Size = new System.Drawing.Size(75, 23);
-            this.BtnSelect.TabIndex = 0;
-            this.BtnSelect.Text = "查看详细";
-            this.BtnSelect.UseVisualStyleBackColor = true;
-            this.BtnSelect.Click += new System.EventHandler(this.BtnSelect_Click);
-            // 
-            // BtnRefresh
-            // 
-            this.BtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRefresh.Location = new System.Drawing.Point(553, 47);
-            this.BtnRefresh.Name = "BtnRefresh";
-            this.BtnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.BtnRefresh.TabIndex = 1;
-            this.BtnRefresh.Text = "刷新";
-            this.BtnRefresh.UseVisualStyleBackColor = true;
-            this.BtnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(277, 50);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(91, 23);
-            this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "撤销该申请单";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDiff.Location = new System.Drawing.Point(374, 50);
+            this.btnDiff.Name = "btnDiff";
+            this.btnDiff.Size = new System.Drawing.Size(90, 23);
+            this.btnDiff.TabIndex = 5;
+            this.btnDiff.Text = "计算是否异常";
+            this.btnDiff.UseVisualStyleBackColor = true;
+            this.btnDiff.Visible = false;
+            this.btnDiff.Click += new System.EventHandler(this.btnDiff_Click);
             // 
             // frmAppAproval
             // 
@@ -769,5 +782,6 @@
         private System.Windows.Forms.Button BtnSelect;
         private System.Windows.Forms.Button BtnRefresh;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnDiff;
     }
 }
