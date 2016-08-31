@@ -217,6 +217,10 @@ namespace BHair.Business
                     this.GetApplicationDetail();
                 }
             }
+            else
+            {
+                MessageBox.Show("请选择一行记录", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
 

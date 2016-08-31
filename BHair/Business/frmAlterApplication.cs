@@ -20,6 +20,7 @@ namespace BHair.Business
         DataTable AddApplicationDT;
         ApplicationInfo applicationInfo = new ApplicationInfo();
         ApplicationDetail applicationDetail = new ApplicationDetail();
+        public object objMoneyUnit;
         /// <summary>内购申请单编辑</summary>
         public frmAlterApplication(ApplicationInfo ai)
         {
@@ -29,7 +30,7 @@ namespace BHair.Business
             GetDataTable();
             LoadComBox();
             LoadAppData();
-
+            objMoneyUnit = AddApplicationDT.Rows[0]["MoneyUnit"];
             if (Login.LoginUser.Character == 1)
             {
                 txtTotalPrice.ReadOnly = false;
@@ -322,7 +323,6 @@ namespace BHair.Business
                     if (fer.ShowDialog() == DialogResult.OK)
                     {
                         AddAppInfoDT.Rows[0]["EditReason"] = fer.EditReasonString;
-
                         AddAppInfoDT.Rows[0]["TransNo"] = txtTransNo.Text;
                         AddAppInfoDT.Rows[0]["ApplicantsName"] = txtApplicantsName.Text;
                         AddAppInfoDT.Rows[0]["ApplicantsNo"] = txtApplicantsNo.Text;
@@ -330,7 +330,8 @@ namespace BHair.Business
                         AddAppInfoDT.Rows[0]["TotalPrice"] = txtTotalPrice.Value;
                         AddAppInfoDT.Rows[0]["Deadline"] = txtDeadline.Value;
                         AddAppInfoDT.Rows[0]["PurchaseLocation"] = txtPurchaseLocation.Text;
-                        AddAppInfoDT.Rows[0]["MoneyUnit"] = AddApplicationDT.Rows[0]["MoneyUnit"];
+                        //AddAppInfoDT.Rows[0]["MoneyUnit"] = AddApplicationDT.Rows[0]["MoneyUnit"];
+                        AddAppInfoDT.Rows[0]["MoneyUnit"] = objMoneyUnit;
                         foreach (DataRow addDr in AddApplicationDT.Rows)
                         {
                             if (addDr.RowState != DataRowState.Deleted)
@@ -363,7 +364,8 @@ namespace BHair.Business
                     AddAppInfoDT.Rows[0]["TotalPrice"] = txtTotalPrice.Value;
                     AddAppInfoDT.Rows[0]["Deadline"] = txtDeadline.Value;
                     AddAppInfoDT.Rows[0]["PurchaseLocation"] = txtPurchaseLocation.Text;
-                    AddAppInfoDT.Rows[0]["MoneyUnit"] = AddApplicationDT.Rows[0]["MoneyUnit"];
+                    //AddAppInfoDT.Rows[0]["MoneyUnit"] = AddApplicationDT.Rows[0]["MoneyUnit"];
+                    AddAppInfoDT.Rows[0]["MoneyUnit"] = objMoneyUnit;
                     AddAppInfoDT.Rows[0]["EditReason"] = txtEditReason.Text;
                     foreach (DataRow addDr in AddApplicationDT.Rows)
                     {
