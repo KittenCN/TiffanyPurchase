@@ -137,9 +137,42 @@ namespace BHair.Business
         private void btnAdd_Click(object sender, EventArgs e)
         {
             decimal GiftTotal = 0;
-            if (txtMoneyUnit.SelectedIndex == 2) GiftTotal = EmailControl.config.HKD;
-            else if (txtMoneyUnit.SelectedIndex == 1) GiftTotal = EmailControl.config.USD;
-            else GiftTotal = EmailControl.config.CNY;
+            //if (txtMoneyUnit.SelectedIndex == 2) GiftTotal = EmailControl.config.HKD;
+            //else if (txtMoneyUnit.SelectedIndex == 1) GiftTotal = EmailControl.config.USD;
+            //else GiftTotal = EmailControl.config.CNY;
+            switch (txtMoneyUnit.SelectedIndex)
+            {
+                case 0:
+                    GiftTotal = EmailControl.config.CNY;
+                    break;
+                case 1:
+                    GiftTotal = EmailControl.config.USD;
+                    break;
+                case 2:
+                    GiftTotal = EmailControl.config.HKD;
+                    break;
+                case 3:
+                    GiftTotal = EmailControl.config.MOP;
+                    break;
+                case 4:
+                    GiftTotal = EmailControl.config.SGD;
+                    break;
+                case 5:
+                    GiftTotal = EmailControl.config.MYR;
+                    break;
+                case 6:
+                    GiftTotal = EmailControl.config.GBP;
+                    break;
+                case 7:
+                    GiftTotal = EmailControl.config.EUR;
+                    break;
+                case 8:
+                    GiftTotal = EmailControl.config.JPY;
+                    break;
+                case 9:
+                    GiftTotal = EmailControl.config.TWD;
+                    break;
+            }
             if (!ExcitItemID) MessageBox.Show("不存在该货号", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else if (AddApplicationDT.Rows.Count > 4)
             {
@@ -502,9 +535,17 @@ namespace BHair.Business
             if (items.ItemsDT.Rows.Count > 0)
             {
                 string priceCol = "Price";
-                if (txtMoneyUnit.SelectedIndex == 0) priceCol = "Price";
-                if (txtMoneyUnit.SelectedIndex == 1) priceCol = "Price2";
-                if (txtMoneyUnit.SelectedIndex == 2) priceCol = "Price3";
+                //if (txtMoneyUnit.SelectedIndex == 0) priceCol = "Price";
+                //if (txtMoneyUnit.SelectedIndex == 1) priceCol = "Price2";
+                //if (txtMoneyUnit.SelectedIndex == 2) priceCol = "Price3";
+                if (txtMoneyUnit.SelectedIndex == 0)
+                {
+                    priceCol = "Price";
+                }
+                else
+                {
+                    priceCol = "Price" + (txtMoneyUnit.SelectedIndex + 1).ToString();
+                }
                 txtPrice.Value = decimal.Parse(items.ItemsDT.Rows[0][priceCol].ToString());
             }
         }
