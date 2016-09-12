@@ -845,7 +845,7 @@ namespace BHair
             try
             {
                 AccessHelper ah = new AccessHelper();
-                string strSQL = "select * from Items";
+                string strSQL = "select top 1 * from Items";
                 DataTable dtSQL = ah.SelectToDataTable(strSQL);
                 if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["Price4"].ToString() == null)
                 {

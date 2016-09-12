@@ -31,6 +31,13 @@ namespace BHair.Base
                 txtPrice.Text = item.ItemsDT.Rows[0]["Price"].ToString();
                 txtPrice2.Text = item.ItemsDT.Rows[0]["Price2"].ToString();
                 txtPrice3.Text = item.ItemsDT.Rows[0]["Price3"].ToString();
+                txtPrice4.Text = item.ItemsDT.Rows[0]["Price4"].ToString();
+                txtPrice5.Text = item.ItemsDT.Rows[0]["Price5"].ToString();
+                txtPrice6.Text = item.ItemsDT.Rows[0]["Price6"].ToString();
+                txtPrice7.Text = item.ItemsDT.Rows[0]["Price7"].ToString();
+                txtPrice8.Text = item.ItemsDT.Rows[0]["Price8"].ToString();
+                txtPrice9.Text = item.ItemsDT.Rows[0]["Price9"].ToString();
+                txtPrice10.Text = item.ItemsDT.Rows[0]["Price10"].ToString();
                 txtItemName.Text = item.ItemsDT.Rows[0]["ItemName"].ToString();
                 txtDetail.Text = item.ItemsDT.Rows[0]["Detail"].ToString();
                 if(item.ItemsDT.Rows[0]["IsSpecial"].ToString()=="1")
@@ -70,6 +77,13 @@ namespace BHair.Base
                     dr["Price"] = txtPrice.Value;
                     dr["Price2"] = txtPrice2.Value;
                     dr["Price3"] = txtPrice3.Value;
+                    dr["Price4"] = txtPrice4.Value;
+                    dr["Price5"] = txtPrice5.Value;
+                    dr["Price6"] = txtPrice6.Value;
+                    dr["Price7"] = txtPrice7.Value;
+                    dr["Price8"] = txtPrice8.Value;
+                    dr["Price9"] = txtPrice9.Value;
+                    dr["Price10"] = txtPrice10.Value;
                     dr["ItemName"] = txtItemName.Text.Trim();
                     dr["Detail"] = txtDetail.Text.Trim();
                     dr["IsDelete"] = 0;
@@ -94,6 +108,13 @@ namespace BHair.Base
                     item.ItemsDT.Rows[0]["Price"] = txtPrice.Value;
                     item.ItemsDT.Rows[0]["Price2"] = txtPrice2.Value;
                     item.ItemsDT.Rows[0]["Price3"] = txtPrice3.Value;
+                    item.ItemsDT.Rows[0]["Price4"] = txtPrice4.Value;
+                    item.ItemsDT.Rows[0]["Price5"] = txtPrice5.Value;
+                    item.ItemsDT.Rows[0]["Price6"] = txtPrice6.Value;
+                    item.ItemsDT.Rows[0]["Price7"] = txtPrice7.Value;
+                    item.ItemsDT.Rows[0]["Price8"] = txtPrice8.Value;
+                    item.ItemsDT.Rows[0]["Price9"] = txtPrice9.Value;
+                    item.ItemsDT.Rows[0]["Price10"] = txtPrice10.Value;
                     item.ItemsDT.Rows[0]["ItemName"] = txtItemName.Text;
                     item.ItemsDT.Rows[0]["Detail"] = txtDetail.Text;
                     if (cbIsSpecial.Checked) item.ItemsDT.Rows[0]["IsSpecial"] = 1;
