@@ -80,9 +80,9 @@ namespace BHair.Business.BaseData
                 {
                     StringBuilder insertSql=new StringBuilder();
                     insertSql.Append("Insert into [Items]");
-                    insertSql.Append(" ([ItemID],[Price],[Price2],[Price3],[Detail],[IsDelete],[IsSpecial],[ItemName]) ");
+                    insertSql.Append(" ([ItemID],[Price],[Price2],[Price3],[Price4],[Price5],[Price6],[Price7],[Price8],[Price9],[Price10],[Detail],[IsDelete],[IsSpecial],[ItemName]) ");
                     insertSql.Append("values");
-                    insertSql.AppendFormat(" ('{0}',{1},{2},{3},'{4}',{5},{6},{7})", dr["ItemID"], dr["Price"], dr["Price2"], dr["Price3"], dr["Detail"], dr["IsDelete"], dr["IsSpecial"], dr["ItemName"]);
+                    insertSql.AppendFormat(" ('{0}',{1},{2},{3},{8},{9},{10},{11},{12},{13},{14},'{4}',{5},{6},{7})", dr["ItemID"], dr["Price"], dr["Price2"], dr["Price3"], dr["Detail"], dr["IsDelete"], dr["IsSpecial"], dr["ItemName"], dr["Price4"], dr["Price5"], dr["Price6"], dr["Price7"], dr["Price8"], dr["Price9"], dr["Price10"]);
                     sq.InsertQuery(insertSql.ToString(), "", "", 0, 0); 
                 }
                 sq.Close();
@@ -116,13 +116,18 @@ namespace BHair.Business.BaseData
                     insertSql.AppendFormat(" [Price]={0},", dr["Price"]);
                     insertSql.AppendFormat(" [Price2]={0},", dr["Price2"]);
                     insertSql.AppendFormat(" [Price3]={0},", dr["Price3"]);
+                    insertSql.AppendFormat(" [Price4]={0},", dr["Price4"]);
+                    insertSql.AppendFormat(" [Price5]={0},", dr["Price5"]);
+                    insertSql.AppendFormat(" [Price6]={0},", dr["Price6"]);
+                    insertSql.AppendFormat(" [Price7]={0},", dr["Price7"]);
+                    insertSql.AppendFormat(" [Price8]={0},", dr["Price8"]);
+                    insertSql.AppendFormat(" [Price9]={0},", dr["Price9"]);
+                    insertSql.AppendFormat(" [Price10]={0},", dr["Price10"]);
                     insertSql.AppendFormat(" [Detail]='{0}',", dr["Detail"]);
                     insertSql.AppendFormat(" [IsDelete]={0},", dr["IsDelete"]);
                     insertSql.AppendFormat(" [IsSpecial]={0},", dr["IsSpecial"]);
                     insertSql.AppendFormat(" [ItemName]='{0}'", dr["ItemName"]);
                     insertSql.AppendFormat(" where [ID]={0}", dr["ID"]);
-
-
                     sq.InsertQuery(insertSql.ToString(), "", "", 0, 0);
                 }
                 sq.Close();

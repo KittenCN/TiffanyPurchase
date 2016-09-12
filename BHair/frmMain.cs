@@ -853,17 +853,17 @@ namespace BHair
                     {
                         string strInSQL = "alter table Items add COLUMN Price4 text";
                         ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price5 text";
+                        strInSQL = "alter table Items add COLUMN Price5 float";
                         ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price6 text";
+                        strInSQL = "alter table Items add COLUMN Price6 float";
                         ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price7 text";
+                        strInSQL = "alter table Items add COLUMN Price7 float";
                         ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price8 text";
+                        strInSQL = "alter table Items add COLUMN Price8 float";
                         ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price9 text";
+                        strInSQL = "alter table Items add COLUMN Price9 float";
                         ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price10 text";
+                        strInSQL = "alter table Items add COLUMN Price10 float";
                         ah.ExecuteNonQuery(strInSQL);
                     }
                     catch (Exception ex1)
@@ -879,19 +879,19 @@ namespace BHair
                     try
                     {
                         AccessHelper ah = new AccessHelper();
-                        string strInSQL = "alter table Items add COLUMN Price4 text";
+                        string strInSQL = "alter table Items add COLUMN Price4 float";
                         ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price5 text";
+                        strInSQL = "alter table Items add COLUMN Price5 float";
                         ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price6 text";
+                        strInSQL = "alter table Items add COLUMN Price6 float";
                         ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price7 text";
+                        strInSQL = "alter table Items add COLUMN Price7 float";
                         ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price8 text";
+                        strInSQL = "alter table Items add COLUMN Price8 float";
                         ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price9 text";
+                        strInSQL = "alter table Items add COLUMN Price9 float";
                         ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price10 text";
+                        strInSQL = "alter table Items add COLUMN Price10 float";
                         ah.ExecuteNonQuery(strInSQL);
                     }
                     catch(Exception ex1)
