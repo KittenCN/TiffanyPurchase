@@ -116,5 +116,10 @@ namespace BHair.Base
         {
             this.Close();
         }
+
+        private void frmItem_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

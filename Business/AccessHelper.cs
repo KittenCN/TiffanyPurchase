@@ -143,10 +143,26 @@ namespace BHair.Business
                 return false;    
             }
         }
-
-
-
-
+        /// <summary>
+        /// 执行无返回的Sql语句，如插入，删除，更新
+        /// </summary>
+        /// <param name="sqlstr">SQL语句</param>
+        /// <returns>受影响的条数,出错则产生异常</returns>
+        public int ExecuteNonQuery(string sqlstr)
+        {
+            try
+            {
+                OleDbConnection conn = new OleDbConnection(ConnString);
+                conn.Open();
+                OleDbCommand command = new OleDbCommand(sqlstr, conn);
+                int num = command.ExecuteNonQuery();
+                command.Parameters.Clear();
+                Close();
+                return num;
+            }
+            catch
+            { throw; }
+        }
 
     }
 }

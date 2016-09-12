@@ -11,6 +11,7 @@ using BHair.Business;
 using BHair.SystemSet;
 using BHair.Business.Table;
 using System.Threading;
+using System.Data;
 
 namespace BHair
 {
@@ -37,6 +38,7 @@ namespace BHair
             {
                 this.InitMenu();
             }
+            UpdateDataBase();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -793,8 +795,6 @@ namespace BHair
             }
         }
 
-
-
         void CloseAllTab()
         {
             IDockContent[] documents = this.dPanelMain.DocumentsToArray();
@@ -837,6 +837,69 @@ namespace BHair
         private void tsbtnCW_Click(object sender, EventArgs e)
         {
             财务部审核ToolStripMenuItem_Click(null, null);
+        }
+
+        public void UpdateDataBase()
+        {
+            //增加item表新price字段
+            try
+            {
+                AccessHelper ah = new AccessHelper();
+                string strSQL = "select * from Items";
+                DataTable dtSQL = ah.SelectToDataTable(strSQL);
+                if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["Price4"].ToString() == null)
+                {
+                    try
+                    {
+                        string strInSQL = "alter table Items add COLUMN Price4 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                        strInSQL = "alter table Items add COLUMN Price5 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                        strInSQL = "alter table Items add COLUMN Price6 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                        strInSQL = "alter table Items add COLUMN Price7 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                        strInSQL = "alter table Items add COLUMN Price8 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                        strInSQL = "alter table Items add COLUMN Price9 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                        strInSQL = "alter table Items add COLUMN Price10 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                    }
+                    catch (Exception ex1)
+                    {
+
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                if(ex.HResult.ToString() ==  "-2147024809")
+                {
+                    try
+                    {
+                        AccessHelper ah = new AccessHelper();
+                        string strInSQL = "alter table Items add COLUMN Price4 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                        strInSQL = "alter table Items add COLUMN Price5 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                        strInSQL = "alter table Items add COLUMN Price6 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                        strInSQL = "alter table Items add COLUMN Price7 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                        strInSQL = "alter table Items add COLUMN Price8 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                        strInSQL = "alter table Items add COLUMN Price9 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                        strInSQL = "alter table Items add COLUMN Price10 text";
+                        ah.ExecuteNonQuery(strInSQL);
+                    }
+                    catch(Exception ex1)
+                    {
+
+                    }
+                }
+            }
         }
     }
 }
