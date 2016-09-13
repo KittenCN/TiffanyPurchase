@@ -392,7 +392,24 @@ namespace BHair.Business.BaseData
             return rows;
         }
 
-
+        public void QuickInsertUser(DataTable dt)
+        {
+            AccessHelper ah = new AccessHelper();
+            try
+            {
+                OleDbDataAdapter adapt = new OleDbDataAdapter("select * from Users", ah.Conn);
+                OleDbCommandBuilder odcb = new OleDbCommandBuilder(adapt);
+                odcb.QuotePrefix = "[";
+                odcb.QuoteSuffix = "]";
+                adapt.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                ah.Close();
+            }
+            ah.Close();
+        }
 
 
 

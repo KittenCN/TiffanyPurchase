@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblMember = new System.Windows.Forms.Label();
             this.txtPwd = new System.Windows.Forms.TextBox();
             this.dgvMember = new System.Windows.Forms.DataGridView();
@@ -59,6 +59,7 @@
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnInsert = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMember)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,9 +176,9 @@
             // Position
             // 
             this.Position.DataPropertyName = "Position";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Position.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Position.DefaultCellStyle = dataGridViewCellStyle1;
             this.Position.HeaderText = "职位";
             this.Position.Name = "Position";
             this.Position.ReadOnly = true;
@@ -199,9 +200,9 @@
             // Detail
             // 
             this.Detail.DataPropertyName = "Detail";
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Detail.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Detail.DefaultCellStyle = dataGridViewCellStyle2;
             this.Detail.HeaderText = "用户信息描述";
             this.Detail.MinimumWidth = 20;
             this.Detail.Name = "Detail";
@@ -318,7 +319,7 @@
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(98, 23);
             this.btnImport.TabIndex = 8;
-            this.btnImport.Text = "导入到数据库";
+            this.btnImport.Text = "覆盖到数据库";
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
@@ -330,11 +331,22 @@
             this.label1.Size = new System.Drawing.Size(0, 12);
             this.label1.TabIndex = 9;
             // 
+            // btnInsert
+            // 
+            this.btnInsert.Location = new System.Drawing.Point(959, 548);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(98, 23);
+            this.btnInsert.TabIndex = 10;
+            this.btnInsert.Text = "插入到数据库";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
             // frmMember_Import
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 583);
+            this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnExcel);
@@ -384,5 +396,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UsedAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn RestAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn MoneyUnit;
+        private System.Windows.Forms.Button btnInsert;
     }
 }

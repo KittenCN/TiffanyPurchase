@@ -209,7 +209,7 @@ namespace BHair.Base
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            label1.Text = "正在导入到数据库....";
+            label1.Text = "正在覆盖到数据库....";
             try
             {
 
@@ -217,12 +217,12 @@ namespace BHair.Base
                 users.ClearUsers();
                 //插入新datatable表
                 users.QuickImportUsers(MemberDT);
-                label1.Text = "数据库导入完成";
+                label1.Text = "数据库覆盖完成";
                 DialogResult = DialogResult.OK;
             }
-            catch
+            catch(Exception ex)
             {
-                label1.Text = "数据库导入失败";
+                label1.Text = "数据库覆盖失败::" + ex.ToString();
             }
         }
 
@@ -242,6 +242,25 @@ namespace BHair.Base
             string hash = BitConverter.ToString(dataHashed).Replace("-", "");
 
             return hash;
+        }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            label1.Text = "正在插入到数据库....";
+            try
+            {
+
+                //清空表
+                users.ClearUsers();
+                //插入新datatable表
+                users.QuickInsertUser(MemberDT);
+                label1.Text = "数据库插入完成";
+                DialogResult = DialogResult.OK;
+            }
+            catch(Exception ex)
+            {
+                label1.Text = "数据库插入失败::" + ex.ToString();
+            }
         }
     }
 }

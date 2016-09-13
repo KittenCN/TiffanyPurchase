@@ -868,17 +868,18 @@ namespace BHair
                     }
                     catch (Exception ex1)
                     {
-
+                        ah.Close();
                     }
                 }
+                ah.Close();
             }
             catch(Exception ex)
             {
                 if(ex.HResult.ToString() ==  "-2147024809")
                 {
+                    AccessHelper ah = new AccessHelper();
                     try
-                    {
-                        AccessHelper ah = new AccessHelper();
+                    {                       
                         string strInSQL = "alter table Items add COLUMN Price4 float";
                         ah.ExecuteNonQuery(strInSQL);
                         strInSQL = "alter table Items add COLUMN Price5 float";
@@ -892,12 +893,13 @@ namespace BHair
                         strInSQL = "alter table Items add COLUMN Price9 float";
                         ah.ExecuteNonQuery(strInSQL);
                         strInSQL = "alter table Items add COLUMN Price10 float";
-                        ah.ExecuteNonQuery(strInSQL);
+                        ah.ExecuteNonQuery(strInSQL);                     
                     }
                     catch(Exception ex1)
                     {
-
+                        ah.Close();
                     }
+                    ah.Close();
                 }
             }
         }
