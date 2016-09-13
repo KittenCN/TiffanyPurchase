@@ -44,7 +44,10 @@ namespace BHair.Business
         /// </summary>    
         public void Close()
         {    
-            Conn.Close();    
+            if(Conn.State==ConnectionState.Open)
+            {
+                Conn.Close();
+            }             
         }
 
     

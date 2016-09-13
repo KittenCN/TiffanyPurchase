@@ -391,7 +391,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(29, 12);
             this.label11.TabIndex = 44;
-            this.label11.Text = "台币";
+            this.label11.Text = "日元";
             // 
             // txtPrice10
             // 
@@ -418,7 +418,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 12);
             this.label12.TabIndex = 46;
-            this.label12.Text = "港元";
+            this.label12.Text = "台币";
             // 
             // frmItem
             // 

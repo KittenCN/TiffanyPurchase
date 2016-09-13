@@ -151,7 +151,7 @@ namespace BHair.Business
                     { validate++; }
                     if (dr["Character"].ToString() != "1" && dr["Character"].ToString() != "2" && dr["Character"].ToString() != "3" && dr["Character"].ToString() != "4" && dr["Character"].ToString() != "5" && dr["Character"].ToString() != "6")
                     { validate++; }
-                    if (dr["MoneyUnit"].ToString() != "1" && dr["MoneyUnit"].ToString() != "2" && dr["MoneyUnit"].ToString() != "3")
+                    if (int.Parse(dr["MoneyUnit"].ToString())<1 || int.Parse(dr["MoneyUnit"].ToString()) >10)
                     { validate++; }
                     if ((dr["Character"].ToString() == "3" && dr["ManagerID"].ToString() == "") || (dr["Character"].ToString() == "2" && dr["ManagerID"].ToString() == ""))
                     { validate++; }

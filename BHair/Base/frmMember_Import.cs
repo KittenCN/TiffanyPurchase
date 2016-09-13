@@ -86,9 +86,42 @@ namespace BHair.Base
             {
                 if (dgvr.Cells["MoneyUnit"] != null && dgvr.Cells["MoneyUnit"].Value != null && dgvr.Cells["MoneyUnit"].Value.ToString() != "")
                 {
-                    if ((int)dgvr.Cells["MoneyUnit"].Value == 1) dgvr.Cells["MoneyUnitState"].Value = "人民币";
-                    else if ((int)dgvr.Cells["MoneyUnit"].Value == 2) dgvr.Cells["MoneyUnitState"].Value = "美元";
-                    else dgvr.Cells["MoneyUnitState"].Value = "港币";
+                    //if ((int)dgvr.Cells["MoneyUnit"].Value == 1) dgvr.Cells["MoneyUnitState"].Value = "人民币";
+                    //else if ((int)dgvr.Cells["MoneyUnit"].Value == 2) dgvr.Cells["MoneyUnitState"].Value = "美元";
+                    //else dgvr.Cells["MoneyUnitState"].Value = "港币";
+                    switch((int)dgvr.Cells["MoneyUnit"].Value)
+                    {
+                        case 1:
+                            dgvr.Cells["MoneyUnitState"].Value = "人民币";
+                            break;
+                        case 2:
+                            dgvr.Cells["MoneyUnitState"].Value = "美元";
+                            break;
+                        case 3:
+                            dgvr.Cells["MoneyUnitState"].Value = "港币";
+                            break;
+                        case 4:
+                            dgvr.Cells["MoneyUnitState"].Value = "澳元";
+                            break;
+                        case 5:
+                            dgvr.Cells["MoneyUnitState"].Value = "新元";
+                            break;
+                        case 6:
+                            dgvr.Cells["MoneyUnitState"].Value = "马币";
+                            break;
+                        case 7:
+                            dgvr.Cells["MoneyUnitState"].Value = "英镑";
+                            break;
+                        case 8:
+                            dgvr.Cells["MoneyUnitState"].Value = "欧元";
+                            break;
+                        case 9:
+                            dgvr.Cells["MoneyUnitState"].Value = "日元";
+                            break;
+                        case 10:
+                            dgvr.Cells["MoneyUnitState"].Value = "台币";
+                            break;
+                    }
                 }
             }
         }
@@ -249,9 +282,6 @@ namespace BHair.Base
             label1.Text = "正在插入到数据库....";
             try
             {
-
-                //清空表
-                users.ClearUsers();
                 //插入新datatable表
                 users.QuickInsertUser(MemberDT);
                 label1.Text = "数据库插入完成";

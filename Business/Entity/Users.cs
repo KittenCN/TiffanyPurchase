@@ -397,11 +397,36 @@ namespace BHair.Business.BaseData
             AccessHelper ah = new AccessHelper();
             try
             {
-                OleDbDataAdapter adapt = new OleDbDataAdapter("select * from Users", ah.Conn);
-                OleDbCommandBuilder odcb = new OleDbCommandBuilder(adapt);
-                odcb.QuotePrefix = "[";
-                odcb.QuoteSuffix = "]";
-                adapt.Fill(dt);
+                string strSQL = "select * from Users";
+                DataTable dtSQl = ah.SelectToDataTable(strSQL);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    DataRow[] drSelect = dtSQl.Select("UID='" + dr["UID"].ToString() + "'");
+                    if (drSelect.Length < 1)
+                    {
+                        DataRow drNew = dtSQl.NewRow();
+                        drNew["UID"] = dr["UID"];
+                        drNew["UserName"] = dr["UserName"];
+                        drNew["EmployeeID"] = dr["EmployeeID"];
+                        drNew["Character"] = dr["Character"];
+                        drNew["ManagerID"] = dr["ManagerID"];
+                        drNew["MoneyUnit"] = dr["MoneyUnit"];
+                        drNew["Store"] = dr["Store"];
+                        drNew["Position"] = dr["Position"];
+                        drNew["Department"] = dr["Department"];
+                        drNew["Email"] = dr["Email"];
+                        drNew["Detail"] = dr["Detail"];
+                        drNew["RestAmount"] = dr["RestAmount"];
+                        drNew["IsAdmin"] = 0;
+                        drNew["IsDelete"] = 0;
+                        drNew["TotalAmount"] = 0;
+                        drNew["UsedAmount"] = 0;
+                        drNew["IsAble"] = 0;
+                        dtSQl.Rows.Add(drNew);                      
+                    }
+                }
+                ah.Close();
+                QuickImportUsers(dtSQl);
             }
             catch (Exception ex)
             {
