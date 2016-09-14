@@ -299,7 +299,7 @@ namespace BHair.Base
             cbMoneyUnit.Items.Add("台币");
             cbMoneyUnit.SelectedIndex = 0;
 
-            AllUsers = user.SelectAllUsers("");
+            AllUsers = user.SelectAllUsers(" order by UserName ");
             foreach(DataRow dr in AllUsers.Rows)
             {
                 cbManagerID.DataSource = AllUsers;
