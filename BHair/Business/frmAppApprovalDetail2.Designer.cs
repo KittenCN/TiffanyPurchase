@@ -69,6 +69,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.Confirmpanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnPrintPDF = new System.Windows.Forms.Button();
             this.BtnExit = new System.Windows.Forms.Button();
             this.ApprovalPanel = new System.Windows.Forms.Panel();
             this.BtnApprovalOK = new System.Windows.Forms.Button();
@@ -92,7 +93,6 @@
             this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsSuccess = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsDelete = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnPrintPDF = new System.Windows.Forms.Button();
             this.groupBox20.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -184,6 +184,7 @@
             // 
             // dtApprovalTime2
             // 
+            this.dtApprovalTime2.Enabled = false;
             this.dtApprovalTime2.Location = new System.Drawing.Point(127, 112);
             this.dtApprovalTime2.Name = "dtApprovalTime2";
             this.dtApprovalTime2.Size = new System.Drawing.Size(64, 21);
@@ -508,6 +509,17 @@
             this.panel4.Size = new System.Drawing.Size(243, 40);
             this.panel4.TabIndex = 3;
             // 
+            // btnPrintPDF
+            // 
+            this.btnPrintPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrintPDF.Location = new System.Drawing.Point(72, 9);
+            this.btnPrintPDF.Name = "btnPrintPDF";
+            this.btnPrintPDF.Size = new System.Drawing.Size(75, 23);
+            this.btnPrintPDF.TabIndex = 1;
+            this.btnPrintPDF.Text = "打印";
+            this.btnPrintPDF.UseVisualStyleBackColor = true;
+            this.btnPrintPDF.Click += new System.EventHandler(this.btnPrintPDF_Click);
+            // 
             // BtnExit
             // 
             this.BtnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -716,17 +728,6 @@
             this.IsDelete.Name = "IsDelete";
             this.IsDelete.ReadOnly = true;
             this.IsDelete.Visible = false;
-            // 
-            // btnPrintPDF
-            // 
-            this.btnPrintPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrintPDF.Location = new System.Drawing.Point(72, 9);
-            this.btnPrintPDF.Name = "btnPrintPDF";
-            this.btnPrintPDF.Size = new System.Drawing.Size(75, 23);
-            this.btnPrintPDF.TabIndex = 1;
-            this.btnPrintPDF.Text = "打印";
-            this.btnPrintPDF.UseVisualStyleBackColor = true;
-            this.btnPrintPDF.Click += new System.EventHandler(this.btnPrintPDF_Click);
             // 
             // frmAppApprovalDetail2
             // 

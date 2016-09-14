@@ -398,7 +398,7 @@ namespace BHair.Business.Table
         public DataTable SelectHistoryApplicationByApproval3(string sql)
         {
             AccessHelper ah = new AccessHelper();
-            string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>0  {0} order by [ApplicantsDate] desc", sql);
+            string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>=4  {0} order by [ApplicantsDate] desc", sql);
             //string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>0  {0} order by [ApplicantsDate] desc", sql);
             DataTable Result = ah.SelectToDataTable(sqlString);
             ah.Close();
