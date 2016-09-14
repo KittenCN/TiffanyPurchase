@@ -133,11 +133,12 @@ namespace BHair.Base
             if (this.dgvMember.CurrentRow != null)
             {
                 string CurrentUID = dgvMember.CurrentRow.Cells["UID"].Value.ToString();
+                string CurrentID = dgvMember.CurrentRow.Cells["ID"].Value.ToString();
                 if (CurrentUID != "Administrator")
                 {
                     try
                     {
-                        user.DeleteUser(CurrentUID);
+                        user.DeleteUser(CurrentID);
                         MessageBox.Show("已删除该用户", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadMemberList();
                     }

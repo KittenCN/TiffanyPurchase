@@ -329,13 +329,13 @@ namespace BHair.Business.BaseData
         /// </summary>
         /// <param name="UID"></param>
         /// <returns></returns>
-        public int DeleteUser(string UID)
+        public int DeleteUser(string ID)
         {
             int rows = 0;
             try
             {
                 SqlQueue sq = new SqlQueue();
-                string sql = string.Format("Update Users Set IsDelete =1 Where UID='{0}'", UID);
+                string sql = string.Format("Update Users Set IsDelete =1 Where ID={0}", ID);
                 sq.InsertQuery(sql, "", "", 0, 0);
                 sq.Close();
                 return 1;
@@ -345,7 +345,6 @@ namespace BHair.Business.BaseData
                 //throw ex;
                 return 0;
             }
-            return rows;
         }
 
 

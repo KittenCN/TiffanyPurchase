@@ -346,7 +346,6 @@
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "删除用户(&D)";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Visible = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // button1
