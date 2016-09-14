@@ -45,7 +45,6 @@
             this.grpNotNull = new System.Windows.Forms.GroupBox();
             this.cbStore = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.cbManagerID = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtRestAmount = new System.Windows.Forms.NumericUpDown();
@@ -70,6 +69,7 @@
             this.cbIsAdmin = new System.Windows.Forms.CheckBox();
             this.cbIsAble = new System.Windows.Forms.CheckBox();
             this.cbAbleMode = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabMember.SuspendLayout();
             this.tabDetail.SuspendLayout();
             this.grpNotNull.SuspendLayout();
@@ -80,7 +80,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(410, 352);
+            this.btnCancel.Location = new System.Drawing.Point(410, 381);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 7;
@@ -90,7 +90,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(318, 352);
+            this.btnSave.Location = new System.Drawing.Point(318, 381);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 6;
@@ -101,7 +101,7 @@
             // tabMember
             // 
             this.tabMember.Controls.Add(this.tabDetail);
-            this.tabMember.Location = new System.Drawing.Point(12, 171);
+            this.tabMember.Location = new System.Drawing.Point(12, 200);
             this.tabMember.Name = "tabMember";
             this.tabMember.SelectedIndex = 0;
             this.tabMember.Size = new System.Drawing.Size(477, 175);
@@ -219,7 +219,6 @@
             // 
             this.grpNotNull.Controls.Add(this.cbStore);
             this.grpNotNull.Controls.Add(this.label8);
-            this.grpNotNull.Controls.Add(this.button1);
             this.grpNotNull.Controls.Add(this.cbManagerID);
             this.grpNotNull.Controls.Add(this.label7);
             this.grpNotNull.Controls.Add(this.txtRestAmount);
@@ -239,7 +238,7 @@
             this.grpNotNull.Controls.Add(this.lblCard);
             this.grpNotNull.Location = new System.Drawing.Point(12, 12);
             this.grpNotNull.Name = "grpNotNull";
-            this.grpNotNull.Size = new System.Drawing.Size(477, 153);
+            this.grpNotNull.Size = new System.Drawing.Size(477, 182);
             this.grpNotNull.TabIndex = 4;
             this.grpNotNull.TabStop = false;
             this.grpNotNull.Text = "用户信息(必填)";
@@ -249,7 +248,7 @@
             this.cbStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStore.Enabled = false;
             this.cbStore.FormattingEnabled = true;
-            this.cbStore.Location = new System.Drawing.Point(227, 90);
+            this.cbStore.Location = new System.Drawing.Point(71, 119);
             this.cbStore.Name = "cbStore";
             this.cbStore.Size = new System.Drawing.Size(80, 20);
             this.cbStore.TabIndex = 31;
@@ -258,22 +257,12 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(157, 93);
+            this.label8.Location = new System.Drawing.Point(6, 122);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 30;
             this.label8.Text = "所属店面：";
             this.label8.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(384, 90);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "重置密码";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cbManagerID
             // 
@@ -282,7 +271,7 @@
             this.cbManagerID.FormattingEnabled = true;
             this.cbManagerID.Location = new System.Drawing.Point(71, 90);
             this.cbManagerID.Name = "cbManagerID";
-            this.cbManagerID.Size = new System.Drawing.Size(80, 20);
+            this.cbManagerID.Size = new System.Drawing.Size(151, 20);
             this.cbManagerID.TabIndex = 29;
             this.cbManagerID.Visible = false;
             this.cbManagerID.SelectedIndexChanged += new System.EventHandler(this.cbManagerID_SelectedIndexChanged);
@@ -306,7 +295,7 @@
             0,
             0,
             131072});
-            this.txtRestAmount.Location = new System.Drawing.Point(384, 119);
+            this.txtRestAmount.Location = new System.Drawing.Point(384, 150);
             this.txtRestAmount.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -325,7 +314,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(316, 123);
+            this.label6.Location = new System.Drawing.Point(316, 154);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 26;
@@ -340,7 +329,7 @@
             0,
             0,
             131072});
-            this.txtTotalAmount.Location = new System.Drawing.Point(71, 121);
+            this.txtTotalAmount.Location = new System.Drawing.Point(71, 152);
             this.txtTotalAmount.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -354,7 +343,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(156, 123);
+            this.label5.Location = new System.Drawing.Point(156, 154);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 24;
@@ -365,7 +354,7 @@
             this.cbMoneyUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMoneyUnit.Enabled = false;
             this.cbMoneyUnit.FormattingEnabled = true;
-            this.cbMoneyUnit.Location = new System.Drawing.Point(227, 120);
+            this.cbMoneyUnit.Location = new System.Drawing.Point(227, 151);
             this.cbMoneyUnit.Name = "cbMoneyUnit";
             this.cbMoneyUnit.Size = new System.Drawing.Size(80, 20);
             this.cbMoneyUnit.TabIndex = 23;
@@ -373,7 +362,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 123);
+            this.label4.Location = new System.Drawing.Point(6, 154);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 22;
@@ -392,11 +381,12 @@
             // 
             this.groupBox1.Controls.Add(this.lblPassword);
             this.groupBox1.Controls.Add(this.txtPassword);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.lblAffirm);
             this.groupBox1.Controls.Add(this.txtAffirm);
             this.groupBox1.Location = new System.Drawing.Point(313, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(158, 72);
+            this.groupBox1.Size = new System.Drawing.Size(158, 95);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "修改密码";
@@ -505,7 +495,7 @@
             // cbIsAdmin
             // 
             this.cbIsAdmin.AutoSize = true;
-            this.cbIsAdmin.Location = new System.Drawing.Point(20, 353);
+            this.cbIsAdmin.Location = new System.Drawing.Point(20, 382);
             this.cbIsAdmin.Name = "cbIsAdmin";
             this.cbIsAdmin.Size = new System.Drawing.Size(120, 16);
             this.cbIsAdmin.TabIndex = 8;
@@ -516,7 +506,7 @@
             // cbIsAble
             // 
             this.cbIsAble.AutoSize = true;
-            this.cbIsAble.Location = new System.Drawing.Point(159, 353);
+            this.cbIsAble.Location = new System.Drawing.Point(159, 382);
             this.cbIsAble.Name = "cbIsAble";
             this.cbIsAble.Size = new System.Drawing.Size(108, 16);
             this.cbIsAble.TabIndex = 9;
@@ -528,17 +518,27 @@
             // cbAbleMode
             // 
             this.cbAbleMode.FormattingEnabled = true;
-            this.cbAbleMode.Location = new System.Drawing.Point(264, 353);
+            this.cbAbleMode.Location = new System.Drawing.Point(264, 382);
             this.cbAbleMode.Name = "cbAbleMode";
             this.cbAbleMode.Size = new System.Drawing.Size(48, 20);
             this.cbAbleMode.TabIndex = 10;
             this.cbAbleMode.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(69, 66);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(83, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "重置密码";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(495, 384);
+            this.ClientSize = new System.Drawing.Size(495, 417);
             this.Controls.Add(this.cbAbleMode);
             this.Controls.Add(this.cbIsAble);
             this.Controls.Add(this.cbIsAdmin);
@@ -607,9 +607,9 @@
         private System.Windows.Forms.ComboBox cbManagerID;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox cbIsAble;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbStore;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbAbleMode;
+        private System.Windows.Forms.Button button1;
     }
 }

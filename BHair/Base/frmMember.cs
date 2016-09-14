@@ -307,7 +307,7 @@ namespace BHair.Base
                 cbManagerID.ValueMember = "UID";
             }
 
-            AllStore = store.SelectAllStoreInfo();
+            AllStore = store.SelectAllStoreInfo(" order by StoreName ");
             foreach(DataRow dr in AllStore.Rows)
             {
                 cbStore.DataSource = AllStore;

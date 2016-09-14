@@ -126,7 +126,14 @@ namespace BHair.Business.BaseData
             ah.Close();
             return Result;
         }
-
+        public DataTable SelectAllStoreInfo(string strSQL)
+        {
+            AccessHelper ah = new AccessHelper();
+            string sqlString = string.Format("select * from StoreInfo where IsDelete = 0 {0} ",strSQL);
+            DataTable Result = ah.SelectToDataTable(sqlString);
+            ah.Close();
+            return Result;
+        }
 
         /// <summary>
         /// 删除
