@@ -58,7 +58,9 @@ namespace BHair.Business
             txtStaffName.Text = applicationInfo.StaffName;
             txtSalesDate.Text = applicationInfo.SalesDate;
 
-
+            if (txtApproval.Text == "") txtApprovalTime.Text = "";
+            //if (txtApproval2.Text == "") txtApprovalTime2.Text = "";
+            if (txtStaffName.Text == "") txtSalesDate.Text = "";
 
         }
 
