@@ -27,7 +27,7 @@ namespace BHair.Business
             this.Text = string.Format("申请单详细信息:交易号：{0}", applicationInfo.TransNo);
             GetApplicationDetail();
             InitButton(CtrlType);
-            if (ctrlType == "未审核") txtApproval.Text = Login.LoginUser.UserName;
+            if (ctrlType == "未审核") txtApproval.Text = "";
             groupBox3.Text = string.Format("如果产品作为赠礼且零售价超过{0}人民币，请填写以下信息", EmailControl.config.CNY);
         }
 
