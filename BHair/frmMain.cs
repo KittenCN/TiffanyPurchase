@@ -11,7 +11,6 @@ using BHair.Business;
 using BHair.SystemSet;
 using BHair.Business.Table;
 using System.Threading;
-using System.Data;
 
 namespace BHair
 {
@@ -448,6 +447,7 @@ namespace BHair
             toolStripButton5.Visible = false;
             toolStripButton6.Visible = false;
             tsbtnCW.Visible = false;
+            toolStripButton7.Visible = false;
 
             if (Login.LoginUser.UID == null || Login.LoginUser.UID == "")
             {
@@ -475,6 +475,7 @@ namespace BHair
                 toolStripButton13.Visible = false;
                 toolStripButton5.Visible = false;
                 toolStripButton6.Visible = false;
+                toolStripButton7.Visible = false;
             }
             else if (Login.LoginUser.Character == 1)
             {
@@ -499,6 +500,7 @@ namespace BHair
                     toolStripButton8.Visible = true;
                     toolStripButton2.Visible = true;
                     menuMain_System_Setup.Visible = true;
+                    toolStripButton7.Visible = true;
                 }
                 else
                 {
@@ -760,6 +762,7 @@ namespace BHair
                 toolStripButton13.Visible = true;
                 toolStripButton5.Visible = true;
                 toolStripButton6.Visible = true;
+                toolStripButton7.Visible = true;
             }
         }
         #endregion
@@ -862,6 +865,12 @@ namespace BHair
         private void menuMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void toolStripButton7_Click_1(object sender, EventArgs e)
+        {
+            frmAdvDataControl fadc = new frmAdvDataControl();
+            fadc.Show();
         }
     }
 }

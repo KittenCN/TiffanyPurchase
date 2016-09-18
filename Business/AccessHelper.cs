@@ -163,8 +163,10 @@ namespace BHair.Business
                 Close();
                 return num;
             }
-            catch
-            { throw; }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
 
     }

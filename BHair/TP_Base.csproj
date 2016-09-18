@@ -131,6 +131,12 @@
     <Compile Include="Business\frmAddApplicationEn.Designer.cs">
       <DependentUpon>frmAddApplicationEn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Base\frmAdvDataControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\frmAdvDataControl.Designer.cs">
+      <DependentUpon>frmAdvDataControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Business\frmAlterApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -293,6 +299,9 @@
     <EmbeddedResource Include="Business\frmAddApplicationEn.resx">
       <DependentUpon>frmAddApplicationEn.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\frmAdvDataControl.resx">
+      <DependentUpon>frmAdvDataControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Business\frmAlterApplication.resx">
       <DependentUpon>frmAlterApplication.cs</DependentUpon>

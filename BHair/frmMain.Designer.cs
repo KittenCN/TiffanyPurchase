@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(frmMain_FormClosing);
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.dPanelMain = new WinFormsUI.Docking.DockPanel();
@@ -74,6 +73,7 @@
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.AccessQueueTimer = new System.Windows.Forms.Timer(this.components);
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.menuMain.SuspendLayout();
             this.ssrMain.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -321,7 +321,8 @@
             this.toolStripButton8,
             this.toolStripButton2,
             this.toolStripButton6,
-            this.toolStripButton9});
+            this.toolStripButton9,
+            this.toolStripButton7});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(775, 72);
@@ -485,6 +486,18 @@
             this.AlertTimer.Interval = 43200000;
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
             // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
+            this.toolStripButton7.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(72, 69);
+            this.toolStripButton7.Text = "数据库处理";
+            this.toolStripButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton7.Visible = false;
+            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click_1);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -502,6 +515,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "员工内购系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Resize += new System.EventHandler(this.frmMain_Resize);
             this.menuMain.ResumeLayout(false);
@@ -560,5 +574,6 @@
         private System.Windows.Forms.Timer AlertTimer;
         private System.Windows.Forms.ToolStripButton tsbtnCW;
         private System.Windows.Forms.ToolStripMenuItem 财务部审核ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton7;
     }
 }

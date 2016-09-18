@@ -28,7 +28,7 @@ namespace BHair.Business
             Random ro = new Random(10);
             long tick = DateTime.Now.Ticks;
             Random ran = new Random((int)(tick & 0xffffffffL) | (int)(tick >> 32));
-            transNo = "NG" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ran.Next().ToString();
+            transNo = "NG" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ran.Next().ToString().Substring(0, 4);
             InitializeComponent();
             GetDataTable();
             LoadComBox();

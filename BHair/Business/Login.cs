@@ -224,7 +224,7 @@ namespace BHair.Business
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("登陆失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("登陆失败:" + ex.ToString() , "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
 

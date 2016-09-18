@@ -96,3 +96,4 @@ E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\TiffanyP
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\TiffanyPurchase.pdb
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\obj\Debug\TiffanyPurchase.Properties.Resources.resources
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\obj\Debug\TiffanyPurchase.pdb
+E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\obj\Debug\BHair.Base.frmAdvDataControl.resources
