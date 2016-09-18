@@ -21,10 +21,14 @@ namespace BHair.Business
         DataTable AddApplicationDT;
         ApplicationInfo applicationInfo = new ApplicationInfo();
         ApplicationDetail applicationDetail = new ApplicationDetail();
-        public static string transNo = "NG" + DateTime.Now.ToString("yyyyMMddHHmmssffff");
+        public static string transNo = "";
         /// <summary>内购申请单</summary>
         public frmAddApplication()
         {
+            Random ro = new Random(10);
+            long tick = DateTime.Now.Ticks;
+            Random ran = new Random((int)(tick & 0xffffffffL) | (int)(tick >> 32));
+            transNo = "NG" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ran.Next().ToString();
             InitializeComponent();
             GetDataTable();
             LoadComBox();
