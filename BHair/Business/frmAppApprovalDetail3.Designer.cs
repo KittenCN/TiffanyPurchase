@@ -35,6 +35,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtApprovalTime2 = new System.Windows.Forms.TextBox();
+            this.dtApprovalTime3 = new System.Windows.Forms.DateTimePicker();
+            this.txtApproval3 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtApprovalTime = new System.Windows.Forms.TextBox();
             this.txtApproval2 = new System.Windows.Forms.TextBox();
             this.txtApproval = new System.Windows.Forms.TextBox();
@@ -92,11 +97,6 @@
             this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsSuccess = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsDelete = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtApprovalTime3 = new System.Windows.Forms.DateTimePicker();
-            this.txtApproval3 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtApprovalTime2 = new System.Windows.Forms.TextBox();
             this.groupBox20.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -189,6 +189,48 @@
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "审核信息";
+            // 
+            // txtApprovalTime2
+            // 
+            this.txtApprovalTime2.Location = new System.Drawing.Point(127, 108);
+            this.txtApprovalTime2.Name = "txtApprovalTime2";
+            this.txtApprovalTime2.ReadOnly = true;
+            this.txtApprovalTime2.Size = new System.Drawing.Size(64, 21);
+            this.txtApprovalTime2.TabIndex = 40;
+            // 
+            // dtApprovalTime3
+            // 
+            this.dtApprovalTime3.Enabled = false;
+            this.dtApprovalTime3.Location = new System.Drawing.Point(127, 178);
+            this.dtApprovalTime3.Name = "dtApprovalTime3";
+            this.dtApprovalTime3.Size = new System.Drawing.Size(64, 21);
+            this.dtApprovalTime3.TabIndex = 39;
+            // 
+            // txtApproval3
+            // 
+            this.txtApproval3.Location = new System.Drawing.Point(127, 147);
+            this.txtApproval3.Name = "txtApproval3";
+            this.txtApproval3.ReadOnly = true;
+            this.txtApproval3.Size = new System.Drawing.Size(64, 21);
+            this.txtApproval3.TabIndex = 38;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(17, 149);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(101, 12);
+            this.label11.TabIndex = 36;
+            this.label11.Text = "批准人（财务部）";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(17, 178);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(113, 12);
+            this.label12.TabIndex = 37;
+            this.label12.Text = "批准时间（财务部）";
             // 
             // txtApprovalTime
             // 
@@ -728,47 +770,6 @@
             this.IsDelete.Name = "IsDelete";
             this.IsDelete.ReadOnly = true;
             this.IsDelete.Visible = false;
-            // 
-            // dtApprovalTime3
-            // 
-            this.dtApprovalTime3.Location = new System.Drawing.Point(127, 178);
-            this.dtApprovalTime3.Name = "dtApprovalTime3";
-            this.dtApprovalTime3.Size = new System.Drawing.Size(64, 21);
-            this.dtApprovalTime3.TabIndex = 39;
-            // 
-            // txtApproval3
-            // 
-            this.txtApproval3.Location = new System.Drawing.Point(127, 147);
-            this.txtApproval3.Name = "txtApproval3";
-            this.txtApproval3.ReadOnly = true;
-            this.txtApproval3.Size = new System.Drawing.Size(64, 21);
-            this.txtApproval3.TabIndex = 38;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(17, 149);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(101, 12);
-            this.label11.TabIndex = 36;
-            this.label11.Text = "批准人（财务部）";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(17, 178);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(113, 12);
-            this.label12.TabIndex = 37;
-            this.label12.Text = "批准时间（财务部）";
-            // 
-            // txtApprovalTime2
-            // 
-            this.txtApprovalTime2.Location = new System.Drawing.Point(127, 108);
-            this.txtApprovalTime2.Name = "txtApprovalTime2";
-            this.txtApprovalTime2.ReadOnly = true;
-            this.txtApprovalTime2.Size = new System.Drawing.Size(64, 21);
-            this.txtApprovalTime2.TabIndex = 40;
             // 
             // frmAppApprovalDetail3
             // 

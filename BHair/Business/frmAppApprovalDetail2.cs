@@ -21,11 +21,12 @@ namespace BHair.Business
         ApplicationInfo applicationInfo = new ApplicationInfo();
         ApplicationDetail applicationDetail = new ApplicationDetail();
         public string CtrlID = "";
-        string ctrlType = "未审核";
+        string ctrlType = "";
         /// <summary>经理审批申请单详情</summary>
         public frmAppApprovalDetail2(ApplicationInfo ParentAppInfo, string CtrlType)
         {
             InitializeComponent();
+            ctrlType = CtrlType;
             applicationInfo = ParentAppInfo;
             this.Text = string.Format("申请单详细信息:交易号：{0}", applicationInfo.TransNo);
             GetApplicationDetail();
@@ -53,7 +54,14 @@ namespace BHair.Business
             txtLocation.Text = applicationInfo.Location;
             txtPurchaseLocation.Text = applicationInfo.PurchaseLocation;
             txtApproval.Text = applicationInfo.ApprovalName;
-            txtApproval2.Text = applicationInfo.ApprovalName2;
+            if (ctrlType == "未审核")
+            {
+                txtApproval2.Text = "";
+            }
+            else
+            {
+                txtApproval2.Text = applicationInfo.ApprovalName2;
+            }
             txtApprovalTime.Text = applicationInfo.ApprovalDate;
             txtStaffName.Text = applicationInfo.StaffName;
             txtSalesDate.Text = applicationInfo.SalesDate;

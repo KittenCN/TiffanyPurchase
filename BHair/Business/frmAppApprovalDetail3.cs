@@ -26,11 +26,12 @@ namespace BHair.Business
         public frmAppApprovalDetail3(ApplicationInfo ParentAppInfo, string CtrlType)
         {
             InitializeComponent();
+            ctrlType = CtrlType;
             applicationInfo = ParentAppInfo;
             this.Text = string.Format("申请单详细信息:交易号：{0}", applicationInfo.TransNo);
             GetApplicationDetail();
             InitButton(CtrlType);
-            if (ctrlType == "未审核") txtApproval2.Text = "";
+            if (ctrlType == "未审核") txtApproval3.Text = "";
             groupBox3.Text = string.Format("如果产品作为赠礼且零售价超过{0}人民币，请填写以下信息", EmailControl.config.CNY);
         }
 
@@ -54,7 +55,7 @@ namespace BHair.Business
             txtPurchaseLocation.Text = applicationInfo.PurchaseLocation;
             txtApproval.Text = applicationInfo.ApprovalName;
             txtApproval2.Text = applicationInfo.ApprovalName2;
-            txtApproval3.Text = applicationInfo.ApprovalName3;
+            if (ctrlType == "未审核") txtApproval3.Text = ""; else txtApproval3.Text = applicationInfo.ApprovalName3;
             txtApprovalTime.Text = applicationInfo.ApprovalDate;
             txtApprovalTime2.Text = applicationInfo.ApprovalDate2;
             txtStaffName.Text = applicationInfo.StaffName;
