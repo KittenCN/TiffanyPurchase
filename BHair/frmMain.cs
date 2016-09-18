@@ -18,10 +18,10 @@ namespace BHair
 
     public partial class frmMain : Form
     {
-        ApplicationInfo applicationInfo = new ApplicationInfo();   
+        ApplicationInfo applicationInfo = new ApplicationInfo();
         public frmMain()
         {
-            InitializeComponent();
+            InitializeComponent();            
             this.Text = "员工内购系统 " + " V " + Application.ProductVersion + " 最后编译时间 " + System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location);
 
             this.tssrMain_Timer.Text = DateTime.Now.ToString();
@@ -38,7 +38,27 @@ namespace BHair
             {
                 this.InitMenu();
             }
-            UpdateDataBase();
+
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            int intLoginNum;
+            AccessHelper ah = new AccessHelper();
+            string strSQL = "select top 1 * from SetupConfig";
+            DataTable dtSQL = ah.SelectToDataTable(strSQL);
+            if (dtSQL.Rows[0]["LoginNum"].ToString() != "")
+            {
+                intLoginNum = int.Parse(dtSQL.Rows[0]["LoginNum"].ToString());
+            }
+            else
+            {
+                intLoginNum = 0;
+            }
+            intLoginNum--;
+            strSQL = "update SetupConfig set LoginNum=" + intLoginNum;
+            ah.ExecuteNonQuery(strSQL);
+            ah.Close();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -148,8 +168,8 @@ namespace BHair
         {
             //if (Login.LoginUser.MoneyUnit == 1)
             //{
-                frmAddApplication objfrmAddApp = new frmAddApplication();
-                objfrmAddApp.Show();
+            frmAddApplication objfrmAddApp = new frmAddApplication();
+            objfrmAddApp.Show();
             //}
             //else
             //{
@@ -465,7 +485,7 @@ namespace BHair
                 menuMain_Manage_History.Visible = true;
                 menuMain_Table.Visible = true;
                 menuMain_System_Pwd.Visible = true;
-                
+
                 if (Login.LoginUser.IsAdmin == 1)
                 {
                     menuMain_System_Member.Visible = true;
@@ -685,7 +705,7 @@ namespace BHair
                 toolStripButton6.Visible = false;
             }
             ExcelHelper eh = new ExcelHelper();
-            if(eh.boolIsManager(Login.LoginUser.UID))
+            if (eh.boolIsManager(Login.LoginUser.UID))
             {
                 menuMain_Flow_add.Visible = true;
                 menuMain_Manage_StoreApp.Visible = true;
@@ -758,9 +778,9 @@ namespace BHair
                 sq.ExecuteSqlQuery();
                 sq.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                
+
             }
 
         }
@@ -777,7 +797,7 @@ namespace BHair
             catch
             {
                 MessageBox.Show("同步失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                connSuccess=false;
+                connSuccess = false;
             }
             if (connSuccess)
             {
@@ -839,69 +859,9 @@ namespace BHair
             财务部审核ToolStripMenuItem_Click(null, null);
         }
 
-        public void UpdateDataBase()
+        private void menuMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            //增加item表新price字段
-            try
-            {
-                AccessHelper ah = new AccessHelper();
-                string strSQL = "select top 1 * from Items";
-                DataTable dtSQL = ah.SelectToDataTable(strSQL);
-                if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["Price4"].ToString() == null)
-                {
-                    try
-                    {
-                        string strInSQL = "alter table Items add COLUMN Price4 text";
-                        ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price5 float";
-                        ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price6 float";
-                        ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price7 float";
-                        ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price8 float";
-                        ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price9 float";
-                        ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price10 float";
-                        ah.ExecuteNonQuery(strInSQL);
-                    }
-                    catch (Exception ex1)
-                    {
-                        ah.Close();
-                    }
-                }
-                ah.Close();
-            }
-            catch(Exception ex)
-            {
-                if(ex.HResult.ToString() ==  "-2147024809")
-                {
-                    AccessHelper ah = new AccessHelper();
-                    try
-                    {                       
-                        string strInSQL = "alter table Items add COLUMN Price4 float";
-                        ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price5 float";
-                        ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price6 float";
-                        ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price7 float";
-                        ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price8 float";
-                        ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price9 float";
-                        ah.ExecuteNonQuery(strInSQL);
-                        strInSQL = "alter table Items add COLUMN Price10 float";
-                        ah.ExecuteNonQuery(strInSQL);                     
-                    }
-                    catch(Exception ex1)
-                    {
-                        ah.Close();
-                    }
-                    ah.Close();
-                }
-            }
+
         }
     }
 }

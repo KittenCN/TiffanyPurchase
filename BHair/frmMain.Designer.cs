@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(frmMain_FormClosing);
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.dPanelMain = new WinFormsUI.Docking.DockPanel();
@@ -39,6 +40,7 @@
             this.menuMain_Manage_Approval2App = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain_Manage_ApprovalApp = new System.Windows.Forms.ToolStripMenuItem();
             this.购买确认ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.财务部审核ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain_Table = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain_Manage_History = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain_System = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,11 +59,12 @@
             this.tssrMain_Timer = new System.Windows.Forms.ToolStripStatusLabel();
             this.tmrMain = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnCW = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -71,8 +74,6 @@
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.AccessQueueTimer = new System.Windows.Forms.Timer(this.components);
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
-            this.tsbtnCW = new System.Windows.Forms.ToolStripButton();
-            this.财务部审核ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.ssrMain.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -100,6 +101,7 @@
             this.menuMain.Size = new System.Drawing.Size(775, 25);
             this.menuMain.TabIndex = 3;
             this.menuMain.Text = "menuStrip1";
+            this.menuMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuMain_ItemClicked);
             // 
             // 登陆ToolStripMenuItem
             // 
@@ -159,6 +161,14 @@
             this.购买确认ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.购买确认ToolStripMenuItem.Text = "店面购买确认(&G)";
             this.购买确认ToolStripMenuItem.Click += new System.EventHandler(this.购买确认ToolStripMenuItem_Click);
+            // 
+            // 财务部审核ToolStripMenuItem
+            // 
+            this.财务部审核ToolStripMenuItem.Name = "财务部审核ToolStripMenuItem";
+            this.财务部审核ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.财务部审核ToolStripMenuItem.Text = "财务部审核";
+            this.财务部审核ToolStripMenuItem.Visible = false;
+            this.财务部审核ToolStripMenuItem.Click += new System.EventHandler(this.财务部审核ToolStripMenuItem_Click);
             // 
             // menuMain_Table
             // 
@@ -318,6 +328,11 @@
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 72);
+            // 
             // toolStripButton4
             // 
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
@@ -329,11 +344,6 @@
             this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton4.Visible = false;
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 72);
             // 
             // toolStripButton12
             // 
@@ -373,6 +383,19 @@
             this.toolStripButton5.ToolTipText = "商品部审核";
             this.toolStripButton5.Visible = false;
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click_1);
+            // 
+            // tsbtnCW
+            // 
+            this.tsbtnCW.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnCW.Image")));
+            this.tsbtnCW.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbtnCW.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnCW.Name = "tsbtnCW";
+            this.tsbtnCW.Size = new System.Drawing.Size(72, 69);
+            this.tsbtnCW.Text = "财务部审核";
+            this.tsbtnCW.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnCW.ToolTipText = "财务部审核";
+            this.tsbtnCW.Visible = false;
+            this.tsbtnCW.Click += new System.EventHandler(this.tsbtnCW_Click);
             // 
             // toolStripButton13
             // 
@@ -461,27 +484,6 @@
             // 
             this.AlertTimer.Interval = 43200000;
             this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
-            // 
-            // tsbtnCW
-            // 
-            this.tsbtnCW.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnCW.Image")));
-            this.tsbtnCW.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbtnCW.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnCW.Name = "tsbtnCW";
-            this.tsbtnCW.Size = new System.Drawing.Size(72, 69);
-            this.tsbtnCW.Text = "财务部审核";
-            this.tsbtnCW.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbtnCW.ToolTipText = "财务部审核";
-            this.tsbtnCW.Visible = false;
-            this.tsbtnCW.Click += new System.EventHandler(this.tsbtnCW_Click);
-            // 
-            // 财务部审核ToolStripMenuItem
-            // 
-            this.财务部审核ToolStripMenuItem.Name = "财务部审核ToolStripMenuItem";
-            this.财务部审核ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.财务部审核ToolStripMenuItem.Text = "财务部审核";
-            this.财务部审核ToolStripMenuItem.Visible = false;
-            this.财务部审核ToolStripMenuItem.Click += new System.EventHandler(this.财务部审核ToolStripMenuItem_Click);
             // 
             // frmMain
             // 
