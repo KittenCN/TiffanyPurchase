@@ -345,7 +345,7 @@ namespace BHair.Business
                 if (items.SelectItemByItemID(row["ItemID"].ToString()).Rows[0]["IsSpecial"].ToString() == "1") { }
                 else
                 {
-                    totalPrice += double.Parse(row["Price"].ToString()) * double.Parse(row["Count"].ToString());
+                    totalPrice += double.Parse(row["Price"].ToString()) * double.Parse(row["Count"].ToString()) * double.Parse(row["ApprovalDiscount"].ToString()) / 100.00;
                 }
             }
             if (AddApplicationDT.Rows.Count == 0)
@@ -355,6 +355,10 @@ namespace BHair.Business
             else if (Login.LoginUser.RestAmount - totalPrice < 0)
             {
                 MessageBox.Show("当前余额不足");
+            }
+            else if (applicationInfo.SelectApplicationByTransNo(txtTransNo.Text).Rows.Count > 0)
+            {
+                MessageBox.Show("已存在该交易号");
             }
             else
             {                
