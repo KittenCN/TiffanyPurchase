@@ -486,6 +486,7 @@ namespace BHair
                 menuMain_Manage_History.Visible = true;
                 menuMain_Table.Visible = true;
                 menuMain_System_Pwd.Visible = true;
+                menuMain_System_Item.Visible = true;
 
                 if (Login.LoginUser.IsAdmin == 1)
                 {
@@ -506,11 +507,11 @@ namespace BHair
                 {
                     menuMain_System_Member.Visible = false;
                     menuMain_Manage_Store.Visible = false;
-                    menuMain_System_Item.Visible = false;
+                    //menuMain_System_Item.Visible = false;
                     menuMain_System_Log.Visible = false;
                     购买确认ToolStripMenuItem.Visible = false;
                     toolStripButton13.Visible = false;
-                    toolStripButton8.Visible = false;
+                    //toolStripButton8.Visible = false;
                     toolStripButton2.Visible = false;
                     menuMain_System_Setup.Visible = false;
                 }
@@ -521,6 +522,7 @@ namespace BHair
                 toolStripButton3.Visible = true;
                 toolStripButton5.Visible = true;
                 toolStripButton6.Visible = true;
+                toolStripButton8.Visible = true;
             }
             else if (Login.LoginUser.Character == 2)
             {
