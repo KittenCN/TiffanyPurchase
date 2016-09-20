@@ -82,7 +82,7 @@ namespace BHair.Business.BaseData
                     insertSql.Append("Insert into [Items]");
                     insertSql.Append(" ([ItemID],[Price],[Price2],[Price3],[Price4],[Price5],[Price6],[Price7],[Price8],[Price9],[Price10],[Detail],[IsDelete],[IsSpecial],[ItemName]) ");
                     insertSql.Append("values");
-                    insertSql.AppendFormat(" ('{0}',{1},{2},{3},{8},{9},{10},{11},{12},{13},{14},'{4}',{5},{6},{7})", dr["ItemID"], dr["Price"], dr["Price2"], dr["Price3"], dr["Detail"], dr["IsDelete"], dr["IsSpecial"], dr["ItemName"], dr["Price4"], dr["Price5"], dr["Price6"], dr["Price7"], dr["Price8"], dr["Price9"], dr["Price10"]);
+                    insertSql.AppendFormat(" ('{0}',{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},'{11}',{12},{13},'{14}')", dr["ItemID"], dr["Price"], dr["Price2"], dr["Price3"], dr["Price4"], dr["Price5"], dr["Price6"], dr["Price7"], dr["Price8"], dr["Price9"], dr["Price10"], dr["Detail"], dr["IsDelete"], dr["IsSpecial"], dr["ItemName"]);
                     sq.InsertQuery(insertSql.ToString(), "", "", 0, 0); 
                 }
                 sq.Close();

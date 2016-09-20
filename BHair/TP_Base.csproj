@@ -475,6 +475,8 @@
     <Content Include="bin\Debug\员工内购数据库.accdb" />
     <Content Include="Config.xml" />
     <Content Include="Dll\BarcodeLib.dll" />
+    <Content Include="Dll\sqlite3.def" />
+    <Content Include="Dll\sqlite3.dll" />
     <Content Include="obj\Debug\BHair.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\BHair.exe" />
     <Content Include="obj\Debug\BHair.pdb" />
