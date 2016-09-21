@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace BHair.Business
 {
-    class XMLHelper
+    public class XMLHelper
     {
         public static string strGetConnectString()
         {

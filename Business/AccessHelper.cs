@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.OleDb;  
 using System.Data;
 using System.Configuration;
+using System.IO;
 
 namespace BHair.Business
 {
@@ -26,7 +27,15 @@ namespace BHair.Business
         public AccessHelper()
         {
             Conn = new OleDbConnection(ConnString);
-            Conn.Open();    
+            if (Conn.State == ConnectionState.Closed)
+            {
+                Conn.Open();
+            }
+            else if (Conn.State == ConnectionState.Open)
+            {
+                Conn.Close();
+                Conn.Open();
+            }
         }
     
         /**//// <summary>    
@@ -168,7 +177,6 @@ namespace BHair.Business
                 throw;
             }
         }
-
     }
 }
 

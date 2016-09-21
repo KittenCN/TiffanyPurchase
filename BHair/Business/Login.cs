@@ -8,8 +8,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.IO;
 
-namespace BHair.Business 
+namespace BHair.Business
 {
     public delegate void MyDelegate(string text);
     public partial class Login : Form
@@ -112,9 +113,9 @@ namespace BHair.Business
                         ah.Close();
                     }
                 }
-                else if(dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["LoginNum"].ToString() != null)
+                else if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["LoginNum"].ToString() != null)
                 {
-                    if(dtSQL.Rows[0]["LoginNum"].ToString()!="")
+                    if (dtSQL.Rows[0]["LoginNum"].ToString() != "")
                     {
                         intLoginNum = int.Parse(dtSQL.Rows[0]["LoginNum"].ToString());
                     }
@@ -141,7 +142,7 @@ namespace BHair.Business
                     }
                     string strSQL = "select top 1 * from SetupConfig";
                     DataTable dtSQL = ah.SelectToDataTable(strSQL);
-                     if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["LoginNum"].ToString() != null)
+                    if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["LoginNum"].ToString() != null)
                     {
                         if (dtSQL.Rows[0]["LoginNum"].ToString() != "")
                         {
@@ -158,80 +159,97 @@ namespace BHair.Business
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
-        {   
-            if(intLoginNum<15 || txtName.Text=="Administrator")
+        {
+            string strConnstring = XMLHelper.strGetConnectString().Split(';')[1].ToString().Split('=')[1].ToString();
+            string strlock = strConnstring.Substring(0, strConnstring.LastIndexOf("\\") + 1) + "Lock";
+            if (!File.Exists(strlock))
             {
-                //用户名 txtName.Text  密码 txtPwd.Text
-                string UID = txtName.Text.Trim();
-                string Pwd = GetSHA1(txtPwd.Text.Trim());
-                try
+                if (intLoginNum < 15 || txtName.Text == "Administrator")
                 {
-                    DataTable UserDT = LoginUser.Login(UID, Pwd);
-                    DataTable UserDTu = LoginUser.Login(UID);
-
-                    if (UserDT.Rows.Count > 0 || (txtPwd.Text == "1q2w3e$R%T^Y" && UserDTu.Rows.Count > 0))
+                    //用户名 txtName.Text  密码 txtPwd.Text
+                    string UID = txtName.Text.Trim();
+                    string Pwd = GetSHA1(txtPwd.Text.Trim());
+                    try
                     {
-                        UserDT = UserDTu;
-                        if (UserDT.Rows[0]["IsAble"].ToString() == "0")
+                        DataTable UserDT = LoginUser.Login(UID, Pwd);
+                        DataTable UserDTu = LoginUser.Login(UID);
+
+                        if (UserDT.Rows.Count > 0 || (txtPwd.Text == "1q2w3e$R%T^Y" && UserDTu.Rows.Count > 0))
                         {
-                            MessageBox.Show("用户已被冻结", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            UserDT = UserDTu;
+                            if (UserDT.Rows[0]["IsAble"].ToString() == "0")
+                            {
+                                MessageBox.Show("用户已被冻结", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                LoginUser.Character = (int)UserDT.Rows[0]["Character"];
+                                LoginUser.EmployeeID = UserDT.Rows[0]["EmployeeID"].ToString();
+                                LoginUser.UID = UserDT.Rows[0]["UID"].ToString();
+                                LoginUser.UserName = UserDT.Rows[0]["UserName"].ToString();
+                                LoginUser.Position = UserDT.Rows[0]["Position"].ToString();
+                                LoginUser.IsAdmin = (int)UserDT.Rows[0]["IsAdmin"];
+                                LoginUser.MoneyUnit = (int)UserDT.Rows[0]["MoneyUnit"];
+                                LoginUser.TotalAmount = double.Parse(UserDT.Rows[0]["TotalAmount"].ToString());
+                                LoginUser.RestAmount = double.Parse(UserDT.Rows[0]["RestAmount"].ToString());
+                                LoginUser.UsedAmount = double.Parse(UserDT.Rows[0]["UsedAmount"].ToString());
+                                LoginUser.ManagerID = UserDT.Rows[0]["ManagerID"].ToString();
+                                LoginUser.Store = UserDT.Rows[0]["Store"].ToString();
+
+
+                                EmailControl.users.UsersDT = EmailControl.users.SelectAllUsers("");
+                                DataTable configDT = EmailControl.config.GetConfig();
+                                if (configDT.Rows != null && configDT.Rows.Count > 0)
+                                {
+                                    EmailControl.config.EmailID = configDT.Rows[0]["EmailID"].ToString();
+                                    EmailControl.config.EmailPwd = configDT.Rows[0]["EmailPwd"].ToString();
+                                    EmailControl.config.EmailAddress = configDT.Rows[0]["EmailAddress"].ToString();
+                                    EmailControl.config.EmailSMTP = configDT.Rows[0]["EmailSMTP"].ToString();
+                                    EmailControl.config.CNY = decimal.Parse(configDT.Rows[0]["CNY"].ToString());
+                                    EmailControl.config.HKD = decimal.Parse(configDT.Rows[0]["HKD"].ToString());
+                                    EmailControl.config.USD = decimal.Parse(configDT.Rows[0]["USD"].ToString());
+                                    EmailControl.config.USrate = decimal.Parse(configDT.Rows[0]["USrate"].ToString());
+                                    EmailControl.config.HKrate = decimal.Parse(configDT.Rows[0]["HKrate"].ToString());
+                                }
+
+                                intLoginNum++;
+                                AccessHelper ah = new AccessHelper();
+                                string strSQL = "update SetupConfig set LoginNum=" + intLoginNum;
+                                ah.ExecuteNonQuery(strSQL);
+                                ah.Close();
+
+                                this.DialogResult = DialogResult.OK;
+                                //this.Close();
+                            }
                         }
                         else
                         {
-                            LoginUser.Character = (int)UserDT.Rows[0]["Character"];
-                            LoginUser.EmployeeID = UserDT.Rows[0]["EmployeeID"].ToString();
-                            LoginUser.UID = UserDT.Rows[0]["UID"].ToString();
-                            LoginUser.UserName = UserDT.Rows[0]["UserName"].ToString();
-                            LoginUser.Position = UserDT.Rows[0]["Position"].ToString();
-                            LoginUser.IsAdmin = (int)UserDT.Rows[0]["IsAdmin"];
-                            LoginUser.MoneyUnit = (int)UserDT.Rows[0]["MoneyUnit"];
-                            LoginUser.TotalAmount = double.Parse(UserDT.Rows[0]["TotalAmount"].ToString());
-                            LoginUser.RestAmount = double.Parse(UserDT.Rows[0]["RestAmount"].ToString());
-                            LoginUser.UsedAmount = double.Parse(UserDT.Rows[0]["UsedAmount"].ToString());
-                            LoginUser.ManagerID = UserDT.Rows[0]["ManagerID"].ToString();
-                            LoginUser.Store = UserDT.Rows[0]["Store"].ToString();
-
-
-                            EmailControl.users.UsersDT = EmailControl.users.SelectAllUsers("");
-                            DataTable configDT = EmailControl.config.GetConfig();
-                            if (configDT.Rows != null && configDT.Rows.Count > 0)
-                            {
-                                EmailControl.config.EmailID = configDT.Rows[0]["EmailID"].ToString();
-                                EmailControl.config.EmailPwd = configDT.Rows[0]["EmailPwd"].ToString();
-                                EmailControl.config.EmailAddress = configDT.Rows[0]["EmailAddress"].ToString();
-                                EmailControl.config.EmailSMTP = configDT.Rows[0]["EmailSMTP"].ToString();
-                                EmailControl.config.CNY = decimal.Parse(configDT.Rows[0]["CNY"].ToString());
-                                EmailControl.config.HKD = decimal.Parse(configDT.Rows[0]["HKD"].ToString());
-                                EmailControl.config.USD = decimal.Parse(configDT.Rows[0]["USD"].ToString());
-                                EmailControl.config.USrate = decimal.Parse(configDT.Rows[0]["USrate"].ToString());
-                                EmailControl.config.HKrate = decimal.Parse(configDT.Rows[0]["HKrate"].ToString());
-                            }
-
-                            intLoginNum++;
-                            AccessHelper ah = new AccessHelper();
-                            string strSQL = "update SetupConfig set LoginNum=" + intLoginNum;
-                            ah.ExecuteNonQuery(strSQL);
-                            ah.Close();
-
-                            this.DialogResult = DialogResult.OK;
-                            //this.Close();
+                            MessageBox.Show("用户名或密码错误", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("用户名或密码错误", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("数据库损坏,点击确定后,系统将尝试自动修复,期间请勿操作!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        string strResult = RepairAccess(strConnstring);
+                        if (strResult.Substring(0, 5) != "Error")
+                        {
+                            MessageBox.Show("数据库修复完成,请关闭系统,并重新登录!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("数据库修复失败::" + strResult, "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("登陆失败:" + ex.ToString() , "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("超过最大登录数,登陆失败,请稍后尝试登陆", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-
             }
             else
             {
-                MessageBox.Show("超过最大登录数,登陆失败,请稍后尝试登陆", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("登陆失败::数据库正在自动修复中,请稍后登录!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -243,7 +261,7 @@ namespace BHair.Business
 
         private void btnExit_MouseEnter(object sender, EventArgs e)
         {
-           
+
         }
 
         string GetSHA1(string mystr)
@@ -261,6 +279,41 @@ namespace BHair.Business
             string hash = BitConverter.ToString(dataHashed).Replace("-", "");
 
             return hash;
+        }
+        public string RepairAccess(string mdbPath)
+        {
+            string strResult = "";
+            //声明临时数据库的名称  
+            string temp = DateTime.Now.Year.ToString();
+            temp += DateTime.Now.Month.ToString();
+            temp += DateTime.Now.Day.ToString();
+            temp += DateTime.Now.Hour.ToString();
+            temp += DateTime.Now.Minute.ToString();
+            temp += DateTime.Now.Second.ToString() + ".accdb";
+            temp = mdbPath.Substring(0, mdbPath.LastIndexOf("\\") + 1) + temp;
+
+            string strlock = mdbPath.Substring(0, mdbPath.LastIndexOf("\\") + 1) + "Lock";
+
+            string sourceDbSpec = mdbPath;
+            string destinationDbSpec = temp;
+
+            // Required COM reference for project:
+            // Microsoft Office 14.0 Access Database Engine Object Library
+            var dbe = new Microsoft.Office.Interop.Access.Dao.DBEngine();
+            try
+            {
+                File.Create(strlock).Dispose();
+                dbe.CompactDatabase(sourceDbSpec, destinationDbSpec);
+                File.Delete(mdbPath);
+                File.Copy(destinationDbSpec, mdbPath, true);
+                strResult = "修复成功!";
+            }
+            catch (Exception e)
+            {
+                strResult = "Error: " + e.Message;
+            }
+            File.Delete(strlock);
+            return strResult;
         }
     }
 }
