@@ -485,7 +485,9 @@
     <Content Include="obj\Debug\BHair.pdb" />
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
     <Content Include="obj\Debug\TP_Base.csproj.FileListAbsolute.txt" />
-    <Content Include="内购SQLQueue.accdb" />
+    <Content Include="内购SQLQueue.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="员工内购数据库.accdb" />
   </ItemGroup>
   <ItemGroup>
