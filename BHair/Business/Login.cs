@@ -19,6 +19,8 @@ namespace BHair.Business
         public event MyDelegate MyEvent;
         public int intLoginNum = 0;
         public string strVersion = "";
+        public string strConnstring = "";
+        public string strlock = "";
         public Login()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace BHair.Business
 
         private void Login_Load(object sender, EventArgs e)
         {
-            UpdateDataBase();
+
         }
         public void UpdateDataBase()
         {
@@ -221,21 +223,21 @@ namespace BHair.Business
                 }
             }
         }
-        private Boolean CompareVersion(string pv,string ver)
+        private Boolean CompareVersion(string pv, string ver)
         {
             Boolean boolResult = false;
             string[] strpv = pv.Split('.');
             string[] strver = ver.Split('.');
-            if(strpv.Length==strver.Length)
+            if (strpv.Length == strver.Length)
             {
                 for (int x = 0; x < strpv.Length; x++)
                 {
-                    if(int.Parse(strpv[x])>int.Parse(strver[x]))
+                    if (int.Parse(strpv[x]) > int.Parse(strver[x]))
                     {
                         boolResult = true;
                         break;
                     }
-                    else if(int.Parse(strpv[x]) < int.Parse(strver[x]))
+                    else if (int.Parse(strpv[x]) < int.Parse(strver[x]))
                     {
                         boolResult = false;
                         break;
@@ -254,20 +256,47 @@ namespace BHair.Business
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(strVersion==Application.ProductVersion)
+            strConnstring = XMLHelper.strGetConnectString().Split(';')[1].ToString().Split('=')[1].ToString();
+            strlock = strConnstring.Substring(0, strConnstring.LastIndexOf("\\") + 1) + "Lock";
+            if (!File.Exists(strlock))
             {
-                LoginProcess();
-            }
-            else if(strVersion=="" || CompareVersion(Application.ProductVersion,strVersion))
-            {
-                string strSQL = "update SetupConfig set Version='" + Application.ProductVersion + "' ";
-                AccessHelper ah = new AccessHelper();
-                ah.ExecuteSQLNonquery(strSQL);
-                LoginProcess();
+                try
+                {
+                    UpdateDataBase();
+                    if (strVersion == Application.ProductVersion)
+                    {
+                        LoginProcess();
+                    }
+                    else if (strVersion == "" || CompareVersion(Application.ProductVersion, strVersion))
+                    {
+                        string strSQL = "update SetupConfig set Version='" + Application.ProductVersion + "' ";
+                        AccessHelper ah = new AccessHelper();
+                        ah.ExecuteSQLNonquery(strSQL);
+                        LoginProcess();
+                    }
+                    else
+                    {
+                        MessageBox.Show("系统版本过低,请先升级后再重新登录使用!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("数据库损坏,点击确定后,系统将尝试自动修复,期间请勿操作!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    string strResult = RepairAccess(strConnstring);
+                    if (strResult.Substring(0, 5) != "Error")
+                    {
+                        MessageBox.Show("数据库修复完成,请关闭系统,并重新登录!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("数据库修复失败::" + strResult, "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("系统版本过低,请先升级后再重新登录使用!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("登陆失败::数据库正在自动修复中,请稍后登录!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -336,8 +365,6 @@ namespace BHair.Business
 
         public void LoginProcess()
         {
-            string strConnstring = XMLHelper.strGetConnectString().Split(';')[1].ToString().Split('=')[1].ToString();
-            string strlock = strConnstring.Substring(0, strConnstring.LastIndexOf("\\") + 1) + "Lock";
             if (!File.Exists(strlock))
             {
                 if (intLoginNum < 15 || txtName.Text == "Administrator")
