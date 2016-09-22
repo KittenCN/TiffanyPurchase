@@ -18,6 +18,7 @@ namespace BHair.Business
         public static Business.BaseData.Users LoginUser = new Business.BaseData.Users();
         public event MyDelegate MyEvent;
         public int intLoginNum = 0;
+        public string strVersion = "";
         public Login()
         {
             InitializeComponent();
@@ -156,9 +157,184 @@ namespace BHair.Business
                     ah.Close();
                 }
             }
+
+            //增加SetupConfig表的Version字段
+            try
+            {
+                AccessHelper ah = new AccessHelper();
+                string strSQL = "select top 1 * from SetupConfig";
+                DataTable dtSQL = ah.SelectToDataTable(strSQL);
+                ah.Close();
+                if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["Version"].ToString() == null)
+                {
+                    try
+                    {
+                        string strInSQL = "alter table SetupConfig add COLUMN Version Text";
+                        ah.ExecuteNonQuery(strInSQL);
+                    }
+                    catch (Exception ex1)
+                    {
+                        ah.Close();
+                    }
+                }
+                else if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["Version"].ToString() != null)
+                {
+                    if (dtSQL.Rows[0]["Version"].ToString() != "")
+                    {
+                        strVersion = dtSQL.Rows[0]["Version"].ToString();
+                    }
+                    else
+                    {
+                        strVersion = "";
+                    }
+                }
+                ah.Close();
+            }
+            catch (Exception ex)
+            {
+                if (ex.HResult.ToString() == "-2147024809")
+                {
+                    AccessHelper ah = new AccessHelper();
+                    try
+                    {
+                        string strInSQL = "alter table SetupConfig add COLUMN Version text";
+                        ah.ExecuteNonQuery(strInSQL);
+                    }
+                    catch (Exception ex1)
+                    {
+                        ah.Close();
+                    }
+                    string strSQL = "select top 1 * from SetupConfig";
+                    DataTable dtSQL = ah.SelectToDataTable(strSQL);
+                    if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["Version"].ToString() != null)
+                    {
+                        if (dtSQL.Rows[0]["Version"].ToString() != "")
+                        {
+                            strVersion = dtSQL.Rows[0]["Version"].ToString();
+                        }
+                        else
+                        {
+                            strVersion = "";
+                        }
+                    }
+                    ah.Close();
+                }
+            }
+        }
+        private Boolean CompareVersion(string pv,string ver)
+        {
+            Boolean boolResult = false;
+            string[] strpv = pv.Split('.');
+            string[] strver = ver.Split('.');
+            if(strpv.Length==strver.Length)
+            {
+                for (int x = 0; x < strpv.Length; x++)
+                {
+                    if(int.Parse(strpv[x])>int.Parse(strver[x]))
+                    {
+                        boolResult = true;
+                        break;
+                    }
+                    else if(int.Parse(strpv[x]) < int.Parse(strver[x]))
+                    {
+                        boolResult = false;
+                        break;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            else
+            {
+                boolResult = false;
+            }
+            return boolResult;
+        }
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if(strVersion==Application.ProductVersion)
+            {
+                LoginProcess();
+            }
+            else if(strVersion=="" || CompareVersion(Application.ProductVersion,strVersion))
+            {
+                string strSQL = "update SetupConfig set Version='" + Application.ProductVersion + "' ";
+                AccessHelper ah = new AccessHelper();
+                ah.ExecuteSQLNonquery(strSQL);
+                LoginProcess();
+            }
+            else
+            {
+                MessageBox.Show("系统版本过低,请先升级后再重新登录使用!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btnExit_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        string GetSHA1(string mystr)
+        {
+            SHA1 sha = new SHA1CryptoServiceProvider();
+
+            //将mystr转换成byte[]
+            ASCIIEncoding enc = new ASCIIEncoding();
+            byte[] dataToHash = enc.GetBytes(mystr);
+
+            //Hash运算
+            byte[] dataHashed = sha.ComputeHash(dataToHash);
+
+            //将运算结果转换成string
+            string hash = BitConverter.ToString(dataHashed).Replace("-", "");
+
+            return hash;
+        }
+        public string RepairAccess(string mdbPath)
+        {
+            string strResult = "";
+            //声明临时数据库的名称  
+            string temp = DateTime.Now.Year.ToString();
+            temp += DateTime.Now.Month.ToString();
+            temp += DateTime.Now.Day.ToString();
+            temp += DateTime.Now.Hour.ToString();
+            temp += DateTime.Now.Minute.ToString();
+            temp += DateTime.Now.Second.ToString() + ".accdb";
+            temp = mdbPath.Substring(0, mdbPath.LastIndexOf("\\") + 1) + temp;
+
+            string strlock = mdbPath.Substring(0, mdbPath.LastIndexOf("\\") + 1) + "Lock";
+
+            string sourceDbSpec = mdbPath;
+            string destinationDbSpec = temp;
+
+            // Required COM reference for project:
+            // Microsoft Office 14.0 Access Database Engine Object Library
+            var dbe = new Microsoft.Office.Interop.Access.Dao.DBEngine();
+            try
+            {
+                File.Create(strlock).Dispose();
+                dbe.CompactDatabase(sourceDbSpec, destinationDbSpec);
+                File.Delete(mdbPath);
+                File.Copy(destinationDbSpec, mdbPath, true);
+                strResult = "修复成功!";
+            }
+            catch (Exception e)
+            {
+                strResult = "Error: " + e.Message;
+            }
+            File.Delete(strlock);
+            return strResult;
+        }
+
+        public void LoginProcess()
         {
             string strConnstring = XMLHelper.strGetConnectString().Split(';')[1].ToString().Split('=')[1].ToString();
             string strlock = strConnstring.Substring(0, strConnstring.LastIndexOf("\\") + 1) + "Lock";
@@ -251,69 +427,6 @@ namespace BHair.Business
             {
                 MessageBox.Show("登陆失败::数据库正在自动修复中,请稍后登录!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
-
-        private void btnExit_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
-        string GetSHA1(string mystr)
-        {
-            SHA1 sha = new SHA1CryptoServiceProvider();
-
-            //将mystr转换成byte[]
-            ASCIIEncoding enc = new ASCIIEncoding();
-            byte[] dataToHash = enc.GetBytes(mystr);
-
-            //Hash运算
-            byte[] dataHashed = sha.ComputeHash(dataToHash);
-
-            //将运算结果转换成string
-            string hash = BitConverter.ToString(dataHashed).Replace("-", "");
-
-            return hash;
-        }
-        public string RepairAccess(string mdbPath)
-        {
-            string strResult = "";
-            //声明临时数据库的名称  
-            string temp = DateTime.Now.Year.ToString();
-            temp += DateTime.Now.Month.ToString();
-            temp += DateTime.Now.Day.ToString();
-            temp += DateTime.Now.Hour.ToString();
-            temp += DateTime.Now.Minute.ToString();
-            temp += DateTime.Now.Second.ToString() + ".accdb";
-            temp = mdbPath.Substring(0, mdbPath.LastIndexOf("\\") + 1) + temp;
-
-            string strlock = mdbPath.Substring(0, mdbPath.LastIndexOf("\\") + 1) + "Lock";
-
-            string sourceDbSpec = mdbPath;
-            string destinationDbSpec = temp;
-
-            // Required COM reference for project:
-            // Microsoft Office 14.0 Access Database Engine Object Library
-            var dbe = new Microsoft.Office.Interop.Access.Dao.DBEngine();
-            try
-            {
-                File.Create(strlock).Dispose();
-                dbe.CompactDatabase(sourceDbSpec, destinationDbSpec);
-                File.Delete(mdbPath);
-                File.Copy(destinationDbSpec, mdbPath, true);
-                strResult = "修复成功!";
-            }
-            catch (Exception e)
-            {
-                strResult = "Error: " + e.Message;
-            }
-            File.Delete(strlock);
-            return strResult;
         }
     }
 }
