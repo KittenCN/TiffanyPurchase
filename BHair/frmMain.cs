@@ -18,6 +18,7 @@ namespace BHair
     public partial class frmMain : Form
     {
         ApplicationInfo applicationInfo = new ApplicationInfo();
+        public Boolean boolNorLogin = false;
         public frmMain()
         {
             InitializeComponent();            
@@ -42,22 +43,25 @@ namespace BHair
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            int intLoginNum;
-            AccessHelper ah = new AccessHelper();
-            string strSQL = "select top 1 * from SetupConfig";
-            DataTable dtSQL = ah.SelectToDataTable(strSQL);
-            if (dtSQL.Rows[0]["LoginNum"].ToString() != "")
+            if(boolNorLogin)
             {
-                intLoginNum = int.Parse(dtSQL.Rows[0]["LoginNum"].ToString());
+                int intLoginNum;
+                AccessHelper ah = new AccessHelper();
+                string strSQL = "select top 1 * from SetupConfig";
+                DataTable dtSQL = ah.SelectToDataTable(strSQL);
+                if (dtSQL.Rows[0]["LoginNum"].ToString() != "")
+                {
+                    intLoginNum = int.Parse(dtSQL.Rows[0]["LoginNum"].ToString());
+                }
+                else
+                {
+                    intLoginNum = 0;
+                }
+                intLoginNum--;
+                strSQL = "update SetupConfig set LoginNum=" + intLoginNum;
+                ah.ExecuteNonQuery(strSQL);
+                ah.Close();
             }
-            else
-            {
-                intLoginNum = 0;
-            }
-            intLoginNum--;
-            strSQL = "update SetupConfig set LoginNum=" + intLoginNum;
-            ah.ExecuteNonQuery(strSQL);
-            ah.Close();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -451,6 +455,7 @@ namespace BHair
 
             if (Login.LoginUser.UID == null || Login.LoginUser.UID == "")
             {
+                boolNorLogin = false;
                 menuMain_Flow_add.Visible = false;
                 menuMain_Manage_StoreApp.Visible = false;
                 menuMain_Manage_Approval2App.Visible = false;
@@ -479,6 +484,7 @@ namespace BHair
             }
             else if (Login.LoginUser.Character == 1)
             {
+                boolNorLogin = true;
                 menuMain_Flow_add.Visible = true;
                 menuMain_Manage_StoreApp.Visible = true;
                 menuMain_Manage_Approval2App.Visible = true;
@@ -526,6 +532,7 @@ namespace BHair
             }
             else if (Login.LoginUser.Character == 2)
             {
+                boolNorLogin = true;
                 menuMain_Flow_add.Visible = true;
                 menuMain_Manage_StoreApp.Visible = true;
                 menuMain_Manage_Approval2App.Visible = true;
@@ -552,6 +559,7 @@ namespace BHair
             }
             else if (Login.LoginUser.Character == 3)
             {
+                boolNorLogin = true;
                 menuMain_Flow_add.Visible = true;
                 menuMain_Manage_StoreApp.Visible = true;
                 menuMain_Manage_Approval2App.Visible = false;
@@ -578,6 +586,7 @@ namespace BHair
             }
             else if (Login.LoginUser.Character == 4)
             {
+                boolNorLogin = true;
                 menuMain_Flow_add.Visible = false;
                 menuMain_Manage_StoreApp.Visible = false;
                 menuMain_Manage_Approval2App.Visible = false;
@@ -604,6 +613,7 @@ namespace BHair
             }
             else if (Login.LoginUser.Character == 5)
             {
+                boolNorLogin = true;
                 menuMain_Flow_add.Visible = false;
                 menuMain_Manage_StoreApp.Visible = false;
                 menuMain_Manage_Approval2App.Visible = false;
@@ -630,6 +640,7 @@ namespace BHair
             }
             else if (Login.LoginUser.Character == 6)  //    财务
             {
+                boolNorLogin = true;
                 menuMain_Flow_add.Visible = false;
                 menuMain_Manage_StoreApp.Visible = false;
                 menuMain_Manage_Approval2App.Visible = false;
@@ -658,6 +669,7 @@ namespace BHair
             }
             else if (Login.LoginUser.Character == 7)  //IT
             {
+                boolNorLogin = true;
                 menuMain_Flow_add.Visible = false;
                 menuMain_Manage_StoreApp.Visible = false;
                 menuMain_Manage_Approval2App.Visible = false;
@@ -684,6 +696,7 @@ namespace BHair
             }
             else
             {
+                boolNorLogin = false;
                 menuMain_Flow_add.Visible = false;
                 menuMain_Manage_StoreApp.Visible = false;
                 menuMain_Manage_Approval2App.Visible = false;
@@ -711,6 +724,7 @@ namespace BHair
             ExcelHelper eh = new ExcelHelper();
             if (eh.boolIsManager(Login.LoginUser.UID))
             {
+                boolNorLogin = true;
                 menuMain_Flow_add.Visible = true;
                 menuMain_Manage_StoreApp.Visible = true;
                 menuMain_Manage_Approval2App.Visible = true;
@@ -729,6 +743,7 @@ namespace BHair
 
             if (Login.LoginUser.IsAdmin == 1)
             {
+                boolNorLogin = true;
                 menuMain_System_Member.Visible = true;
                 menuMain_Manage_Store.Visible = true;
                 menuMain_System_Item.Visible = true;
