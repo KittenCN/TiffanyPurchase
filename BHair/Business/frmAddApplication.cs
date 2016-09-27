@@ -233,7 +233,7 @@ namespace BHair.Business
             foreach (DataGridViewRow rows in dgvApplyProducts.Rows)
             {
                 if (rows.Cells["FinalPrice"] != null && rows.Cells["FinalPrice"].Value != null)
-                    totalPrice += double.Parse(rows.Cells["FinalPrice"].Value.ToString());
+                    totalPrice += double.Parse(rows.Cells["Price"].Value.ToString()) * double.Parse(rows.Cells["Count"].Value.ToString()) * double.Parse(rows.Cells["ApprovalDiscount"].Value.ToString()) / 100.00;
             }
             txtTotalPrice.Value = decimal.Parse(totalPrice.ToString("#0.00"));
         }
