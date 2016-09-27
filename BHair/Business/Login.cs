@@ -423,8 +423,23 @@ namespace BHair.Business
                                     EmailControl.config.CNY = decimal.Parse(configDT.Rows[0]["CNY"].ToString());
                                     EmailControl.config.HKD = decimal.Parse(configDT.Rows[0]["HKD"].ToString());
                                     EmailControl.config.USD = decimal.Parse(configDT.Rows[0]["USD"].ToString());
+                                    EmailControl.config.MOP = decimal.Parse(configDT.Rows[0]["MOP"].ToString());
+                                    EmailControl.config.SGD = decimal.Parse(configDT.Rows[0]["SGD"].ToString());
+                                    EmailControl.config.MYR = decimal.Parse(configDT.Rows[0]["MYR"].ToString());
+                                    EmailControl.config.GBP = decimal.Parse(configDT.Rows[0]["GBP"].ToString());
+                                    EmailControl.config.EUR = decimal.Parse(configDT.Rows[0]["EUR"].ToString());
+                                    EmailControl.config.JPY = decimal.Parse(configDT.Rows[0]["JPY"].ToString());
+                                    EmailControl.config.TWD = decimal.Parse(configDT.Rows[0]["TWD"].ToString());
+
                                     EmailControl.config.USrate = decimal.Parse(configDT.Rows[0]["USrate"].ToString());
                                     EmailControl.config.HKrate = decimal.Parse(configDT.Rows[0]["HKrate"].ToString());
+                                    EmailControl.config.MOPrate = decimal.Parse(configDT.Rows[0]["MOPrate"].ToString());
+                                    EmailControl.config.SGDrate = decimal.Parse(configDT.Rows[0]["SGDrate"].ToString());
+                                    EmailControl.config.MYRrate = decimal.Parse(configDT.Rows[0]["MYRrate"].ToString());
+                                    EmailControl.config.GBPrate = decimal.Parse(configDT.Rows[0]["GBPrate"].ToString());
+                                    EmailControl.config.EURrate = decimal.Parse(configDT.Rows[0]["EURrate"].ToString());
+                                    EmailControl.config.JPYrate = decimal.Parse(configDT.Rows[0]["JPYrate"].ToString());
+                                    EmailControl.config.TWDrate = decimal.Parse(configDT.Rows[0]["TWDrate"].ToString());
                                 }
 
                                 intLoginNum++;

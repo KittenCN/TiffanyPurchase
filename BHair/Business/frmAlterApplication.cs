@@ -130,6 +130,40 @@ namespace BHair.Business
         //批准价计算
         void GetFinalPrice()
         {
+            //decimal MoneyDiscont = 1;
+            //switch (txtMoneyUnit.SelectedIndex)
+            //{
+            //    case 0:
+            //        MoneyDiscont = 1;
+            //        break;
+            //    case 1:
+            //        MoneyDiscont = EmailControl.config.USrate;
+            //        break;
+            //    case 2:
+            //        MoneyDiscont = EmailControl.config.HKrate;
+            //        break;
+            //    case 3:
+            //        MoneyDiscont = EmailControl.config.MOPrate;
+            //        break;
+            //    case 4:
+            //        MoneyDiscont = EmailControl.config.SGDrate;
+            //        break;
+            //    case 5:
+            //        MoneyDiscont = EmailControl.config.MYRrate;
+            //        break;
+            //    case 6:
+            //        MoneyDiscont = EmailControl.config.GBPrate;
+            //        break;
+            //    case 7:
+            //        MoneyDiscont = EmailControl.config.EURrate;
+            //        break;
+            //    case 8:
+            //        MoneyDiscont = EmailControl.config.JPYrate;
+            //        break;
+            //    case 9:
+            //        MoneyDiscont = EmailControl.config.TWDrate;
+            //        break;
+            //}
             txtFinalPrice.Value = decimal.Parse((txtPrice.Value * txtApprovalCount.Value * txtApprovalDiscount.Value * (decimal)0.01).ToString("#0.00"));
         }
 
@@ -227,11 +261,45 @@ namespace BHair.Business
         //总价
         void GetTotalPrice()
         {
+            decimal MoneyDiscont = 1;
+            switch (txtMoneyUnit.SelectedIndex)
+            {
+                case 0:
+                    MoneyDiscont = 1;
+                    break;
+                case 1:
+                    MoneyDiscont = EmailControl.config.USrate;
+                    break;
+                case 2:
+                    MoneyDiscont = EmailControl.config.HKrate;
+                    break;
+                case 3:
+                    MoneyDiscont = EmailControl.config.MOPrate;
+                    break;
+                case 4:
+                    MoneyDiscont = EmailControl.config.SGDrate;
+                    break;
+                case 5:
+                    MoneyDiscont = EmailControl.config.MYRrate;
+                    break;
+                case 6:
+                    MoneyDiscont = EmailControl.config.GBPrate;
+                    break;
+                case 7:
+                    MoneyDiscont = EmailControl.config.EURrate;
+                    break;
+                case 8:
+                    MoneyDiscont = EmailControl.config.JPYrate;
+                    break;
+                case 9:
+                    MoneyDiscont = EmailControl.config.TWDrate;
+                    break;
+            }
             double totalPrice = 0;
             foreach (DataGridViewRow rows in dgvApplyProducts.Rows)
             {
                 if (rows.Cells["FinalPrice"] != null && rows.Cells["FinalPrice"].Value!=null)
-                totalPrice += double.Parse(rows.Cells["Price"].Value.ToString()) * double.Parse(rows.Cells["Count"].Value.ToString()) * double.Parse(rows.Cells["ApprovalDiscount"].Value.ToString()) / 100.00;
+                totalPrice += double.Parse(rows.Cells["Price"].Value.ToString()) * double.Parse(rows.Cells["Count"].Value.ToString()) * double.Parse(rows.Cells["ApprovalDiscount"].Value.ToString()) / 100.00 / Convert.ToDouble(MoneyDiscont);
             }
             txtTotalPrice.Value = decimal.Parse(totalPrice.ToString("#0.00")); 
         }
@@ -534,21 +602,43 @@ namespace BHair.Business
             items.ItemsDT = items.SelectItemByItemID(txtItemID.Text.Trim());
             if (items.ItemsDT.Rows.Count > 0)
             {
-                string priceCol = "Price";
-                //if (txtMoneyUnit.SelectedIndex == 0) priceCol = "Price";
-                //if (txtMoneyUnit.SelectedIndex == 1) priceCol = "Price2";
-                //if (txtMoneyUnit.SelectedIndex == 2) priceCol = "Price3";
-                if (txtMoneyUnit.SelectedIndex == 0)
+                decimal MoneyDiscont = 1;
+                switch (txtMoneyUnit.SelectedIndex)
                 {
-                    priceCol = "Price";
+                    case 0:
+                        MoneyDiscont = 1;
+                        break;
+                    case 1:
+                        MoneyDiscont = EmailControl.config.USrate;
+                        break;
+                    case 2:
+                        MoneyDiscont = EmailControl.config.HKrate;
+                        break;
+                    case 3:
+                        MoneyDiscont = EmailControl.config.MOPrate;
+                        break;
+                    case 4:
+                        MoneyDiscont = EmailControl.config.SGDrate;
+                        break;
+                    case 5:
+                        MoneyDiscont = EmailControl.config.MYRrate;
+                        break;
+                    case 6:
+                        MoneyDiscont = EmailControl.config.GBPrate;
+                        break;
+                    case 7:
+                        MoneyDiscont = EmailControl.config.EURrate;
+                        break;
+                    case 8:
+                        MoneyDiscont = EmailControl.config.JPYrate;
+                        break;
+                    case 9:
+                        MoneyDiscont = EmailControl.config.TWDrate;
+                        break;
                 }
-                else
+                if (items.ItemsDT != null && items.ItemsDT.Rows.Count > 0 && items.ItemsDT.Rows[0]["Price"].ToString() != "")
                 {
-                    priceCol = "Price" + (txtMoneyUnit.SelectedIndex + 1).ToString();
-                }
-                if (items.ItemsDT != null && items.ItemsDT.Rows.Count > 0 && items.ItemsDT.Rows[0][priceCol].ToString() != "")
-                {
-                    txtPrice.Value = decimal.Parse(items.ItemsDT.Rows[0][priceCol].ToString());
+                    txtPrice.Value = decimal.Parse(items.ItemsDT.Rows[0]["Price"].ToString()) / MoneyDiscont;
                 }
             }
         }
