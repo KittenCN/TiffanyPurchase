@@ -430,7 +430,11 @@ namespace BHair.Business
                 {
                     priceCol= "Price"+(txtMoneyUnit.SelectedIndex+1).ToString();
                 }
-                txtPrice.Value = decimal.Parse(items.ItemsDT.Rows[0][priceCol].ToString());
+                if(items.ItemsDT.Rows[0][priceCol].ToString()!="")
+                {
+                    txtPrice.Value = decimal.Parse(items.ItemsDT.Rows[0][priceCol].ToString());
+                }
+                
             }
         }
 
