@@ -212,7 +212,59 @@ namespace BHair.Business.BaseData
             int rows = 0;
             try
             {
-                SqlQueue sq = new SqlQueue();
+                string strCon= XMLHelper.strGetConnectString();
+                OleDbConnection Conn = new OleDbConnection(strCon);
+                Conn.Open();
+                OleDbCommand command = new OleDbCommand("select * from setupconfig", Conn);
+                OleDbDataReader reader = command.ExecuteReader();
+                DataTable dtsql = new DataTable();
+                dtsql = reader.GetSchemaTable();
+                Conn.Close();
+                Conn.Dispose();
+                AccessHelper ah = new AccessHelper();
+                if (dtsql!=null && dtsql.Rows[11]["NumericPrecision"].ToString()!="15")
+                {
+                    string strsql = "alter table setupconfig alter column HKD double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column USD double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column CNY double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column EUR double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column GBP double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column JPY double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column MOP double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column MYR double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column SGD double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column TWD double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column USrate double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column HKrate double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column EURrate double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column GBPrate double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column JPYrate double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column MOPrate double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column MYRrate double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column SGDrate double";
+                    ah.ExecuteSQLNonquery(strsql);
+                    strsql = "alter table setupconfig alter column TWDrate double";
+                    ah.ExecuteSQLNonquery(strsql);
+                }
+
+                //SqlQueue sq = new SqlQueue();
 
                 StringBuilder insertSql = new StringBuilder();
                 insertSql.Append("Update [SetupConfig] set ");
@@ -240,16 +292,17 @@ namespace BHair.Business.BaseData
                 insertSql.AppendFormat(" [SGDrate]={0},", SGDrate);
                 insertSql.AppendFormat(" [TWDrate]={0}", TWDrate);
                 //insertSql.AppendFormat(" where [ID]={0}", ID);
-                sq.InsertQuery(insertSql.ToString(), "", "", 0, 0);
-
-                sq.Close();
+                //sq.InsertQuery(insertSql.ToString(), "", "", 0, 0);
+                //sq.Close();
+                ah.ExecuteNonQuery(insertSql.ToString());
+                ah.Close();
                 return 1;
             }
             catch (Exception ex)
             {
                 //throw ex;
                 return 0;
-            }
+            }           
             return rows;
         }
         #endregion
