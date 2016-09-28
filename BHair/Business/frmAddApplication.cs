@@ -264,44 +264,10 @@ namespace BHair.Business
         void GetTotalPrice()
         {
             double totalPrice = 0;
-            decimal MoneyDiscont = 1;
-            switch (txtMoneyUnit.SelectedIndex)
-            {
-                case 0:
-                    MoneyDiscont = 1;
-                    break;
-                case 1:
-                    MoneyDiscont = EmailControl.config.USrate;
-                    break;
-                case 2:
-                    MoneyDiscont = EmailControl.config.HKrate;
-                    break;
-                case 3:
-                    MoneyDiscont = EmailControl.config.MOPrate;
-                    break;
-                case 4:
-                    MoneyDiscont = EmailControl.config.SGDrate;
-                    break;
-                case 5:
-                    MoneyDiscont = EmailControl.config.MYRrate;
-                    break;
-                case 6:
-                    MoneyDiscont = EmailControl.config.GBPrate;
-                    break;
-                case 7:
-                    MoneyDiscont = EmailControl.config.EURrate;
-                    break;
-                case 8:
-                    MoneyDiscont = EmailControl.config.JPYrate;
-                    break;
-                case 9:
-                    MoneyDiscont = EmailControl.config.TWDrate;
-                    break;
-            }
             foreach (DataGridViewRow rows in dgvApplyProducts.Rows)
             {
                 if (rows.Cells["FinalPrice"] != null && rows.Cells["FinalPrice"].Value != null)
-                    totalPrice += double.Parse(rows.Cells["Price"].Value.ToString()) * double.Parse(rows.Cells["Count"].Value.ToString()) * double.Parse(rows.Cells["ApprovalDiscount"].Value.ToString()) / 100.00 / Convert.ToDouble(MoneyDiscont);
+                    totalPrice += double.Parse(rows.Cells["Price"].Value.ToString()) * double.Parse(rows.Cells["Count"].Value.ToString()) * double.Parse(rows.Cells["ApprovalDiscount"].Value.ToString()) / 100.00;
             }
             txtTotalPrice.Value = decimal.Parse(totalPrice.ToString("#0.00"));
         }
