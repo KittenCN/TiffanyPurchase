@@ -115,6 +115,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtPhoneNum = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.txtIsSpecial = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyProducts)).BeginInit();
@@ -511,6 +512,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.txtIsSpecial);
             this.panel2.Controls.Add(this.txtEditReason);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.txtTotalPrice);
@@ -624,9 +626,9 @@
             0,
             0,
             131072});
-            this.txtApprovalDiscount.Location = new System.Drawing.Point(720, 37);
+            this.txtApprovalDiscount.Location = new System.Drawing.Point(814, 37);
             this.txtApprovalDiscount.Name = "txtApprovalDiscount";
-            this.txtApprovalDiscount.Size = new System.Drawing.Size(151, 21);
+            this.txtApprovalDiscount.Size = new System.Drawing.Size(57, 21);
             this.txtApprovalDiscount.TabIndex = 25;
             this.txtApprovalDiscount.Value = new decimal(new int[] {
             100,
@@ -1061,6 +1063,14 @@
             this.panel6.Size = new System.Drawing.Size(654, 444);
             this.panel6.TabIndex = 6;
             // 
+            // txtIsSpecial
+            // 
+            this.txtIsSpecial.Location = new System.Drawing.Point(783, 36);
+            this.txtIsSpecial.Name = "txtIsSpecial";
+            this.txtIsSpecial.Size = new System.Drawing.Size(25, 21);
+            this.txtIsSpecial.TabIndex = 26;
+            this.txtIsSpecial.Visible = false;
+            // 
             // frmAlterApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1194,5 +1204,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNum2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Reason2;
         private System.Windows.Forms.DataGridViewTextBoxColumn SelforGift2;
+        private System.Windows.Forms.TextBox txtIsSpecial;
     }
 }

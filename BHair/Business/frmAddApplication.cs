@@ -54,6 +54,10 @@ namespace BHair.Business
         {
 
             AddApplicationDT = applicationDetail.SelectAppDetailByTransNo("0", "");
+            AddApplicationDT.Columns.Add("IsSpecial",Type.GetType("System.Int32"));
+            dgvApplyProducts.Columns.Add("IsSpecial", "IsSpecial");
+            dgvApplyProducts.Columns["IsSpecial"].Visible = false;
+            dgvApplyProducts.Columns["IsSpecial"].DataPropertyName = "IsSpecial";
             dgvApplyProducts.AutoGenerateColumns = false;
             dgvApplyProducts.DataSource = AddApplicationDT;
 
@@ -103,7 +107,7 @@ namespace BHair.Business
             {
                 txtDetail.Text = items.ItemsDT.Rows[0]["Detail"].ToString();
                 txtPrice.Value = decimal.Parse(items.ItemsDT.Rows[0]["Price"].ToString());
-
+                txtIsSpecial.Text = items.ItemsDT.Rows[0]["IsSpecial"].ToString();
 
                 //if(Login.LoginUser.MoneyUnit==1)  txtPrice.Value = (decimal)items.ItemsDT.Rows[0]["Price"];
                 //else if (Login.LoginUser.MoneyUnit == 2) txtPrice.Value = (decimal)items.ItemsDT.Rows[0]["Price2"];
@@ -233,7 +237,7 @@ namespace BHair.Business
                     dr["Relationship"] = txtRelationship.Text;
                     dr["Reason"] = txtReason.Text;
                     dr["PhoneNum"] = txtPhoneNum.Text;
-
+                    dr["IsSpecial"] = txtIsSpecial.Text;
                     dr["IsSuccess"] = 0;
                     dr["IsDelete"] = 0;
                     AddApplicationDT.Rows.Add(dr);
@@ -266,8 +270,43 @@ namespace BHair.Business
             double totalPrice = 0;
             foreach (DataGridViewRow rows in dgvApplyProducts.Rows)
             {
-                if (rows.Cells["FinalPrice"] != null && rows.Cells["FinalPrice"].Value != null)
-                    totalPrice += double.Parse(rows.Cells["Price"].Value.ToString()) * double.Parse(rows.Cells["Count"].Value.ToString()) * double.Parse(rows.Cells["ApprovalDiscount"].Value.ToString()) / 100.00;
+                decimal MoneyDiscont = 1;
+                switch (rows.Cells["MoneyUnit"].Value.ToString())
+                {
+                    case "1":
+                    default:
+                        MoneyDiscont = 1;
+                        break;
+                    case "2":
+                        MoneyDiscont = EmailControl.config.USrate;
+                        break;
+                    case "3":
+                        MoneyDiscont = EmailControl.config.HKrate;
+                        break;
+                    case "4":
+                        MoneyDiscont = EmailControl.config.MOPrate;
+                        break;
+                    case "5":
+                        MoneyDiscont = EmailControl.config.SGDrate;
+                        break;
+                    case "6":
+                        MoneyDiscont = EmailControl.config.MYRrate;
+                        break;
+                    case "7":
+                        MoneyDiscont = EmailControl.config.GBPrate;
+                        break;
+                    case "8":
+                        MoneyDiscont = EmailControl.config.EURrate;
+                        break;
+                    case "9":
+                        MoneyDiscont = EmailControl.config.JPYrate;
+                        break;
+                    case "10":
+                        MoneyDiscont = EmailControl.config.TWDrate;
+                        break;
+                }
+                if (rows.Cells["FinalPrice"] != null && rows.Cells["FinalPrice"].Value != null && rows.Cells["IsSpecial"].Value.ToString() != "1")
+                    totalPrice += double.Parse(rows.Cells["Price"].Value.ToString()) * double.Parse(rows.Cells["Count"].Value.ToString()) * double.Parse(rows.Cells["ApprovalDiscount"].Value.ToString()) / 100.00 * Convert.ToDouble(MoneyDiscont);
             }
             txtTotalPrice.Value = decimal.Parse(totalPrice.ToString("#0.00"));
         }
@@ -373,46 +412,47 @@ namespace BHair.Business
         private void btnOK_Click(object sender, EventArgs e)
         {
             double totalPrice = 0;
-            decimal MoneyDiscont = 1;
-            switch (txtMoneyUnit.SelectedIndex)
-            {
-                case 0:
-                    MoneyDiscont = 1;
-                    break;
-                case 1:
-                    MoneyDiscont = EmailControl.config.USrate;
-                    break;
-                case 2:
-                    MoneyDiscont = EmailControl.config.HKrate;
-                    break;
-                case 3:
-                    MoneyDiscont = EmailControl.config.MOPrate;
-                    break;
-                case 4:
-                    MoneyDiscont = EmailControl.config.SGDrate;
-                    break;
-                case 5:
-                    MoneyDiscont = EmailControl.config.MYRrate;
-                    break;
-                case 6:
-                    MoneyDiscont = EmailControl.config.GBPrate;
-                    break;
-                case 7:
-                    MoneyDiscont = EmailControl.config.EURrate;
-                    break;
-                case 8:
-                    MoneyDiscont = EmailControl.config.JPYrate;
-                    break;
-                case 9:
-                    MoneyDiscont = EmailControl.config.TWDrate;
-                    break;
-            }
             foreach (DataRow row in AddApplicationDT.Rows)
             {
+                decimal MoneyDiscont = 1;
+                switch (row["MoneyUnit"].ToString())
+                {
+                    case "1":
+                    default:
+                        MoneyDiscont = 1;
+                        break;
+                    case "2":
+                        MoneyDiscont = EmailControl.config.USrate;
+                        break;
+                    case "3":
+                        MoneyDiscont = EmailControl.config.HKrate;
+                        break;
+                    case "4":
+                        MoneyDiscont = EmailControl.config.MOPrate;
+                        break;
+                    case "5":
+                        MoneyDiscont = EmailControl.config.SGDrate;
+                        break;
+                    case "6":
+                        MoneyDiscont = EmailControl.config.MYRrate;
+                        break;
+                    case "7":
+                        MoneyDiscont = EmailControl.config.GBPrate;
+                        break;
+                    case "8":
+                        MoneyDiscont = EmailControl.config.EURrate;
+                        break;
+                    case "9":
+                        MoneyDiscont = EmailControl.config.JPYrate;
+                        break;
+                    case "10":
+                        MoneyDiscont = EmailControl.config.TWDrate;
+                        break;
+                }
                 if (items.SelectItemByItemID(row["ItemID"].ToString()).Rows[0]["IsSpecial"].ToString() == "1") { }
                 else
                 {
-                    totalPrice += double.Parse(row["Price"].ToString()) * double.Parse(row["Count"].ToString()) * double.Parse(row["ApprovalDiscount"].ToString()) / 100.00 / Convert.ToDouble(MoneyDiscont);
+                    totalPrice += double.Parse(row["Price"].ToString()) * double.Parse(row["Count"].ToString()) * double.Parse(row["ApprovalDiscount"].ToString()) / 100.00 * Convert.ToDouble(MoneyDiscont);
                 }
             }
             if (AddApplicationDT.Rows.Count == 0)
@@ -485,56 +525,56 @@ namespace BHair.Business
             items.ItemsDT = items.SelectItemByItemID(txtItemID.Text.Trim());
             if (items.ItemsDT.Rows.Count > 0)
             {
-                //string priceCol = "Price";
-                ////if (txtMoneyUnit.SelectedIndex == 0) priceCol = "Price";
-                ////if (txtMoneyUnit.SelectedIndex == 1) priceCol = "Price2";
-                ////if (txtMoneyUnit.SelectedIndex == 2) priceCol = "Price3";
-                //if (txtMoneyUnit.SelectedIndex == 0)
-                //{
-                //    priceCol = "Price";
-                //}
-                //else
-                //{
-                //    priceCol= "Price"+(txtMoneyUnit.SelectedIndex+1).ToString();
-                //}
-                decimal MoneyDiscont = 1;
-                switch (txtMoneyUnit.SelectedIndex)
+                string priceCol = "Price";
+                //if (txtMoneyUnit.SelectedIndex == 0) priceCol = "Price";
+                //if (txtMoneyUnit.SelectedIndex == 1) priceCol = "Price2";
+                //if (txtMoneyUnit.SelectedIndex == 2) priceCol = "Price3";
+                if (txtMoneyUnit.SelectedIndex == 0)
                 {
-                    case 0:
-                        MoneyDiscont = 1;
-                        break;
-                    case 1:
-                        MoneyDiscont = EmailControl.config.USrate;
-                        break;
-                    case 2:
-                        MoneyDiscont = EmailControl.config.HKrate;
-                        break;
-                    case 3:
-                        MoneyDiscont = EmailControl.config.MOPrate;
-                        break;
-                    case 4:
-                        MoneyDiscont = EmailControl.config.SGDrate;
-                        break;
-                    case 5:
-                        MoneyDiscont = EmailControl.config.MYRrate;
-                        break;
-                    case 6:
-                        MoneyDiscont = EmailControl.config.GBPrate;
-                        break;
-                    case 7:
-                        MoneyDiscont = EmailControl.config.EURrate;
-                        break;
-                    case 8:
-                        MoneyDiscont = EmailControl.config.JPYrate;
-                        break;
-                    case 9:
-                        MoneyDiscont = EmailControl.config.TWDrate;
-                        break;
+                    priceCol = "Price";
                 }
-                if (items.ItemsDT != null && items.ItemsDT.Rows.Count > 0 && items.ItemsDT.Rows[0]["Price"].ToString()!="")
+                else
                 {
-                    if (MoneyDiscont == 0) MoneyDiscont = 1;
-                    txtPrice.Value = decimal.Parse(items.ItemsDT.Rows[0]["Price"].ToString()) / MoneyDiscont;
+                    priceCol = "Price" + (txtMoneyUnit.SelectedIndex + 1).ToString();
+                }
+                //decimal MoneyDiscont = 1;
+                //switch (txtMoneyUnit.SelectedIndex)
+                //{
+                //    case 0:
+                //        MoneyDiscont = 1;
+                //        break;
+                //    case 1:
+                //        MoneyDiscont = EmailControl.config.USrate;
+                //        break;
+                //    case 2:
+                //        MoneyDiscont = EmailControl.config.HKrate;
+                //        break;
+                //    case 3:
+                //        MoneyDiscont = EmailControl.config.MOPrate;
+                //        break;
+                //    case 4:
+                //        MoneyDiscont = EmailControl.config.SGDrate;
+                //        break;
+                //    case 5:
+                //        MoneyDiscont = EmailControl.config.MYRrate;
+                //        break;
+                //    case 6:
+                //        MoneyDiscont = EmailControl.config.GBPrate;
+                //        break;
+                //    case 7:
+                //        MoneyDiscont = EmailControl.config.EURrate;
+                //        break;
+                //    case 8:
+                //        MoneyDiscont = EmailControl.config.JPYrate;
+                //        break;
+                //    case 9:
+                //        MoneyDiscont = EmailControl.config.TWDrate;
+                //        break;
+                //}
+                if (items.ItemsDT != null && items.ItemsDT.Rows.Count > 0 && items.ItemsDT.Rows[0][priceCol].ToString()!="")
+                {
+                    //if (MoneyDiscont == 0) MoneyDiscont = 1;
+                    txtPrice.Value = decimal.Parse(items.ItemsDT.Rows[0][priceCol].ToString());
                 }
                 
             }
