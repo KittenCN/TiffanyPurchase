@@ -284,7 +284,7 @@ namespace BHair.Business
                 }
                 catch (Exception ex)
                 {
-                    if(txtName.Text=="administrator" || GetComputerName().Substring(0,3)=="OC1")
+                    if(txtName.Text.ToLower() == "administrator" || GetComputerName().Substring(0,3)=="OC1")
                     {
                         MessageBox.Show("数据库损坏,点击确定后,系统将尝试自动修复,期间请勿操作!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         string strResult = RepairAccess(strConnstring);
@@ -379,7 +379,7 @@ namespace BHair.Business
         {
             if (!File.Exists(strlock))
             {
-                if (intLoginNum < 15 || txtName.Text == "Administrator")
+                if (intLoginNum < 15 || txtName.Text.ToLower() == "administrator")
                 {
                     //用户名 txtName.Text  密码 txtPwd.Text
                     string UID = txtName.Text.Trim();
@@ -459,7 +459,7 @@ namespace BHair.Business
                     }
                     catch (Exception ex)
                     {
-                        if (txtName.Text == "administrator" || GetComputerName().Substring(0, 3) == "OC1")
+                        if (txtName.Text.ToLower() == "administrator" || GetComputerName().Substring(0, 3) == "OC1")
                         {
                             MessageBox.Show("数据库损坏,点击确定后,系统将尝试自动修复,期间请勿操作!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             string strResult = RepairAccess(strConnstring);
