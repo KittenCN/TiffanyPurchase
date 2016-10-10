@@ -26,15 +26,25 @@ namespace BHair.Business
         /// <param name="Dbpath">ACCESS数据库路径</param>    
         public AccessHelper()
         {
-            Conn = new OleDbConnection(ConnString);
-            if (Conn.State == ConnectionState.Closed)
+            try
             {
-                Conn.Open();
+                Conn = new OleDbConnection(ConnString);
+                if (Conn.State == ConnectionState.Closed)
+                {
+                    Conn.Open();
+                }
+                else if (Conn.State == ConnectionState.Open)
+                {
+                    Conn.Close();
+                    Conn.Open();
+                }
             }
-            else if (Conn.State == ConnectionState.Open || Conn.State == ConnectionState.Connecting)
+            catch(Exception ex)
             {
-                Conn.Close();
-                Conn.Open();
+                if(Conn.State==ConnectionState.Connecting)
+                {
+                    System.Threading.Thread.Sleep(5000);
+                }
             }
         }
 
@@ -53,9 +63,10 @@ namespace BHair.Business
             /// </summary>    
         public void Close()
         {
-            if (Conn.State == ConnectionState.Open || Conn.State == ConnectionState.Connecting)
+            if (Conn.State == ConnectionState.Open || Conn.State == ConnectionState.Broken)
             {
                 Conn.Close();
+                Conn.Dispose();
             }
         }
 
@@ -77,11 +88,12 @@ namespace BHair.Business
                 OleDbCommand command = new OleDbCommand(SQL, Conn);
                 adapter.SelectCommand = command;
                 adapter.Fill(Dt);
+                adapter.Dispose();
+                command.Dispose();
                 return Dt;
             }
             catch (Exception ex)
             {
-                Close();
                 return Dt;
             }
         }
@@ -100,6 +112,8 @@ namespace BHair.Business
             DataSet Ds = new DataSet();
             Ds.Tables.Add(subtableName);
             adapter.Fill(Ds, subtableName);
+            adapter.Dispose();
+            command.Dispose();
             return Ds;
         }
 
@@ -119,6 +133,8 @@ namespace BHair.Business
             DataSet Ds = new DataSet();
             Ds = DataSetName;
             adapter.Fill(DataSetName, subtableName);
+            adapter.Dispose();
+            command.Dispose();
             return Ds;
         }
 
@@ -133,6 +149,7 @@ namespace BHair.Business
             OleDbDataAdapter adapter = new OleDbDataAdapter();
             OleDbCommand command = new OleDbCommand(SQL, Conn);
             adapter.SelectCommand = command;
+            command.Dispose();
             return adapter;
         }
 
@@ -147,11 +164,13 @@ namespace BHair.Business
             try
             {
                 cmd.ExecuteNonQuery();
+                cmd.Dispose();
                 return true;
             }
             catch (Exception ex)
             {
                 //this.Close();
+                cmd.Dispose();
                 return false;
             }
         }
@@ -170,6 +189,7 @@ namespace BHair.Business
                 int num = command.ExecuteNonQuery();
                 command.Parameters.Clear();
                 Close();
+                command.Dispose();
                 return num;
             }
             catch (Exception ex)

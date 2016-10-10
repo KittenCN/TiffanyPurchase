@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Core;
 using System.IO;
 using System.Data;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace BHair.Business
 {
@@ -221,7 +221,7 @@ namespace BHair.Business
             _wsh.Cells[22, 11] = "    Total " + strMoneyUnit + ":";
             //_wsh.Cells[22, 12] = AppDT.Rows[0]["TotalPrice"].ToString();
             _wsh.Cells[24, 12] = AppDT.Rows[0]["TransNo"].ToString();
-            _wsh.Cells[23, 12] = strSalesDate;
+            //_wsh.Cells[23, 12] = strSalesDate;
 
             _wsh.Cells[31, 5] = AppDT.Rows[0]["ApplicantsName"].ToString();
             _wsh.Cells[31, 7] = DateTime.Parse(AppDT.Rows[0]["ApplicantsDate"].ToString()).ToShortDateString();
@@ -237,10 +237,12 @@ namespace BHair.Business
             if (AppDT.Rows[0]["StaffName"].ToString() != "")
             {
                 _wsh.Cells[35, 7] = strSalesDate;
+                _wsh.Cells[23, 12] = strSalesDate;
             }
             else
             {
                 _wsh.Cells[35, 7] = "";
+                _wsh.Cells[23, 12] = "";
             }
 
             int j = 0;

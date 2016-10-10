@@ -202,7 +202,14 @@ namespace BHair.Business
                             {
                                 isSuccess = printPDF.CreateEnPDF(applicationInfo.applicationDT, ApplicationDetailTable, localFilePath);
                             }
+                            if(isSuccess)
+                            {
                                 MessageBox.Show("保存成功", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("保存失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                         catch
                         {

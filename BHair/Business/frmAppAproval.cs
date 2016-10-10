@@ -324,6 +324,7 @@ namespace BHair.Business
                             AccessHelper tempah = new AccessHelper();
                             string tempsql = "select * from ApplicationDetail where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' and ItemID='" + dtsql.Rows[x]["ItemID"].ToString() + "' ";
                             DataTable dttempsql = tempah.SelectToDataTable(tempsql);
+                            tempah.Close();
                             if(dttempsql.Rows.Count>1)
                             {
                                 boolDiff = true;
@@ -333,6 +334,7 @@ namespace BHair.Business
                                 AccessHelper tempah2 = new AccessHelper();
                                 string tempsql2 = "update ApplicationDetail set IsRepetition=0 where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' and ItemID='" + dtsql.Rows[x]["ItemID"].ToString() + "' ";
                                 tempah2.ExecuteSQLNonquery(tempsql2);
+                                tempah2.Close();
                             }
                         }
                         if(boolDiff==false)
@@ -340,6 +342,7 @@ namespace BHair.Business
                             AccessHelper tempah = new AccessHelper();
                             string tempsql = "update ApplicationInfo set FinalException=0 where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' ";
                             tempah.ExecuteSQLNonquery(tempsql);
+                            tempah.Close();
                         }
                         ah.Close();
                     }

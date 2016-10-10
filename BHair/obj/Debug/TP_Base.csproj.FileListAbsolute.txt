@@ -4,7 +4,6 @@ E:\workstation\项目\用蝶项目\Tiffany\员工内购20160626\员工内购2016
 E:\workstation\项目\用蝶项目\Tiffany\员工内购20160626\员工内购20160626\内购系统\BHair\obj\Debug\BHair.pdb
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\obj\Debug\TP_Base.csproj.ResolveComReference.cache
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\BHair.Business.dll
-E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\Microsoft.Office.Interop.Excel.dll
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\office.dll
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\Microsoft.Vbe.Interop.dll
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\stdole.dll
@@ -79,7 +78,6 @@ G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\BHair.Business.Login.resou
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\BHair.frmMain.resources
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\BHair.SystemSet.ComboDate.resources
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\TP_Base.csproj.GenerateResource.Cache
-E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\office.xml
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\obj\Debug\BHair.Business.frmAppApprovalDetail3.resources
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\obj\Debug\BHair.Business.frmAppAproval3.resources
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\BHair.Business.frmAppApprovalDetail3.resources
@@ -102,3 +100,5 @@ E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\Microsof
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\bin\Debug\Microsoft.Office.interop.access.dao.dll
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\bin\Debug\内购SQLQueue.accdb
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\内购SQLQueue.accdb
+E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\Microsoft.Office.Interop.Excel.dll
+E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\office.xml

@@ -63,6 +63,7 @@ namespace BHair.Business
                     comm2.ExecuteNonQuery();
                     isSuccess = true;
                     ah2.Close();
+                    comm2.Dispose();
                 }
                 catch (Exception ex1)
                 {
@@ -82,6 +83,7 @@ namespace BHair.Business
                             comm2.ExecuteNonQuery();
                             ah2.Close();
                             isSuccess = true;
+                            comm2.Dispose();
                         }
                         catch (Exception ex2)
                         {
