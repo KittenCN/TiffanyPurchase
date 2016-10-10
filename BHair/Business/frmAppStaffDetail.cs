@@ -194,7 +194,7 @@ namespace BHair.Business
                             //获得文件路径
                             string localFilePath = saveFileDialog.FileName.ToString();
                             PrintPDF pp = new PrintPDF();
-                            if (Login.LoginUser.MoneyUnit == 1)
+                            if (applicationInfo.applicationDT.Rows[0]["MoneyUnit"].ToString()=="1")
                             {
                                 isSuccess = printPDF.CreatePDF(applicationInfo.applicationDT, ApplicationDetailTable, localFilePath, "Staff Purchase Requisition Form 订购申请表");
                             }

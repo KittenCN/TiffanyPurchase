@@ -47,6 +47,7 @@ namespace BHair.Base
                 dgvAD.DataSource = null;
                 btnProcess.Enabled = false;
             }
+            ah.Close();
         }
 
         private void btnProcess_Click(object sender, EventArgs e)

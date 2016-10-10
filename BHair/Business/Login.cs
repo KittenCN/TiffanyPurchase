@@ -40,7 +40,6 @@ namespace BHair.Business
                 AccessHelper ah = new AccessHelper();
                 string strSQL = "select top 1 * from Items";
                 DataTable dtSQL = ah.SelectToDataTable(strSQL);
-                ah.Close();
                 if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["Price4"].ToString() == null)
                 {
                     try
@@ -103,7 +102,6 @@ namespace BHair.Business
                 AccessHelper ah = new AccessHelper();
                 string strSQL = "select top 1 * from SetupConfig";
                 DataTable dtSQL = ah.SelectToDataTable(strSQL);
-                ah.Close();
                 if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["LoginNum"].ToString() == null)
                 {
                     try
@@ -166,7 +164,6 @@ namespace BHair.Business
                 AccessHelper ah = new AccessHelper();
                 string strSQL = "select top 1 * from SetupConfig";
                 DataTable dtSQL = ah.SelectToDataTable(strSQL);
-                ah.Close();
                 if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["Version"].ToString() == null)
                 {
                     try
@@ -265,6 +262,7 @@ namespace BHair.Business
                     string strTSQL = "select * from SetupConfig";
                     AccessHelper ahTSQL = new AccessHelper();
                     DataTable dtTSQL = ahTSQL.SelectToDataTable(strTSQL);
+                    ahTSQL.Close();
                     UpdateDataBase();
                     if (strVersion == Application.ProductVersion)
                     {
@@ -275,6 +273,7 @@ namespace BHair.Business
                         string strSQL = "update SetupConfig set Version='" + Application.ProductVersion + "' ";
                         AccessHelper ah = new AccessHelper();
                         ah.ExecuteSQLNonquery(strSQL);
+                        ah.Close();
                         LoginProcess();
                     }
                     else

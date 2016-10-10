@@ -341,6 +341,7 @@ namespace BHair.Business
                             string tempsql = "update ApplicationInfo set FinalException=0 where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' ";
                             tempah.ExecuteSQLNonquery(tempsql);
                         }
+                        ah.Close();
                     }
                 }
                 GetApplicationDetail();

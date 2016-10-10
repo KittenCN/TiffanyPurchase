@@ -73,7 +73,14 @@ namespace BHair.Business
             _wsh.Cells[33, 4] = AppDT.Rows[0]["ApprovalName"].ToString();
             _wsh.Cells[33, 6] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate"].ToString()).ToShortDateString();
             _wsh.Cells[34, 4] = AppDT.Rows[0]["ApprovalName3"].ToString();
-            _wsh.Cells[34, 6] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate3"].ToString()).ToShortDateString();
+            if(AppDT.Rows[0]["ApprovalName3"].ToString()!="")
+            {
+                _wsh.Cells[34, 6] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate3"].ToString()).ToShortDateString();
+            }
+            else
+            {
+                _wsh.Cells[34, 6] = "";
+            }
             int j = 0;
             int i = 0;
             foreach(DataRow dr in DetailDT.Rows)
@@ -130,6 +137,72 @@ namespace BHair.Business
         private bool CreateEnXLS(DataTable AppDT, DataTable DetailDT)
         {
             string XLSName;
+            decimal MoneyDiscont = 1;
+            decimal MaxMoney = 0;
+            string strMoneyUnit = "";
+            double douTotalPrice = 0.00;
+
+            switch (AppDT.Rows[0]["MoneyUnit"].ToString())
+            {
+                case "1":
+                default:
+                    MoneyDiscont = 1;
+                    break;
+                case "2":
+                    MoneyDiscont = EmailControl.config.USrate;
+                    MaxMoney = EmailControl.config.USD;
+                    strMoneyUnit = "US";
+                    break;
+                case "3":
+                    MoneyDiscont = EmailControl.config.HKrate;
+                    MaxMoney = EmailControl.config.HKD;
+                    strMoneyUnit = "HKD";
+                    break;
+                case "4":
+                    MoneyDiscont = EmailControl.config.MOPrate;
+                    MaxMoney = EmailControl.config.MOP;
+                    strMoneyUnit = "MOP";
+                    break;
+                case "5":
+                    MoneyDiscont = EmailControl.config.SGDrate;
+                    MaxMoney = EmailControl.config.SGD;
+                    strMoneyUnit = "SGD";
+                    break;
+                case "6":
+                    MoneyDiscont = EmailControl.config.MYRrate;
+                    MaxMoney = EmailControl.config.MYR;
+                    strMoneyUnit = "MYR";
+                    break;
+                case "7":
+                    MoneyDiscont = EmailControl.config.GBPrate;
+                    MaxMoney = EmailControl.config.GBP;
+                    strMoneyUnit = "GBP";
+                    break;
+                case "8":
+                    MoneyDiscont = EmailControl.config.EURrate;
+                    MaxMoney = EmailControl.config.EUR;
+                    strMoneyUnit = "EUR";
+                    break;
+                case "9":
+                    MoneyDiscont = EmailControl.config.JPYrate;
+                    MaxMoney = EmailControl.config.JPY;
+                    strMoneyUnit = "JPY";
+                    break;
+                case "10":
+                    MoneyDiscont = EmailControl.config.TWDrate;
+                    MaxMoney = EmailControl.config.TWD;
+                    strMoneyUnit = "TWD";
+                    break;
+            }
+            string strSalesDate;
+            if(AppDT.Rows[0]["ApplicantsDate"].ToString()!=null && AppDT.Rows[0]["ApplicantsDate"].ToString()!="")
+            {
+                strSalesDate= DateTime.Parse(AppDT.Rows[0]["SalesDate"].ToString()).ToShortDateString();
+            }
+            else
+            {
+                strSalesDate= DateTime.Now.ToShortDateString();
+            }
             XLSName = System.IO.Directory.GetCurrentDirectory() + @"\templet\2015 Staff Purchase Form-in HK -templet .xls";
             Excel.Application app = new Excel.Application();
             app.DisplayAlerts = false;
@@ -144,7 +217,31 @@ namespace BHair.Business
             _wsh.Cells[4, 11] = AppDT.Rows[0]["ApplicantsNo"].ToString();
             _wsh.Cells[5, 3] = AppDT.Rows[0]["Location"].ToString();
             _wsh.Cells[5, 11] = AppDT.Rows[0]["PurchaseLocation"].ToString();
-            _wsh.Cells[22, 12] = AppDT.Rows[0]["TotalPrice"].ToString();
+            _wsh.Cells[22, 2] = "For gift purchases of items with unit RSP exceeding " + strMoneyUnit + MaxMoney + ",  please complete the following :";
+            _wsh.Cells[22, 11] = "    Total " + strMoneyUnit + ":";
+            //_wsh.Cells[22, 12] = AppDT.Rows[0]["TotalPrice"].ToString();
+            _wsh.Cells[24, 12] = AppDT.Rows[0]["TransNo"].ToString();
+            _wsh.Cells[23, 12] = strSalesDate;
+
+            _wsh.Cells[31, 5] = AppDT.Rows[0]["ApplicantsName"].ToString();
+            _wsh.Cells[31, 7] = DateTime.Parse(AppDT.Rows[0]["ApplicantsDate"].ToString()).ToShortDateString();
+            _wsh.Cells[32, 5] = AppDT.Rows[0]["ApprovalName2"].ToString();
+            _wsh.Cells[32, 7] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate2"].ToString()).ToShortDateString();
+            _wsh.Cells[33, 5] = AppDT.Rows[0]["ApprovalName"].ToString();
+            _wsh.Cells[33, 7] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate"].ToString()).ToShortDateString();
+            _wsh.Cells[34, 5] = AppDT.Rows[0]["ApprovalName3"].ToString();
+            _wsh.Cells[34, 7] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate3"].ToString()).ToShortDateString();
+            _wsh.Cells[35, 5] = AppDT.Rows[0]["StaffName"].ToString();
+            _wsh.Cells[36, 2] = "Approved by HK Finance Manager:\r\n (If unit RSP exceeding " + strMoneyUnit + MaxMoney + ")";
+
+            if (AppDT.Rows[0]["StaffName"].ToString() != "")
+            {
+                _wsh.Cells[35, 7] = strSalesDate;
+            }
+            else
+            {
+                _wsh.Cells[35, 7] = "";
+            }
 
             int j = 0;
             int i = 0;
@@ -163,6 +260,7 @@ namespace BHair.Business
                     _wsh.Cells[8 + 2 * i, 10] = dr["ApprovalCount"].ToString();
                     _wsh.Cells[8 + 2 * i, 11] = dr["ApprovalDiscount"].ToString();
                     _wsh.Cells[8 + 2 * i, 12] = dr["FinalPrice"].ToString();
+                    douTotalPrice = douTotalPrice + Convert.ToDouble(dr["FinalPrice"].ToString());
                     i++;
                 }
                 if (j < 3)
@@ -177,7 +275,7 @@ namespace BHair.Business
                     }
                 }
             }
-
+            _wsh.Cells[22, 12] = douTotalPrice;
 
 
             //保存

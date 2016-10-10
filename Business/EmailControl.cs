@@ -62,6 +62,7 @@ namespace BHair.Business
                     OleDbCommand comm2 = new OleDbCommand(strSQL2, ah2.Conn);
                     comm2.ExecuteNonQuery();
                     isSuccess = true;
+                    ah2.Close();
                 }
                 catch (Exception ex1)
                 {
@@ -73,11 +74,13 @@ namespace BHair.Business
                             string strInSQL = "create table MailTrans(id autoincrement,MailSubject longtext,MailBody longtext,MailTargetAddress longtext,Flag int)";
                             OleDbCommand comm = new OleDbCommand(strInSQL, ah.Conn);
                             comm.ExecuteNonQuery();
+                            ah.Close();
                             string strSQL2 = "insert into MailTrans(MailSubject,MailBody,MailTargetAddress,Flag) ";
                             strSQL2 = strSQL2 + " Values('" + Subject + "','" + Body + "','" + TargetAddress + "',0) ";
                             AccessHelper ah2 = new AccessHelper();
                             OleDbCommand comm2 = new OleDbCommand(strSQL2, ah2.Conn);
                             comm2.ExecuteNonQuery();
+                            ah2.Close();
                             isSuccess = true;
                         }
                         catch (Exception ex2)
