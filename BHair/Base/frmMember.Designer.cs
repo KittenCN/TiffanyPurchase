@@ -57,6 +57,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblAffirm = new System.Windows.Forms.Label();
             this.txtAffirm = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,7 +70,6 @@
             this.cbIsAdmin = new System.Windows.Forms.CheckBox();
             this.cbIsAble = new System.Windows.Forms.CheckBox();
             this.cbAbleMode = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabMember.SuspendLayout();
             this.tabDetail.SuspendLayout();
             this.grpNotNull.SuspendLayout();
@@ -80,7 +80,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(410, 381);
+            this.btnCancel.Location = new System.Drawing.Point(410, 463);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 7;
@@ -90,7 +90,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(318, 381);
+            this.btnSave.Location = new System.Drawing.Point(318, 463);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 6;
@@ -101,7 +101,7 @@
             // tabMember
             // 
             this.tabMember.Controls.Add(this.tabDetail);
-            this.tabMember.Location = new System.Drawing.Point(12, 200);
+            this.tabMember.Location = new System.Drawing.Point(12, 282);
             this.tabMember.Name = "tabMember";
             this.tabMember.SelectedIndex = 0;
             this.tabMember.Size = new System.Drawing.Size(477, 175);
@@ -133,7 +133,7 @@
             this.txtDepartment.MaxLength = 18;
             this.txtDepartment.Name = "txtDepartment";
             this.txtDepartment.ReadOnly = true;
-            this.txtDepartment.Size = new System.Drawing.Size(151, 21);
+            this.txtDepartment.Size = new System.Drawing.Size(378, 21);
             this.txtDepartment.TabIndex = 18;
             // 
             // label3
@@ -151,7 +151,7 @@
             this.txtPosition.MaxLength = 18;
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.ReadOnly = true;
-            this.txtPosition.Size = new System.Drawing.Size(151, 21);
+            this.txtPosition.Size = new System.Drawing.Size(378, 21);
             this.txtPosition.TabIndex = 12;
             // 
             // label1
@@ -169,7 +169,7 @@
             this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
-            this.txtEmail.Size = new System.Drawing.Size(231, 21);
+            this.txtEmail.Size = new System.Drawing.Size(378, 21);
             this.txtEmail.TabIndex = 10;
             // 
             // lblAddress
@@ -186,7 +186,7 @@
             this.txtTel.Location = new System.Drawing.Point(77, 10);
             this.txtTel.MaxLength = 13;
             this.txtTel.Name = "txtTel";
-            this.txtTel.Size = new System.Drawing.Size(80, 21);
+            this.txtTel.Size = new System.Drawing.Size(378, 21);
             this.txtTel.TabIndex = 8;
             // 
             // lblPhone
@@ -224,11 +224,11 @@
             this.grpNotNull.Controls.Add(this.txtRestAmount);
             this.grpNotNull.Controls.Add(this.label6);
             this.grpNotNull.Controls.Add(this.txtTotalAmount);
+            this.grpNotNull.Controls.Add(this.groupBox1);
             this.grpNotNull.Controls.Add(this.label5);
             this.grpNotNull.Controls.Add(this.cbMoneyUnit);
             this.grpNotNull.Controls.Add(this.label4);
             this.grpNotNull.Controls.Add(this.txtEmployeeID);
-            this.grpNotNull.Controls.Add(this.groupBox1);
             this.grpNotNull.Controls.Add(this.label2);
             this.grpNotNull.Controls.Add(this.cboCharacter);
             this.grpNotNull.Controls.Add(this.lblLevel);
@@ -238,7 +238,7 @@
             this.grpNotNull.Controls.Add(this.lblCard);
             this.grpNotNull.Location = new System.Drawing.Point(12, 12);
             this.grpNotNull.Name = "grpNotNull";
-            this.grpNotNull.Size = new System.Drawing.Size(477, 182);
+            this.grpNotNull.Size = new System.Drawing.Size(477, 264);
             this.grpNotNull.TabIndex = 4;
             this.grpNotNull.TabStop = false;
             this.grpNotNull.Text = "用户信息(必填)";
@@ -248,16 +248,16 @@
             this.cbStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStore.Enabled = false;
             this.cbStore.FormattingEnabled = true;
-            this.cbStore.Location = new System.Drawing.Point(71, 119);
+            this.cbStore.Location = new System.Drawing.Point(294, 77);
             this.cbStore.Name = "cbStore";
-            this.cbStore.Size = new System.Drawing.Size(80, 20);
+            this.cbStore.Size = new System.Drawing.Size(173, 20);
             this.cbStore.TabIndex = 31;
             this.cbStore.Visible = false;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 122);
+            this.label8.Location = new System.Drawing.Point(229, 80);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 30;
@@ -269,9 +269,9 @@
             this.cbManagerID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbManagerID.Enabled = false;
             this.cbManagerID.FormattingEnabled = true;
-            this.cbManagerID.Location = new System.Drawing.Point(71, 90);
+            this.cbManagerID.Location = new System.Drawing.Point(73, 103);
             this.cbManagerID.Name = "cbManagerID";
-            this.cbManagerID.Size = new System.Drawing.Size(151, 20);
+            this.cbManagerID.Size = new System.Drawing.Size(396, 20);
             this.cbManagerID.TabIndex = 29;
             this.cbManagerID.Visible = false;
             this.cbManagerID.SelectedIndexChanged += new System.EventHandler(this.cbManagerID_SelectedIndexChanged);
@@ -279,7 +279,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 93);
+            this.label7.Location = new System.Drawing.Point(8, 106);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 28;
@@ -295,7 +295,7 @@
             0,
             0,
             131072});
-            this.txtRestAmount.Location = new System.Drawing.Point(384, 150);
+            this.txtRestAmount.Location = new System.Drawing.Point(386, 130);
             this.txtRestAmount.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -314,7 +314,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(316, 154);
+            this.label6.Location = new System.Drawing.Point(318, 134);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 26;
@@ -329,7 +329,7 @@
             0,
             0,
             131072});
-            this.txtTotalAmount.Location = new System.Drawing.Point(71, 152);
+            this.txtTotalAmount.Location = new System.Drawing.Point(73, 132);
             this.txtTotalAmount.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -343,7 +343,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(156, 154);
+            this.label5.Location = new System.Drawing.Point(158, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 24;
@@ -354,7 +354,7 @@
             this.cbMoneyUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMoneyUnit.Enabled = false;
             this.cbMoneyUnit.FormattingEnabled = true;
-            this.cbMoneyUnit.Location = new System.Drawing.Point(227, 151);
+            this.cbMoneyUnit.Location = new System.Drawing.Point(229, 131);
             this.cbMoneyUnit.Name = "cbMoneyUnit";
             this.cbMoneyUnit.Size = new System.Drawing.Size(80, 20);
             this.cbMoneyUnit.TabIndex = 23;
@@ -362,7 +362,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 154);
+            this.label4.Location = new System.Drawing.Point(8, 134);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 22;
@@ -370,11 +370,11 @@
             // 
             // txtEmployeeID
             // 
-            this.txtEmployeeID.Location = new System.Drawing.Point(227, 25);
+            this.txtEmployeeID.Location = new System.Drawing.Point(294, 17);
             this.txtEmployeeID.MaxLength = 30;
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.ReadOnly = true;
-            this.txtEmployeeID.Size = new System.Drawing.Size(80, 21);
+            this.txtEmployeeID.Size = new System.Drawing.Size(173, 21);
             this.txtEmployeeID.TabIndex = 21;
             // 
             // groupBox1
@@ -384,9 +384,9 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.lblAffirm);
             this.groupBox1.Controls.Add(this.txtAffirm);
-            this.groupBox1.Location = new System.Drawing.Point(313, 15);
+            this.groupBox1.Location = new System.Drawing.Point(10, 159);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(158, 95);
+            this.groupBox1.Size = new System.Drawing.Size(168, 95);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "修改密码";
@@ -409,6 +409,16 @@
             this.txtPassword.Size = new System.Drawing.Size(83, 21);
             this.txtPassword.TabIndex = 13;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(69, 66);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(83, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "重置密码";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // lblAffirm
             // 
             this.lblAffirm.AutoSize = true;
@@ -430,7 +440,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(157, 28);
+            this.label2.Location = new System.Drawing.Point(227, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 18;
@@ -441,16 +451,16 @@
             this.cboCharacter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCharacter.Enabled = false;
             this.cboCharacter.FormattingEnabled = true;
-            this.cboCharacter.Location = new System.Drawing.Point(71, 56);
+            this.cboCharacter.Location = new System.Drawing.Point(73, 77);
             this.cboCharacter.Name = "cboCharacter";
-            this.cboCharacter.Size = new System.Drawing.Size(80, 20);
+            this.cboCharacter.Size = new System.Drawing.Size(150, 20);
             this.cboCharacter.TabIndex = 7;
             this.cboCharacter.SelectedIndexChanged += new System.EventHandler(this.cboCharacter_SelectedIndexChanged);
             // 
             // lblLevel
             // 
             this.lblLevel.AutoSize = true;
-            this.lblLevel.Location = new System.Drawing.Point(6, 60);
+            this.lblLevel.Location = new System.Drawing.Point(8, 80);
             this.lblLevel.Name = "lblLevel";
             this.lblLevel.Size = new System.Drawing.Size(65, 12);
             this.lblLevel.TabIndex = 6;
@@ -458,17 +468,17 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(227, 56);
+            this.txtUserName.Location = new System.Drawing.Point(71, 44);
             this.txtUserName.MaxLength = 30;
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.ReadOnly = true;
-            this.txtUserName.Size = new System.Drawing.Size(80, 21);
+            this.txtUserName.Size = new System.Drawing.Size(396, 21);
             this.txtUserName.TabIndex = 3;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(157, 60);
+            this.lblName.Location = new System.Drawing.Point(8, 48);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(65, 12);
             this.lblName.TabIndex = 2;
@@ -476,17 +486,17 @@
             // 
             // txtUID
             // 
-            this.txtUID.Location = new System.Drawing.Point(71, 25);
+            this.txtUID.Location = new System.Drawing.Point(71, 14);
             this.txtUID.MaxLength = 255;
             this.txtUID.Name = "txtUID";
             this.txtUID.ReadOnly = true;
-            this.txtUID.Size = new System.Drawing.Size(80, 21);
+            this.txtUID.Size = new System.Drawing.Size(152, 21);
             this.txtUID.TabIndex = 1;
             // 
             // lblCard
             // 
             this.lblCard.AutoSize = true;
-            this.lblCard.Location = new System.Drawing.Point(6, 28);
+            this.lblCard.Location = new System.Drawing.Point(6, 20);
             this.lblCard.Name = "lblCard";
             this.lblCard.Size = new System.Drawing.Size(65, 12);
             this.lblCard.TabIndex = 0;
@@ -495,7 +505,7 @@
             // cbIsAdmin
             // 
             this.cbIsAdmin.AutoSize = true;
-            this.cbIsAdmin.Location = new System.Drawing.Point(20, 382);
+            this.cbIsAdmin.Location = new System.Drawing.Point(20, 464);
             this.cbIsAdmin.Name = "cbIsAdmin";
             this.cbIsAdmin.Size = new System.Drawing.Size(120, 16);
             this.cbIsAdmin.TabIndex = 8;
@@ -506,7 +516,7 @@
             // cbIsAble
             // 
             this.cbIsAble.AutoSize = true;
-            this.cbIsAble.Location = new System.Drawing.Point(159, 382);
+            this.cbIsAble.Location = new System.Drawing.Point(159, 464);
             this.cbIsAble.Name = "cbIsAble";
             this.cbIsAble.Size = new System.Drawing.Size(108, 16);
             this.cbIsAble.TabIndex = 9;
@@ -518,27 +528,17 @@
             // cbAbleMode
             // 
             this.cbAbleMode.FormattingEnabled = true;
-            this.cbAbleMode.Location = new System.Drawing.Point(264, 382);
+            this.cbAbleMode.Location = new System.Drawing.Point(264, 464);
             this.cbAbleMode.Name = "cbAbleMode";
             this.cbAbleMode.Size = new System.Drawing.Size(48, 20);
             this.cbAbleMode.TabIndex = 10;
             this.cbAbleMode.Visible = false;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(69, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "重置密码";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // frmMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(495, 417);
+            this.ClientSize = new System.Drawing.Size(503, 494);
             this.Controls.Add(this.cbAbleMode);
             this.Controls.Add(this.cbIsAble);
             this.Controls.Add(this.cbIsAdmin);
