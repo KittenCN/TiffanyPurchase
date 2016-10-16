@@ -93,3 +93,4 @@ E:\workstation\项目\用蝶项目\Tiffany\员工内购\Business\obj\Debug\BHair
 G:\WorkStation\GitHub\TiffanyPurchase\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
 G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\Microsoft.Office.interop.access.dao.dll
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\Business\bin\Debug\Microsoft.Office.interop.access.dao.dll
+G:\WorkStation\GitHub\TiffanyPurchase\Business\bin\Debug\Microsoft.Office.Interop.Excel.xml

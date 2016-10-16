@@ -151,7 +151,7 @@ namespace BHair.Business
                     { validate++; }
                     if (dr["Character"].ToString() != "1" && dr["Character"].ToString() != "2" && dr["Character"].ToString() != "3" && dr["Character"].ToString() != "4" && dr["Character"].ToString() != "5" && dr["Character"].ToString() != "6")
                     { validate++; }
-                    if (int.Parse(dr["MoneyUnit"].ToString())<1 || int.Parse(dr["MoneyUnit"].ToString()) >10)
+                    if (int.Parse(dr["MoneyUnit"].ToString()) < 1 || int.Parse(dr["MoneyUnit"].ToString()) > 10)
                     { validate++; }
                     if ((dr["Character"].ToString() == "3" && dr["ManagerID"].ToString() == "") || (dr["Character"].ToString() == "2" && dr["ManagerID"].ToString() == ""))
                     { validate++; }
@@ -286,6 +286,17 @@ namespace BHair.Business
             ah.Close();
             return Result;
         }
+
+        public string strReturnUsername(string UID)
+        {
+            string strResult = "";
+            DataTable dtResult = SelectAllUsers(UID);
+            if (dtResult != null && dtResult.Rows.Count > 0)
+            {
+                strResult = dtResult.Rows[0]["UserName"].ToString();
+            }
+            return strResult;
+        }
         public DataTable SelectAllUsers(string sql)
         {
             AccessHelper ah = new AccessHelper();
@@ -304,6 +315,163 @@ namespace BHair.Business
             ah.Close();
             if (Result.Rows.Count > 0) { boolResult = true; }
             return boolResult;
+        }
+        public bool boolOutEmpInfo(string filePath, DataTable ReportDT)
+        {
+            Excel.Application app;
+            Excel.Workbooks wbs;
+            Excel.Workbook wb;
+            app = new Excel.Application();
+            wbs = app.Workbooks;
+            wb = wbs.Add(true);
+
+
+            Excel.Worksheet s = (Excel.Worksheet)wb.Worksheets.get_Item(1);
+
+            s.Cells[1, 1] = "用户账号";
+            s.Cells[1, 2] = "员工编号";
+            s.Cells[1, 3] = "用户角色";
+            s.Cells[1, 4] = "用户姓名";
+            s.Cells[1, 5] = "直属经理";
+            s.Cells[1, 6] = "所属店面";
+            s.Cells[1, 7] = "货币类型";
+            s.Cells[1, 8] = "剩余额度";
+            s.Cells[1, 9] = "联系电话";
+            s.Cells[1, 10] = "职位";
+            s.Cells[1, 11] = "部门";
+            s.Cells[1, 12] = "Email地址";
+            s.Cells[1, 13] = "备注";
+            s.Cells[1, 14] = "是否超级管理员";
+            s.Cells[1, 15] = "是否冻结该用户";
+            s.Cells[1, 16] = "冻结类型";
+            s.Cells[1, 17] = "是否删除";
+
+            int i = 1;
+            foreach (DataRow dr in ReportDT.Rows)
+            {
+                s.Cells[1 + i, 1] = dr["UID"].ToString();
+                s.Cells[1 + i, 2] = dr["EmployeeID"].ToString();
+                s.Cells[1 + i, 3] = strReturnCharacter(dr["Character"].ToString());
+                s.Cells[1 + i, 4] = dr["UserName"].ToString();
+                s.Cells[1 + i, 5] = strReturnUsername(dr["ManagerID"].ToString());
+                s.Cells[1 + i, 6] = dr["Store"].ToString();
+                s.Cells[1 + i, 7] = strReturnMoneyUnit(dr["MoneyUnit"].ToString());
+                s.Cells[1 + i, 8] = dr["RestAmount"].ToString();
+                s.Cells[1 + i, 9] = dr["Tel"].ToString();
+                s.Cells[1 + i, 10] = dr["Position"].ToString();
+                s.Cells[1 + i, 11] = dr["Department"].ToString();
+                s.Cells[1 + i, 12] = dr["Email"].ToString();
+                s.Cells[1 + i, 13] = dr["Detail"].ToString();
+                if(dr["IsAdmin"].ToString()=="1")
+                {
+                    s.Cells[1 + i, 14] = "是";
+                }
+                else
+                {
+                    s.Cells[1 + i, 14] = "否";
+                }
+                if (dr["IsAble"].ToString() == "0")
+                {
+                    s.Cells[1 + i, 15] = "是";
+                    if (dr["AbleMode"].ToString() == "1")
+                    {
+                        s.Cells[1 + i, 16] = "临时冻结";
+                    }
+                    else
+                    {
+                        s.Cells[1 + i, 16] = "永久冻结";
+                    }
+                }
+                else
+                {
+                    s.Cells[1 + i, 15] = "否";
+                    s.Cells[1 + i, 16] = "-";
+                }
+                if (dr["IsDelete"].ToString() == "1")
+                {
+                    s.Cells[1 + i, 17] = "是";
+                }
+                else
+                {
+                    s.Cells[1 + i, 17] = "否";
+                }
+                i++;
+            }
+
+            //保存
+            //string filePath = System.IO.Directory.GetCurrentDirectory() + @"\tempPDF\tempExcel.xls";
+
+            app.AlertBeforeOverwriting = false;
+            wb.SaveAs(filePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            //退出和释放
+            wb.Close(null, null, null);
+            wbs.Close();
+            app.Quit();
+            //释放掉多余的excel进程
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(app);
+            app = null;
+            return true;
+        }
+
+        public string strReturnCharacter(string strChar)
+        {
+            string strResult = "";
+            switch (strChar)
+            {
+                case "1": strResult = "商品部"; break;
+                case "2": strResult = "经理"; break;
+                case "3": strResult = "员工"; break;
+                case "4": strResult = "店面"; break;
+                case "5": strResult = "HR"; break;
+                case "6": strResult = "财务"; break;
+                case "7": strResult = "IT Help"; break;
+                default:
+                    strResult = "无";
+                    break;
+            }
+            return strResult;
+        }
+        public string strReturnMoneyUnit(string strMoneyUnit)
+        {
+            string strResult = "";
+            switch (strMoneyUnit)
+            {
+                case "1":
+                    strResult = "人民币";
+                    break;
+                case "2":
+                    strResult = "美元";
+                    break;
+                case "3":
+                    strResult = "港币";
+                    break;
+                case "4":
+                    strResult = "澳元";
+                    break;
+                case "5":
+                    strResult = "新元";
+                    break;
+                case "6":
+                    strResult = "马币";
+                    break;
+                case "7":
+                    strResult = "英镑";
+                    break;
+                case "8":
+                    strResult = "欧元";
+                    break;
+                case "9":
+                    strResult = "日元";
+                    break;
+                case "10":
+                    strResult = "台币";
+                    break;
+                default:
+                    strResult = "人民币";
+                    break;
+            }
+
+            return strResult;
         }
     }
 }

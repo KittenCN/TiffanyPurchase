@@ -62,6 +62,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnPermission = new System.Windows.Forms.Button();
+            this.btnOutEmpInfo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMember)).BeginInit();
             this.SuspendLayout();
             // 
@@ -370,11 +371,22 @@
             this.btnPermission.UseVisualStyleBackColor = true;
             this.btnPermission.Click += new System.EventHandler(this.btnPermission_Click);
             // 
+            // btnOutEmpInfo
+            // 
+            this.btnOutEmpInfo.Location = new System.Drawing.Point(310, 10);
+            this.btnOutEmpInfo.Name = "btnOutEmpInfo";
+            this.btnOutEmpInfo.Size = new System.Drawing.Size(85, 23);
+            this.btnOutEmpInfo.TabIndex = 10;
+            this.btnOutEmpInfo.Text = "导出员工信息";
+            this.btnOutEmpInfo.UseVisualStyleBackColor = true;
+            this.btnOutEmpInfo.Click += new System.EventHandler(this.btnOutEmpInfo_Click);
+            // 
             // frmMember_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 424);
+            this.Controls.Add(this.btnOutEmpInfo);
             this.Controls.Add(this.btnPermission);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDelete);
@@ -428,5 +440,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MoneyUnitState;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsAble;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShowIsAble;
+        private System.Windows.Forms.Button btnOutEmpInfo;
     }
 }

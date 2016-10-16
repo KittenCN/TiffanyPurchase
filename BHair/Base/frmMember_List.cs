@@ -16,6 +16,7 @@ namespace BHair.Base
     public partial class frmMember_List : WinFormsUI.Docking.DockContent
     {
         Users user = new Users();
+        public DataTable ApplicationInfoTable;
         public frmMember_List()
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace BHair.Base
         public void LoadMemberList()
         {
             user.UsersDT=user.SelectAllUsers("");
+            ApplicationInfoTable = user.UsersDT;
             dgvMember.AutoGenerateColumns = false;
             dgvMember.DataSource = user.UsersDT;
 
@@ -51,6 +53,7 @@ namespace BHair.Base
         {
             string sql = string.Format(" and ([UserName] like '%{0}%' or [UID] like '%{0}%' or [EmployeeID] like '%{0}%')", txtMember.Text);
             user.UsersDT = user.SelectAllUsers(sql);
+            ApplicationInfoTable = user.UsersDT;
             dgvMember.DataSource = user.UsersDT;
             //this.LoadMemberList();
         }
@@ -223,6 +226,28 @@ namespace BHair.Base
             }
         }
 
-
+        private void btnOutEmpInfo_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel文件(*.xls)|*.xls";
+            // Show save file dialog box
+            DialogResult result = saveFileDialog.ShowDialog();
+            //点了保存按钮进入
+            if (result == DialogResult.OK)
+            {
+                //获得文件路径
+                string localFilePath = saveFileDialog.FileName.ToString();
+                ExcelHelper eh = new ExcelHelper();
+                try
+                {
+                    eh.boolOutEmpInfo(localFilePath, ApplicationInfoTable);
+                    MessageBox.Show("保存成功", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("保存失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
     }
 }

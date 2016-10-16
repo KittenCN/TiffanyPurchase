@@ -102,3 +102,4 @@ G:\WorkStation\GitHub\TiffanyPurchase\BHair\bin\Debug\内购SQLQueue.accdb
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\内购SQLQueue.accdb
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\Microsoft.Office.Interop.Excel.dll
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\office.xml
+G:\WorkStation\GitHub\TiffanyPurchase\BHair\bin\Debug\Microsoft.Office.Interop.Excel.xml
