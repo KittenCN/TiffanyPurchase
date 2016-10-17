@@ -25,7 +25,7 @@ namespace BHair.Base
         private void frmMember_List_Load(object sender, EventArgs e)
         {
             this.LoadMemberList();
-            if(Login.LoginUser.Character==7)
+            if (Login.LoginUser.Character == 7)
             {
                 button1.Enabled = false;
                 btnPermission.Enabled = false;
@@ -37,22 +37,18 @@ namespace BHair.Base
         /// <summary>加载用户信息列表。</summary>
         public void LoadMemberList()
         {
-            user.UsersDT=user.SelectAllUsers("");
+            user.UsersDT = user.SelectAllUsers("");
+            user.UsersDT.Columns.Add("selected", typeof(Int32));
             ApplicationInfoTable = user.UsersDT;
             dgvMember.AutoGenerateColumns = false;
             dgvMember.DataSource = user.UsersDT;
-
-
         }
-
-        
-
-
 
         private void txtMember_TextChanged(object sender, EventArgs e)
         {
             string sql = string.Format(" and ([UserName] like '%{0}%' or [UID] like '%{0}%' or [EmployeeID] like '%{0}%')", txtMember.Text);
             user.UsersDT = user.SelectAllUsers(sql);
+            user.UsersDT.Columns.Add("selected", typeof(Int32));
             ApplicationInfoTable = user.UsersDT;
             dgvMember.DataSource = user.UsersDT;
             //this.LoadMemberList();
@@ -90,7 +86,7 @@ namespace BHair.Base
             if (this.dgvMember.CurrentRow != null)
             {
                 string strMemberId = this.dgvMember.CurrentRow.Cells["UID"].Value.ToString();
-                if (strMemberId != "Administrator"||Login.LoginUser.IsAdmin==1)
+                if (strMemberId != "Administrator" || Login.LoginUser.IsAdmin == 1)
                 {
                     frmMember objfrmMember = new frmMember(strMemberId);
                     if (objfrmMember.ShowDialog() == DialogResult.OK)
@@ -247,6 +243,28 @@ namespace BHair.Base
                 {
                     MessageBox.Show("保存失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+        }
+
+        private void btnAllForzen_Click(object sender, EventArgs e)
+        {
+            int successRows = 0;
+            foreach (DataRow dr in ApplicationInfoTable.Rows)
+            {
+                if (dr["selected"].ToString() == "1")
+                {
+                    //successRows += applicationInfo.ApprovalApplication(dr["TransNo"].ToString(), Login.LoginUser, 1, DateTime.Now);
+                    successRows++;
+                }
+            }
+            MessageBox.Show("审批通过" + successRows + "条", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void dgvMember_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = dgvMember.CurrentCell.RowIndex;
+            if (dgvMember.Rows.Count > 0 && dgvMember.SelectedRows.Count > 0)
+            {
+
             }
         }
     }

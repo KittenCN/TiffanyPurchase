@@ -14,7 +14,7 @@ namespace BHair.Business
     {
         public DataTable ApplicationInfoTable;
         public DataRow ApplicationInfoRow;
-         ApplicationInfo applicationInfo = new ApplicationInfo();
+        ApplicationInfo applicationInfo = new ApplicationInfo();
         public string CtrlID = "";
         string SelectStr = "and 1=1";
         string CtrlType = "未审核";

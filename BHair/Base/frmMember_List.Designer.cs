@@ -35,6 +35,12 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.dgvMember = new System.Windows.Forms.DataGridView();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnPermission = new System.Windows.Forms.Button();
+            this.btnOutEmpInfo = new System.Windows.Forms.Button();
+            this.btnAllForzen = new System.Windows.Forms.Button();
+            this.选中 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,10 +65,6 @@
             this.MoneyUnitState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsAble = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShowIsAble = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnPermission = new System.Windows.Forms.Button();
-            this.btnOutEmpInfo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMember)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +79,7 @@
             // 
             // txtMember
             // 
-            this.txtMember.Location = new System.Drawing.Point(141, 12);
+            this.txtMember.Location = new System.Drawing.Point(117, 12);
             this.txtMember.Name = "txtMember";
             this.txtMember.Size = new System.Drawing.Size(100, 21);
             this.txtMember.TabIndex = 1;
@@ -86,9 +88,9 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(606, 10);
+            this.btnAdd.Location = new System.Drawing.Point(684, 10);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(85, 23);
+            this.btnAdd.Size = new System.Drawing.Size(61, 23);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "新增用户(&A)";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -97,9 +99,9 @@
             // btnModify
             // 
             this.btnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModify.Location = new System.Drawing.Point(697, 10);
+            this.btnModify.Location = new System.Drawing.Point(751, 10);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(85, 23);
+            this.btnModify.Size = new System.Drawing.Size(66, 23);
             this.btnModify.TabIndex = 3;
             this.btnModify.Text = "编辑用户(&M)";
             this.btnModify.UseVisualStyleBackColor = true;
@@ -116,6 +118,7 @@
             this.dgvMember.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.选中,
             this.UID,
             this.UserName,
             this.EmployeeID,
@@ -147,14 +150,80 @@
             this.dgvMember.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMember.Size = new System.Drawing.Size(872, 361);
             this.dgvMember.TabIndex = 6;
+            this.dgvMember.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMember_CellClick);
             this.dgvMember.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMember_CellFormatting);
             this.dgvMember.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMember_CellMouseDoubleClick);
             this.dgvMember.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvMember_DataBindingComplete);
             this.dgvMember.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMember_RowPostPaint);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.Location = new System.Drawing.Point(823, 10);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(61, 23);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "删除用户(&D)";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(515, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(70, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "导入用户(&I)";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnPermission
+            // 
+            this.btnPermission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPermission.Location = new System.Drawing.Point(591, 10);
+            this.btnPermission.Name = "btnPermission";
+            this.btnPermission.Size = new System.Drawing.Size(87, 23);
+            this.btnPermission.TabIndex = 9;
+            this.btnPermission.Text = "导入可用工号(&I)";
+            this.btnPermission.UseVisualStyleBackColor = true;
+            this.btnPermission.Click += new System.EventHandler(this.btnPermission_Click);
+            // 
+            // btnOutEmpInfo
+            // 
+            this.btnOutEmpInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOutEmpInfo.Location = new System.Drawing.Point(424, 10);
+            this.btnOutEmpInfo.Name = "btnOutEmpInfo";
+            this.btnOutEmpInfo.Size = new System.Drawing.Size(85, 23);
+            this.btnOutEmpInfo.TabIndex = 10;
+            this.btnOutEmpInfo.Text = "导出员工信息";
+            this.btnOutEmpInfo.UseVisualStyleBackColor = true;
+            this.btnOutEmpInfo.Click += new System.EventHandler(this.btnOutEmpInfo_Click);
+            // 
+            // btnAllForzen
+            // 
+            this.btnAllForzen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAllForzen.Location = new System.Drawing.Point(343, 10);
+            this.btnAllForzen.Name = "btnAllForzen";
+            this.btnAllForzen.Size = new System.Drawing.Size(75, 23);
+            this.btnAllForzen.TabIndex = 11;
+            this.btnAllForzen.Text = "批量冻结";
+            this.btnAllForzen.UseVisualStyleBackColor = true;
+            this.btnAllForzen.Click += new System.EventHandler(this.btnAllForzen_Click);
+            // 
+            // 选中
+            // 
+            this.选中.DataPropertyName = "selected";
+            this.选中.FillWeight = 40F;
+            this.选中.HeaderText = "选中";
+            this.选中.Name = "选中";
+            this.选中.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.选中.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // UID
             // 
             this.UID.DataPropertyName = "UID";
+            this.UID.FillWeight = 75.86526F;
             this.UID.HeaderText = "用户账号";
             this.UID.Name = "UID";
             this.UID.ReadOnly = true;
@@ -162,6 +231,7 @@
             // UserName
             // 
             this.UserName.DataPropertyName = "UserName";
+            this.UserName.FillWeight = 75.86526F;
             this.UserName.HeaderText = "用户姓名";
             this.UserName.Name = "UserName";
             this.UserName.ReadOnly = true;
@@ -169,6 +239,7 @@
             // EmployeeID
             // 
             this.EmployeeID.DataPropertyName = "EmployeeID";
+            this.EmployeeID.FillWeight = 75.86526F;
             this.EmployeeID.HeaderText = "员工号码";
             this.EmployeeID.Name = "EmployeeID";
             this.EmployeeID.ReadOnly = true;
@@ -184,6 +255,7 @@
             // Tel
             // 
             this.Tel.DataPropertyName = "Tel";
+            this.Tel.FillWeight = 75.86526F;
             this.Tel.HeaderText = "电话";
             this.Tel.Name = "Tel";
             this.Tel.ReadOnly = true;
@@ -191,6 +263,7 @@
             // Email
             // 
             this.Email.DataPropertyName = "Email";
+            this.Email.FillWeight = 75.86526F;
             this.Email.HeaderText = "Email";
             this.Email.Name = "Email";
             this.Email.ReadOnly = true;
@@ -201,6 +274,7 @@
             dataGridViewCellStyle1.Format = "C2";
             dataGridViewCellStyle1.NullValue = null;
             this.Position.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Position.FillWeight = 75.86526F;
             this.Position.HeaderText = "职位";
             this.Position.Name = "Position";
             this.Position.ReadOnly = true;
@@ -208,6 +282,7 @@
             // Department
             // 
             this.Department.DataPropertyName = "Department";
+            this.Department.FillWeight = 75.86526F;
             this.Department.HeaderText = "部门";
             this.Department.Name = "Department";
             this.Department.ReadOnly = true;
@@ -226,6 +301,7 @@
             dataGridViewCellStyle2.Format = "d";
             dataGridViewCellStyle2.NullValue = null;
             this.Detail.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Detail.FillWeight = 75.86526F;
             this.Detail.HeaderText = "用户信息描述";
             this.Detail.MinimumWidth = 20;
             this.Detail.Name = "Detail";
@@ -234,6 +310,7 @@
             // Character
             // 
             this.Character.DataPropertyName = "Character";
+            this.Character.FillWeight = 75.86526F;
             this.Character.HeaderText = "所属角色";
             this.Character.Name = "Character";
             this.Character.ReadOnly = true;
@@ -320,6 +397,7 @@
             // 
             // MoneyUnitState
             // 
+            this.MoneyUnitState.FillWeight = 75.86526F;
             this.MoneyUnitState.HeaderText = "货币类型";
             this.MoneyUnitState.Name = "MoneyUnitState";
             this.MoneyUnitState.ReadOnly = true;
@@ -334,58 +412,17 @@
             // 
             // ShowIsAble
             // 
+            this.ShowIsAble.FillWeight = 75.86526F;
             this.ShowIsAble.HeaderText = "是否可用";
             this.ShowIsAble.Name = "ShowIsAble";
             this.ShowIsAble.ReadOnly = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(788, 10);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 23);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "删除用户(&D)";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(401, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "导入用户(&I)";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnPermission
-            // 
-            this.btnPermission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPermission.Location = new System.Drawing.Point(492, 10);
-            this.btnPermission.Name = "btnPermission";
-            this.btnPermission.Size = new System.Drawing.Size(108, 23);
-            this.btnPermission.TabIndex = 9;
-            this.btnPermission.Text = "导入可用工号(&I)";
-            this.btnPermission.UseVisualStyleBackColor = true;
-            this.btnPermission.Click += new System.EventHandler(this.btnPermission_Click);
-            // 
-            // btnOutEmpInfo
-            // 
-            this.btnOutEmpInfo.Location = new System.Drawing.Point(310, 10);
-            this.btnOutEmpInfo.Name = "btnOutEmpInfo";
-            this.btnOutEmpInfo.Size = new System.Drawing.Size(85, 23);
-            this.btnOutEmpInfo.TabIndex = 10;
-            this.btnOutEmpInfo.Text = "导出员工信息";
-            this.btnOutEmpInfo.UseVisualStyleBackColor = true;
-            this.btnOutEmpInfo.Click += new System.EventHandler(this.btnOutEmpInfo_Click);
             // 
             // frmMember_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 424);
+            this.Controls.Add(this.btnAllForzen);
             this.Controls.Add(this.btnOutEmpInfo);
             this.Controls.Add(this.btnPermission);
             this.Controls.Add(this.button1);
@@ -416,6 +453,9 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnPermission;
+        private System.Windows.Forms.Button btnOutEmpInfo;
+        private System.Windows.Forms.Button btnAllForzen;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn 选中;
         private System.Windows.Forms.DataGridViewTextBoxColumn UID;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
@@ -440,6 +480,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MoneyUnitState;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsAble;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShowIsAble;
-        private System.Windows.Forms.Button btnOutEmpInfo;
     }
 }
