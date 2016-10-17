@@ -110,6 +110,12 @@
     <Compile Include="Base\frmConfig.Designer.cs">
       <DependentUpon>frmConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Base\frmMember_MassSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\frmMember_MassSetting.Designer.cs">
+      <DependentUpon>frmMember_MassSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Base\frmStore.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,6 +292,9 @@
     <EmbeddedResource Include="Base\frmConfig.resx">
       <DependentUpon>frmConfig.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\frmMember_MassSetting.resx">
+      <DependentUpon>frmMember_MassSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Base\frmStore.resx">
       <DependentUpon>frmStore.cs</DependentUpon>

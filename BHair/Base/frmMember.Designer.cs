@@ -50,16 +50,16 @@
             this.txtRestAmount = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.txtTotalAmount = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cbMoneyUnit = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtEmployeeID = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblAffirm = new System.Windows.Forms.Label();
             this.txtAffirm = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbMoneyUnit = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtEmployeeID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cboCharacter = new System.Windows.Forms.ComboBox();
             this.lblLevel = new System.Windows.Forms.Label();
@@ -80,7 +80,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(410, 463);
+            this.btnCancel.Location = new System.Drawing.Point(410, 462);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 7;
@@ -90,7 +90,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(318, 463);
+            this.btnSave.Location = new System.Drawing.Point(329, 462);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 6;
@@ -340,43 +340,6 @@
             this.txtTotalAmount.Size = new System.Drawing.Size(80, 21);
             this.txtTotalAmount.TabIndex = 25;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(158, 134);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "货币类型：";
-            // 
-            // cbMoneyUnit
-            // 
-            this.cbMoneyUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMoneyUnit.Enabled = false;
-            this.cbMoneyUnit.FormattingEnabled = true;
-            this.cbMoneyUnit.Location = new System.Drawing.Point(229, 131);
-            this.cbMoneyUnit.Name = "cbMoneyUnit";
-            this.cbMoneyUnit.Size = new System.Drawing.Size(80, 20);
-            this.cbMoneyUnit.TabIndex = 23;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 134);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "当年额度：";
-            // 
-            // txtEmployeeID
-            // 
-            this.txtEmployeeID.Location = new System.Drawing.Point(294, 17);
-            this.txtEmployeeID.MaxLength = 30;
-            this.txtEmployeeID.Name = "txtEmployeeID";
-            this.txtEmployeeID.ReadOnly = true;
-            this.txtEmployeeID.Size = new System.Drawing.Size(173, 21);
-            this.txtEmployeeID.TabIndex = 21;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lblPassword);
@@ -436,6 +399,43 @@
             this.txtAffirm.PasswordChar = '*';
             this.txtAffirm.Size = new System.Drawing.Size(83, 21);
             this.txtAffirm.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(158, 134);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "货币类型：";
+            // 
+            // cbMoneyUnit
+            // 
+            this.cbMoneyUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMoneyUnit.Enabled = false;
+            this.cbMoneyUnit.FormattingEnabled = true;
+            this.cbMoneyUnit.Location = new System.Drawing.Point(229, 131);
+            this.cbMoneyUnit.Name = "cbMoneyUnit";
+            this.cbMoneyUnit.Size = new System.Drawing.Size(80, 20);
+            this.cbMoneyUnit.TabIndex = 23;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 134);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "当年额度：";
+            // 
+            // txtEmployeeID
+            // 
+            this.txtEmployeeID.Location = new System.Drawing.Point(294, 17);
+            this.txtEmployeeID.MaxLength = 30;
+            this.txtEmployeeID.Name = "txtEmployeeID";
+            this.txtEmployeeID.ReadOnly = true;
+            this.txtEmployeeID.Size = new System.Drawing.Size(173, 21);
+            this.txtEmployeeID.TabIndex = 21;
             // 
             // label2
             // 
@@ -505,7 +505,7 @@
             // cbIsAdmin
             // 
             this.cbIsAdmin.AutoSize = true;
-            this.cbIsAdmin.Location = new System.Drawing.Point(20, 464);
+            this.cbIsAdmin.Location = new System.Drawing.Point(20, 467);
             this.cbIsAdmin.Name = "cbIsAdmin";
             this.cbIsAdmin.Size = new System.Drawing.Size(120, 16);
             this.cbIsAdmin.TabIndex = 8;
@@ -516,7 +516,7 @@
             // cbIsAble
             // 
             this.cbIsAble.AutoSize = true;
-            this.cbIsAble.Location = new System.Drawing.Point(159, 464);
+            this.cbIsAble.Location = new System.Drawing.Point(146, 467);
             this.cbIsAble.Name = "cbIsAble";
             this.cbIsAble.Size = new System.Drawing.Size(108, 16);
             this.cbIsAble.TabIndex = 9;
@@ -528,9 +528,9 @@
             // cbAbleMode
             // 
             this.cbAbleMode.FormattingEnabled = true;
-            this.cbAbleMode.Location = new System.Drawing.Point(264, 464);
+            this.cbAbleMode.Location = new System.Drawing.Point(260, 464);
             this.cbAbleMode.Name = "cbAbleMode";
-            this.cbAbleMode.Size = new System.Drawing.Size(48, 20);
+            this.cbAbleMode.Size = new System.Drawing.Size(61, 20);
             this.cbAbleMode.TabIndex = 10;
             this.cbAbleMode.Visible = false;
             // 

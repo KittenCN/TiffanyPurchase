@@ -248,16 +248,23 @@ namespace BHair.Base
 
         private void btnAllForzen_Click(object sender, EventArgs e)
         {
-            int successRows = 0;
-            foreach (DataRow dr in ApplicationInfoTable.Rows)
+            //int successRows = 0;
+            //foreach (DataRow dr in ApplicationInfoTable.Rows)
+            //{
+            //    if (dr["selected"].ToString() == "1")
+            //    {
+            //        //successRows += applicationInfo.ApprovalApplication(dr["TransNo"].ToString(), Login.LoginUser, 1, DateTime.Now);
+            //        successRows++;
+            //    }
+            //}
+            //MessageBox.Show("审批通过" + successRows + "条", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            BHair.Business.Table.frmMember_MassSetting.dt = user.UsersDT;
+            frmMember_MassSetting fmms = new Base.frmMember_MassSetting();
+            if (fmms.ShowDialog() == DialogResult.OK)
             {
-                if (dr["selected"].ToString() == "1")
-                {
-                    //successRows += applicationInfo.ApprovalApplication(dr["TransNo"].ToString(), Login.LoginUser, 1, DateTime.Now);
-                    successRows++;
-                }
+                this.LoadMemberList();
             }
-            MessageBox.Show("审批通过" + successRows + "条", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
         private void dgvMember_CellClick(object sender, DataGridViewCellEventArgs e)
         {

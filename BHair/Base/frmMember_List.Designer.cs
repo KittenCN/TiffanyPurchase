@@ -35,11 +35,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.dgvMember = new System.Windows.Forms.DataGridView();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnPermission = new System.Windows.Forms.Button();
-            this.btnOutEmpInfo = new System.Windows.Forms.Button();
-            this.btnAllForzen = new System.Windows.Forms.Button();
             this.选中 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +60,11 @@
             this.MoneyUnitState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsAble = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShowIsAble = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnPermission = new System.Windows.Forms.Button();
+            this.btnOutEmpInfo = new System.Windows.Forms.Button();
+            this.btnAllForzen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMember)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,61 +155,6 @@
             this.dgvMember.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMember_CellMouseDoubleClick);
             this.dgvMember.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvMember_DataBindingComplete);
             this.dgvMember.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMember_RowPostPaint);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(823, 10);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(61, 23);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "删除用户(&D)";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(515, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "导入用户(&I)";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnPermission
-            // 
-            this.btnPermission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPermission.Location = new System.Drawing.Point(591, 10);
-            this.btnPermission.Name = "btnPermission";
-            this.btnPermission.Size = new System.Drawing.Size(87, 23);
-            this.btnPermission.TabIndex = 9;
-            this.btnPermission.Text = "导入可用工号(&I)";
-            this.btnPermission.UseVisualStyleBackColor = true;
-            this.btnPermission.Click += new System.EventHandler(this.btnPermission_Click);
-            // 
-            // btnOutEmpInfo
-            // 
-            this.btnOutEmpInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOutEmpInfo.Location = new System.Drawing.Point(424, 10);
-            this.btnOutEmpInfo.Name = "btnOutEmpInfo";
-            this.btnOutEmpInfo.Size = new System.Drawing.Size(85, 23);
-            this.btnOutEmpInfo.TabIndex = 10;
-            this.btnOutEmpInfo.Text = "导出员工信息";
-            this.btnOutEmpInfo.UseVisualStyleBackColor = true;
-            this.btnOutEmpInfo.Click += new System.EventHandler(this.btnOutEmpInfo_Click);
-            // 
-            // btnAllForzen
-            // 
-            this.btnAllForzen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAllForzen.Location = new System.Drawing.Point(343, 10);
-            this.btnAllForzen.Name = "btnAllForzen";
-            this.btnAllForzen.Size = new System.Drawing.Size(75, 23);
-            this.btnAllForzen.TabIndex = 11;
-            this.btnAllForzen.Text = "批量冻结";
-            this.btnAllForzen.UseVisualStyleBackColor = true;
-            this.btnAllForzen.Click += new System.EventHandler(this.btnAllForzen_Click);
             // 
             // 选中
             // 
@@ -416,6 +361,61 @@
             this.ShowIsAble.HeaderText = "是否可用";
             this.ShowIsAble.Name = "ShowIsAble";
             this.ShowIsAble.ReadOnly = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.Location = new System.Drawing.Point(823, 10);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(61, 23);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "删除用户(&D)";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(515, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(70, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "导入用户(&I)";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnPermission
+            // 
+            this.btnPermission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPermission.Location = new System.Drawing.Point(591, 10);
+            this.btnPermission.Name = "btnPermission";
+            this.btnPermission.Size = new System.Drawing.Size(87, 23);
+            this.btnPermission.TabIndex = 9;
+            this.btnPermission.Text = "导入可用工号(&I)";
+            this.btnPermission.UseVisualStyleBackColor = true;
+            this.btnPermission.Click += new System.EventHandler(this.btnPermission_Click);
+            // 
+            // btnOutEmpInfo
+            // 
+            this.btnOutEmpInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOutEmpInfo.Location = new System.Drawing.Point(424, 10);
+            this.btnOutEmpInfo.Name = "btnOutEmpInfo";
+            this.btnOutEmpInfo.Size = new System.Drawing.Size(85, 23);
+            this.btnOutEmpInfo.TabIndex = 10;
+            this.btnOutEmpInfo.Text = "导出员工信息";
+            this.btnOutEmpInfo.UseVisualStyleBackColor = true;
+            this.btnOutEmpInfo.Click += new System.EventHandler(this.btnOutEmpInfo_Click);
+            // 
+            // btnAllForzen
+            // 
+            this.btnAllForzen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAllForzen.Location = new System.Drawing.Point(343, 10);
+            this.btnAllForzen.Name = "btnAllForzen";
+            this.btnAllForzen.Size = new System.Drawing.Size(75, 23);
+            this.btnAllForzen.TabIndex = 11;
+            this.btnAllForzen.Text = "批量操作";
+            this.btnAllForzen.UseVisualStyleBackColor = true;
+            this.btnAllForzen.Click += new System.EventHandler(this.btnAllForzen_Click);
             // 
             // frmMember_List
             // 
