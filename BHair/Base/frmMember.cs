@@ -231,7 +231,15 @@ namespace BHair.Base
                 MessageBox.Show("请输入用户名", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if(cbManagerID.SelectedValue == null || cbManagerID.SelectedValue.ToString() == "")
+            AccessHelper ah = new AccessHelper();
+            string strSQL = "select * from Users where UID='" + txtUID.Text + "' and IsDelete=0";
+            DataTable dtSQL = ah.SelectToDataTable(strSQL);
+            if(dtSQL!=null && dtSQL.Rows.Count>0)
+            {
+                MessageBox.Show("用户名重复", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (cbManagerID.SelectedValue == null || cbManagerID.SelectedValue.ToString() == "")
             {
                 MessageBox.Show("请选择直属经理", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
