@@ -518,7 +518,7 @@ namespace BHair
                     购买确认ToolStripMenuItem.Visible = false;
                     toolStripButton13.Visible = false;
                     //toolStripButton8.Visible = false;
-                    toolStripButton2.Visible = false;
+                    //toolStripButton2.Visible = false;
                     menuMain_System_Setup.Visible = false;
                 }
 
