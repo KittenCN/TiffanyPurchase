@@ -108,21 +108,22 @@ namespace BHair.Business
         public static bool ToApplicantSubmit2(string TransNo, string ApplicantsID, string ApplicantsName, string ApplicantsDate)
         {
             bool isSuccess = false;
-            string Subject = string.Format("员工内购系统：收到内购申请");
-            string Body = string.Format("内购申请详情：\r\n交易号：{0}\r\n申请人：{1}\r\n申请日期：{2}\r\n", TransNo, ApplicantsName, ApplicantsDate);
-            DataTable applications = users.SelectUsersByUID(ApplicantsID);
-            DataTable ManagerInfo = users.SelectUsersByUID(applications.Rows[0]["ManagerID"].ToString());
-            if (applications.Rows.Count > 0)
-            {
-                foreach (DataRow dr in ManagerInfo.Rows)
-                {
-                    if (applications.Rows[0]["ManagerID"].ToString() == dr["UID"].ToString())
-                    {
-                        SendEmail(Subject, Body, dr["Email"].ToString());
-                        return isSuccess;
-                    }
-                }
-            }
+            //string Subject = string.Format("员工内购系统：收到内购申请");
+            //string Body = string.Format("内购申请详情：\r\n交易号：{0}\r\n申请人：{1}\r\n申请日期：{2}\r\n", TransNo, ApplicantsName, ApplicantsDate);
+            //DataTable applications = users.SelectUsersByUID(ApplicantsID);
+            //DataTable ManagerInfo = users.SelectUsersByUID(applications.Rows[0]["ManagerID"].ToString());
+            //if (applications.Rows.Count > 0)
+            //{
+            //    foreach (DataRow dr in ManagerInfo.Rows)
+            //    {
+            //        if (applications.Rows[0]["ManagerID"].ToString() == dr["UID"].ToString())
+            //        {
+            //            SendEmail(Subject, Body, dr["Email"].ToString());
+            //            return isSuccess;
+            //        }
+            //    }
+            //}
+            isSuccess = true;
             return isSuccess;
         }
 
@@ -135,16 +136,16 @@ namespace BHair.Business
         public static bool ToApplicantSubmit(ApplicationInfo ai)
         {
             bool isSuccess = false;
-            string Subject = string.Format("员工内购系统：收到内购申请");
-            string Body = string.Format("内购申请详情：\r\n交易号：{0}\r\n申请人：{1}\r\n申请日期：{2}\r\n", ai.TransNo, ai.ApplicantsName, ai.ApplicantsDate);
-            foreach (DataRow dr in users.UsersDT.Rows)
-            {
-                if (dr["Character"].ToString() == "1")
-                {
-                    SendEmail(Subject, Body, dr["Email"].ToString());
-                }
-            }
-
+            //string Subject = string.Format("员工内购系统：收到内购申请");
+            //string Body = string.Format("内购申请详情：\r\n交易号：{0}\r\n申请人：{1}\r\n申请日期：{2}\r\n", ai.TransNo, ai.ApplicantsName, ai.ApplicantsDate);
+            //foreach (DataRow dr in users.UsersDT.Rows)
+            //{
+            //    if (dr["Character"].ToString() == "1")
+            //    {
+            //        SendEmail(Subject, Body, dr["Email"].ToString());
+            //    }
+            //}
+            isSuccess = true;
             return isSuccess;
         }
 
@@ -157,15 +158,16 @@ namespace BHair.Business
         public static bool ToEmployeeConfirm(ApplicationInfo ai)
         {
             bool isSuccess = false;
-            string Subject = string.Format("员工内购系统：申请单已审核");
-            string Body = string.Format("内购申请详情：\r\n交易号：{0}\r\n申请人：{1}\r\n申请日期：{2}\r\n", ai.TransNo, ai.ApplicantsName, ai.ApplicantsDate);
-            foreach (DataRow dr in users.UsersDT.Rows)
-            {
-                if (dr["UID"].ToString() == ai.Applicants)
-                {
-                    SendEmail(Subject, Body, dr["Email"].ToString());
-                }
-            }
+            //string Subject = string.Format("员工内购系统：申请单已审核");
+            //string Body = string.Format("内购申请详情：\r\n交易号：{0}\r\n申请人：{1}\r\n申请日期：{2}\r\n", ai.TransNo, ai.ApplicantsName, ai.ApplicantsDate);
+            //foreach (DataRow dr in users.UsersDT.Rows)
+            //{
+            //    if (dr["UID"].ToString() == ai.Applicants)
+            //    {
+            //        SendEmail(Subject, Body, dr["Email"].ToString());
+            //    }
+            //}
+            isSuccess = true;
             return isSuccess;
         }
 
@@ -178,15 +180,16 @@ namespace BHair.Business
         public static bool ToFinalConfirm(ApplicationInfo ai)
         {
             bool isSuccess = false;
-            string Subject = string.Format("员工内购系统：有一个内购申请已确认购买");
-            string Body = string.Format("内购申请详情：\r\n交易号：{0}\r\n申请人：{1}\r\n申请日期：{2}\r\n", ai.TransNo, ai.ApplicantsName, ai.ApplicantsDate);
-            foreach (DataRow dr in users.UsersDT.Rows)
-            {
-                if (dr["Character"].ToString() == "1")
-                {
-                    SendEmail(Subject, Body, dr["Email"].ToString());
-                }
-            }
+            //string Subject = string.Format("员工内购系统：有一个内购申请已确认购买");
+            //string Body = string.Format("内购申请详情：\r\n交易号：{0}\r\n申请人：{1}\r\n申请日期：{2}\r\n", ai.TransNo, ai.ApplicantsName, ai.ApplicantsDate);
+            //foreach (DataRow dr in users.UsersDT.Rows)
+            //{
+            //    if (dr["Character"].ToString() == "1")
+            //    {
+            //        SendEmail(Subject, Body, dr["Email"].ToString());
+            //    }
+            //}
+            isSuccess = true;
             return isSuccess;
         }
 
@@ -199,15 +202,16 @@ namespace BHair.Business
         public static bool SaleSuccess(ApplicationInfo ai)
         {
             bool isSuccess = false;
-            string Subject = string.Format("员工内购系统：有一个内购申请已确认购买");
-            string Body = string.Format("内购申请详情：\r\n交易号：{0}\r\n申请人：{1}\r\n申请日期：{2}\r\n", ai.TransNo, ai.ApplicantsName, ai.ApplicantsDate);
-            foreach (DataRow dr in users.UsersDT.Rows)
-            {
-                if (dr["UID"].ToString() == ai.Applicants)
-                {
-                    SendEmail(Subject, Body, dr["Email"].ToString());
-                }
-            }
+            //string Subject = string.Format("员工内购系统：有一个内购申请已确认购买");
+            //string Body = string.Format("内购申请详情：\r\n交易号：{0}\r\n申请人：{1}\r\n申请日期：{2}\r\n", ai.TransNo, ai.ApplicantsName, ai.ApplicantsDate);
+            //foreach (DataRow dr in users.UsersDT.Rows)
+            //{
+            //    if (dr["UID"].ToString() == ai.Applicants)
+            //    {
+            //        SendEmail(Subject, Body, dr["Email"].ToString());
+            //    }
+            //}
+            isSuccess = true;
             return isSuccess;
         }
 
