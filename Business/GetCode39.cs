@@ -25,7 +25,7 @@ namespace BHair
                 Height = 60
             };  
             writer = new BarcodeWriter();  
-            writer.Format = BarcodeFormat.CODE_39;  
+            writer.Format = BarcodeFormat.CODE_128;  
             writer.Options = options;
             Bitmap bitmap = writer.Write(UnCode);
             return bitmap;
