@@ -251,6 +251,32 @@ namespace BHair.Business
             }
         }
 
+        private void InsertDBtoCache()
+        {
+            bool boolRunResult = false;
+            try
+            {
+                string sqlString = string.Format("select * from AccessQueue order by [ID] asc");
+                DataTable SqlQuery = SelectToDataTable(sqlString);
+                CacheHelper ch = new Business.CacheHelper();                
+                foreach (DataRow dr in SqlQuery.Rows)
+                {
+                    //string strSQL = "insert into AccessQueue(SqlStr,operation,TransNo,Buy,DetailID) ";
+                    //strSQL = strSQL + " values('" + dr["SqlStr"].ToString() + "','" + dr["operation"].ToString() + "','" + dr["TransNo"].ToString() + "'," + dr["Buy"].ToString() + "," + dr["DetailID"].ToString() + ") ";
+                    string strSQL = string.Format("Insert into [AccessQueue] ([SqlStr],[operation],[TransNo],[Buy],[DetailID]) values (\"{0}\",\"{1}\",\"{2}\",{3},{4})", dr["SqlStr"].ToString(), dr["operation"].ToString(), dr["TransNo"].ToString(), dr["Buy"].ToString(), dr["DetailID"].ToString());
+                    boolRunResult = ch.ExecuteSQLNonquery(strSQL);
+                    if(boolRunResult)
+                    {
+                        string delSql = string.Format("delete from AccessQueue where [ID]={0}", dr["ID"]);//执行成功后删除队列
+                        ExecuteSQLNonquery(delSql);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
 
 
 
@@ -258,6 +284,7 @@ namespace BHair.Business
         public void QuickExecuteSqlQuery()
         {
             ExecuteSqlQuery();
+            //InsertDBtoCache();
         }
 
         #endregion

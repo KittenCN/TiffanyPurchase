@@ -816,7 +816,7 @@ namespace BHair
             }
             catch
             {
-                MessageBox.Show("同步失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("远程缓存同步失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 connSuccess = false;
             }
             if (connSuccess)
@@ -826,7 +826,8 @@ namespace BHair
                     SqlQueue sq = new SqlQueue();
                     sq.QuickExecuteSqlQuery();
                     sq.Close();
-                    MessageBox.Show("同步完成", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("远程缓存同步完成,远程服务器每小时轮询处理一次,在此期间,您无法查看到新处理的结果,请勿重复操作!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("远程缓存同步完成", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch
                 {

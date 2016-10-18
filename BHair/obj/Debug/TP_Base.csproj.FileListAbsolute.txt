@@ -105,3 +105,4 @@ E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\office.x
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\bin\Debug\Microsoft.Office.Interop.Excel.xml
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\BHair\bin\Debug\Microsoft.Office.Interop.Excel.xml
 G:\WorkStation\GitHub\TiffanyPurchase\BHair\obj\Debug\BHair.Base.frmMember_MassSetting.resources
+G:\WorkStation\GitHub\TiffanyPurchase\BHair\bin\Debug\null.accdb

@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheHelper.cs" />
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="SqlQueue.cs" />
     <Compile Include="AccessHelper.cs" />

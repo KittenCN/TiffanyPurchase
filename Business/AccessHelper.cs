@@ -11,7 +11,6 @@ namespace BHair.Business
 {
     public class AccessHelper
     {
-
         public OleDbConnection Conn;
         public OleDbConnection SqlConn;
         //public string ConnString=@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\转货数据库.accdb";//连接字符串   

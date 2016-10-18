@@ -21,6 +21,7 @@ namespace BHair.Business
         public string strVersion = "";
         public string strConnstring = "";
         public string strlock = "";
+        public string strTempDB = "";
         public Login()
         {
             InitializeComponent();
@@ -251,11 +252,29 @@ namespace BHair.Business
             }
             return boolResult;
         }
+        private string GetASCII(string strIN)
+        {
+            string strResult = null;
+            byte[] array = System.Text.Encoding.ASCII.GetBytes(strIN);  //数组array为对应的ASCII数组     
+            for (int i = 0; i < array.Length; i++)
+            {
+                int asciicode = (int)(array[i]);
+                strResult += Convert.ToString(asciicode);//字符串ASCIIstr2 为对应的ASCII字符串
+            }
+            return strResult;
+        }
         private void btnLogin_Click(object sender, EventArgs e)
         {
             strConnstring = XMLHelper.strGetConnectString().Split(';')[1].ToString().Split('=')[1].ToString();
             strlock = strConnstring.Substring(0, strConnstring.LastIndexOf("\\") + 1) + "PurchaseLock";
-            if (!File.Exists(strlock))
+            strTempDB = strConnstring.Substring(0, strConnstring.LastIndexOf("\\") + 1) + GetASCII(txtName.Text) + ".accdb";
+            CacheHelper.ConnString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + strTempDB;
+            if (!File.Exists(strTempDB))
+            {
+                string strNullDB = ".\\null.accdb";
+                File.Copy(strNullDB, strTempDB, true);
+            }
+            if (!File.Exists(strlock) && File.Exists(strTempDB))
             {
                 try
                 {
@@ -305,8 +324,15 @@ namespace BHair.Business
             }
             else
             {
-                string strRepairUser = File.ReadAllText(strlock);
-                MessageBox.Show("登陆失败::数据库正在计算机: " + strRepairUser + " 启用自动修复中,请稍后重新登录!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if(File.Exists(strTempDB))
+                {
+                    string strRepairUser = File.ReadAllText(strlock);
+                    MessageBox.Show("登陆失败::数据库正在计算机: " + strRepairUser + " 启用自动修复中,请稍后重新登录!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("登陆失败::远端缓存库联络失败,请联系管理员!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
