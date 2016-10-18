@@ -510,6 +510,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+    <Folder Include="DBCache\" />
     <Folder Include="obj\Debug\Refactor\" />
     <Folder Include="Report\" />
   </ItemGroup>

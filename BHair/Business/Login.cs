@@ -267,7 +267,10 @@ namespace BHair.Business
         {
             strConnstring = XMLHelper.strGetConnectString().Split(';')[1].ToString().Split('=')[1].ToString();
             strlock = strConnstring.Substring(0, strConnstring.LastIndexOf("\\") + 1) + "PurchaseLock";
-            strTempDB = strConnstring.Substring(0, strConnstring.LastIndexOf("\\") + 1) + GetASCII(txtName.Text) + ".accdb";
+            string url = strConnstring.Substring(0, strConnstring.LastIndexOf("\\") + 1) + "DBCache\\";
+            if (!Directory.Exists(url))//如果不存在就创建file文件夹　　             　　                
+                Directory.CreateDirectory(url);//创建该文件夹　
+            strTempDB = url + GetASCII(txtName.Text) + ".accdb";
             CacheHelper.ConnString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + strTempDB;
             if (!File.Exists(strTempDB))
             {
