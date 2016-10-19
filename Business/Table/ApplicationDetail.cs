@@ -134,7 +134,7 @@ namespace BHair.Business.Table
                     insertSql.Append(" ([CodeID],[TransNo],[ItemID],[Detail],[Price],[MoneyUnit],[Count],[IsDelete],[SelforGift],[ApprovalCount],[ApprovalDiscount],[FinalPrice],[Recipient],[Relationship],[Reason],[IsSuccess],[PhoneNum]) ");
                     insertSql.Append("values");
                     insertSql.AppendFormat(" ('{0}','{1}','{2}','{3}',{4},{5},{6},{7},{8},{9},{10},{11},'{12}','{13}','{14}',{15},'{16}')", dr["CodeID"], dr["TransNo"], dr["ItemID"], dr["Detail"], dr["Price"], dr["MoneyUnit"], dr["Count"], dr["IsDelete"], dr["SelforGift"], dr["ApprovalCount"], dr["ApprovalDiscount"], dr["FinalPrice"], dr["Recipient"], dr["Relationship"], dr["Reason"], dr["IsSuccess"],dr["PhoneNum"]);
-                    sq.InsertQuery(insertSql.ToString(), "", dr["TransNo"].ToString(), 0,0);
+                    sq.InsertQuery(insertSql.ToString(), "Cache", dr["TransNo"].ToString(), 0,0);
                 }
                 sq.Close();
                 return 1;
