@@ -478,7 +478,7 @@ namespace BHair.Business.Table
                     insertSql.Append(" ([TransNo],[Applicants],[ApplicantsName],[ApplicantsNo],[Location],[ApplicantsDate],[Approval],[ApprovalName],[ApprovalDate],[Approval2],[ApprovalName2],[ApprovalDate2],[TotalPrice],[Deadline],[SalesDate],[PurchaseLocation],[Store],[StoreName],[ApprovalState],[ApprovalState2],[StaffApproval],[StaffID],[StaffName],[IsDelete],[AppState],[UnCode],[MoneyUnit],[EditRemark]) ");
                     insertSql.Append("values");
                     insertSql.AppendFormat(" ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}',{12},'{13}','{14}','{15}','{16}','{17}',{18},{19},{20},'{21}','{22}',{23},{24},'{25}',{26},'{27}')", dr["TransNo"], dr["Applicants"], dr["ApplicantsName"], dr["ApplicantsNo"], dr["Location"], dr["ApplicantsDate"], dr["Approval"], dr["ApprovalName"], dr["ApprovalDate"], dr["Approval2"], dr["ApprovalName2"], dr["ApprovalDate2"], dr["TotalPrice"], dr["Deadline"], dr["SalesDate"], dr["PurchaseLocation"], dr["Store"], dr["StoreName"], dr["ApprovalState"], dr["ApprovalState2"], dr["StaffApproval"], dr["StaffID"], dr["StaffName"], dr["IsDelete"], dr["AppState"], dr["UnCode"], dr["MoneyUnit"],dr["EditRemark"]);
-                    sq.InsertQuery(insertSql.ToString(), "", "", 0, 0);
+                    sq.InsertQuery(insertSql.ToString(), "", dr["TransNo"].ToString(), 0, 0);
                 }
                 sq.Close();
                 return 1;

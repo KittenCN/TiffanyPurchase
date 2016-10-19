@@ -795,7 +795,8 @@ namespace BHair
             try
             {
                 SqlQueue sq = new SqlQueue();
-                sq.ExecuteSqlQuery();
+                //sq.ExecuteSqlQuery();
+                sq.QuickExecuteSqlQuery();
                 sq.Close();
             }
             catch (Exception ex)
