@@ -26,7 +26,7 @@ namespace BHair.Base
             InitializeComponent();
             this.Text = "新增用户信息";
             LoadComBox();
-            if (Login.LoginUser.IsAdmin == 1 || Login.LoginUser.Character==5)
+            if (Login.LoginUser.IsAdmin == 1 || Login.LoginUser.Character == 5)
             {
                 cboCharacter.Enabled = true;
                 txtEmployeeID.Enabled = true;
@@ -46,7 +46,7 @@ namespace BHair.Base
                 txtRestAmount.Enabled = true;
                 cbStore.Enabled = true;
             }
-            else if(Login.LoginUser.Character==7)
+            else if (Login.LoginUser.Character == 7)
             {
                 cboCharacter.Enabled = false;
                 txtEmployeeID.Enabled = false;
@@ -80,7 +80,7 @@ namespace BHair.Base
             this.UID = memberid;
             LoadComBox();
             LoadData();
-            if(Login.LoginUser.IsAdmin==1 || Login.LoginUser.Character == 5)
+            if (Login.LoginUser.IsAdmin == 1 || Login.LoginUser.Character == 5)
             {
                 cboCharacter.Enabled = true;
                 txtEmployeeID.Enabled = true;
@@ -132,13 +132,13 @@ namespace BHair.Base
         private void LoadData()
         {
             user.UsersDT = user.SelectUsersByUID(UID);
-            if(user.UsersDT.Rows.Count>0)
+            if (user.UsersDT.Rows.Count > 0)
             {
                 LoadMember();
             }
             else
             {
-                 MessageBox.Show("获取用户信息失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("获取用户信息失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -181,10 +181,10 @@ namespace BHair.Base
             txtDetail.Text = user.UsersDT.Rows[0]["Detail"].ToString();
             txtTotalAmount.Value = decimal.Parse(user.UsersDT.Rows[0]["TotalAmount"].ToString());
             txtRestAmount.Value = decimal.Parse(user.UsersDT.Rows[0]["RestAmount"].ToString());
-            cbMoneyUnit.SelectedIndex=(int)user.UsersDT.Rows[0]["MoneyUnit"]-1;
+            cbMoneyUnit.SelectedIndex = (int)user.UsersDT.Rows[0]["MoneyUnit"] - 1;
             cbManagerID.SelectedValue = user.UsersDT.Rows[0]["ManagerID"].ToString();
             cbStore.SelectedValue = user.UsersDT.Rows[0]["Store"].ToString();
-            if(user.UsersDT.Rows[0]["AbleMode"] != null && user.UsersDT.Rows[0]["AbleMode"].ToString() != "" && (int)user.UsersDT.Rows[0]["AbleMode"]-1 >= 0)
+            if (user.UsersDT.Rows[0]["AbleMode"] != null && user.UsersDT.Rows[0]["AbleMode"].ToString() != "" && (int)user.UsersDT.Rows[0]["AbleMode"] - 1 >= 0)
             {
                 cbAbleMode.SelectedIndex = (int)user.UsersDT.Rows[0]["AbleMode"] - 1;
             }
@@ -193,11 +193,11 @@ namespace BHair.Base
                 cbAbleMode.SelectedIndex = 0;
             }
 
-            if(user.UsersDT.Rows[0]["IsAdmin"].ToString()=="1")
+            if (user.UsersDT.Rows[0]["IsAdmin"].ToString() == "1")
             { cbIsAdmin.Checked = true; }
             else { cbIsAdmin.Checked = false; }
-            if(user.UsersDT.Rows[0]["IsAble"].ToString()=="0")
-            { cbIsAble.Checked = true ; }
+            if (user.UsersDT.Rows[0]["IsAble"].ToString() == "0")
+            { cbIsAble.Checked = true; }
             else { cbIsAble.Checked = false; }
 
             if (user.UsersDT.Rows[0]["Character"].ToString() == "1") cboCharacter.SelectedIndex = 0;
@@ -221,12 +221,12 @@ namespace BHair.Base
         /// <summary>保存用户信息</summary>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(txtPassword.Text!=txtAffirm.Text)
+            if (txtPassword.Text != txtAffirm.Text)
             {
                 MessageBox.Show("两次密码不同", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (txtUID.Text=="")
+            if (txtUID.Text == "")
             {
                 MessageBox.Show("请输入用户名", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -234,7 +234,7 @@ namespace BHair.Base
             AccessHelper ah = new AccessHelper();
             string strSQL = "select * from Users where UID='" + txtUID.Text + "' and IsDelete=0";
             DataTable dtSQL = ah.SelectToDataTable(strSQL);
-            if(dtSQL!=null && dtSQL.Rows.Count>0)
+            if (dtSQL != null && dtSQL.Rows.Count > 0 && txtUID.ReadOnly == false)
             {
                 MessageBox.Show("用户名重复", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -254,7 +254,7 @@ namespace BHair.Base
                     DialogResult = DialogResult.OK;
                     this.Close();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("编辑失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -308,7 +308,7 @@ namespace BHair.Base
             cbMoneyUnit.SelectedIndex = 0;
 
             AllUsers = user.SelectAllUsers(" order by UserName ");
-            foreach(DataRow dr in AllUsers.Rows)
+            foreach (DataRow dr in AllUsers.Rows)
             {
                 cbManagerID.DataSource = AllUsers;
                 cbManagerID.DisplayMember = "UserName";
@@ -316,7 +316,7 @@ namespace BHair.Base
             }
 
             AllStore = store.SelectAllStoreInfo(" order by StoreName ");
-            foreach(DataRow dr in AllStore.Rows)
+            foreach (DataRow dr in AllStore.Rows)
             {
                 cbStore.DataSource = AllStore;
                 cbStore.DisplayMember = "StoreName";
@@ -327,12 +327,12 @@ namespace BHair.Base
             cbAbleMode.SelectedIndex = 0;
         }
 
-        
+
         void GetUserInfo()
         {
             user.UID = txtUID.Text;
             user.UserName = txtUserName.Text;
-            if(txtPassword.Text.Length>0)user.UserPwd = GetSHA1(txtPassword.Text);
+            if (txtPassword.Text.Length > 0) user.UserPwd = GetSHA1(txtPassword.Text);
             user.Tel = txtTel.Text;
             user.Email = txtEmail.Text;
             user.Position = txtPosition.Text;
@@ -348,7 +348,7 @@ namespace BHair.Base
             //    user.ManagerID = cbManagerID.SelectedValue.ToString();
             //}
             user.ManagerID = cbManagerID.SelectedValue.ToString();
-            if (user.Character==4)
+            if (user.Character == 4)
             {
                 user.Store = cbStore.SelectedValue.ToString();
             }
@@ -424,22 +424,22 @@ namespace BHair.Base
 
         private void cboCharacter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboCharacter.SelectedIndex==2||cboCharacter.SelectedIndex==1)
+            if (cboCharacter.SelectedIndex == 2 || cboCharacter.SelectedIndex == 1)
             {
                 label7.Visible = true;
                 cbManagerID.Visible = true;
-                if (cbManagerID.SelectedIndex == -1&&cbManagerID.Items.Count>0) cbManagerID.SelectedIndex = 0;
+                if (cbManagerID.SelectedIndex == -1 && cbManagerID.Items.Count > 0) cbManagerID.SelectedIndex = 0;
             }
             else
             {
                 //label7.Visible = false;
                 //cbManagerID.Visible = false;
             }
-            if(cboCharacter.SelectedIndex==3)
+            if (cboCharacter.SelectedIndex == 3)
             {
                 label8.Visible = true;
                 cbStore.Visible = true;
-                if (cbStore.SelectedIndex == -1&&cbStore.Items.Count>0) cbStore.SelectedIndex = 0;
+                if (cbStore.SelectedIndex == -1 && cbStore.Items.Count > 0) cbStore.SelectedIndex = 0;
             }
             else
             {
@@ -470,7 +470,7 @@ namespace BHair.Base
 
         private void cbIsAble_CheckedChanged(object sender, EventArgs e)
         {
-            if(cbIsAble.Checked==true)
+            if (cbIsAble.Checked == true)
             {
                 cbAbleMode.Enabled = true;
             }
