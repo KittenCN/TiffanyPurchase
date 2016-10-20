@@ -111,7 +111,7 @@ namespace BHair.Business
             {
                 txtDetail.Text = items.ItemsDT.Rows[0]["Detail"].ToString();
                 txtPrice.Value = decimal.Parse(items.ItemsDT.Rows[0]["Price"].ToString());
-
+                txtIsSpecial.Text = items.ItemsDT.Rows[0]["IsSpecial"].ToString();
 
                 //if(Login.LoginUser.MoneyUnit==1)  txtPrice.Value = (decimal)items.ItemsDT.Rows[0]["Price"];
                 //else if (Login.LoginUser.MoneyUnit == 2) txtPrice.Value = (decimal)items.ItemsDT.Rows[0]["Price2"];
