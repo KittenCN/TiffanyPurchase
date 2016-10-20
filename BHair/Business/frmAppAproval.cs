@@ -57,7 +57,7 @@ namespace BHair.Business
         {
             if (applicationInfo.TransNo != null)
             {
-                frmAppApprovalDetail faad = new frmAppApprovalDetail(applicationInfo,CtrlType);
+                frmAppApprovalDetail faad = new frmAppApprovalDetail(applicationInfo, CtrlType);
                 if (faad.ShowDialog() == DialogResult.OK)
                 {
                     this.GetApplicationDetail();
@@ -80,7 +80,7 @@ namespace BHair.Business
         private void dgvApplyInfo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int row = dgvApplyInfo.CurrentCell.RowIndex;
-            if (dgvApplyInfo.RowCount > 0 && dgvApplyInfo.SelectedRows.Count>0)
+            if (dgvApplyInfo.RowCount > 0 && dgvApplyInfo.SelectedRows.Count > 0)
             {
                 if ((int)dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value > 0) txtApprovalState2.Text = "通过"; else txtApprovalState2.Text = "未审批";
                 if ((int)dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value >= 2) txtApprovalState.Text = "通过"; else txtApprovalState.Text = "未审批";
@@ -106,7 +106,7 @@ namespace BHair.Business
                 applicationInfo.EditReason = dgvApplyInfo.SelectedRows[0].Cells["EditReason"].Value.ToString();
                 applicationInfo.EditRemark = dgvApplyInfo.SelectedRows[0].Cells["EditRemark"].Value.ToString();
             }
-            if(row!=null)
+            if (row != null)
             {
                 if ((int)dgvApplyInfo.Rows[row].Cells["AppState"].Value > 0) txtApprovalState2.Text = "通过"; else txtApprovalState2.Text = "未审批";
                 if ((int)dgvApplyInfo.Rows[row].Cells["AppState"].Value >= 2) txtApprovalState.Text = "通过"; else txtApprovalState.Text = "未审批";
@@ -157,10 +157,10 @@ namespace BHair.Business
                     if (fer.ShowDialog() == DialogResult.OK)
                     {
                         DataTable dt = applicationInfo.SelectApplicationByTransNo(applicationInfo.TransNo);
-                        if(dt.Rows.Count>0)
+                        if (dt.Rows.Count > 0)
                         {
                             dt.Rows[0]["EditRemark"] = fer.EditReasonString;
-                            applicationInfo.UpdateApplicationInfo(dt,0.00);
+                            applicationInfo.UpdateApplicationInfo(dt, 0.00, dt.Rows[0]["Applicants"].ToString());
                         }
                         applicationInfo.DeleteApplicaionInfo(applicationInfo.TransNo);
                         MessageBox.Show("撤销成功", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -176,7 +176,6 @@ namespace BHair.Business
             {
                 MessageBox.Show("请选择一行记录", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
         }
 
         private void btnAlter_Click(object sender, EventArgs e)
@@ -247,7 +246,7 @@ namespace BHair.Business
                 }
                 MessageBox.Show("审批通过" + successRows + "条", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            if(CtrlType=="最终确认")
+            if (CtrlType == "最终确认")
             {
                 foreach (DataRow dr in ApplicationInfoTable.Rows)
                 {
@@ -284,7 +283,7 @@ namespace BHair.Business
                     }
                 }
             }
-            if(CtrlType=="最终确认")
+            if (CtrlType == "最终确认")
             {
                 foreach (DataRow dr in ApplicationInfoTable.Rows)
                 {
@@ -309,23 +308,23 @@ namespace BHair.Business
 
         private void btnDiff_Click(object sender, EventArgs e)
         {
-            if(dgvApplyInfo.Rows.Count>0)
+            if (dgvApplyInfo.Rows.Count > 0)
             {
-                foreach(DataGridViewRow dr in dgvApplyInfo.Rows)
+                foreach (DataGridViewRow dr in dgvApplyInfo.Rows)
                 {
-                    if(dr.Cells["FinalExceptionFilter"].Value.ToString()=="异常")
+                    if (dr.Cells["FinalExceptionFilter"].Value.ToString() == "异常")
                     {
                         Boolean boolDiff = false;
                         AccessHelper ah = new AccessHelper();
                         string sql = "select * from ApplicationDetail where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' ";
                         DataTable dtsql = ah.SelectToDataTable(sql);
-                        for(int x=0;x<dtsql.Rows.Count;x++)
+                        for (int x = 0; x < dtsql.Rows.Count; x++)
                         {
                             AccessHelper tempah = new AccessHelper();
                             string tempsql = "select * from ApplicationDetail where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' and ItemID='" + dtsql.Rows[x]["ItemID"].ToString() + "' ";
                             DataTable dttempsql = tempah.SelectToDataTable(tempsql);
                             tempah.Close();
-                            if(dttempsql.Rows.Count>1)
+                            if (dttempsql.Rows.Count > 1)
                             {
                                 boolDiff = true;
                             }
@@ -337,7 +336,7 @@ namespace BHair.Business
                                 tempah2.Close();
                             }
                         }
-                        if(boolDiff==false)
+                        if (boolDiff == false)
                         {
                             AccessHelper tempah = new AccessHelper();
                             string tempsql = "update ApplicationInfo set FinalException=0 where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' ";

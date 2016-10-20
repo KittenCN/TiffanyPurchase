@@ -14,7 +14,7 @@ namespace BHair.Business
     public partial class frmAddApplicationEn : WinFormsUI.Docking.DockContent
     {
         Business.BaseData.Items items = new BaseData.Items();
-        bool ExcitItemID=false;
+        bool ExcitItemID = false;
         int codeID = 0;
         DataTable AddApplicationDT;
         ApplicationInfo applicationInfo = new ApplicationInfo();
@@ -31,13 +31,13 @@ namespace BHair.Business
             txtApplicantsName.Text = Login.LoginUser.UserName;
             txtApplicantsNo.Text = Login.LoginUser.EmployeeID;
             txtDeadline.Value = DateTime.Now.AddDays(7);
-            
+
         }
 
         void GetDataTable()
         {
 
-            AddApplicationDT = applicationDetail.SelectAppDetailByTransNo("0","");
+            AddApplicationDT = applicationDetail.SelectAppDetailByTransNo("0", "");
             dgvApplyProducts.DataSource = AddApplicationDT;
 
             dgvApplyGift.AutoGenerateColumns = false;
@@ -47,7 +47,7 @@ namespace BHair.Business
 
 
 
-     
+
 
 
 
@@ -57,7 +57,7 @@ namespace BHair.Business
             txtMoneyUnit.Items.Add("HKD");
             txtMoneyUnit.Items.Add("USD");
             txtMoneyUnit.SelectedIndex = 0;
-            if (Login.LoginUser.MoneyUnit>1) txtMoneyUnit.SelectedIndex = Login.LoginUser.MoneyUnit - 1;
+            if (Login.LoginUser.MoneyUnit > 1) txtMoneyUnit.SelectedIndex = Login.LoginUser.MoneyUnit - 1;
 
             txtSelforGift.Items.Add("Self");
             txtSelforGift.Items.Add("Gift");
@@ -74,8 +74,8 @@ namespace BHair.Business
         //填写物品ID获取信息
         private void txtItemID_Leave(object sender, EventArgs e)
         {
-            items.ItemsDT= items.SelectItemByItemID(txtItemID.Text.Trim());
-            if(items.ItemsDT!=null&&items.ItemsDT.Rows.Count>0)
+            items.ItemsDT = items.SelectItemByItemID(txtItemID.Text.Trim());
+            if (items.ItemsDT != null && items.ItemsDT.Rows.Count > 0)
             {
                 txtDetail.Text = items.ItemsDT.Rows[0]["Detail"].ToString();
                 txtPrice.Value = decimal.Parse(items.ItemsDT.Rows[0]["Price"].ToString());
@@ -152,10 +152,10 @@ namespace BHair.Business
             double totalPrice = 0;
             foreach (DataGridViewRow rows in dgvApplyProducts.Rows)
             {
-                if (rows.Cells["FinalPrice"] != null && rows.Cells["FinalPrice"].Value!=null)
-                totalPrice += double.Parse(rows.Cells["FinalPrice"].Value.ToString());
+                if (rows.Cells["FinalPrice"] != null && rows.Cells["FinalPrice"].Value != null)
+                    totalPrice += double.Parse(rows.Cells["FinalPrice"].Value.ToString());
             }
-            txtTotalPrice.Value = decimal.Parse(totalPrice.ToString("#0.00")); 
+            txtTotalPrice.Value = decimal.Parse(totalPrice.ToString("#0.00"));
         }
 
         //删除
@@ -185,7 +185,7 @@ namespace BHair.Business
 
         private void txtSelforGift_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(txtSelforGift.SelectedIndex==0)
+            if (txtSelforGift.SelectedIndex == 0)
             {
                 txtRecipient.ReadOnly = true;
                 txtRelationship.ReadOnly = true;
@@ -199,7 +199,7 @@ namespace BHair.Business
                 txtRecipient.ReadOnly = false;
                 txtRelationship.ReadOnly = false;
                 txtReason.ReadOnly = false;
-                
+
             }
 
         }
@@ -208,7 +208,7 @@ namespace BHair.Business
         {
             foreach (DataGridViewRow dgvr in dgvApplyProducts.Rows)
             {
-                if (dgvr.Cells["SelforGift"] != null && dgvr.Cells["SelforGift"].Value != null && dgvr.Cells["SelforGift"].Value.ToString()!="")
+                if (dgvr.Cells["SelforGift"] != null && dgvr.Cells["SelforGift"].Value != null && dgvr.Cells["SelforGift"].Value.ToString() != "")
                 {
                     if ((int)dgvr.Cells["SelforGift"].Value == 1) dgvr.Cells["SelforGiftState"].Value = "Self";
                     else dgvr.Cells["SelforGiftState"].Value = "Gift";
@@ -243,7 +243,7 @@ namespace BHair.Business
         private void btnOK_Click(object sender, EventArgs e)
         {
             double totalPrice = 0;
-            
+
             foreach (DataRow row in AddApplicationDT.Rows)
             {
                 if (items.SelectItemByItemID(row["ItemID"].ToString()).Rows[0]["IsSpecial"].ToString() == "1") { }
@@ -256,13 +256,13 @@ namespace BHair.Business
             {
                 MessageBox.Show("Items are not added in the application form");
             }
-            else if(Login.LoginUser.RestAmount-totalPrice<0)
+            else if (Login.LoginUser.RestAmount - totalPrice < 0)
             {
                 MessageBox.Show("Your current balance is not enough");
             }
             else
             {
-                string transNo = "NG"+ DateTime.Now.ToString("yyyyMMddHHmmssffff");
+                string transNo = "NG" + DateTime.Now.ToString("yyyyMMddHHmmssffff");
                 DataTable AddAppInfoDT = applicationInfo.SelectApplicationByTransNo("0");
                 DataRow dr = AddAppInfoDT.NewRow();
                 dr["TransNo"] = transNo;
@@ -287,11 +287,11 @@ namespace BHair.Business
                 AddAppInfoDT.Rows.Add(dr);
                 try
                 {
-                    applicationInfo.SubmitApplicationInfo(AddAppInfoDT,totalPrice);
-                    applicationDetail.SubmitApplicationDetail(AddApplicationDT, totalPrice);
+                    applicationInfo.SubmitApplicationInfo(AddAppInfoDT, totalPrice, Login.LoginUser.UID);
+                    applicationDetail.SubmitApplicationDetail(AddApplicationDT, totalPrice, Login.LoginUser.UID);
                     Thread thread = new Thread(new ThreadStart(SendEmail));
                     thread.Start();
-                    
+
                     MessageBox.Show("Submit Successe", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DialogResult = DialogResult.OK;
                     this.Close();

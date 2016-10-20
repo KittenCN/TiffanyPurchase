@@ -54,7 +54,7 @@ namespace BHair.Business
         {
 
             AddApplicationDT = applicationDetail.SelectAppDetailByTransNo("0", "");
-            AddApplicationDT.Columns.Add("IsSpecial",Type.GetType("System.Int32"));
+            AddApplicationDT.Columns.Add("IsSpecial", Type.GetType("System.Int32"));
             dgvApplyProducts.Columns.Add("IsSpecial", "IsSpecial");
             dgvApplyProducts.Columns["IsSpecial"].Visible = false;
             dgvApplyProducts.Columns["IsSpecial"].DataPropertyName = "IsSpecial";
@@ -173,7 +173,7 @@ namespace BHair.Business
             //if (txtMoneyUnit.SelectedIndex == 2) GiftTotal = EmailControl.config.HKD;
             //else if (txtMoneyUnit.SelectedIndex == 1) GiftTotal = EmailControl.config.USD;
             //else GiftTotal = EmailControl.config.CNY;
-            switch(txtMoneyUnit.SelectedIndex)
+            switch (txtMoneyUnit.SelectedIndex)
             {
                 case 0:
                     GiftTotal = EmailControl.config.CNY;
@@ -211,7 +211,7 @@ namespace BHair.Business
             {
                 MessageBox.Show("超过五项，无法添加", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (txtSelforGift.SelectedIndex == 1 && txtPrice.Value * txtCount.Value > GiftTotal && (txtReason.Text == "" || txtRecipient.Text == "" || txtRelationship.Text == "" || txtPhoneNum.Text==""))
+            else if (txtSelforGift.SelectedIndex == 1 && txtPrice.Value * txtCount.Value > GiftTotal && (txtReason.Text == "" || txtRecipient.Text == "" || txtRelationship.Text == "" || txtPhoneNum.Text == ""))
             {
                 MessageBox.Show("请填写赠礼明细", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -468,7 +468,7 @@ namespace BHair.Business
                 MessageBox.Show("已存在该交易号");
             }
             else
-            {                
+            {
                 DataTable AddAppInfoDT = applicationInfo.SelectApplicationByTransNo("0");
                 DataRow dr = AddAppInfoDT.NewRow();
                 dr["TransNo"] = transNo;
@@ -497,8 +497,8 @@ namespace BHair.Business
                 AddAppInfoDT.Rows.Add(dr);
                 try
                 {
-                    applicationInfo.SubmitApplicationInfo(AddAppInfoDT,totalPrice);
-                    applicationDetail.SubmitApplicationDetail(AddApplicationDT, totalPrice);
+                    applicationInfo.SubmitApplicationInfo(AddAppInfoDT, totalPrice, Login.LoginUser.UID);
+                    applicationDetail.SubmitApplicationDetail(AddApplicationDT, totalPrice, Login.LoginUser.UID);
 
                     Thread thread = new Thread(new ThreadStart(SendEmail));
                     thread.Start();
@@ -571,12 +571,12 @@ namespace BHair.Business
                 //        MoneyDiscont = EmailControl.config.TWDrate;
                 //        break;
                 //}
-                if (items.ItemsDT != null && items.ItemsDT.Rows.Count > 0 && items.ItemsDT.Rows[0][priceCol].ToString()!="")
+                if (items.ItemsDT != null && items.ItemsDT.Rows.Count > 0 && items.ItemsDT.Rows[0][priceCol].ToString() != "")
                 {
                     //if (MoneyDiscont == 0) MoneyDiscont = 1;
                     txtPrice.Value = decimal.Parse(items.ItemsDT.Rows[0][priceCol].ToString());
                 }
-                
+
             }
         }
 
@@ -587,10 +587,10 @@ namespace BHair.Business
 
         private void cbDiscount_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch(cbDiscount.SelectedIndex)
+            switch (cbDiscount.SelectedIndex)
             {
                 case 0:
-                    txtApprovalDiscount.Value = 100;  
+                    txtApprovalDiscount.Value = 100;
                     break;
                 case 1:
                     txtApprovalDiscount.Value = 80;

@@ -212,7 +212,7 @@ namespace BHair.Business.Table
         /// </summary>
         /// <param name="Applicants">申请人ID</param>
         /// <returns>Application表</returns>
-        public DataTable SelectApplicationByApplicants(string Applicants,string sql)
+        public DataTable SelectApplicationByApplicants(string Applicants, string sql)
         {
             AccessHelper ah = new AccessHelper();
             string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState<5 and AppState<>4 and Applicants = '{0}' {1} order by [ApplicantsDate] desc", Applicants, sql);
@@ -334,7 +334,7 @@ namespace BHair.Business.Table
         /// 经理查询自己下属ApplicationInfo
         /// </summary>
         /// <returns></returns>
-        public DataTable SelectApplicationByApproval2(string Approval2,string sql)
+        public DataTable SelectApplicationByApproval2(string Approval2, string sql)
         {
             AccessHelper ah = new AccessHelper();
             string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState=0 and Approval2='{1}' {0} order by [ApplicantsDate] desc", sql, Approval2);
@@ -373,7 +373,7 @@ namespace BHair.Business.Table
         /// 经理查询已审核ApplicationInfo
         /// </summary>
         /// <returns></returns>
-        public DataTable SelectHistoryApplicationByApproval2(string sql,Users users)
+        public DataTable SelectHistoryApplicationByApproval2(string sql, Users users)
         {
             AccessHelper ah = new AccessHelper();
             string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>0 and Approval2='{1}'  {0} order by [ApplicantsDate] desc", sql, users.UID);
@@ -410,7 +410,7 @@ namespace BHair.Business.Table
         /// </summary>
         /// <param name="Store"></param>
         /// <returns></returns>
-        public DataTable SelectApplicationByStoreStaff(string Uncode,string sql)
+        public DataTable SelectApplicationByStoreStaff(string Uncode, string sql)
         {
             AccessHelper ah = new AccessHelper();
             string sqlString = string.Format("select * from ApplicationInfo where IsDelete = 0 and AppState>3 and Uncode= '{0}' {1}", Uncode, sql);
@@ -424,7 +424,7 @@ namespace BHair.Business.Table
         /// </summary>
         /// <param name="Store"></param>
         /// <returns></returns>
-        public DataTable SelectHisApplicationByStore(string sql,string Store)
+        public DataTable SelectHisApplicationByStore(string sql, string Store)
         {
             AccessHelper ah = new AccessHelper();
             string sqlString = string.Format("select ApplicationInfo.TransNo,ApplicationInfo.ApplicantsDate,ApplicationInfo.ApplicantsName,ApplicationDetail.ItemID,ApplicationDetail.ApprovalCount,ApplicationDetail.FinalPrice,ApplicationDetail.MoneyUnit from ApplicationDetail left join ApplicationInfo on ApplicationDetail.TransNo=ApplicationInfo.TransNo where ApplicationInfo.AppState=4 and  ApplicationInfo.IsDelete=0 and ApplicationInfo.PurchaseLocation='{1}' {0}", sql, Store);
@@ -465,7 +465,7 @@ namespace BHair.Business.Table
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public int SubmitApplicationInfo(DataTable dt,double douTotalPrice)
+        public int SubmitApplicationInfo(DataTable dt, double douTotalPrice, string strUID)
         {
             int rows = 0;
             try
@@ -477,8 +477,8 @@ namespace BHair.Business.Table
                     insertSql.Append("Insert into [ApplicationInfo]");
                     insertSql.Append(" ([TransNo],[Applicants],[ApplicantsName],[ApplicantsNo],[Location],[ApplicantsDate],[Approval],[ApprovalName],[ApprovalDate],[Approval2],[ApprovalName2],[ApprovalDate2],[TotalPrice],[Deadline],[SalesDate],[PurchaseLocation],[Store],[StoreName],[ApprovalState],[ApprovalState2],[StaffApproval],[StaffID],[StaffName],[IsDelete],[AppState],[UnCode],[MoneyUnit],[EditRemark]) ");
                     insertSql.Append("values");
-                    insertSql.AppendFormat(" ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}',{12},'{13}','{14}','{15}','{16}','{17}',{18},{19},{20},'{21}','{22}',{23},{24},'{25}',{26},'{27}')", dr["TransNo"], dr["Applicants"], dr["ApplicantsName"], dr["ApplicantsNo"], dr["Location"], dr["ApplicantsDate"], dr["Approval"], dr["ApprovalName"], dr["ApprovalDate"], dr["Approval2"], dr["ApprovalName2"], dr["ApprovalDate2"], dr["TotalPrice"], dr["Deadline"], dr["SalesDate"], dr["PurchaseLocation"], dr["Store"], dr["StoreName"], dr["ApprovalState"], dr["ApprovalState2"], dr["StaffApproval"], dr["StaffID"], dr["StaffName"], dr["IsDelete"], dr["AppState"], dr["UnCode"], dr["MoneyUnit"],dr["EditRemark"]);
-                    sq.InsertQuery(insertSql.ToString(), "Cache", dr["TransNo"].ToString(), douTotalPrice, 0);
+                    insertSql.AppendFormat(" ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}',{12},'{13}','{14}','{15}','{16}','{17}',{18},{19},{20},'{21}','{22}',{23},{24},'{25}',{26},'{27}')", dr["TransNo"], dr["Applicants"], dr["ApplicantsName"], dr["ApplicantsNo"], dr["Location"], dr["ApplicantsDate"], dr["Approval"], dr["ApprovalName"], dr["ApprovalDate"], dr["Approval2"], dr["ApprovalName2"], dr["ApprovalDate2"], dr["TotalPrice"], dr["Deadline"], dr["SalesDate"], dr["PurchaseLocation"], dr["Store"], dr["StoreName"], dr["ApprovalState"], dr["ApprovalState2"], dr["StaffApproval"], dr["StaffID"], dr["StaffName"], dr["IsDelete"], dr["AppState"], dr["UnCode"], dr["MoneyUnit"], dr["EditRemark"]);
+                    sq.InsertQuery(insertSql.ToString(), "Cache" + strUID, dr["TransNo"].ToString(), douTotalPrice, 0);
                 }
                 sq.Close();
                 return 1;
@@ -497,7 +497,7 @@ namespace BHair.Business.Table
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public int UpdateApplicationInfo(DataTable dt,double douTotalPrice)
+        public int UpdateApplicationInfo(DataTable dt, double douTotalPrice, string strUID)
         {
             int rows = 0;
             DataTable insertDT = dt.Clone();
@@ -507,41 +507,41 @@ namespace BHair.Business.Table
                 foreach (DataRow dr in dt.Rows)
                 {
                     StringBuilder insertSql = new StringBuilder();
-                    
-                        insertSql.Append("Update [ApplicationInfo] set ");
-                        insertSql.AppendFormat(" [TransNo]='{0}',", dr["TransNo"]);
-                        insertSql.AppendFormat(" [Applicants]='{0}',", dr["Applicants"]);
-                        insertSql.AppendFormat(" [ApplicantsName]='{0}',", dr["ApplicantsName"]);
-                        insertSql.AppendFormat(" [ApplicantsNo]='{0}',", dr["ApplicantsNo"]);
-                        insertSql.AppendFormat(" [Location]='{0}',", dr["Location"]);
-                        insertSql.AppendFormat(" [ApplicantsDate]='{0}',", dr["ApplicantsDate"]);
-                        insertSql.AppendFormat(" [Approval]='{0}',", dr["Approval"]);
-                        insertSql.AppendFormat(" [ApprovalName]='{0}',", dr["ApprovalName"]);
-                        insertSql.AppendFormat(" [ApprovalDate]='{0}',", dr["ApprovalDate"]);
-                        insertSql.AppendFormat(" [Approval2]='{0}',", dr["Approval2"]);
-                        insertSql.AppendFormat(" [ApprovalName2]='{0}',", dr["ApprovalName2"]);
-                        insertSql.AppendFormat(" [ApprovalDate2]='{0}',", dr["ApprovalDate2"]);
-                        insertSql.AppendFormat(" [TotalPrice]={0},", dr["TotalPrice"]);
-                        insertSql.AppendFormat(" [Deadline]='{0}',", dr["Deadline"]);
-                        insertSql.AppendFormat(" [SalesDate]='{0}',", dr["SalesDate"]);
-                        insertSql.AppendFormat(" [PurchaseLocation]='{0}',", dr["PurchaseLocation"]);
-                        insertSql.AppendFormat(" [Store]='{0}',", dr["Store"]);
-                        insertSql.AppendFormat(" [StoreName]='{0}',", dr["StoreName"]);
-                        insertSql.AppendFormat(" [ApprovalState]={0},", dr["ApprovalState"]);
-                        insertSql.AppendFormat(" [ApprovalState2]={0},", dr["ApprovalState2"]);
-                        insertSql.AppendFormat(" [StaffApproval]={0},", dr["StaffApproval"]);
-                        insertSql.AppendFormat(" [StaffID]='{0}',", dr["StaffID"]);
-                        insertSql.AppendFormat(" [StaffName]='{0}',", dr["StaffName"]);
-                        insertSql.AppendFormat(" [IsDelete]={0},", dr["IsDelete"]);
-                        insertSql.AppendFormat(" [AppState]={0},", dr["AppState"]);
-                        insertSql.AppendFormat(" [EditReason]='{0}',", dr["EditReason"]);
-                        insertSql.AppendFormat(" [MoneyUnit]={0},", dr["MoneyUnit"]);
-                        insertSql.AppendFormat(" [EditRemark]='{0}',", dr["EditRemark"]);
-                        insertSql.AppendFormat(" [UnCode]='{0}'", dr["UnCode"]);
-                        insertSql.AppendFormat(" where [ID]={0}", dr["ID"]);
+
+                    insertSql.Append("Update [ApplicationInfo] set ");
+                    insertSql.AppendFormat(" [TransNo]='{0}',", dr["TransNo"]);
+                    insertSql.AppendFormat(" [Applicants]='{0}',", dr["Applicants"]);
+                    insertSql.AppendFormat(" [ApplicantsName]='{0}',", dr["ApplicantsName"]);
+                    insertSql.AppendFormat(" [ApplicantsNo]='{0}',", dr["ApplicantsNo"]);
+                    insertSql.AppendFormat(" [Location]='{0}',", dr["Location"]);
+                    insertSql.AppendFormat(" [ApplicantsDate]='{0}',", dr["ApplicantsDate"]);
+                    insertSql.AppendFormat(" [Approval]='{0}',", dr["Approval"]);
+                    insertSql.AppendFormat(" [ApprovalName]='{0}',", dr["ApprovalName"]);
+                    insertSql.AppendFormat(" [ApprovalDate]='{0}',", dr["ApprovalDate"]);
+                    insertSql.AppendFormat(" [Approval2]='{0}',", dr["Approval2"]);
+                    insertSql.AppendFormat(" [ApprovalName2]='{0}',", dr["ApprovalName2"]);
+                    insertSql.AppendFormat(" [ApprovalDate2]='{0}',", dr["ApprovalDate2"]);
+                    insertSql.AppendFormat(" [TotalPrice]={0},", dr["TotalPrice"]);
+                    insertSql.AppendFormat(" [Deadline]='{0}',", dr["Deadline"]);
+                    insertSql.AppendFormat(" [SalesDate]='{0}',", dr["SalesDate"]);
+                    insertSql.AppendFormat(" [PurchaseLocation]='{0}',", dr["PurchaseLocation"]);
+                    insertSql.AppendFormat(" [Store]='{0}',", dr["Store"]);
+                    insertSql.AppendFormat(" [StoreName]='{0}',", dr["StoreName"]);
+                    insertSql.AppendFormat(" [ApprovalState]={0},", dr["ApprovalState"]);
+                    insertSql.AppendFormat(" [ApprovalState2]={0},", dr["ApprovalState2"]);
+                    insertSql.AppendFormat(" [StaffApproval]={0},", dr["StaffApproval"]);
+                    insertSql.AppendFormat(" [StaffID]='{0}',", dr["StaffID"]);
+                    insertSql.AppendFormat(" [StaffName]='{0}',", dr["StaffName"]);
+                    insertSql.AppendFormat(" [IsDelete]={0},", dr["IsDelete"]);
+                    insertSql.AppendFormat(" [AppState]={0},", dr["AppState"]);
+                    insertSql.AppendFormat(" [EditReason]='{0}',", dr["EditReason"]);
+                    insertSql.AppendFormat(" [MoneyUnit]={0},", dr["MoneyUnit"]);
+                    insertSql.AppendFormat(" [EditRemark]='{0}',", dr["EditRemark"]);
+                    insertSql.AppendFormat(" [UnCode]='{0}'", dr["UnCode"]);
+                    insertSql.AppendFormat(" where [ID]={0}", dr["ID"]);
 
 
-                        sq.InsertQuery(insertSql.ToString(), "Cache", dr["TransNo"].ToString(), douTotalPrice, 0);
+                    sq.InsertQuery(insertSql.ToString(), "Cache" + strUID, dr["TransNo"].ToString(), douTotalPrice, 0);
                 }
                 sq.Close();
                 return 1;
@@ -712,7 +712,7 @@ namespace BHair.Business.Table
         /// </summary>
         /// <param name="CtrlID">控制号</param>
         /// <returns></returns>
-        public int StoreConfirm(string TransNo,  Users user, DateTime dt)
+        public int StoreConfirm(string TransNo, Users user, DateTime dt)
         {
             int rows = 0;
             try
@@ -736,7 +736,7 @@ namespace BHair.Business.Table
         /// </summary>
         /// <param name="CtrlID">控制号</param>
         /// <returns></returns>
-        public int StorePay(string TransNo, string check, string UID, double TotalPrice,double MoneyRate)
+        public int StorePay(string TransNo, string check, string UID, double TotalPrice, double MoneyRate)
         {
             int rows = 0;
             try
@@ -761,7 +761,7 @@ namespace BHair.Business.Table
         /// </summary>
         /// <param name="CtrlID">控制号</param>
         /// <returns></returns>
-        public bool CanBuy(string TransNo, string check, string UID,double TotalPrice)
+        public bool CanBuy(string TransNo, string check, string UID, double TotalPrice)
         {
             AccessHelper ah = new AccessHelper();
             try
@@ -773,16 +773,16 @@ namespace BHair.Business.Table
                 {
                     double RestMoney = double.Parse(Result.Rows[0]["RestAmount"].ToString());
                     RestMoney = RestMoney - TotalPrice;
-                    if(RestMoney>0) return true;
+                    if (RestMoney > 0) return true;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ah.Close();
                 return false;
             }
             ah.Close();
-            return false ;
+            return false;
         }
 
         /// <summary>
@@ -857,7 +857,7 @@ namespace BHair.Business.Table
             return rows;
         }
 
-        
+
 
         #endregion
 
