@@ -497,8 +497,8 @@ namespace BHair.Business
                 AddAppInfoDT.Rows.Add(dr);
                 try
                 {
-                    applicationInfo.SubmitApplicationInfo(AddAppInfoDT);
-                    applicationDetail.SubmitApplicationDetail(AddApplicationDT);
+                    applicationInfo.SubmitApplicationInfo(AddAppInfoDT,totalPrice);
+                    applicationDetail.SubmitApplicationDetail(AddApplicationDT, totalPrice);
 
                     Thread thread = new Thread(new ThreadStart(SendEmail));
                     thread.Start();

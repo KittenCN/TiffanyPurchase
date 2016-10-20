@@ -69,6 +69,7 @@
             this.Reason2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SelforGift2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtIsSpecial = new System.Windows.Forms.TextBox();
             this.txtEditReason = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtTotalPrice = new System.Windows.Forms.NumericUpDown();
@@ -115,7 +116,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtPhoneNum = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.txtIsSpecial = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyProducts)).BeginInit();
@@ -527,6 +527,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(959, 65);
             this.panel2.TabIndex = 3;
+            // 
+            // txtIsSpecial
+            // 
+            this.txtIsSpecial.Location = new System.Drawing.Point(783, 36);
+            this.txtIsSpecial.Name = "txtIsSpecial";
+            this.txtIsSpecial.Size = new System.Drawing.Size(25, 21);
+            this.txtIsSpecial.TabIndex = 26;
+            this.txtIsSpecial.Visible = false;
             // 
             // txtEditReason
             // 
@@ -1062,14 +1070,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(654, 444);
             this.panel6.TabIndex = 6;
-            // 
-            // txtIsSpecial
-            // 
-            this.txtIsSpecial.Location = new System.Drawing.Point(783, 36);
-            this.txtIsSpecial.Name = "txtIsSpecial";
-            this.txtIsSpecial.Size = new System.Drawing.Size(25, 21);
-            this.txtIsSpecial.TabIndex = 26;
-            this.txtIsSpecial.Visible = false;
             // 
             // frmAlterApplication
             // 

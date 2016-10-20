@@ -156,6 +156,18 @@ namespace BHair.Business
                 return false;
             }
         }
+        public bool InsertQuery(string sql, string operation, string transNo, double buy, int detailID)
+        {
+            string sqlString = string.Format("Insert into [AccessQueue] ([SqlStr],[operation],[TransNo],[Buy],[DetailID]) values (\"{0}\",\"{1}\",\"{2}\",{3},{4})", sql, operation, transNo, buy, detailID);
+            try
+            {
+                return ExecuteSQLNonquery(sqlString);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
 
         #region 执行队列
@@ -286,7 +298,7 @@ namespace BHair.Business
             DataTable SqlQuery = SelectToDataTable(sqlString);
             foreach (DataRow dr in SqlQuery.Rows)
             {
-                if(dr["SqlStr"].ToString().Replace(" ", "").Replace("[","").Replace("]","").ToLower().Substring(0, 25).ToString()== "insertintoapplicationinfo" || dr["SqlStr"].ToString().Replace(" ", "").Replace("[", "").Replace("]", "").ToLower().Substring(0, 27).ToString() == "insertintoapplicationdetail")
+                if(dr["operation"].ToString() == "Cache")
                 {
                     InsertDBtoCache(dr);
                 }

@@ -160,7 +160,7 @@ namespace BHair.Business
                         if(dt.Rows.Count>0)
                         {
                             dt.Rows[0]["EditRemark"] = fer.EditReasonString;
-                            applicationInfo.UpdateApplicationInfo(dt);
+                            applicationInfo.UpdateApplicationInfo(dt,0.00);
                         }
                         applicationInfo.DeleteApplicaionInfo(applicationInfo.TransNo);
                         MessageBox.Show("撤销成功", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);

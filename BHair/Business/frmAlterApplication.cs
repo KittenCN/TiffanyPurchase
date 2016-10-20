@@ -444,8 +444,8 @@ namespace BHair.Business
                         }
                         try
                         {
-                            applicationInfo.UpdateApplicationInfo(AddAppInfoDT);
-                            applicationDetail.UpdateApplicationDetail(AddApplicationDT);
+                            applicationInfo.UpdateApplicationInfo(AddAppInfoDT,double.Parse(txtTotalPrice.Value.ToString()));
+                            applicationDetail.UpdateApplicationDetail(AddApplicationDT, double.Parse(txtTotalPrice.Value.ToString()));
                             //if (EditState == 1)
                             //{
                             //    applicationInfo.ApprovalNotApplication(txtTransNo.Text,Login.LoginUser.UID,Login.LoginUser.UserName,2,DateTime.Now);
@@ -479,8 +479,8 @@ namespace BHair.Business
                     }
                     try
                     {
-                        applicationInfo.UpdateApplicationInfo(AddAppInfoDT);
-                        applicationDetail.UpdateApplicationDetail(AddApplicationDT);
+                        applicationInfo.UpdateApplicationInfo(AddAppInfoDT, double.Parse(txtTotalPrice.Value.ToString()));
+                        applicationDetail.UpdateApplicationDetail(AddApplicationDT, double.Parse(txtTotalPrice.Value.ToString()));
                         //if (EditState == 1)
                         //{
                         //    applicationInfo.ApprovalNotApplication(txtTransNo.Text,Login.LoginUser.UID,Login.LoginUser.UserName,2,DateTime.Now);
