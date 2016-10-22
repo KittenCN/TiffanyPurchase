@@ -444,8 +444,8 @@ namespace BHair.Business
                         }
                         try
                         {
-                            applicationInfo.UpdateApplicationInfo(AddAppInfoDT,double.Parse(txtTotalPrice.Value.ToString()),AddAppInfoDT.Rows[0]["Applicants"].ToString());
-                            applicationDetail.UpdateApplicationDetail(AddApplicationDT, double.Parse(txtTotalPrice.Value.ToString()), AddAppInfoDT.Rows[0]["Applicants"].ToString());
+                            applicationInfo.UpdateApplicationInfo(AddAppInfoDT,double.Parse(txtTotalPrice.Value.ToString()),AddAppInfoDT.Rows[0]["Applicants"].ToString(),0);
+                            applicationDetail.UpdateApplicationDetail(AddApplicationDT, double.Parse(txtTotalPrice.Value.ToString()), AddAppInfoDT.Rows[0]["Applicants"].ToString(),1);
                             //if (EditState == 1)
                             //{
                             //    applicationInfo.ApprovalNotApplication(txtTransNo.Text,Login.LoginUser.UID,Login.LoginUser.UserName,2,DateTime.Now);
@@ -479,8 +479,8 @@ namespace BHair.Business
                     }
                     try
                     {
-                        applicationInfo.UpdateApplicationInfo(AddAppInfoDT, double.Parse(txtTotalPrice.Value.ToString()), AddAppInfoDT.Rows[0]["Applicants"].ToString());
-                        applicationDetail.UpdateApplicationDetail(AddApplicationDT, double.Parse(txtTotalPrice.Value.ToString()), AddAppInfoDT.Rows[0]["Applicants"].ToString());
+                        applicationInfo.UpdateApplicationInfo(AddAppInfoDT, double.Parse(txtTotalPrice.Value.ToString()), AddAppInfoDT.Rows[0]["Applicants"].ToString(),0);
+                        applicationDetail.UpdateApplicationDetail(AddApplicationDT, double.Parse(txtTotalPrice.Value.ToString()), AddAppInfoDT.Rows[0]["Applicants"].ToString(),1);
                         //if (EditState == 1)
                         //{
                         //    applicationInfo.ApprovalNotApplication(txtTransNo.Text,Login.LoginUser.UID,Login.LoginUser.UserName,2,DateTime.Now);
