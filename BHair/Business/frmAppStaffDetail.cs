@@ -61,6 +61,12 @@ namespace BHair.Business
             if (txtApproval2.Text == "") txtApprovalTime2.Text = "";
             if (txtStaffName.Text == "") txtSalesDate.Text = "";
 
+            if (applicationInfo.AppState < 0)
+            {
+                txtApproval.Text = "自动审核失败";
+                btnConfirm.Enabled = false;
+            }
+
         }
 
 

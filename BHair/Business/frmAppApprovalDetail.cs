@@ -71,6 +71,15 @@ namespace BHair.Business
             {
                 txtSalesDate.Text = "";
             }
+
+            if(applicationInfo.AppState<0)
+            {
+                txtApproval.Text = "自动审核失败";
+                BtnApprovalOK.Enabled = false;
+                btnConfirm.Enabled = false;
+                //btnEdit.Enabled = false;
+                //btnEdit2.Enabled = false;
+            }
         }
 
 

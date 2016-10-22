@@ -88,6 +88,7 @@ namespace BHair.Business
                 if (dgvApplyInfo.SelectedRows[0].Cells["UnCode"].Value != null) txtUnCode.Text = dgvApplyInfo.SelectedRows[0].Cells["UnCode"].Value.ToString();
                 if ((int)dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value > 5) txtStaffApproval.Text = "已确认"; else txtStaffApproval.Text = "未确认";
                 if ((int)dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value == 9) txtFinish.Text = "已完成"; else txtFinish.Text = "未完成";
+                if ((int)dgvApplyInfo.SelectedRows[0].Cells["AppState"].Value < 0) txtApprovalState2.Text = "自动审核失败";
 
                 applicationInfo.TransNo = dgvApplyInfo.SelectedRows[0].Cells["TransNo"].Value.ToString();
                 applicationInfo.Applicants = dgvApplyInfo.SelectedRows[0].Cells["Applicants"].Value.ToString();
@@ -114,6 +115,7 @@ namespace BHair.Business
                 if (dgvApplyInfo.Rows[row].Cells["UnCode"].Value != null) txtUnCode.Text = dgvApplyInfo.Rows[row].Cells["UnCode"].Value.ToString();
                 if ((int)dgvApplyInfo.Rows[row].Cells["AppState"].Value > 5) txtStaffApproval.Text = "已确认"; else txtStaffApproval.Text = "未确认";
                 if ((int)dgvApplyInfo.Rows[row].Cells["AppState"].Value == 9) txtFinish.Text = "已完成"; else txtFinish.Text = "未完成";
+                if ((int)dgvApplyInfo.Rows[row].Cells["AppState"].Value < 0) txtApprovalState2.Text = "自动审核失败";
 
                 applicationInfo.TransNo = dgvApplyInfo.Rows[row].Cells["TransNo"].Value.ToString();
                 applicationInfo.Applicants = dgvApplyInfo.Rows[row].Cells["Applicants"].Value.ToString();
@@ -239,7 +241,7 @@ namespace BHair.Business
             {
                 foreach (DataRow dr in ApplicationInfoTable.Rows)
                 {
-                    if (dr["ApprovalState"].ToString() == "1")
+                    if (dr["ApprovalState"].ToString() == "1" && int.Parse(dr["AppState"].ToString())>0)
                     {
                         successRows += applicationInfo.ApprovalApplication(dr["TransNo"].ToString(), Login.LoginUser, 1, DateTime.Now);
                     }
@@ -266,7 +268,7 @@ namespace BHair.Business
             {
                 foreach (DataRow dr in ApplicationInfoTable.Rows)
                 {
-                    if (dr["ApprovalState"].ToString() == "0") isAll = false;
+                    if (dr["ApprovalState"].ToString() == "0" && int.Parse(dr["AppState"].ToString()) > 0) isAll = false;
                 }
                 if (isAll)
                 {
