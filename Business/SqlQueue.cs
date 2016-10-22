@@ -140,10 +140,6 @@ namespace BHair.Business
             }
         }
 
-
-
-
-
         public bool InsertQuery(string sql, string operation, string transNo, int buy, int detailID)
         {
             string sqlString = string.Format("Insert into [AccessQueue] ([SqlStr],[operation],[TransNo],[Buy],[DetailID]) values (\"{0}\",\"{1}\",\"{2}\",{3},{4})", sql, operation, transNo, buy, detailID);
