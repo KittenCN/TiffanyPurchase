@@ -275,7 +275,14 @@ namespace BHair.Business
             if (!File.Exists(strTempDB))
             {
                 string strNullDB = ".\\null.accdb";
-                File.Copy(strNullDB, strTempDB, true);
+                if(File.Exists(strNullDB))
+                {
+                    File.Copy(strNullDB, strTempDB, true);
+                }
+                else
+                {
+                    MessageBox.Show("系统文件丢失!请重新安装!", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             if (!File.Exists(strlock) && File.Exists(strTempDB))
             {
