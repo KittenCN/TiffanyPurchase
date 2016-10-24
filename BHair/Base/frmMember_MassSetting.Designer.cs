@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.gbMassSettingStore = new System.Windows.Forms.GroupBox();
+            this.cbStore = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.rbMassSettingStore = new System.Windows.Forms.RadioButton();
             this.gbMassFrozen = new System.Windows.Forms.GroupBox();
-            this.rbMassFrozen = new System.Windows.Forms.RadioButton();
-            this.cbAbleMode = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbStore = new System.Windows.Forms.ComboBox();
             this.cbIsAble = new System.Windows.Forms.Label();
+            this.cbAbleMode = new System.Windows.Forms.ComboBox();
+            this.rbMassFrozen = new System.Windows.Forms.RadioButton();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.gbMassSettingStore.SuspendLayout();
@@ -53,6 +53,25 @@
             this.gbMassSettingStore.TabIndex = 0;
             this.gbMassSettingStore.TabStop = false;
             this.gbMassSettingStore.Text = "批量设置店面";
+            // 
+            // cbStore
+            // 
+            this.cbStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStore.Enabled = false;
+            this.cbStore.FormattingEnabled = true;
+            this.cbStore.Location = new System.Drawing.Point(75, 25);
+            this.cbStore.Name = "cbStore";
+            this.cbStore.Size = new System.Drawing.Size(173, 20);
+            this.cbStore.TabIndex = 32;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(4, 28);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "所属店面：";
             // 
             // rbMassSettingStore
             // 
@@ -78,6 +97,24 @@
             this.gbMassFrozen.TabStop = false;
             this.gbMassFrozen.Text = "批量冻结";
             // 
+            // cbIsAble
+            // 
+            this.cbIsAble.AutoSize = true;
+            this.cbIsAble.Location = new System.Drawing.Point(6, 23);
+            this.cbIsAble.Name = "cbIsAble";
+            this.cbIsAble.Size = new System.Drawing.Size(59, 12);
+            this.cbIsAble.TabIndex = 13;
+            this.cbIsAble.Text = "冻结类型:";
+            // 
+            // cbAbleMode
+            // 
+            this.cbAbleMode.Enabled = false;
+            this.cbAbleMode.FormattingEnabled = true;
+            this.cbAbleMode.Location = new System.Drawing.Point(75, 20);
+            this.cbAbleMode.Name = "cbAbleMode";
+            this.cbAbleMode.Size = new System.Drawing.Size(173, 20);
+            this.cbAbleMode.TabIndex = 12;
+            // 
             // rbMassFrozen
             // 
             this.rbMassFrozen.AutoSize = true;
@@ -89,43 +126,6 @@
             this.rbMassFrozen.Text = "批量冻结";
             this.rbMassFrozen.UseVisualStyleBackColor = true;
             this.rbMassFrozen.CheckedChanged += new System.EventHandler(this.rbMassFrozen_CheckedChanged);
-            // 
-            // cbAbleMode
-            // 
-            this.cbAbleMode.Enabled = false;
-            this.cbAbleMode.FormattingEnabled = true;
-            this.cbAbleMode.Location = new System.Drawing.Point(75, 20);
-            this.cbAbleMode.Name = "cbAbleMode";
-            this.cbAbleMode.Size = new System.Drawing.Size(173, 20);
-            this.cbAbleMode.TabIndex = 12;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 28);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 12);
-            this.label8.TabIndex = 31;
-            this.label8.Text = "所属店面：";
-            // 
-            // cbStore
-            // 
-            this.cbStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStore.Enabled = false;
-            this.cbStore.FormattingEnabled = true;
-            this.cbStore.Location = new System.Drawing.Point(75, 25);
-            this.cbStore.Name = "cbStore";
-            this.cbStore.Size = new System.Drawing.Size(173, 20);
-            this.cbStore.TabIndex = 32;
-            // 
-            // cbIsAble
-            // 
-            this.cbIsAble.AutoSize = true;
-            this.cbIsAble.Location = new System.Drawing.Point(6, 23);
-            this.cbIsAble.Name = "cbIsAble";
-            this.cbIsAble.Size = new System.Drawing.Size(59, 12);
-            this.cbIsAble.TabIndex = 13;
-            this.cbIsAble.Text = "冻结类型:";
             // 
             // btnSubmit
             // 
@@ -161,7 +161,7 @@
             this.MinimizeBox = false;
             this.Name = "frmMember_MassSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMember_MassSetting";
+            this.Text = "员工信息批量设置";
             this.Load += new System.EventHandler(this.frmMember_MassSetting_Load);
             this.gbMassSettingStore.ResumeLayout(false);
             this.gbMassSettingStore.PerformLayout();
