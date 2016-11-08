@@ -414,7 +414,7 @@ namespace BHair.Business
         {
             if (!File.Exists(strlock))
             {
-                if (intLoginNum < 15 || txtName.Text.ToLower() == "administrator" || 1 == 1)
+                if (intLoginNum < 15 || txtName.Text.ToLower() == "administrator")
                 {
                     //用户名 txtName.Text  密码 txtPwd.Text
                     string UID = txtName.Text.Trim();
@@ -477,11 +477,11 @@ namespace BHair.Business
                                     EmailControl.config.TWDrate = decimal.Parse(configDT.Rows[0]["TWDrate"].ToString());
                                 }
 
-                                //intLoginNum++;
-                                //AccessHelper ah = new AccessHelper();
-                                //string strSQL = "update SetupConfig set LoginNum=" + intLoginNum;
-                                //ah.ExecuteNonQuery(strSQL);
-                                //ah.Close();
+                                intLoginNum++;
+                                AccessHelper ah = new AccessHelper();
+                                string strSQL = "update SetupConfig set LoginNum=" + intLoginNum;
+                                ah.ExecuteNonQuery(strSQL);
+                                ah.Close();
 
                                 MessageBox.Show("请在45分钟内完成本次所有操作,超时系统将自动关闭!!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 this.DialogResult = DialogResult.OK;
