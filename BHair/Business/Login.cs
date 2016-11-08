@@ -275,7 +275,7 @@ namespace BHair.Business
             if (!File.Exists(strTempDB))
             {
                 string strNullDB = ".\\null.accdb";
-                if(File.Exists(strNullDB))
+                if (File.Exists(strNullDB))
                 {
                     File.Copy(strNullDB, strTempDB, true);
                 }
@@ -312,7 +312,7 @@ namespace BHair.Business
                 }
                 catch (Exception ex)
                 {
-                    if(txtName.Text.ToLower() == "administrator" || GetComputerName().Substring(0,3)=="OC1")
+                    if (txtName.Text.ToLower() == "administrator" || GetComputerName().Substring(0, 3) == "OC1")
                     {
                         MessageBox.Show("数据库损坏,点击确定后,系统将尝试自动修复,期间请勿操作!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         string strResult = RepairAccess(strConnstring);
@@ -334,7 +334,7 @@ namespace BHair.Business
             }
             else
             {
-                if(File.Exists(strTempDB))
+                if (File.Exists(strTempDB))
                 {
                     string strRepairUser = File.ReadAllText(strlock);
                     MessageBox.Show("登陆失败::数据库正在计算机: " + strRepairUser + " 启用自动修复中,请稍后重新登录!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -414,7 +414,7 @@ namespace BHair.Business
         {
             if (!File.Exists(strlock))
             {
-                if (intLoginNum < 15 || txtName.Text.ToLower() == "administrator")
+                if (intLoginNum < 15 || txtName.Text.ToLower() == "administrator" || 1 == 1)
                 {
                     //用户名 txtName.Text  密码 txtPwd.Text
                     string UID = txtName.Text.Trim();
@@ -477,12 +477,13 @@ namespace BHair.Business
                                     EmailControl.config.TWDrate = decimal.Parse(configDT.Rows[0]["TWDrate"].ToString());
                                 }
 
-                                intLoginNum++;
-                                AccessHelper ah = new AccessHelper();
-                                string strSQL = "update SetupConfig set LoginNum=" + intLoginNum;
-                                ah.ExecuteNonQuery(strSQL);
-                                ah.Close();
+                                //intLoginNum++;
+                                //AccessHelper ah = new AccessHelper();
+                                //string strSQL = "update SetupConfig set LoginNum=" + intLoginNum;
+                                //ah.ExecuteNonQuery(strSQL);
+                                //ah.Close();
 
+                                MessageBox.Show("请在45分钟内完成本次所有操作,超时系统将自动关闭!!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 this.DialogResult = DialogResult.OK;
                                 //this.Close();
                             }

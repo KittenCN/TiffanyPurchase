@@ -43,25 +43,25 @@ namespace BHair
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(boolNorLogin)
-            {
-                int intLoginNum;
-                AccessHelper ah = new AccessHelper();
-                string strSQL = "select top 1 * from SetupConfig";
-                DataTable dtSQL = ah.SelectToDataTable(strSQL);
-                if (dtSQL.Rows[0]["LoginNum"].ToString() != "")
-                {
-                    intLoginNum = int.Parse(dtSQL.Rows[0]["LoginNum"].ToString());
-                }
-                else
-                {
-                    intLoginNum = 0;
-                }
-                intLoginNum--;
-                strSQL = "update SetupConfig set LoginNum=" + intLoginNum;
-                ah.ExecuteNonQuery(strSQL);
-                ah.Close();
-            }
+            //if(boolNorLogin)
+            //{
+            //    int intLoginNum;
+            //    AccessHelper ah = new AccessHelper();
+            //    string strSQL = "select top 1 * from SetupConfig";
+            //    DataTable dtSQL = ah.SelectToDataTable(strSQL);
+            //    if (dtSQL.Rows[0]["LoginNum"].ToString() != "")
+            //    {
+            //        intLoginNum = int.Parse(dtSQL.Rows[0]["LoginNum"].ToString());
+            //    }
+            //    else
+            //    {
+            //        intLoginNum = 0;
+            //    }
+            //    intLoginNum--;
+            //    strSQL = "update SetupConfig set LoginNum=" + intLoginNum;
+            //    ah.ExecuteNonQuery(strSQL);
+            //    ah.Close();
+            //}
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -77,6 +77,7 @@ namespace BHair
             {
                 AlertTimer.Enabled = false;
             }
+            timer_Close.Enabled = true;
         }
 
         private void frmMain_Resize(object sender, EventArgs e)
@@ -890,6 +891,18 @@ namespace BHair
         {
             frmAdvDataControl fadc = new frmAdvDataControl();
             fadc.Show();
+        }
+
+        private void timer_Close_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                Application.Exit();
+            }
+            catch
+            {
+                System.Environment.Exit(0);
+            }
         }
     }
 }

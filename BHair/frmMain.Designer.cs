@@ -71,9 +71,10 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.AccessQueueTimer = new System.Windows.Forms.Timer(this.components);
             this.AlertTimer = new System.Windows.Forms.Timer(this.components);
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.timer_Close = new System.Windows.Forms.Timer(this.components);
             this.menuMain.SuspendLayout();
             this.ssrMain.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -475,17 +476,6 @@
             this.toolStripButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
-            // AccessQueueTimer
-            // 
-            this.AccessQueueTimer.Enabled = true;
-            this.AccessQueueTimer.Interval = 1800000;
-            this.AccessQueueTimer.Tick += new System.EventHandler(this.AccessQueueTimer_Tick);
-            // 
-            // AlertTimer
-            // 
-            this.AlertTimer.Interval = 43200000;
-            this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
-            // 
             // toolStripButton7
             // 
             this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
@@ -497,6 +487,22 @@
             this.toolStripButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton7.Visible = false;
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click_1);
+            // 
+            // AccessQueueTimer
+            // 
+            this.AccessQueueTimer.Enabled = true;
+            this.AccessQueueTimer.Interval = 1800000;
+            this.AccessQueueTimer.Tick += new System.EventHandler(this.AccessQueueTimer_Tick);
+            // 
+            // AlertTimer
+            // 
+            this.AlertTimer.Interval = 43200000;
+            this.AlertTimer.Tick += new System.EventHandler(this.AlertTimer_Tick);
+            // 
+            // timer_Close
+            // 
+            this.timer_Close.Interval = 2700000;
+            this.timer_Close.Tick += new System.EventHandler(this.timer_Close_Tick);
             // 
             // frmMain
             // 
@@ -575,5 +581,6 @@
         private System.Windows.Forms.ToolStripButton tsbtnCW;
         private System.Windows.Forms.ToolStripMenuItem 财务部审核ToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.Timer timer_Close;
     }
 }
