@@ -162,7 +162,7 @@ namespace BHair.Business
                         if (dt.Rows.Count > 0)
                         {
                             dt.Rows[0]["EditRemark"] = fer.EditReasonString;
-                            applicationInfo.UpdateApplicationInfo(dt, 0.00, dt.Rows[0]["Applicants"].ToString(),0);
+                            applicationInfo.UpdateApplicationInfo(dt, 0.00, dt.Rows[0]["Applicants"].ToString(),2);
                         }
                         applicationInfo.DeleteApplicaionInfo(applicationInfo.TransNo);
                         MessageBox.Show("撤销成功", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);

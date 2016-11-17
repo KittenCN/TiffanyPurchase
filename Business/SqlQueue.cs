@@ -294,7 +294,7 @@ namespace BHair.Business
             DataTable SqlQuery = SelectToDataTable(sqlString);
             foreach (DataRow dr in SqlQuery.Rows)
             {
-                if(dr["operation"].ToString().Count()>5 && dr["operation"].ToString().Substring(0,5) == "Cache")
+                if(dr["operation"].ToString().Count()>5 && dr["operation"].ToString().Substring(0,5) == "Cache" && dr["DetailID"].ToString() != "2")
                 {
                     InsertDBtoCache(dr);
                 }

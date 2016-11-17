@@ -845,7 +845,7 @@ namespace BHair.Business.Table
             {
                 SqlQueue sq = new SqlQueue();
                 string sql = string.Format("Update ApplicationInfo Set IsDelete =1 Where TransNo='{0}'", TransNo);
-                sq.InsertQuery(sql, "", "", 0, 0);
+                sq.InsertQuery(sql, "", "", 0, 2);
                 sq.Close();
                 return 1;
             }
