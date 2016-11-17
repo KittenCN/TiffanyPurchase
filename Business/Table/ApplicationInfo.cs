@@ -507,7 +507,6 @@ namespace BHair.Business.Table
                 foreach (DataRow dr in dt.Rows)
                 {
                     StringBuilder insertSql = new StringBuilder();
-
                     insertSql.Append("Update [ApplicationInfo] set ");
                     insertSql.AppendFormat(" [TransNo]='{0}',", dr["TransNo"]);
                     insertSql.AppendFormat(" [Applicants]='{0}',", dr["Applicants"]);
@@ -522,7 +521,7 @@ namespace BHair.Business.Table
                     insertSql.AppendFormat(" [ApprovalName2]='{0}',", dr["ApprovalName2"]);
                     insertSql.AppendFormat(" [ApprovalDate2]='{0}',", dr["ApprovalDate2"]);
                     insertSql.AppendFormat(" [TotalPrice]={0},", dr["TotalPrice"]);
-                    insertSql.AppendFormat(" [Deadline]='{0}',", dr["Deadline"]);
+                    //insertSql.AppendFormat(" [Deadline]='{0}',", dr["Deadline"]);
                     insertSql.AppendFormat(" [SalesDate]='{0}',", dr["SalesDate"]);
                     insertSql.AppendFormat(" [PurchaseLocation]='{0}',", dr["PurchaseLocation"]);
                     insertSql.AppendFormat(" [Store]='{0}',", dr["Store"]);
@@ -539,9 +538,13 @@ namespace BHair.Business.Table
                     insertSql.AppendFormat(" [EditRemark]='{0}',", dr["EditRemark"]);
                     insertSql.AppendFormat(" [UnCode]='{0}'", dr["UnCode"]);
                     insertSql.AppendFormat(" where [ID]={0}", dr["ID"]);
-
-
                     sq.InsertQuery(insertSql.ToString(), "Cache" + strUID, dr["TransNo"].ToString(), douTotalPrice, intFlag);
+
+                    StringBuilder RunSql = new StringBuilder();
+                    RunSql.Append("Update [ApplicationInfo] set ");
+                    RunSql.AppendFormat(" [Deadline]='{0}' ", dr["Deadline"]);
+                    RunSql.AppendFormat(" where [ID]={0}", dr["ID"]);
+                    sq.InsertQuery(RunSql.ToString(), "Cache" + strUID, dr["TransNo"].ToString(), douTotalPrice, 2);
                 }
                 sq.Close();
                 return 1;
