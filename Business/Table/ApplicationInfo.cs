@@ -497,7 +497,7 @@ namespace BHair.Business.Table
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public int UpdateApplicationInfo(DataTable dt, double douTotalPrice, string strUID,int intFlag)
+        public int  UpdateApplicationInfo(DataTable dt, double douTotalPrice, string strUID,int intFlag)
         {
             int rows = 0;
             DataTable insertDT = dt.Clone();
