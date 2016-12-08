@@ -92,6 +92,7 @@ namespace BHair.Business
             cbDiscount.Items.Add("100%");
             cbDiscount.Items.Add("80%");
             cbDiscount.Items.Add("75%");
+            cbDiscount.Items.Add("70%");
             cbDiscount.Items.Add("60%");
             cbDiscount.Items.Add("50%");
             cbDiscount.SelectedIndex = 0;
@@ -599,9 +600,12 @@ namespace BHair.Business
                     txtApprovalDiscount.Value = 75;
                     break;
                 case 3:
-                    txtApprovalDiscount.Value = 60;
+                    txtApprovalDiscount.Value = 70;
                     break;
                 case 4:
+                    txtApprovalDiscount.Value = 60;
+                    break;
+                case 5:
                     txtApprovalDiscount.Value = 50;
                     break;
             }
