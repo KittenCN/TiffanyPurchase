@@ -257,6 +257,7 @@ namespace BHair.Business
             txtCount.Value = 1;
             txtFinalPrice.Value = 0;
             txtItemID.Focus();
+            txtMoneyUnit.SelectedIndex = 0;
         }
 
 
