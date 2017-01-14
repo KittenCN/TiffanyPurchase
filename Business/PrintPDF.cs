@@ -226,13 +226,25 @@ namespace BHair.Business
             //_wsh.Cells[23, 12] = strSalesDate;
 
             _wsh.Cells[31, 5] = AppDT.Rows[0]["ApplicantsName"].ToString();
-            _wsh.Cells[31, 7] = DateTime.Parse(AppDT.Rows[0]["ApplicantsDate"].ToString()).ToShortDateString();
+            if(AppDT.Rows[0]["ApplicantsDate"].ToString() != null && AppDT.Rows[0]["ApplicantsDate"].ToString() != "" && AppDT.Rows[0]["ApplicantsName"].ToString() != "")
+            {
+                _wsh.Cells[31, 7] = DateTime.Parse(AppDT.Rows[0]["ApplicantsDate"].ToString()).ToShortDateString();
+            }           
             _wsh.Cells[32, 5] = AppDT.Rows[0]["ApprovalName2"].ToString();
-            _wsh.Cells[32, 7] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate2"].ToString()).ToShortDateString();
+            if (AppDT.Rows[0]["ApprovalDate2"].ToString() != null && AppDT.Rows[0]["ApprovalDate2"].ToString() != "" && AppDT.Rows[0]["ApprovalName2"].ToString() != "")
+            {
+                _wsh.Cells[32, 7] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate2"].ToString()).ToShortDateString();
+            }           
             _wsh.Cells[33, 5] = AppDT.Rows[0]["ApprovalName"].ToString();
-            _wsh.Cells[33, 7] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate"].ToString()).ToShortDateString();
+            if (AppDT.Rows[0]["ApprovalDate"].ToString() != null && AppDT.Rows[0]["ApprovalDate"].ToString() != "" && AppDT.Rows[0]["ApprovalName"].ToString() != "")
+            {
+                _wsh.Cells[33, 7] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate"].ToString()).ToShortDateString();
+            }            
             _wsh.Cells[34, 5] = AppDT.Rows[0]["ApprovalName3"].ToString();
-            _wsh.Cells[34, 7] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate3"].ToString()).ToShortDateString();
+            if (AppDT.Rows[0]["ApprovalDate3"].ToString() != null && AppDT.Rows[0]["ApprovalDate3"].ToString() != "" && AppDT.Rows[0]["ApprovalName3"].ToString() != "")
+            {
+                _wsh.Cells[34, 7] = DateTime.Parse(AppDT.Rows[0]["ApprovalDate3"].ToString()).ToShortDateString();
+            }        
             _wsh.Cells[35, 5] = AppDT.Rows[0]["StaffName"].ToString();
             _wsh.Cells[36, 2] = "Approved by HK Finance Manager:\r\n (If unit RSP exceeding " + strMoneyUnit + MaxMoney + ")";
 
