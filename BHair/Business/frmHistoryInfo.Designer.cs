@@ -80,6 +80,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnExportEXCEL = new System.Windows.Forms.Button();
+            this.btnExportPDF = new System.Windows.Forms.Button();
+            this.cbCtrlType = new System.Windows.Forms.ComboBox();
             this.txtEDate = new System.Windows.Forms.DateTimePicker();
             this.txtSDate = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
@@ -89,7 +91,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.TxtChoose = new System.Windows.Forms.TextBox();
             this.BtnChoose = new System.Windows.Forms.Button();
-            this.cbCtrlType = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -286,8 +287,7 @@
             // dgvApplyInfo
             // 
             this.dgvApplyInfo.AllowUserToAddRows = false;
-            this.dgvApplyInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvApplyInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvApplyInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvApplyInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -577,8 +577,9 @@
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel4.Controls.Add(this.btnExportEXCEL);
+            this.panel4.Controls.Add(this.btnExportPDF);
             this.panel4.Controls.Add(this.txtEDate);
             this.panel4.Controls.Add(this.txtSDate);
             this.panel4.Controls.Add(this.label10);
@@ -588,31 +589,51 @@
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.TxtChoose);
             this.panel4.Controls.Add(this.BtnChoose);
-            this.panel4.Location = new System.Drawing.Point(145, 6);
+            this.panel4.Location = new System.Drawing.Point(202, 6);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(585, 81);
+            this.panel4.Size = new System.Drawing.Size(528, 87);
             this.panel4.TabIndex = 5;
             // 
             // btnExportEXCEL
             // 
-            this.btnExportEXCEL.Location = new System.Drawing.Point(501, 45);
+            this.btnExportEXCEL.Location = new System.Drawing.Point(199, 58);
             this.btnExportEXCEL.Name = "btnExportEXCEL";
             this.btnExportEXCEL.Size = new System.Drawing.Size(75, 23);
-            this.btnExportEXCEL.TabIndex = 11;
-            this.btnExportEXCEL.Text = "转存PDF";
+            this.btnExportEXCEL.TabIndex = 12;
+            this.btnExportEXCEL.Text = "转存EXCEL";
             this.btnExportEXCEL.UseVisualStyleBackColor = true;
             this.btnExportEXCEL.Click += new System.EventHandler(this.btnExportEXCEL_Click);
             // 
+            // btnExportPDF
+            // 
+            this.btnExportPDF.Location = new System.Drawing.Point(280, 60);
+            this.btnExportPDF.Name = "btnExportPDF";
+            this.btnExportPDF.Size = new System.Drawing.Size(75, 23);
+            this.btnExportPDF.TabIndex = 11;
+            this.btnExportPDF.Text = "转存PDF";
+            this.btnExportPDF.UseVisualStyleBackColor = true;
+            this.btnExportPDF.Click += new System.EventHandler(this.btnExportPDF_Click);
+            // 
+            // cbCtrlType
+            // 
+            this.cbCtrlType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCtrlType.FormattingEnabled = true;
+            this.cbCtrlType.Location = new System.Drawing.Point(4, 14);
+            this.cbCtrlType.Name = "cbCtrlType";
+            this.cbCtrlType.Size = new System.Drawing.Size(129, 20);
+            this.cbCtrlType.TabIndex = 3;
+            this.cbCtrlType.SelectedIndexChanged += new System.EventHandler(this.cbCtrlType_SelectedIndexChanged);
+            // 
             // txtEDate
             // 
-            this.txtEDate.Location = new System.Drawing.Point(75, 42);
+            this.txtEDate.Location = new System.Drawing.Point(371, 33);
             this.txtEDate.Name = "txtEDate";
             this.txtEDate.Size = new System.Drawing.Size(134, 21);
             this.txtEDate.TabIndex = 10;
             // 
             // txtSDate
             // 
-            this.txtSDate.Location = new System.Drawing.Point(75, 11);
+            this.txtSDate.Location = new System.Drawing.Point(174, 33);
             this.txtSDate.Name = "txtSDate";
             this.txtSDate.Size = new System.Drawing.Size(134, 21);
             this.txtSDate.TabIndex = 9;
@@ -621,7 +642,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 45);
+            this.label10.Location = new System.Drawing.Point(314, 39);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 12);
             this.label10.TabIndex = 8;
@@ -631,7 +652,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 14);
+            this.label9.Location = new System.Drawing.Point(116, 39);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 12);
             this.label9.TabIndex = 7;
@@ -642,7 +663,7 @@
             this.cbMoneyUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbMoneyUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMoneyUnit.FormattingEnabled = true;
-            this.cbMoneyUnit.Location = new System.Drawing.Point(364, 11);
+            this.cbMoneyUnit.Location = new System.Drawing.Point(174, 8);
             this.cbMoneyUnit.Name = "cbMoneyUnit";
             this.cbMoneyUnit.Size = new System.Drawing.Size(119, 20);
             this.cbMoneyUnit.TabIndex = 6;
@@ -651,7 +672,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(291, 14);
+            this.label8.Location = new System.Drawing.Point(115, 10);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 5;
@@ -661,7 +682,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(291, 45);
+            this.label7.Location = new System.Drawing.Point(313, 10);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 4;
@@ -670,7 +691,7 @@
             // TxtChoose
             // 
             this.TxtChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtChoose.Location = new System.Drawing.Point(364, 42);
+            this.TxtChoose.Location = new System.Drawing.Point(371, 7);
             this.TxtChoose.Name = "TxtChoose";
             this.TxtChoose.Size = new System.Drawing.Size(119, 21);
             this.TxtChoose.TabIndex = 1;
@@ -679,23 +700,13 @@
             // BtnChoose
             // 
             this.BtnChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnChoose.Location = new System.Drawing.Point(501, 9);
+            this.BtnChoose.Location = new System.Drawing.Point(118, 60);
             this.BtnChoose.Name = "BtnChoose";
             this.BtnChoose.Size = new System.Drawing.Size(75, 23);
             this.BtnChoose.TabIndex = 0;
             this.BtnChoose.Text = "查询";
             this.BtnChoose.UseVisualStyleBackColor = true;
             this.BtnChoose.Click += new System.EventHandler(this.BtnChoose_Click);
-            // 
-            // cbCtrlType
-            // 
-            this.cbCtrlType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCtrlType.FormattingEnabled = true;
-            this.cbCtrlType.Location = new System.Drawing.Point(0, 12);
-            this.cbCtrlType.Name = "cbCtrlType";
-            this.cbCtrlType.Size = new System.Drawing.Size(121, 20);
-            this.cbCtrlType.TabIndex = 3;
-            this.cbCtrlType.SelectedIndexChanged += new System.EventHandler(this.cbCtrlType_SelectedIndexChanged);
             // 
             // frmHistoryInfo
             // 
@@ -792,6 +803,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker txtEDate;
         private System.Windows.Forms.DateTimePicker txtSDate;
+        private System.Windows.Forms.Button btnExportPDF;
         private System.Windows.Forms.Button btnExportEXCEL;
     }
 }

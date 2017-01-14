@@ -16,7 +16,7 @@ namespace BHair.Business
         public DataRow ApplicationInfoRow;
          ApplicationInfo applicationInfo = new ApplicationInfo();
         public string CtrlID = "";
-        string SelectStr = "and 1=1";
+        string SelectStr = "and 1=1 ";
         string CtrlType = "全部";
         double totalPrice = 0;
         /// <summary>商品部申请单状态</summary>
@@ -111,7 +111,7 @@ namespace BHair.Business
             SelectStr += string.Format(" and ApplicationInfo.ApplicantsDate>#{0}# and ApplicationInfo.ApplicantsDate<#{1}#", txtSDate.Value.Date, txtEDate.Value.AddDays(1).Date);
             if (TxtChoose.Text != "")
             {
-                    SelectStr += string.Format(" and ApplicantsName='{0}' ", TxtChoose.Text);
+                SelectStr += string.Format(" and ApplicantsName='{0}' ", TxtChoose.Text);
             }
             if (cbMoneyUnit.SelectedIndex != 0)
             {
@@ -235,6 +235,33 @@ namespace BHair.Business
         }
 
         private void btnExportEXCEL_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "EXCEL文件(*.xls)|*.xls";
+            // Show save file dialog box
+            DialogResult result = saveFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    //string strRandom = getRandomString(12);
+                    //string tempFilePath = System.IO.Directory.GetCurrentDirectory() + @"\tempPDF\" + strRandom + ".xls";
+                    string localFilePath = saveFileDialog.FileName.ToString();
+                    PrintPDF pe = new PrintPDF();
+                    pe.WriteToExcel(pe.exporeDataToTable(dgvApplyInfo), localFilePath, "Sheet1");
+                    //string localFilePath = saveFileDialog.FileName.ToString();
+                    //PrintPDF pp = new PrintPDF();
+                    //pp.XLSConvertToPDF(tempFilePath, localFilePath);
+                    MessageBox.Show("保存成功", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("保存失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btnExportPDF_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "PDF文件(*.pdf)|*.pdf";
