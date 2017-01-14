@@ -46,6 +46,7 @@ namespace BHair.Business
 
         private bool CreateXLS(DataTable AppDT, DataTable DetailDT,string title)
         {
+            double douTotalPrice = 0.00;
             string XLSName;
             XLSName = System.IO.Directory.GetCurrentDirectory() + @"\templet\2016国内员购申请表-模板.xls";
             Excel.Application app = new Excel.Application();
@@ -99,6 +100,7 @@ namespace BHair.Business
                     _wsh.Cells[9 + 2 * i, 10] = dr["ApprovalDiscount"].ToString();
                     _wsh.Cells[9 + 2 * i, 11] = dr["FinalPrice"].ToString();
                     i++;
+                    douTotalPrice += double.Parse(dr["FinalPrice"].ToString());
                 }
                 if (j < 3)
                 {
@@ -112,7 +114,7 @@ namespace BHair.Business
                     }
                 }
             }
-
+            _wsh.Cells[22, 11] = douTotalPrice.ToString();
 
             //保存
             string filePath = System.IO.Directory.GetCurrentDirectory() + @"\tempPDF\tempExcel.xls";
