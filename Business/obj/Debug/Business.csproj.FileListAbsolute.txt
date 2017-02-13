@@ -107,3 +107,15 @@ E:\workstation\项目\用蝶项目\Tiffany\员工内购\TiffanyPurchase\Business
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\TiffanyPurchase\Business\obj\Debug\Business.csproj.ResolveComReference.cache
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\TiffanyPurchase\Business\obj\Debug\BHair.Business.dll
 E:\workstation\项目\用蝶项目\Tiffany\员工内购\TiffanyPurchase\Business\obj\Debug\BHair.Business.pdb
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\bin\Debug\BHair.Business.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\bin\Debug\BHair.Business.pdb
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\bin\Debug\Microsoft.Office.interop.access.dao.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\bin\Debug\Microsoft.Office.Interop.Excel.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\bin\Debug\XLuSharpLibrary.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\bin\Debug\zxing.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\bin\Debug\office.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\bin\Debug\Microsoft.Vbe.Interop.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\bin\Debug\stdole.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\obj\Debug\Business.csproj.ResolveComReference.cache
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\obj\Debug\BHair.Business.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\obj\Debug\BHair.Business.pdb

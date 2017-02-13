@@ -314,7 +314,7 @@ namespace BHair.Business
                 {
                     if (txtName.Text.ToLower() == "administrator" || GetComputerName().Substring(0, 3) == "OC1")
                     {
-                        MessageBox.Show("数据库损坏,点击确定后,系统将尝试自动修复,期间请勿操作!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("数据库损坏,点击确定后,系统将尝试自动修复,期间请勿操作!::" + ex.Message, "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         string strResult = RepairAccess(strConnstring);
                         if (strResult.Substring(0, 5) != "Error")
                         {
@@ -328,7 +328,7 @@ namespace BHair.Business
                     }
                     else
                     {
-                        MessageBox.Show("数据库损坏,稍后将由上海办公室修复,请稍后重新登录!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("数据库损坏,稍后将由上海办公室修复,请稍后重新登录!::" + ex.Message, "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
