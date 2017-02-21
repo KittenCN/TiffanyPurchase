@@ -453,6 +453,7 @@ namespace BHair
             toolStripButton6.Visible = false;
             tsbtnCW.Visible = false;
             toolStripButton7.Visible = false;
+            toolStripButton10.Visible = false;
 
             if (Login.LoginUser.UID == null || Login.LoginUser.UID == "")
             {
@@ -482,6 +483,7 @@ namespace BHair
                 toolStripButton5.Visible = false;
                 toolStripButton6.Visible = false;
                 toolStripButton7.Visible = false;
+                toolStripButton10.Visible = false;
             }
             else if (Login.LoginUser.Character == 1)
             {
@@ -721,6 +723,8 @@ namespace BHair
                 toolStripButton13.Visible = false;
                 toolStripButton5.Visible = false;
                 toolStripButton6.Visible = false;
+                toolStripButton10.Visible = false;
+                toolStripButton7.Visible = false;
             }
             ExcelHelper eh = new ExcelHelper();
             if (eh.boolIsManager(Login.LoginUser.UID))
@@ -781,6 +785,7 @@ namespace BHair
                 toolStripButton5.Visible = true;
                 toolStripButton6.Visible = true;
                 toolStripButton7.Visible = true;
+                toolStripButton10.Visible = true;
             }
         }
         #endregion
@@ -903,6 +908,68 @@ namespace BHair
             {
                 System.Environment.Exit(0);
             }
+        }
+
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            double douDefBon = 100000.00;
+            DateTime dtBeginDate = DateTime.Parse(DateTime.Now.Year.ToString() + "-2-1");
+            DateTime dtEndDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            double douCurrUsed;
+            string strDebug = "--";
+
+            try
+            {
+                #region init all user's bonefit
+                strDebug = "init...";
+                string strInitSQL = "update Users set UsedAmount=0,RestAmount=" + douDefBon;
+                AccessHelper ah = new AccessHelper();
+                ah.ExecuteSQLNonquery(strInitSQL);
+                ah.Close();
+                #endregion
+
+                strDebug = "Get All Data...";
+                string strSelectSQL = "select * from Users where IsDelete=0 and IsAble=1";
+                AccessHelper ah2 = new AccessHelper();
+                DataTable dtSelectSQL = ah2.SelectToDataTable(strSelectSQL);
+                ah2.Close();
+                foreach(DataRow dr in dtSelectSQL.Rows)
+                {                    
+                    string UID = dr["UID"].ToString();
+                    strDebug = "Get Price from " + UID + " ";
+                    string strGetAllSQL = "select SUM(TotalPrice) as TotalPrice from ApplicationInfo where TotalPrice>0 and IsDelete=0 and AppState>=6 and SalesDate>=#" + dtBeginDate.ToShortDateString() + "# and Applicants='" + UID + "' ";
+                    AccessHelper ahIN = new AccessHelper();
+                    DataTable dtIN = ahIN.SelectToDataTable(strGetAllSQL);
+                    ahIN.Close();
+                    if(dtIN != null && dtIN.Rows.Count>0)
+                    {
+                        if(dtIN.Rows[0][0].ToString() != null && dtIN.Rows[0][0].ToString() != "")
+                        {
+                            douCurrUsed = double.Parse(dtIN.Rows[0][0].ToString());
+                        }
+                        else
+                        {
+                            douCurrUsed = 0.0;
+                        }
+                        if(douCurrUsed > 0)
+                        {
+                            strDebug = "Update data to " + UID + " ";
+                            double douRest = douDefBon - douCurrUsed;
+                            string strUpdateSQL = "update Users set UsedAmount=" + douCurrUsed + ",RestAmount=" + douRest + " where UID='" + UID + "' ";
+                            AccessHelper ahRunRest = new AccessHelper();
+                            ahRunRest.ExecuteSQLNonquery(strUpdateSQL);
+                            ahRunRest.Close();
+                            //System.Threading.Thread.Sleep(500);
+                        }
+                    }
+                }
+                MessageBox.Show("重新计算成功!", "通知!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("重新计算失败::" + strDebug + "::" + ex.Message, "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
     }
 }
