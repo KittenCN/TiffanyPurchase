@@ -292,7 +292,10 @@ namespace BHair.Business
                     AccessHelper ahTSQL = new AccessHelper();
                     DataTable dtTSQL = ahTSQL.SelectToDataTable(strTSQL);
                     ahTSQL.Close();
-                    UpdateDataBase();
+                    if (GetComputerName().Substring(0,3) == "OC1")
+                    {
+                        UpdateDataBase();
+                    }                   
                     if (strVersion == Application.ProductVersion)
                     {
                         LoginProcess();
@@ -445,7 +448,6 @@ namespace BHair.Business
                                 LoginUser.UsedAmount = double.Parse(UserDT.Rows[0]["UsedAmount"].ToString());
                                 LoginUser.ManagerID = UserDT.Rows[0]["ManagerID"].ToString();
                                 LoginUser.Store = UserDT.Rows[0]["Store"].ToString();
-
 
                                 EmailControl.users.UsersDT = EmailControl.users.SelectAllUsers("");
                                 DataTable configDT = EmailControl.config.GetConfig();
