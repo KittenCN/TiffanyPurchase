@@ -68,15 +68,18 @@ namespace BHair
         {
             //frmPays_List objfrmPaysList = new frmPays_List();
             //this.ShowWindows_Click(objfrmPaysList);
-            if (Login.LoginUser.Character == 1)
-            {
-                AlertTimer.Enabled = true;
-                AlertTimer.Interval = 43200000;
-            }
-            else
-            {
-                AlertTimer.Enabled = false;
-            }
+
+            //取消邮件功能
+            //if (Login.LoginUser.Character == 1)
+            //{
+            //    AlertTimer.Enabled = true;
+            //    AlertTimer.Interval = 43200000;
+            //}
+            //else
+            //{
+            //    AlertTimer.Enabled = false;
+            //}
+
             timer_Close.Enabled = true;
         }
 

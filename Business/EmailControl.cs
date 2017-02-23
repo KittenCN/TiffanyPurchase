@@ -42,7 +42,10 @@ namespace BHair.Business
             ////因为上面用的用户名abc作SMTP服务器认证，所以这里发信人的邮箱地址也应该写为abc@163.com
             ////Message.To.Add("123456@gmail.com");//将邮件发送给Gmail
             ////Message.To.Add("12345@qq.com");//将邮件发送给QQ邮箱
-            if (TargetAddress != "")
+
+            ///取消邮件发送功能
+            isSuccess = true;
+            if (TargetAddress != "" && 1 == 0)
             {
                 try
                 {
@@ -96,6 +99,7 @@ namespace BHair.Business
                     }
                 }
             }
+           
             return isSuccess;
         }
 
