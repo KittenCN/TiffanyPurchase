@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Config>
-  <LinkString>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\员工内购数据库.accdb</LinkString>
-  <TempLinkString>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\内购SQLQueue.accdb</TempLinkString>
-</Config>
