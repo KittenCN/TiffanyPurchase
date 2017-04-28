@@ -487,6 +487,24 @@
     <Content Include="bin\Debug\员工内购数据库.accdb" />
     <Content Include="Config.xml" />
     <Content Include="Dll\BarcodeLib.dll" />
+    <Content Include="Dll\Microsoft.Office.interop.access.dao.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dll\Microsoft.Office.Interop.Excel.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dll\Microsoft.Office.Interop.Excel.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dll\Microsoft.Vbe.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dll\office.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dll\office.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dll\sqlite3.def" />
     <Content Include="Dll\sqlite3.dll" />
     <Content Include="null.accdb">

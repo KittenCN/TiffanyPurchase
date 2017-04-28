@@ -214,3 +214,9 @@ D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\obj\Debug\TiffanyP
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\obj\Debug\BHair.SystemSet.ComboDate.resources
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\obj\Debug\TP_Base.csproj.GenerateResource.Cache
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\obj\Debug\TiffanyPurchase.pdb
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\Microsoft.Office.interop.access.dao.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\Microsoft.Office.Interop.Excel.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\Microsoft.Office.Interop.Excel.xml
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\Microsoft.Vbe.Interop.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\office.dll
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\office.xml
