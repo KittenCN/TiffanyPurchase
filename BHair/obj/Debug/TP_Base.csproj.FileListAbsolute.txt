@@ -220,6 +220,3 @@ D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\Micr
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\Microsoft.Vbe.Interop.dll
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\office.dll
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\office.xml
-D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\BarcodeLib.dll
-D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\WinFormsUI.Docking.dll
-D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\XLuSharpLibrary.dll

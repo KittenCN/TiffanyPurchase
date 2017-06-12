@@ -306,5 +306,19 @@ namespace BHair.Business
             }
             return sb.ToString();
         }
+
+        private void btnExpotDetailtoExcel_Click(object sender, EventArgs e)
+        {
+            PrintPDF pe = new PrintPDF();
+            DataTable dtInfo = pe.exporeDataToTable(dgvApplyInfo);
+            if(dtInfo.Rows.Count > 0)
+            {
+                for(int i = 0; i < dtInfo.Rows.Count; i++)
+                {
+
+                }
+            }
+
+        }
     }
 }

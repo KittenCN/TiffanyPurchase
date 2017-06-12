@@ -24,12 +24,12 @@ namespace BHair.Business
                 }
                 catch
                 {
-                    strResult = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\\转货数据库.accdb";
+                    strResult = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\\员工内购数据库.accdb";
                 }
             }
             else
             {
-                strResult = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\\转货数据库.accdb";
+                strResult = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=.\\员工内购数据库.accdb";
             }
             return strResult;
         }
