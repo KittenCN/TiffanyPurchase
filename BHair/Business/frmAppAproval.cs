@@ -314,12 +314,12 @@ namespace BHair.Business
             {
                 foreach (DataGridViewRow dr in dgvApplyInfo.Rows)
                 {
+                    Boolean boolDiff = false;
+                    AccessHelper ah = new AccessHelper();
+                    string sql = "select * from ApplicationDetail where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' ";
+                    DataTable dtsql = ah.SelectToDataTable(sql);
                     if (dr.Cells["FinalExceptionFilter"].Value.ToString() == "异常")
-                    {
-                        Boolean boolDiff = false;
-                        AccessHelper ah = new AccessHelper();
-                        string sql = "select * from ApplicationDetail where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' ";
-                        DataTable dtsql = ah.SelectToDataTable(sql);
+                    {                       
                         for (int x = 0; x < dtsql.Rows.Count; x++)
                         {
                             AccessHelper tempah = new AccessHelper();
@@ -338,19 +338,40 @@ namespace BHair.Business
                                 tempah2.Close();
                             }
                         }
-                        if (boolDiff == false)
-                        {
-                            AccessHelper tempah = new AccessHelper();
-                            string tempsql = "update ApplicationInfo set FinalException=0 where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' ";
-                            tempah.ExecuteSQLNonquery(tempsql);
-                            tempah.Close();
-                        }
-                        ah.Close();
+                        
                     }
+                    for(int i = 0; i < dtsql.Rows.Count; i++)
+                    {
+                        if(int.Parse(dtsql.Rows[i]["IsSuccess"].ToString()) != 1)
+                        {
+                            boolDiff = true;
+                        }
+                    }
+                    if (boolDiff == false)
+                    {
+                        AccessHelper tempah = new AccessHelper();
+                        string tempsql = "update ApplicationInfo set FinalException=0 where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' ";
+                        tempah.ExecuteSQLNonquery(tempsql);
+                        tempah.Close();
+                    }
+                    else
+                    {
+                        AccessHelper tempah = new AccessHelper();
+                        string tempsql = "update ApplicationInfo set FinalException=1 where TransNO='" + dr.Cells["TransNo"].Value.ToString() + "' ";
+                        tempah.ExecuteSQLNonquery(tempsql);
+                        tempah.Close();
+                    }
+                    ah.Close();
+
                 }
                 GetApplicationDetail();
                 MessageBox.Show("计算完成!", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void frmAppAproval_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

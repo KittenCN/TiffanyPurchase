@@ -77,6 +77,7 @@
             this.FinalException = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FinalExceptionFilter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnDiff = new System.Windows.Forms.Button();
             this.BtnRefresh = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.BtnSelect = new System.Windows.Forms.Button();
@@ -87,7 +88,6 @@
             this.btnApprovalAll = new System.Windows.Forms.Button();
             this.BtnChoose = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnDiff = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyInfo)).BeginInit();
@@ -578,6 +578,17 @@
             this.panel3.Size = new System.Drawing.Size(733, 76);
             this.panel3.TabIndex = 128;
             // 
+            // btnDiff
+            // 
+            this.btnDiff.Location = new System.Drawing.Point(374, 50);
+            this.btnDiff.Name = "btnDiff";
+            this.btnDiff.Size = new System.Drawing.Size(90, 23);
+            this.btnDiff.TabIndex = 5;
+            this.btnDiff.Text = "计算是否异常";
+            this.btnDiff.UseVisualStyleBackColor = true;
+            this.btnDiff.Visible = false;
+            this.btnDiff.Click += new System.EventHandler(this.btnDiff_Click);
+            // 
             // BtnRefresh
             // 
             this.BtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -682,17 +693,6 @@
             this.panel4.Size = new System.Drawing.Size(732, 385);
             this.panel4.TabIndex = 129;
             // 
-            // btnDiff
-            // 
-            this.btnDiff.Location = new System.Drawing.Point(374, 50);
-            this.btnDiff.Name = "btnDiff";
-            this.btnDiff.Size = new System.Drawing.Size(90, 23);
-            this.btnDiff.TabIndex = 5;
-            this.btnDiff.Text = "计算是否异常";
-            this.btnDiff.UseVisualStyleBackColor = true;
-            this.btnDiff.Visible = false;
-            this.btnDiff.Click += new System.EventHandler(this.btnDiff_Click);
-            // 
             // frmAppAproval
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -710,6 +710,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.TabText = "申请单状态";
             this.Text = "商品部审核";
+            this.Load += new System.EventHandler(this.frmAppAproval_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
