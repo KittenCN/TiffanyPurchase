@@ -221,3 +221,4 @@ D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\Micr
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\office.dll
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Dll\office.xml
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\obj\Debug\TP_Base.csproj.CoreCompileInputs.cache
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Config.xml
