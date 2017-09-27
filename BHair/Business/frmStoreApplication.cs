@@ -39,7 +39,7 @@ namespace BHair.Business
                 //{
                 //    MessageBox.Show("该唯一码已使用过", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 //}
-                if (((DateTime)applicationInfo.applicationDT.Rows[0]["Deadline"]) < DateTime.Now)
+                if (((DateTime)applicationInfo.applicationDT.Rows[0]["Deadline"]) < DateTime.Now || int.Parse(applicationInfo.applicationDT.Rows[0]["AppState"].ToString()) != 4)
                 {
                     MessageBox.Show("该唯一码已过期", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }

@@ -119,3 +119,4 @@ D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\obj\Debug\Busin
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\obj\Debug\BHair.Business.dll
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\obj\Debug\BHair.Business.pdb
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\Business\obj\Debug\Business.csproj.CoreCompileInputs.cache

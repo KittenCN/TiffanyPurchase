@@ -940,7 +940,7 @@ namespace BHair
                 {                    
                     string UID = dr["UID"].ToString();
                     strDebug = "Get Price from " + UID + " ";
-                    string strGetAllSQL = "select SUM(TotalPrice) as TotalPrice from ApplicationInfo where TotalPrice>0 and IsDelete=0 and AppState>=6 and SalesDate>=#" + dtBeginDate.ToShortDateString() + "# and Applicants='" + UID + "' ";
+                    string strGetAllSQL = "select SUM(TotalPrice) as TotalPrice from ApplicationInfo where TotalPrice>0 and IsDelete=0 and AppState>=6 and SalesDate>=#" + dtBeginDate.ToShortDateString() + "# and SalesDate<#" + DateTime.Now.AddDays(1) + "# and Applicants='" + UID + "' ";
                     AccessHelper ahIN = new AccessHelper();
                     DataTable dtIN = ahIN.SelectToDataTable(strGetAllSQL);
                     ahIN.Close();
