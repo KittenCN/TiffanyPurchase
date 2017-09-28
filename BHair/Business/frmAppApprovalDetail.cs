@@ -202,19 +202,6 @@ namespace BHair.Business
             }
             return boolResult;
         }
-        private int SMoneyunit(string itemID)
-        {
-            int intResult = 0;
-            string strSQL = "select * from Items where itemID = '" + itemID + "'";
-            AccessHelper ah = new AccessHelper();
-            DataTable dt = ah.SelectToDataTable(strSQL);
-            ah.Close();
-            if (dt.Rows[0]["MoneyUnit"] != null)
-            {
-                intResult = int.Parse(dt.Rows[0]["MoneyUnit"].ToString());
-            }
-            return intResult;
-        }
         //确认按钮
         private void btnConfirm_Click(object sender, EventArgs e)
         {
@@ -226,8 +213,8 @@ namespace BHair.Business
                 {
                     if ((int)dgvr.Cells["IsSuccess"].Value == 1 && !CheckSpecial(dgvr.Cells["ItemID"].Value.ToString()))
                     {
-                        if (SMoneyunit(dgvr.Cells["ItemID"].Value.ToString()) == 2) exchangeRate = double.Parse(EmailControl.config.USrate.ToString());
-                        else if (SMoneyunit(dgvr.Cells["ItemID"].Value.ToString()) == 3) exchangeRate = double.Parse(EmailControl.config.HKrate.ToString());
+                        if ((int)dgvr.Cells["MoneyUnit"].Value == 2) exchangeRate = double.Parse(EmailControl.config.USrate.ToString());
+                        else if ((int) dgvr.Cells["MoneyUnit"].Value == 3) exchangeRate = double.Parse(EmailControl.config.HKrate.ToString());
                         totalPrice += double.Parse(dgvr.Cells["FinalPrice"].Value.ToString()) * exchangeRate;
                     }
                 }               
@@ -271,14 +258,20 @@ namespace BHair.Business
 
         private void dgvApplyDetails_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (applicationInfo.TransNo != null)
+            if (dgvApplyDetails.SelectedRows.Count == 1)
             {
-                frmAlterApplication faa = new frmAlterApplication(applicationInfo);
-                faa.GetEditState();
-                if (faa.ShowDialog() == DialogResult.OK)
+                //MessageBox.Show(dgvApplyDetails.SelectedCells[0].RowIndex.ToString());
+                if(dgvApplyDetails.Rows[int.Parse(dgvApplyDetails.SelectedCells[0].RowIndex.ToString())].Cells["IsSuccess"].Value.ToString() == "0")
                 {
-                    this.GetApplicationDetail();
+                    dgvApplyDetails.Rows[int.Parse(dgvApplyDetails.SelectedCells[0].RowIndex.ToString())].Cells["IsSuccessFilter"].Value = "是";
+                    dgvApplyDetails.Rows[int.Parse(dgvApplyDetails.SelectedCells[0].RowIndex.ToString())].Cells["IsSuccess"].Value = "1";
                 }
+                else
+                {
+                    dgvApplyDetails.Rows[int.Parse(dgvApplyDetails.SelectedCells[0].RowIndex.ToString())].Cells["IsSuccessFilter"].Value = "否";
+                    dgvApplyDetails.Rows[int.Parse(dgvApplyDetails.SelectedCells[0].RowIndex.ToString())].Cells["IsSuccess"].Value = "0";
+                }
+                
             }
             else
             {
