@@ -152,7 +152,8 @@ namespace BHair.Business
                     double exchangeRate = 1;
                     if (applicationInfo.MoneyUnit == 2) exchangeRate = double.Parse(EmailControl.config.USrate.ToString());
                     else if (applicationInfo.MoneyUnit == 3) exchangeRate = double.Parse(EmailControl.config.HKrate.ToString());
-                    applicationInfo.StorePay(applicationInfo.TransNo, "", applicationInfo.Applicants, totalPrice,exchangeRate);
+                    //将额度修改转移到商品部最终确认步骤 2017/09/28
+                    //applicationInfo.StorePay(applicationInfo.TransNo, "", applicationInfo.Applicants, totalPrice,exchangeRate);
                     applicationDetail.UpdateBuyApplicationDetail(ApplicationDetailTable,applicationInfo.TransNo);
                     applicationInfo.StoreConfirm(applicationInfo.TransNo, Login.LoginUser, txtSalesDate.Value);
                     //购买异常标识
@@ -240,7 +241,6 @@ namespace BHair.Business
 
             txtTotalPrice.Text = totalPrice.ToString("#0.00"); 
         }
-
         private void btnPrintPDF_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -274,10 +274,5 @@ namespace BHair.Business
                 }
             }
         }
-
-
-
-
-
     }
 }

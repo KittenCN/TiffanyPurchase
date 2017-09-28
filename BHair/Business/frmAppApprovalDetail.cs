@@ -19,6 +19,7 @@ namespace BHair.Business
          ApplicationDetail applicationDetail = new ApplicationDetail();
         public string CtrlID = "";
         string strCtrlType = "";
+        double totalPrice = 0;
         /// <summary>商品部审批申请单详情</summary>
         public frmAppApprovalDetail(ApplicationInfo ParentAppInfo, string CtrlType)
         {
@@ -188,12 +189,50 @@ namespace BHair.Business
                 }
             }
         }
-
+        private Boolean CheckSpecial(string itemID)
+        {
+            Boolean boolResult = false;
+            string strSQL = "select * from Items where itemID = '" + itemID + "'";
+            AccessHelper ah = new AccessHelper();
+            DataTable dt = ah.SelectToDataTable(strSQL);
+            ah.Close();
+            if (dt.Rows[0]["IsSpecial"].ToString() == "1")
+            {
+                boolResult = true;
+            }
+            return boolResult;
+        }
+        private int SMoneyunit(string itemID)
+        {
+            int intResult = 0;
+            string strSQL = "select * from Items where itemID = '" + itemID + "'";
+            AccessHelper ah = new AccessHelper();
+            DataTable dt = ah.SelectToDataTable(strSQL);
+            ah.Close();
+            if (dt.Rows[0]["MoneyUnit"] != null)
+            {
+                intResult = int.Parse(dt.Rows[0]["MoneyUnit"].ToString());
+            }
+            return intResult;
+        }
         //确认按钮
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             try
             {
+                totalPrice = 0;
+                double exchangeRate = 1;
+                foreach (DataGridViewRow dgvr in dgvApplyDetails.Rows)
+                {
+                    if ((int)dgvr.Cells["IsSuccess"].Value == 1 && !CheckSpecial(dgvr.Cells["ItemID"].Value.ToString()))
+                    {
+                        if (SMoneyunit(dgvr.Cells["ItemID"].Value.ToString()) == 2) exchangeRate = double.Parse(EmailControl.config.USrate.ToString());
+                        else if (SMoneyunit(dgvr.Cells["ItemID"].Value.ToString()) == 3) exchangeRate = double.Parse(EmailControl.config.HKrate.ToString());
+                        totalPrice += double.Parse(dgvr.Cells["FinalPrice"].Value.ToString()) * exchangeRate;
+                    }
+                }               
+                applicationInfo.StorePay(applicationInfo.TransNo, "", applicationInfo.Applicants, totalPrice, 1);
+                applicationDetail.UpdateBuyApplicationDetail(ApplicationDetailTable, applicationInfo.TransNo);
                 applicationInfo.FinalConfirm(applicationInfo.TransNo);
                 MessageBox.Show("确认完成", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 DialogResult = DialogResult.OK;
@@ -246,7 +285,9 @@ namespace BHair.Business
                 MessageBox.Show("请选择一行记录", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void dgvApplyDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-
+        }
     }
 }

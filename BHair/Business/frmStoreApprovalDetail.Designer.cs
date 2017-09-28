@@ -68,6 +68,8 @@
             this.lblReason = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnPrintPDF = new System.Windows.Forms.Button();
             this.Confirmpanel = new System.Windows.Forms.Panel();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -93,8 +95,6 @@
             this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsDelete = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsRepetition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btnPrintPDF = new System.Windows.Forms.Button();
             this.groupBox20.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -103,10 +103,10 @@
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.Confirmpanel.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyDetails)).BeginInit();
-            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox20
@@ -503,6 +503,25 @@
             this.panel3.Size = new System.Drawing.Size(729, 40);
             this.panel3.TabIndex = 128;
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btnPrintPDF);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel5.Location = new System.Drawing.Point(108, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(107, 40);
+            this.panel5.TabIndex = 5;
+            // 
+            // btnPrintPDF
+            // 
+            this.btnPrintPDF.Location = new System.Drawing.Point(15, 8);
+            this.btnPrintPDF.Name = "btnPrintPDF";
+            this.btnPrintPDF.Size = new System.Drawing.Size(75, 23);
+            this.btnPrintPDF.TabIndex = 0;
+            this.btnPrintPDF.Text = "打印明细";
+            this.btnPrintPDF.UseVisualStyleBackColor = true;
+            this.btnPrintPDF.Click += new System.EventHandler(this.btnPrintPDF_Click);
+            // 
             // Confirmpanel
             // 
             this.Confirmpanel.Controls.Add(this.btnConfirm);
@@ -732,25 +751,6 @@
             this.IsRepetition.ReadOnly = true;
             this.IsRepetition.Visible = false;
             // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.btnPrintPDF);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(108, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(107, 40);
-            this.panel5.TabIndex = 5;
-            // 
-            // btnPrintPDF
-            // 
-            this.btnPrintPDF.Location = new System.Drawing.Point(15, 8);
-            this.btnPrintPDF.Name = "btnPrintPDF";
-            this.btnPrintPDF.Size = new System.Drawing.Size(75, 23);
-            this.btnPrintPDF.TabIndex = 0;
-            this.btnPrintPDF.Text = "打印明细";
-            this.btnPrintPDF.UseVisualStyleBackColor = true;
-            this.btnPrintPDF.Click += new System.EventHandler(this.btnPrintPDF_Click);
-            // 
             // frmStoreApprovalDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -779,10 +779,10 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.Confirmpanel.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyDetails)).EndInit();
-            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

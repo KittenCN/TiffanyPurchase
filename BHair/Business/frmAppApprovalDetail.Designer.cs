@@ -617,6 +617,7 @@
             this.dgvApplyDetails.Size = new System.Drawing.Size(827, 356);
             this.dgvApplyDetails.TabIndex = 127;
             this.dgvApplyDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplyDetails_CellClick);
+            this.dgvApplyDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplyDetails_CellContentClick);
             this.dgvApplyDetails.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvApplyDetails_CellMouseDoubleClick);
             this.dgvApplyDetails.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvApplyDetails_DataBindingComplete);
             // 
