@@ -912,13 +912,33 @@ namespace BHair
                 System.Environment.Exit(0);
             }
         }
+        private Boolean CheckSpecial(string itemID)
+        {
+            Boolean boolResult = false;
+            try
+            {
+                string strSQL = "select * from Items where itemID = '" + itemID + "'";
+                AccessHelper ah = new AccessHelper();
+                DataTable dt = ah.SelectToDataTable(strSQL);
+                ah.Close();
+                if (dt.Rows[0]["IsSpecial"].ToString() == "1")
+                {
+                    boolResult = true;
+                }
+            }
+            catch
+            {
+                boolResult = false;
+            }
+            return boolResult;
+        }
 
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
             double douDefBon = 100000.00;
             DateTime dtBeginDate = DateTime.Parse(DateTime.Now.Year.ToString() + "-2-1");
             DateTime dtEndDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            double douCurrUsed;
+            //double douCurrUsed;
             string strDebug = "--";
 
             try
@@ -937,34 +957,58 @@ namespace BHair
                 DataTable dtSelectSQL = ah2.SelectToDataTable(strSelectSQL);
                 ah2.Close();
                 foreach(DataRow dr in dtSelectSQL.Rows)
-                {                    
+                {
+                    double douUsed = 0.00;
                     string UID = dr["UID"].ToString();
                     strDebug = "Get Price from " + UID + " ";
-                    string strGetAllSQL = "select SUM(TotalPrice) as TotalPrice from ApplicationInfo where TotalPrice>0 and IsDelete=0 and AppState>=6 and SalesDate>=#" + dtBeginDate.ToShortDateString() + "# and SalesDate<#" + DateTime.Now.AddDays(1) + "# and Applicants='" + UID + "' ";
+                    string strGetAllSQL = "select TransNo from ApplicationInfo where TotalPrice>0 and IsDelete=0 and AppState>=6 and SalesDate>=#" + dtBeginDate.ToShortDateString() + "# and SalesDate<#" + DateTime.Now.AddDays(1) + "# and Applicants='" + UID + "' ";
                     AccessHelper ahIN = new AccessHelper();
                     DataTable dtIN = ahIN.SelectToDataTable(strGetAllSQL);
                     ahIN.Close();
-                    if(dtIN != null && dtIN.Rows.Count>0)
+                    for(int i = 0; i < dtIN.Rows.Count; i++)
                     {
-                        if(dtIN.Rows[0][0].ToString() != null && dtIN.Rows[0][0].ToString() != "")
+                        string strGetDetail = "select * from ApplicationDetail where TransNo = '" + dtIN.Rows[i]["TransNo"].ToString() + "'";
+                        AccessHelper ahGetDetail = new AccessHelper();
+                        DataTable dtDetail = ahGetDetail.SelectToDataTable(strGetDetail);
+                        ahGetDetail.Close();
+                        for(int ii = 0; ii < dtDetail.Rows.Count; ii++)
                         {
-                            douCurrUsed = double.Parse(dtIN.Rows[0][0].ToString());
-                        }
-                        else
-                        {
-                            douCurrUsed = 0.0;
-                        }
-                        if(douCurrUsed > 0)
-                        {
-                            strDebug = "Update data to " + UID + " ";
-                            double douRest = douDefBon - douCurrUsed;
-                            string strUpdateSQL = "update Users set UsedAmount=" + douCurrUsed + ",RestAmount=" + douRest + " where UID='" + UID + "' ";
-                            AccessHelper ahRunRest = new AccessHelper();
-                            ahRunRest.ExecuteSQLNonquery(strUpdateSQL);
-                            ahRunRest.Close();
-                            //System.Threading.Thread.Sleep(500);
+                            if(!CheckSpecial(dtDetail.Rows[ii]["ItemID"].ToString()) && dtDetail.Rows[ii]["IsSuccess"].ToString() == "1")
+                            {
+                                double exchangeRate = 1.00;
+                                if (int.Parse(dtDetail.Rows[ii]["MoneyUnit"].ToString()) == 2) exchangeRate = double.Parse(EmailControl.config.USrate.ToString());
+                                else if (int.Parse(dtDetail.Rows[ii]["MoneyUnit"].ToString()) == 3) exchangeRate = double.Parse(EmailControl.config.HKrate.ToString());
+                                douUsed += double.Parse(dtDetail.Rows[ii]["FinalPrice"].ToString()) * exchangeRate;
+                            }                            
                         }
                     }
+                    strDebug = "Update data to " + UID + " ";
+                    double douRest = douDefBon - douUsed;
+                    string strUpdateSQL = "update Users set UsedAmount=" + douUsed + ",RestAmount=" + douRest + " where UID='" + UID + "' ";
+                    AccessHelper ahRunRest = new AccessHelper();
+                    ahRunRest.ExecuteSQLNonquery(strUpdateSQL);
+                    ahRunRest.Close();
+                    //if (dtIN != null && dtIN.Rows.Count>0)
+                    //{
+                    //    if(dtIN.Rows[0][0].ToString() != null && dtIN.Rows[0][0].ToString() != "")
+                    //    {
+                    //        douCurrUsed = double.Parse(dtIN.Rows[0][0].ToString());
+                    //    }
+                    //    else
+                    //    {
+                    //        douCurrUsed = 0.0;
+                    //    }
+                    //    if(douCurrUsed > 0)
+                    //    {
+                    //        strDebug = "Update data to " + UID + " ";
+                    //        double douRest = douDefBon - douCurrUsed;
+                    //        string strUpdateSQL = "update Users set UsedAmount=" + douCurrUsed + ",RestAmount=" + douRest + " where UID='" + UID + "' ";
+                    //        AccessHelper ahRunRest = new AccessHelper();
+                    //        ahRunRest.ExecuteSQLNonquery(strUpdateSQL);
+                    //        ahRunRest.Close();
+                    //        //System.Threading.Thread.Sleep(500);
+                    //    }
+                    //}
                 }
                 MessageBox.Show("重新计算成功!", "通知!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

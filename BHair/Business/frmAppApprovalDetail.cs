@@ -192,13 +192,20 @@ namespace BHair.Business
         private Boolean CheckSpecial(string itemID)
         {
             Boolean boolResult = false;
-            string strSQL = "select * from Items where itemID = '" + itemID + "'";
-            AccessHelper ah = new AccessHelper();
-            DataTable dt = ah.SelectToDataTable(strSQL);
-            ah.Close();
-            if (dt.Rows[0]["IsSpecial"].ToString() == "1")
+            try
             {
-                boolResult = true;
+                string strSQL = "select * from Items where itemID = '" + itemID + "'";
+                AccessHelper ah = new AccessHelper();
+                DataTable dt = ah.SelectToDataTable(strSQL);
+                ah.Close();
+                if (dt.Rows[0]["IsSpecial"].ToString() == "1")
+                {
+                    boolResult = true;
+                }
+            }
+            catch
+            {
+                boolResult = false;
             }
             return boolResult;
         }
