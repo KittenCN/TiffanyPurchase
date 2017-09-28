@@ -215,14 +215,46 @@ namespace BHair.Business
             try
             {
                 totalPrice = 0;
-                double exchangeRate = 1;
                 foreach (DataGridViewRow dgvr in dgvApplyDetails.Rows)
                 {
                     if ((int)dgvr.Cells["IsSuccess"].Value == 1 && !CheckSpecial(dgvr.Cells["ItemID"].Value.ToString()))
                     {
-                        if ((int)dgvr.Cells["MoneyUnit"].Value == 2) exchangeRate = double.Parse(EmailControl.config.USrate.ToString());
-                        else if ((int) dgvr.Cells["MoneyUnit"].Value == 3) exchangeRate = double.Parse(EmailControl.config.HKrate.ToString());
-                        totalPrice += double.Parse(dgvr.Cells["FinalPrice"].Value.ToString()) * exchangeRate;
+                        decimal MoneyDiscont = 1;
+                        switch (dgvr.Cells["MoneyUnit"].Value.ToString())
+                        {
+                            case "1":
+                            default:
+                                MoneyDiscont = 1;
+                                break;
+                            case "2":
+                                MoneyDiscont = EmailControl.config.USrate;
+                                break;
+                            case "3":
+                                MoneyDiscont = EmailControl.config.HKrate;
+                                break;
+                            case "4":
+                                MoneyDiscont = EmailControl.config.MOPrate;
+                                break;
+                            case "5":
+                                MoneyDiscont = EmailControl.config.SGDrate;
+                                break;
+                            case "6":
+                                MoneyDiscont = EmailControl.config.MYRrate;
+                                break;
+                            case "7":
+                                MoneyDiscont = EmailControl.config.GBPrate;
+                                break;
+                            case "8":
+                                MoneyDiscont = EmailControl.config.EURrate;
+                                break;
+                            case "9":
+                                MoneyDiscont = EmailControl.config.JPYrate;
+                                break;
+                            case "10":
+                                MoneyDiscont = EmailControl.config.TWDrate;
+                                break;
+                        }
+                        totalPrice += double.Parse(dgvr.Cells["FinalPrice"].Value.ToString()) * double.Parse(MoneyDiscont.ToString());
                     }
                 }               
                 applicationInfo.StorePay(applicationInfo.TransNo, "", applicationInfo.Applicants, totalPrice, 1);

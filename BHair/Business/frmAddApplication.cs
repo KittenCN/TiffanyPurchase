@@ -307,7 +307,7 @@ namespace BHair.Business
                         MoneyDiscont = EmailControl.config.TWDrate;
                         break;
                 }
-                if (rows.Cells["FinalPrice"] != null && rows.Cells["FinalPrice"].Value != null && rows.Cells["IsSpecial"].Value.ToString() != "1")
+                if (rows.Cells["FinalPrice"] != null && rows.Cells["FinalPrice"].Value != null)
                     totalPrice += double.Parse(rows.Cells["Price"].Value.ToString()) * double.Parse(rows.Cells["Count"].Value.ToString()) * double.Parse(rows.Cells["ApprovalDiscount"].Value.ToString()) / 100.00 * Convert.ToDouble(MoneyDiscont);
             }
             txtTotalPrice.Value = decimal.Parse(totalPrice.ToString("#0.00"));

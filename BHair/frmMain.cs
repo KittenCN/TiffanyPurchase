@@ -961,12 +961,13 @@ namespace BHair
                     double douUsed = 0.00;
                     string UID = dr["UID"].ToString();
                     strDebug = "Get Price from " + UID + " ";
-                    string strGetAllSQL = "select TransNo from ApplicationInfo where TotalPrice>0 and IsDelete=0 and AppState>=6 and SalesDate>=#" + dtBeginDate.ToShortDateString() + "# and SalesDate<#" + DateTime.Now.AddDays(1) + "# and Applicants='" + UID + "' ";
+                    string strGetAllSQL = "select TransNo from ApplicationInfo where IsDelete=0 and AppState>=6 and SalesDate>=#" + dtBeginDate.ToShortDateString() + "# and SalesDate<#" + DateTime.Now.AddDays(1) + "# and Applicants='" + UID + "' ";
                     AccessHelper ahIN = new AccessHelper();
                     DataTable dtIN = ahIN.SelectToDataTable(strGetAllSQL);
                     ahIN.Close();
                     for(int i = 0; i < dtIN.Rows.Count; i++)
                     {
+                        double douTotalPrice = 0.00;
                         string strGetDetail = "select * from ApplicationDetail where TransNo = '" + dtIN.Rows[i]["TransNo"].ToString() + "'";
                         AccessHelper ahGetDetail = new AccessHelper();
                         DataTable dtDetail = ahGetDetail.SelectToDataTable(strGetDetail);
@@ -975,12 +976,50 @@ namespace BHair
                         {
                             if(!CheckSpecial(dtDetail.Rows[ii]["ItemID"].ToString()) && dtDetail.Rows[ii]["IsSuccess"].ToString() == "1")
                             {
-                                double exchangeRate = 1.00;
-                                if (int.Parse(dtDetail.Rows[ii]["MoneyUnit"].ToString()) == 2) exchangeRate = double.Parse(EmailControl.config.USrate.ToString());
-                                else if (int.Parse(dtDetail.Rows[ii]["MoneyUnit"].ToString()) == 3) exchangeRate = double.Parse(EmailControl.config.HKrate.ToString());
-                                douUsed += double.Parse(dtDetail.Rows[ii]["FinalPrice"].ToString()) * exchangeRate;
+                                decimal MoneyDiscont = 1;
+                                switch (dtDetail.Rows[ii]["MoneyUnit"].ToString())
+                                {
+                                    case "1":
+                                    default:
+                                        MoneyDiscont = 1;
+                                        break;
+                                    case "2":
+                                        MoneyDiscont = EmailControl.config.USrate;
+                                        break;
+                                    case "3":
+                                        MoneyDiscont = EmailControl.config.HKrate;
+                                        break;
+                                    case "4":
+                                        MoneyDiscont = EmailControl.config.MOPrate;
+                                        break;
+                                    case "5":
+                                        MoneyDiscont = EmailControl.config.SGDrate;
+                                        break;
+                                    case "6":
+                                        MoneyDiscont = EmailControl.config.MYRrate;
+                                        break;
+                                    case "7":
+                                        MoneyDiscont = EmailControl.config.GBPrate;
+                                        break;
+                                    case "8":
+                                        MoneyDiscont = EmailControl.config.EURrate;
+                                        break;
+                                    case "9":
+                                        MoneyDiscont = EmailControl.config.JPYrate;
+                                        break;
+                                    case "10":
+                                        MoneyDiscont = EmailControl.config.TWDrate;
+                                        break;
+                                }
+                                douUsed += double.Parse(dtDetail.Rows[ii]["FinalPrice"].ToString()) * double.Parse(MoneyDiscont.ToString());
+                                douTotalPrice += double.Parse(dtDetail.Rows[ii]["FinalPrice"].ToString()) * double.Parse(MoneyDiscont.ToString());
                             }                            
                         }
+                        string strUpdate = "update ApplicationInfo set TotalPrice = " + douTotalPrice + " where TransNo = '" + dtIN.Rows[i]["TransNo"].ToString() + "'";
+                        AccessHelper ahup = new AccessHelper();
+                        ahup.ExecuteSQLNonquery(strUpdate);
+                        ahup.Close();
+                        douTotalPrice = 0.00;
                     }
                     strDebug = "Update data to " + UID + " ";
                     double douRest = douDefBon - douUsed;
