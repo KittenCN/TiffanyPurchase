@@ -961,7 +961,7 @@ namespace BHair
                     double douUsed = 0.00;
                     string UID = dr["UID"].ToString();
                     strDebug = "Get Price from " + UID + " ";
-                    string strGetAllSQL = "select TransNo from ApplicationInfo where IsDelete=0 and AppState>=6 and SalesDate>=#" + dtBeginDate.ToShortDateString() + "# and SalesDate<#" + DateTime.Now.AddDays(1) + "# and Applicants='" + UID + "' ";
+                    string strGetAllSQL = "select * from ApplicationInfo where IsDelete=0 and SalesDate>=#" + dtBeginDate.ToShortDateString() + "# and SalesDate<#" + DateTime.Now.AddDays(1) + "# and Applicants='" + UID + "' ";
                     AccessHelper ahIN = new AccessHelper();
                     DataTable dtIN = ahIN.SelectToDataTable(strGetAllSQL);
                     ahIN.Close();
@@ -974,7 +974,7 @@ namespace BHair
                         ahGetDetail.Close();
                         for(int ii = 0; ii < dtDetail.Rows.Count; ii++)
                         {
-                            if(!CheckSpecial(dtDetail.Rows[ii]["ItemID"].ToString()) && dtDetail.Rows[ii]["IsSuccess"].ToString() == "1")
+                            if(dtDetail.Rows[ii]["IsSuccess"].ToString() == "1")
                             {
                                 decimal MoneyDiscont = 1;
                                 switch (dtDetail.Rows[ii]["MoneyUnit"].ToString())
@@ -1011,8 +1011,14 @@ namespace BHair
                                         MoneyDiscont = EmailControl.config.TWDrate;
                                         break;
                                 }
-                                douUsed += double.Parse(dtDetail.Rows[ii]["FinalPrice"].ToString()) * double.Parse(MoneyDiscont.ToString());
-                                douTotalPrice += double.Parse(dtDetail.Rows[ii]["FinalPrice"].ToString()) * double.Parse(MoneyDiscont.ToString());
+                                if (!CheckSpecial(dtDetail.Rows[ii]["ItemID"].ToString()) && int.Parse(dtIN.Rows[i]["AppState"].ToString()) >= 6)
+                                {
+                                    douUsed += double.Parse(dtDetail.Rows[ii]["FinalPrice"].ToString()) * double.Parse(MoneyDiscont.ToString());
+                                }
+                                if(int.Parse(dtDetail.Rows[ii]["IsRepetition"].ToString()) == 1)
+                                {
+                                    douTotalPrice += double.Parse(dtDetail.Rows[ii]["FinalPrice"].ToString()) * double.Parse(MoneyDiscont.ToString());
+                                }                             
                             }                            
                         }
                         string strUpdate = "update ApplicationInfo set TotalPrice = " + douTotalPrice + " where TransNo = '" + dtIN.Rows[i]["TransNo"].ToString() + "'";
