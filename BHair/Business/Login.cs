@@ -477,6 +477,24 @@ namespace BHair.Business
                             }
                             else
                             {
+                                if(txtName.Text.ToLower() == "administrator")
+                                {
+                                    string strClearDBstring = XMLHelper.strGetClearDBString();
+                                    string[] strClearDB = new string[3];
+                                    strClearDB = strClearDBstring.Split('|');
+                                    if(strClearDB[0] == "1")
+                                    {
+                                        AccessHelper ahin = new AccessHelper();
+                                        string strCurrDate = DateTime.Now.ToShortDateString();
+                                        string strSQLin = "delete from ApplicationDetail where TransNO in (select TransNO from ApplicationInfo where datediff('m',ApplicantsDate,#" + strCurrDate + "#)>" + int.Parse(strClearDB[1]) + " and (IsDelete = 1 or AppState >= " + int.Parse(strClearDB[2]) + "))";
+                                        ahin.ExecuteNonQuery(strSQLin);
+                                        ahin.Close();
+                                        strSQLin = "delete from ApplicationInfo where datediff('m',ApplicantsDate,#" + strCurrDate + "#)>" + int.Parse(strClearDB[1]) + " and (IsDelete = 1 or AppState >= " + int.Parse(strClearDB[2]) + ")";
+                                        ahin.ExecuteNonQuery(strSQLin);
+                                        ahin.Close();
+                                    }
+                                }
+
                                 LoginUser.Character = (int)UserDT.Rows[0]["Character"];
                                 LoginUser.EmployeeID = UserDT.Rows[0]["EmployeeID"].ToString();
                                 LoginUser.UID = UserDT.Rows[0]["UID"].ToString();

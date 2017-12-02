@@ -58,5 +58,31 @@ namespace BHair.Business
             }
             return strResult;
         }
+        public static string strGetClearDBString()
+        {
+            string strLocalAdd = ".\\config.xml";
+            string strResult = "";
+            if (File.Exists(strLocalAdd))
+            {
+                try
+                {
+                    XmlDocument xmlCon = new XmlDocument();
+                    xmlCon.Load(strLocalAdd);
+                    XmlNode xnCon = xmlCon.SelectSingleNode("Config");
+                    strResult = xnCon.SelectSingleNode("ClearDB").InnerText;
+                    strResult += "|" + xnCon.SelectSingleNode("ClearCycle").InnerText;
+                    strResult += "|" + xnCon.SelectSingleNode("ClearLevel").InnerText;
+                }
+                catch
+                {
+                    strResult = "0|3|9";
+                }
+            }
+            else
+            {
+                strResult = "0|3|9";
+            }
+            return strResult;
+        }
     }
 }
