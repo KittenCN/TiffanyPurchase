@@ -921,9 +921,12 @@ namespace BHair
                 AccessHelper ah = new AccessHelper();
                 DataTable dt = ah.SelectToDataTable(strSQL);
                 ah.Close();
-                if (dt.Rows[0]["IsSpecial"].ToString() == "1")
+                if(dt.Rows.Count > 0)
                 {
-                    boolResult = true;
+                    if (dt.Rows[0]["IsSpecial"].ToString() == "1")
+                    {
+                        boolResult = true;
+                    }
                 }
             }
             catch
@@ -945,10 +948,34 @@ namespace BHair
             {
                 #region init all user's bonefit
                 strDebug = "init...";
-                string strInitSQL = "update Users set UsedAmount=0,RestAmount=" + douDefBon;
+                //string strInitSQL = "update Users set UsedAmount=0,RestAmount=" + douDefBon;
                 AccessHelper ah = new AccessHelper();
-                ah.ExecuteSQLNonquery(strInitSQL);
-                ah.Close();
+                //ah.ExecuteSQLNonquery(strInitSQL);
+                //ah.Close();
+                string strMaxEmpDate = DateTime.Now.AddDays(-180).ToShortDateString();
+                string strBeginDate = DateTime.Now.Year.ToString() + "/2/1";
+                string strEndDate = DateTime.Now.Year.ToString() + "/7/1";
+                if (DateTime.Now.Month >= 2 && DateTime.Now.Month <= 6)
+                {
+                    string strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 where EmpDate <#" + strMaxEmpDate + "#";
+                    ah.ExecuteNonQuery(strSQL);
+                    ah.Close();
+                    strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 * (datediff('d',#" + strBeginDate + "#,EmpDate)) where EmpDate =#" + strMaxEmpDate + "#";
+                    ah.ExecuteNonQuery(strSQL);
+                    ah.Close();
+                }
+                if (DateTime.Now.Month >= 7)
+                {
+                    string strSQL = "update Users set RestAmount = RestAmount + 50000 where EmpDate <#" + strMaxEmpDate + "#";
+                    ah.ExecuteNonQuery(strSQL);
+                    ah.Close();
+                    strSQL = "update Users set UsedAmount = 0, RestAmount = (50000 * (datediff('d',#" + strBeginDate + "#,EmpDate) / 180)) + 50000 where EmpDate =#" + strMaxEmpDate + "# and EmpDate < #" + strEndDate + "#";
+                    ah.ExecuteNonQuery(strSQL);
+                    ah.Close();
+                    strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 * (datediff('d',#" + strEndDate + "#,EmpDate) / 180) where EmpDate =#" + strMaxEmpDate + "# and EmpDate >= #" + strEndDate + "#";
+                    ah.ExecuteNonQuery(strSQL);
+                    ah.Close();
+                }
                 #endregion
 
                 strDebug = "Get All Data...";
