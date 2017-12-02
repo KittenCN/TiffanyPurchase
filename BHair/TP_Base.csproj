@@ -61,11 +61,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\XLuSharpLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="zxing, Version=0.12.0.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\zxing.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\frmItem_Import.cs">

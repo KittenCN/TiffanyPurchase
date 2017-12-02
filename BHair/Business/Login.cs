@@ -60,7 +60,7 @@ namespace BHair.Business
                         strInSQL = "alter table Items add COLUMN Price10 float";
                         ah.ExecuteNonQuery(strInSQL);
                     }
-                    catch (Exception ex1)
+                    catch (Exception)
                     {
                         ah.Close();
                     }
@@ -89,7 +89,7 @@ namespace BHair.Business
                         strInSQL = "alter table Items add COLUMN Price10 float";
                         ah.ExecuteNonQuery(strInSQL);
                     }
-                    catch (Exception ex1)
+                    catch (Exception)
                     {
                         ah.Close();
                     }
@@ -110,7 +110,7 @@ namespace BHair.Business
                         string strInSQL = "alter table SetupConfig add COLUMN LoginNum Int";
                         ah.ExecuteNonQuery(strInSQL);
                     }
-                    catch (Exception ex1)
+                    catch (Exception)
                     {
                         ah.Close();
                     }
@@ -138,7 +138,7 @@ namespace BHair.Business
                         string strInSQL = "alter table SetupConfig add COLUMN LoginNum Int";
                         ah.ExecuteNonQuery(strInSQL);
                     }
-                    catch (Exception ex1)
+                    catch (Exception)
                     {
                         ah.Close();
                     }
@@ -172,7 +172,7 @@ namespace BHair.Business
                         string strInSQL = "alter table SetupConfig add COLUMN Version Text";
                         ah.ExecuteNonQuery(strInSQL);
                     }
-                    catch (Exception ex1)
+                    catch (Exception)
                     {
                         ah.Close();
                     }
@@ -200,7 +200,7 @@ namespace BHair.Business
                         string strInSQL = "alter table SetupConfig add COLUMN Version text";
                         ah.ExecuteNonQuery(strInSQL);
                     }
-                    catch (Exception ex1)
+                    catch (Exception )
                     {
                         ah.Close();
                     }
@@ -211,6 +211,68 @@ namespace BHair.Business
                         if (dtSQL.Rows[0]["Version"].ToString() != "")
                         {
                             strVersion = dtSQL.Rows[0]["Version"].ToString();
+                        }
+                        else
+                        {
+                            strVersion = "";
+                        }
+                    }
+                    ah.Close();
+                }
+            }
+
+            //增加Users表的EmpDate字段
+            try
+            {
+                AccessHelper ah = new AccessHelper();
+                string strSQL = "select top 1 * from Users";
+                DataTable dtSQL = ah.SelectToDataTable(strSQL);
+                if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["EmpDate"].ToString() == null)
+                {
+                    try
+                    {
+                        string strInSQL = "alter table Users add COLUMN EmpDate Datetime";
+                        ah.ExecuteNonQuery(strInSQL);
+                    }
+                    catch (Exception)
+                    {
+                        ah.Close();
+                    }
+                }
+                else if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["EmpDate"].ToString() != null)
+                {
+                    if (dtSQL.Rows[0]["EmpDate"].ToString() != "")
+                    {
+                        strVersion = dtSQL.Rows[0]["EmpDate"].ToString();
+                    }
+                    else
+                    {
+                        strVersion = "";
+                    }
+                }
+                ah.Close();
+            }
+            catch (Exception ex)
+            {
+                if (ex.HResult.ToString() == "-2147024809")
+                {
+                    AccessHelper ah = new AccessHelper();
+                    try
+                    {
+                        string strInSQL = "alter table Users add COLUMN EmpDate Datetime";
+                        ah.ExecuteNonQuery(strInSQL);
+                    }
+                    catch (Exception)
+                    {
+                        ah.Close();
+                    }
+                    string strSQL = "select top 1 * from Users";
+                    DataTable dtSQL = ah.SelectToDataTable(strSQL);
+                    if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["EmpDate"].ToString() != null)
+                    {
+                        if (dtSQL.Rows[0]["EmpDate"].ToString() != "")
+                        {
+                            strVersion = dtSQL.Rows[0]["EmpDate"].ToString();
                         }
                         else
                         {
@@ -292,7 +354,7 @@ namespace BHair.Business
                     AccessHelper ahTSQL = new AccessHelper();
                     DataTable dtTSQL = ahTSQL.SelectToDataTable(strTSQL);
                     ahTSQL.Close();
-                    if (GetComputerName().Substring(0,3) == "OC1")
+                    if (GetComputerName().Substring(0,3) == "OC1" || txtName.Text.ToLower() == "administrator")
                     {
                         UpdateDataBase();
                     }                   

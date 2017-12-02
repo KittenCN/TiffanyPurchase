@@ -808,7 +808,7 @@ namespace BHair
                 sq.QuickExecuteSqlQuery();
                 sq.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
