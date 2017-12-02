@@ -70,12 +70,16 @@
             this.cbIsAdmin = new System.Windows.Forms.CheckBox();
             this.cbIsAble = new System.Windows.Forms.CheckBox();
             this.cbAbleMode = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtEmpDate = new System.Windows.Forms.DateTimePicker();
             this.tabMember.SuspendLayout();
             this.tabDetail.SuspendLayout();
             this.grpNotNull.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRestAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalAmount)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -217,6 +221,7 @@
             // 
             // grpNotNull
             // 
+            this.grpNotNull.Controls.Add(this.groupBox2);
             this.grpNotNull.Controls.Add(this.cbStore);
             this.grpNotNull.Controls.Add(this.label8);
             this.grpNotNull.Controls.Add(this.cbManagerID);
@@ -534,6 +539,34 @@
             this.cbAbleMode.TabIndex = 10;
             this.cbAbleMode.Visible = false;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dtEmpDate);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Location = new System.Drawing.Point(185, 159);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(282, 95);
+            this.groupBox2.TabIndex = 32;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "其他信息";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 19);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 12);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "入职日期:";
+            // 
+            // dtEmpDate
+            // 
+            this.dtEmpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtEmpDate.Location = new System.Drawing.Point(63, 14);
+            this.dtEmpDate.Name = "dtEmpDate";
+            this.dtEmpDate.Size = new System.Drawing.Size(96, 21);
+            this.dtEmpDate.TabIndex = 1;
+            // 
             // frmMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -562,6 +595,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalAmount)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -611,5 +646,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbAbleMode;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DateTimePicker dtEmpDate;
+        private System.Windows.Forms.Label label9;
     }
 }

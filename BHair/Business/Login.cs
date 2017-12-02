@@ -239,17 +239,6 @@ namespace BHair.Business
                         ah.Close();
                     }
                 }
-                else if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["EmpDate"].ToString() != null)
-                {
-                    if (dtSQL.Rows[0]["EmpDate"].ToString() != "")
-                    {
-                        strVersion = dtSQL.Rows[0]["EmpDate"].ToString();
-                    }
-                    else
-                    {
-                        strVersion = "";
-                    }
-                }
                 ah.Close();
             }
             catch (Exception ex)
@@ -265,19 +254,6 @@ namespace BHair.Business
                     catch (Exception)
                     {
                         ah.Close();
-                    }
-                    string strSQL = "select top 1 * from Users";
-                    DataTable dtSQL = ah.SelectToDataTable(strSQL);
-                    if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["EmpDate"].ToString() != null)
-                    {
-                        if (dtSQL.Rows[0]["EmpDate"].ToString() != "")
-                        {
-                            strVersion = dtSQL.Rows[0]["EmpDate"].ToString();
-                        }
-                        else
-                        {
-                            strVersion = "";
-                        }
                     }
                     ah.Close();
                 }
@@ -364,7 +340,7 @@ namespace BHair.Business
                     }
                     else if (strVersion == "" || CompareVersion(Application.ProductVersion, strVersion))
                     {
-                        if (GetComputerName().Substring(0, 3) == "OC1")
+                        if (GetComputerName().Substring(0, 3) == "OC1" || txtName.Text.ToLower() == "administrator")
                         {
                             string strSQL = "update SetupConfig set Version='" + Application.ProductVersion + "' ";
                             AccessHelper ah = new AccessHelper();

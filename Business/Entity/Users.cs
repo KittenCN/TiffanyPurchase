@@ -190,6 +190,13 @@ namespace BHair.Business.BaseData
             set { _AbleMode = value; }
         }
 
+        private DateTime _EmpDate;
+        public DateTime EmpDate
+        {
+            get { return _EmpDate; }
+            set { _EmpDate = value; }
+        }
+
         public DataTable UsersDT = new DataTable();
 
         #endregion
@@ -260,9 +267,9 @@ namespace BHair.Business.BaseData
 
                     StringBuilder insertSql = new StringBuilder();
                     insertSql.Append("Insert into [Users]");
-                    insertSql.Append(" ([UID],[EmployeeID],[UserName],[UserPwd],[Tel],[Email],[Position],[Department],[Detail],[IsAdmin],[Character],[IsDelete],[TotalAmount],[UsedAmount],[RestAmount],[MoneyUnit],[ManagerID],[IsAble],[Store]) ");
+                    insertSql.Append(" ([UID],[EmployeeID],[UserName],[UserPwd],[Tel],[Email],[Position],[Department],[Detail],[IsAdmin],[Character],[IsDelete],[TotalAmount],[UsedAmount],[RestAmount],[MoneyUnit],[ManagerID],[IsAble],[Store],[EmpDate]) ");
                     insertSql.Append("values");
-                    insertSql.AppendFormat(" ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}',{9},{10},{11},{12},{13},{14},{15},'{16}',{17},'{18}')", user.UID, user.EmployeeID, user.UserName, user.UserPwd, user.Tel, user.Email, user.Position, user.Department, user.Detail, user.IsAdmin, user.Character, user.IsDelete, user.TotalAmount, user.UsedAmount, user.RestAmount, user.MoneyUnit, user.ManagerID,user.IsAble,user.Store);
+                    insertSql.AppendFormat(" ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}',{9},{10},{11},{12},{13},{14},{15},'{16}',{17},'{18}')", user.UID, user.EmployeeID, user.UserName, user.UserPwd, user.Tel, user.Email, user.Position, user.Department, user.Detail, user.IsAdmin, user.Character, user.IsDelete, user.TotalAmount, user.UsedAmount, user.RestAmount, user.MoneyUnit, user.ManagerID,user.IsAble,user.Store,user.EmpDate);
                     sq.InsertQuery(insertSql.ToString(), "", "", 0, 0);
 
                 sq.Close();
@@ -309,6 +316,7 @@ namespace BHair.Business.BaseData
                 insertSql.AppendFormat(" [ManagerID]='{0}',", user.ManagerID);
                 insertSql.AppendFormat(" [Store]='{0}',", user.Store);
                 insertSql.AppendFormat(" [IsAble]={0},", user.IsAble);
+                insertSql.AppendFormat(" [EmpDate]='{0}',", user.EmpDate);
                 insertSql.AppendFormat(" [AbleMode]={0}", user.AbleMode);
                 insertSql.AppendFormat(" where [UID]='{0}'", user.UID);
                 sq.InsertQuery(insertSql.ToString(), "", "", 0, 0);

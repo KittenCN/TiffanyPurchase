@@ -45,6 +45,7 @@ namespace BHair.Base
                 txtTotalAmount.Enabled = true;
                 txtRestAmount.Enabled = true;
                 cbStore.Enabled = true;
+                dtEmpDate.Enabled = true;
             }
             else if (Login.LoginUser.Character == 7)
             {
@@ -68,6 +69,7 @@ namespace BHair.Base
                 txtTel.ReadOnly = true;
                 txtPassword.Enabled = false;
                 txtAffirm.Enabled = false;
+                dtEmpDate.Enabled = false;
             }
         }
 
@@ -99,6 +101,7 @@ namespace BHair.Base
                 txtRestAmount.Enabled = true;
                 cbStore.Enabled = true;
                 cbAbleMode.Visible = true;
+                dtEmpDate.Enabled = true;
             }
             else if (Login.LoginUser.Character == 7)
             {
@@ -123,6 +126,7 @@ namespace BHair.Base
                 txtPassword.Enabled = false;
                 txtAffirm.Enabled = false;
                 txtDetail.Enabled = false;
+                dtEmpDate.Enabled = false;
             }
         }
 
@@ -170,6 +174,15 @@ namespace BHair.Base
             user.RestAmount = double.Parse(user.UsersDT.Rows[0]["RestAmount"].ToString());
             user.ManagerID = user.UsersDT.Rows[0]["ManagerID"].ToString();
             user.Store = user.UsersDT.Rows[0]["Store"].ToString();
+            if(user.UsersDT.Rows[0]["EmpDate"] != null && user.UsersDT.Rows[0]["EmpDate"].ToString() != "")
+            {
+                user.EmpDate = (DateTime)user.UsersDT.Rows[0]["EmpDate"];
+            }
+            else
+            {
+                user.EmpDate = DateTime.Now;
+            }
+            
 
             txtUID.Text = user.UsersDT.Rows[0]["UID"].ToString();
             txtEmployeeID.Text = user.UsersDT.Rows[0]["EmployeeID"].ToString();
@@ -184,6 +197,7 @@ namespace BHair.Base
             cbMoneyUnit.SelectedIndex = (int)user.UsersDT.Rows[0]["MoneyUnit"] - 1;
             cbManagerID.SelectedValue = user.UsersDT.Rows[0]["ManagerID"].ToString();
             cbStore.SelectedValue = user.UsersDT.Rows[0]["Store"].ToString();
+            dtEmpDate.Value = user.EmpDate;
             if (user.UsersDT.Rows[0]["AbleMode"] != null && user.UsersDT.Rows[0]["AbleMode"].ToString() != "" && (int)user.UsersDT.Rows[0]["AbleMode"] - 1 >= 0)
             {
                 cbAbleMode.SelectedIndex = (int)user.UsersDT.Rows[0]["AbleMode"] - 1;
@@ -343,6 +357,7 @@ namespace BHair.Base
             user.MoneyUnit = cbMoneyUnit.SelectedIndex + 1;
             user.TotalAmount = (double)txtTotalAmount.Value;
             user.RestAmount = (double)txtRestAmount.Value;
+            user.EmpDate = dtEmpDate.Value;
             //if (user.Character == 3||user.Character==2)
             //{
             //    user.ManagerID = cbManagerID.SelectedValue.ToString();
