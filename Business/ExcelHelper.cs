@@ -134,6 +134,7 @@ namespace BHair.Business
                     dr["Email"] = ((Excel.Range)worksheet.Cells[iRow, 10]).Text;
                     dr["Detail"] = ((Excel.Range)worksheet.Cells[iRow, 11]).Text;
                     dr["RestAmount"] = ((Excel.Range)worksheet.Cells[iRow, 12]).Text;
+                    dr["EmpDate"] = ((Excel.Range)worksheet.Cells[iRow, 13]).Text;
 
                     dr["IsDelete"] = 0;
                     dr["IsAble"] = 0;
@@ -290,17 +291,17 @@ namespace BHair.Business
         public string strReturnUsername(string UID)
         {
             string strResult = "";
-            DataTable dtResult = SelectAllUsers(UID);
+            DataTable dtResult = SelectUsersByUID(UID);
             if (dtResult != null && dtResult.Rows.Count > 0)
             {
                 strResult = dtResult.Rows[0]["UserName"].ToString();
             }
             return strResult;
         }
-        public DataTable SelectAllUsers(string sql)
+        public DataTable SelectAllUsers()
         {
             AccessHelper ah = new AccessHelper();
-            string sqlString = string.Format("select * from [Users] where IsDelete = 0 {0}", sql);
+            string sqlString = string.Format("select * from [Users] where IsDelete = 0");
             DataTable Result = ah.SelectToDataTable(sqlString);
             ah.Close();
             return Result;
@@ -345,6 +346,7 @@ namespace BHair.Business
             s.Cells[1, 15] = "是否冻结该用户";
             s.Cells[1, 16] = "冻结类型";
             s.Cells[1, 17] = "是否删除";
+            s.Cells[1, 18] = "入职日期";
 
             int i = 1;
             foreach (DataRow dr in ReportDT.Rows)
@@ -361,7 +363,7 @@ namespace BHair.Business
                 s.Cells[1 + i, 10] = dr["Position"].ToString();
                 s.Cells[1 + i, 11] = dr["Department"].ToString();
                 s.Cells[1 + i, 12] = dr["Email"].ToString();
-                s.Cells[1 + i, 13] = dr["Detail"].ToString();
+                s.Cells[1 + i, 13] = dr["Detail"].ToString();             
                 if(dr["IsAdmin"].ToString()=="1")
                 {
                     s.Cells[1 + i, 14] = "是";
@@ -395,6 +397,7 @@ namespace BHair.Business
                 {
                     s.Cells[1 + i, 17] = "否";
                 }
+                s.Cells[1 + i, 18] = dr["EmpDate"].ToString();
                 i++;
             }
 

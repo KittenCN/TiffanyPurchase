@@ -33,6 +33,10 @@
             this.lblMember = new System.Windows.Forms.Label();
             this.txtPwd = new System.Windows.Forms.TextBox();
             this.dgvMember = new System.Windows.Forms.DataGridView();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnInsert = new System.Windows.Forms.Button();
             this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,10 +60,7 @@
             this.UsedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RestAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MoneyUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnInsert = new System.Windows.Forms.Button();
+            this.入职日期 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMember)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,7 +114,8 @@
             this.TotalAmount,
             this.UsedAmount,
             this.RestAmount,
-            this.MoneyUnit});
+            this.MoneyUnit,
+            this.入职日期});
             this.dgvMember.Location = new System.Drawing.Point(12, 39);
             this.dgvMember.MultiSelect = false;
             this.dgvMember.Name = "dgvMember";
@@ -124,6 +126,44 @@
             this.dgvMember.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMember_CellFormatting);
             this.dgvMember.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvMember_DataBindingComplete);
             this.dgvMember.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvMember_RowPostPaint);
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(12, 10);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(98, 23);
+            this.btnExcel.TabIndex = 7;
+            this.btnExcel.Text = "选择Excel文件";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.Location = new System.Drawing.Point(1063, 548);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(98, 23);
+            this.btnImport.TabIndex = 8;
+            this.btnImport.Text = "覆盖到数据库";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 553);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 12);
+            this.label1.TabIndex = 9;
+            // 
+            // btnInsert
+            // 
+            this.btnInsert.Location = new System.Drawing.Point(959, 548);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(98, 23);
+            this.btnInsert.TabIndex = 10;
+            this.btnInsert.Text = "插入到数据库";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // UID
             // 
@@ -303,43 +343,11 @@
             this.MoneyUnit.ReadOnly = true;
             this.MoneyUnit.Visible = false;
             // 
-            // btnExcel
+            // 入职日期
             // 
-            this.btnExcel.Location = new System.Drawing.Point(12, 10);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(98, 23);
-            this.btnExcel.TabIndex = 7;
-            this.btnExcel.Text = "选择Excel文件";
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // btnImport
-            // 
-            this.btnImport.Location = new System.Drawing.Point(1063, 548);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(98, 23);
-            this.btnImport.TabIndex = 8;
-            this.btnImport.Text = "覆盖到数据库";
-            this.btnImport.UseVisualStyleBackColor = true;
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 553);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 12);
-            this.label1.TabIndex = 9;
-            // 
-            // btnInsert
-            // 
-            this.btnInsert.Location = new System.Drawing.Point(959, 548);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(98, 23);
-            this.btnInsert.TabIndex = 10;
-            this.btnInsert.Text = "插入到数据库";
-            this.btnInsert.UseVisualStyleBackColor = true;
-            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            this.入职日期.DataPropertyName = "EmpDate";
+            this.入职日期.HeaderText = "入职日期";
+            this.入职日期.Name = "入职日期";
             // 
             // frmMember_Import
             // 
@@ -373,6 +381,7 @@
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.DataGridViewTextBoxColumn UID;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
@@ -396,6 +405,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UsedAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn RestAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn MoneyUnit;
-        private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 入职日期;
     }
 }

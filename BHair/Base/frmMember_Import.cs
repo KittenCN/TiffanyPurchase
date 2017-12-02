@@ -226,7 +226,7 @@ namespace BHair.Base
                                 }
                             }
 
-                            }
+                        }
 
                         dgvMember.AutoGenerateColumns = false;
                         dgvMember.DataSource = MemberDT;
