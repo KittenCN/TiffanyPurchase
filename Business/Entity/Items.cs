@@ -94,7 +94,6 @@ namespace BHair.Business.BaseData
                 
                 return 0;
             }
-            return rows;
         }
 
         /// <summary>

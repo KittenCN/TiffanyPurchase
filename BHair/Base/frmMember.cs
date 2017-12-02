@@ -268,7 +268,7 @@ namespace BHair.Base
                     DialogResult = DialogResult.OK;
                     this.Close();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("编辑失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

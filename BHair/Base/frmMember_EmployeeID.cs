@@ -19,7 +19,6 @@ namespace BHair.Base
         Users users = new Users();
         DataTable employeeIDDT = new DataTable();
         DataTable MemberDT = new DataTable();
-        string sha1pwd;
         string filePath;
         public frmMember_EmployeeID()
         {

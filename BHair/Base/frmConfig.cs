@@ -76,7 +76,7 @@ namespace BHair.Base
                 EmailControl.config.UpdateConfig();
                 MessageBox.Show("修改成功！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("修改失败！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }

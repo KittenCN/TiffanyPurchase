@@ -84,7 +84,7 @@ namespace BHair.Base
                     MessageBox.Show("已移除该店面", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadStoreList();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("删除失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

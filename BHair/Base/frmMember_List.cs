@@ -141,7 +141,7 @@ namespace BHair.Base
                         MessageBox.Show("已删除该用户", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadMemberList();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show("删除失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

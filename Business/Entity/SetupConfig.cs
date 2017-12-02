@@ -303,7 +303,6 @@ namespace BHair.Business.BaseData
                 //throw ex;
                 return 0;
             }           
-            return rows;
         }
         #endregion
     }

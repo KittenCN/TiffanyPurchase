@@ -139,7 +139,7 @@ namespace BHair.Business.Table
                 sq.Close();
                 return 1;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //throw ex;
 

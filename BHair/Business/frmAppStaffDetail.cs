@@ -20,7 +20,6 @@ namespace BHair.Business
          ApplicationInfo applicationInfo = new ApplicationInfo();
          ApplicationDetail applicationDetail = new ApplicationDetail();
         public string CtrlID = "";
-        string ctrlType = "正在审核";
         /// <summary>申请单详情</summary>
         public frmAppStaffDetail(ApplicationInfo ParentAppInfo, string CtrlType)
         {

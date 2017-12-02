@@ -93,7 +93,7 @@ namespace BHair.Base
                     item.InsertItems(item.ItemsDT);
                     MessageBox.Show("添加成功！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("添加失败！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }

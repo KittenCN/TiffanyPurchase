@@ -88,7 +88,7 @@ namespace BHair.Business
                             isSuccess = true;
                             comm2.Dispose();
                         }
-                        catch (Exception ex2)
+                        catch (Exception)
                         {
                             return false;
                         }

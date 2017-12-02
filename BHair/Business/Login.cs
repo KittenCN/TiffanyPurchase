@@ -16,7 +16,6 @@ namespace BHair.Business
     public partial class Login : Form
     {
         public static Business.BaseData.Users LoginUser = new Business.BaseData.Users();
-        public event MyDelegate MyEvent;
         public int intLoginNum = 0;
         public string strVersion = "";
         public string strConnstring = "";

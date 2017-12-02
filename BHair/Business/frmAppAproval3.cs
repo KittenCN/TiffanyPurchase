@@ -139,7 +139,7 @@ namespace BHair.Business
                     MessageBox.Show("撤销成功", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     GetApplicationDetail();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("撤销失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }

@@ -39,7 +39,7 @@ namespace BHair.Business
                     Conn.Open();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 if (Conn.State == ConnectionState.Connecting)
                 {

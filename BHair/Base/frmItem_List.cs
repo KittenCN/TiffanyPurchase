@@ -80,7 +80,7 @@ namespace BHair.Base
                     MessageBox.Show("已删除该商品", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadItemList();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("删除失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

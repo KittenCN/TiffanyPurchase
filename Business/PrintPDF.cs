@@ -22,7 +22,7 @@ namespace BHair.Business
                 XLSConvertToPDF(sourcePath, targetPath);
                 return true;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return false;
             }

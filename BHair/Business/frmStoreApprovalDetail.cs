@@ -18,7 +18,6 @@ namespace BHair.Business
          ApplicationInfo applicationInfo = new ApplicationInfo();
          ApplicationDetail applicationDetail = new ApplicationDetail();
         public string CtrlID = "";
-        string ctrlType = "未审核";
         double totalPrice = 0;
         /// <summary>店面确认购买申请单详情</summary>
         public frmStoreApprovalDetail(ApplicationInfo ParentAppInfo, string CtrlType)

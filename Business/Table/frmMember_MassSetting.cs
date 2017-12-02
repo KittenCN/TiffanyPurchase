@@ -22,7 +22,7 @@ namespace BHair.Business.Table
                 AccessHelper ah = new AccessHelper();
                 intResult = ah.ExecuteNonQuery(strSQL);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 intResult = 0;
             }
