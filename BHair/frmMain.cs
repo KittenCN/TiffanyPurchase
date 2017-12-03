@@ -21,7 +21,7 @@ namespace BHair
         public Boolean boolNorLogin = false;
         public frmMain()
         {
-            InitializeComponent();            
+            InitializeComponent();
             this.Text = "员工内购系统 " + " V " + Application.ProductVersion + " 最后编译时间 " + System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location);
 
             this.tssrMain_Timer.Text = DateTime.Now.ToString();
@@ -921,7 +921,7 @@ namespace BHair
                 AccessHelper ah = new AccessHelper();
                 DataTable dt = ah.SelectToDataTable(strSQL);
                 ah.Close();
-                if(dt.Rows.Count > 0)
+                if (dt.Rows.Count > 0)
                 {
                     if (dt.Rows[0]["IsSpecial"].ToString() == "1")
                     {
@@ -954,25 +954,30 @@ namespace BHair
                 //ah.Close();
                 string strMaxEmpDate = DateTime.Now.AddDays(-180).ToShortDateString();
                 string strBeginDate = DateTime.Now.Year.ToString() + "/2/1";
-                string strEndDate = DateTime.Now.Year.ToString() + "/7/1";
-                if (DateTime.Now.Month >= 2 && DateTime.Now.Month <= 6)
+                string strEndDate = DateTime.Parse(DateTime.Now.Year.ToString() + "/07/01 00:00:00").AddDays(-1).ToShortDateString();
+                string strBeginDate2 = DateTime.Now.Year.ToString() + "/7/1";
+                string strEndDate2 = DateTime.Parse(DateTime.Now.AddYears(1).Year.ToString() + "/02/01 00:00:00").AddDays(-1).ToShortDateString();
+                string strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 where EmpDate <=#" + strMaxEmpDate + "# and EmpDate < #" + strBeginDate + "# ";
+                ah.ExecuteNonQuery(strSQL);
+                ah.Close();
+                strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 * (datediff('d', EmpDate, #" + strEndDate + "#) / 180) where EmpDate <=#" + strMaxEmpDate + "# and EmpDate >= #" + strBeginDate + "# ";
+                ah.ExecuteNonQuery(strSQL);
+                ah.Close();
+                strSQL = "update Users set UsedAmount = 0, RestAmount = 0 where EmpDate >#" + strMaxEmpDate + "#";
+                ah.ExecuteNonQuery(strSQL);
+                ah.Close();
+                if (DateTime.Now.Month >= 7 || DateTime.Now.Month == 1)
                 {
-                    string strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 where EmpDate <#" + strMaxEmpDate + "#";
+                    strSQL = "update Users set RestAmount = RestAmount + 50000 where EmpDate <=#" + strMaxEmpDate + "# and EmpDate < #" + strBeginDate2 + "# ";
                     ah.ExecuteNonQuery(strSQL);
                     ah.Close();
-                    strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 * (datediff('d',#" + strBeginDate + "#,EmpDate)) where EmpDate =#" + strMaxEmpDate + "#";
+                    strSQL = "update Users set UsedAmount = 0, RestAmount = RestAmount + (50000 * (datediff('d', EmpDate, #" + strEndDate + "#) / 180)) where EmpDate <=#" + strMaxEmpDate + "# and EmpDate  >=#" + strBeginDate2 + "#";
                     ah.ExecuteNonQuery(strSQL);
                     ah.Close();
-                }
-                if (DateTime.Now.Month >= 7)
-                {
-                    string strSQL = "update Users set RestAmount = RestAmount + 50000 where EmpDate <#" + strMaxEmpDate + "#";
-                    ah.ExecuteNonQuery(strSQL);
-                    ah.Close();
-                    strSQL = "update Users set UsedAmount = 0, RestAmount = (50000 * (datediff('d',#" + strBeginDate + "#,EmpDate) / 180)) + 50000 where EmpDate =#" + strMaxEmpDate + "# and EmpDate < #" + strEndDate + "#";
-                    ah.ExecuteNonQuery(strSQL);
-                    ah.Close();
-                    strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 * (datediff('d',#" + strEndDate + "#,EmpDate) / 180) where EmpDate =#" + strMaxEmpDate + "# and EmpDate >= #" + strEndDate + "#";
+                    //strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 * (datediff('d', EmpDate, #" + strEndDate2 + "#) / 180) where EmpDate =#" + strMaxEmpDate + "# and EmpDate >= #" + strBeginDate2 + "#";
+                    //ah.ExecuteNonQuery(strSQL);
+                    //ah.Close();
+                    strSQL = "update Users set UsedAmount = 0, RestAmount = 0 where EmpDate >#" + strMaxEmpDate + "#";
                     ah.ExecuteNonQuery(strSQL);
                     ah.Close();
                 }
@@ -983,25 +988,26 @@ namespace BHair
                 AccessHelper ah2 = new AccessHelper();
                 DataTable dtSelectSQL = ah2.SelectToDataTable(strSelectSQL);
                 ah2.Close();
-                foreach(DataRow dr in dtSelectSQL.Rows)
+                foreach (DataRow dr in dtSelectSQL.Rows)
                 {
                     double douUsed = 0.00;
                     string UID = dr["UID"].ToString();
+                    douDefBon = double.Parse(dr["RestAmount"].ToString());
                     strDebug = "Get Price from " + UID + " ";
                     string strGetAllSQL = "select * from ApplicationInfo where IsDelete=0 and SalesDate>=#" + dtBeginDate.ToShortDateString() + "# and SalesDate<#" + DateTime.Now.AddDays(1) + "# and Applicants='" + UID + "' ";
                     AccessHelper ahIN = new AccessHelper();
                     DataTable dtIN = ahIN.SelectToDataTable(strGetAllSQL);
                     ahIN.Close();
-                    for(int i = 0; i < dtIN.Rows.Count; i++)
+                    for (int i = 0; i < dtIN.Rows.Count; i++)
                     {
                         double douTotalPrice = 0.00;
                         string strGetDetail = "select * from ApplicationDetail where TransNo = '" + dtIN.Rows[i]["TransNo"].ToString() + "'";
                         AccessHelper ahGetDetail = new AccessHelper();
                         DataTable dtDetail = ahGetDetail.SelectToDataTable(strGetDetail);
                         ahGetDetail.Close();
-                        for(int ii = 0; ii < dtDetail.Rows.Count; ii++)
+                        for (int ii = 0; ii < dtDetail.Rows.Count; ii++)
                         {
-                            if(dtDetail.Rows[ii]["IsSuccess"].ToString() == "1")
+                            if (dtDetail.Rows[ii]["IsSuccess"].ToString() == "1")
                             {
                                 decimal MoneyDiscont = 1;
                                 switch (dtDetail.Rows[ii]["MoneyUnit"].ToString())
@@ -1042,11 +1048,11 @@ namespace BHair
                                 {
                                     douUsed += double.Parse(dtDetail.Rows[ii]["FinalPrice"].ToString()) * double.Parse(MoneyDiscont.ToString());
                                 }
-                                if(int.Parse(dtDetail.Rows[ii]["IsRepetition"].ToString()) == 1)
+                                if (int.Parse(dtDetail.Rows[ii]["IsRepetition"].ToString()) == 1)
                                 {
                                     douTotalPrice += double.Parse(dtDetail.Rows[ii]["FinalPrice"].ToString()) * double.Parse(MoneyDiscont.ToString());
-                                }                             
-                            }                            
+                                }
+                            }
                         }
                         string strUpdate = "update ApplicationInfo set TotalPrice = " + douTotalPrice + " where TransNo = '" + dtIN.Rows[i]["TransNo"].ToString() + "'";
                         AccessHelper ahup = new AccessHelper();
