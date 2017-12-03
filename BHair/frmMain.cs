@@ -954,8 +954,8 @@ namespace BHair
                 //ah.Close();
                 string strMaxEmpDate = DateTime.Now.AddDays(-180).ToShortDateString();
                 string strBeginDate = DateTime.Now.Year.ToString() + "/2/1";
-                string strEndDate = DateTime.Parse(DateTime.Now.Year.ToString() + "/07/01 00:00:00").AddDays(-1).ToShortDateString();
-                string strBeginDate2 = DateTime.Now.Year.ToString() + "/7/1";
+                string strEndDate = DateTime.Parse(DateTime.Now.Year.ToString() + "/08/01 00:00:00").AddDays(-1).ToShortDateString();
+                string strBeginDate2 = DateTime.Now.Year.ToString() + "/8/1";
                 string strEndDate2 = DateTime.Parse(DateTime.Now.AddYears(1).Year.ToString() + "/02/01 00:00:00").AddDays(-1).ToShortDateString();
                 string strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 where EmpDate <=#" + strMaxEmpDate + "# and EmpDate < #" + strBeginDate + "# ";
                 ah.ExecuteNonQuery(strSQL);
