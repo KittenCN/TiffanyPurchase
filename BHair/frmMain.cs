@@ -969,7 +969,7 @@ namespace BHair
                 ah.ExecuteNonQuery(strSQL);
                 Thread.Sleep(3000);
                 ah.Close();
-                if (DateTime.Now.Month >= 7 || DateTime.Now.Month == 1)
+                if (DateTime.Now.Month >= 8 || DateTime.Now.Month == 1)
                 {
                     strSQL = "update Users set RestAmount = RestAmount + 50000 where EmpDate <=#" + strMaxEmpDate + "# and EmpDate < #" + strBeginDate2 + "# ";
                     ah.ExecuteNonQuery(strSQL);
