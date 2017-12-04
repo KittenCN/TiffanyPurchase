@@ -959,26 +959,32 @@ namespace BHair
                 string strEndDate2 = DateTime.Parse(DateTime.Now.AddYears(1).Year.ToString() + "/02/01 00:00:00").AddDays(-1).ToShortDateString();
                 string strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 where EmpDate <=#" + strMaxEmpDate + "# and EmpDate < #" + strBeginDate + "# ";
                 ah.ExecuteNonQuery(strSQL);
+                Thread.Sleep(3000);
                 ah.Close();
                 strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 * (datediff('d', EmpDate, #" + strEndDate + "#) / 180) where EmpDate <=#" + strMaxEmpDate + "# and EmpDate >= #" + strBeginDate + "# ";
                 ah.ExecuteNonQuery(strSQL);
+                Thread.Sleep(3000);
                 ah.Close();
                 strSQL = "update Users set UsedAmount = 0, RestAmount = 0 where EmpDate >#" + strMaxEmpDate + "#";
                 ah.ExecuteNonQuery(strSQL);
+                Thread.Sleep(3000);
                 ah.Close();
                 if (DateTime.Now.Month >= 7 || DateTime.Now.Month == 1)
                 {
                     strSQL = "update Users set RestAmount = RestAmount + 50000 where EmpDate <=#" + strMaxEmpDate + "# and EmpDate < #" + strBeginDate2 + "# ";
                     ah.ExecuteNonQuery(strSQL);
+                    Thread.Sleep(3000);
                     ah.Close();
                     strSQL = "update Users set UsedAmount = 0, RestAmount = RestAmount + (50000 * (datediff('d', EmpDate, #" + strEndDate + "#) / 180)) where EmpDate <=#" + strMaxEmpDate + "# and EmpDate  >=#" + strBeginDate2 + "#";
                     ah.ExecuteNonQuery(strSQL);
+                    Thread.Sleep(3000);
                     ah.Close();
                     //strSQL = "update Users set UsedAmount = 0, RestAmount = 50000 * (datediff('d', EmpDate, #" + strEndDate2 + "#) / 180) where EmpDate =#" + strMaxEmpDate + "# and EmpDate >= #" + strBeginDate2 + "#";
                     //ah.ExecuteNonQuery(strSQL);
                     //ah.Close();
                     strSQL = "update Users set UsedAmount = 0, RestAmount = 0 where EmpDate >#" + strMaxEmpDate + "#";
                     ah.ExecuteNonQuery(strSQL);
+                    Thread.Sleep(3000);
                     ah.Close();
                 }
                 #endregion
@@ -1057,6 +1063,7 @@ namespace BHair
                         string strUpdate = "update ApplicationInfo set TotalPrice = " + douTotalPrice + " where TransNo = '" + dtIN.Rows[i]["TransNo"].ToString() + "'";
                         AccessHelper ahup = new AccessHelper();
                         ahup.ExecuteSQLNonquery(strUpdate);
+                        Thread.Sleep(500);
                         ahup.Close();
                         douTotalPrice = 0.00;
                     }
@@ -1065,6 +1072,7 @@ namespace BHair
                     string strUpdateSQL = "update Users set UsedAmount=" + douUsed + ",RestAmount=" + douRest + " where UID='" + UID + "' ";
                     AccessHelper ahRunRest = new AccessHelper();
                     ahRunRest.ExecuteSQLNonquery(strUpdateSQL);
+                    Thread.Sleep(500);
                     ahRunRest.Close();
                     //if (dtIN != null && dtIN.Rows.Count>0)
                     //{
