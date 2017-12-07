@@ -311,11 +311,47 @@ namespace BHair.Business
         {
             PrintPDF pe = new PrintPDF();
             DataTable dtInfo = pe.exporeDataToTable(dgvApplyInfo);
-            if(dtInfo.Rows.Count > 0)
+            string strSQL = "select top 1 * from ApplicationDetail";
+            AccessHelper ah = new AccessHelper();
+            DataTable dtDetail;
+            string strTransNoList = "";
+            if (dtInfo.Rows.Count > 0)
             {
                 for(int i = 0; i < dtInfo.Rows.Count; i++)
                 {
-
+                    string strTransNo = dtInfo.Rows[i]["交易号"].ToString();
+                    if(strTransNo != null && strTransNo.Length > 0)
+                    {
+                        if(i != dtInfo.Rows.Count - 1)
+                        {
+                            strTransNoList += "'" + strTransNo + "',";
+                        }
+                        else
+                        {
+                            strTransNoList += "'" + strTransNo + "'";
+                        }
+                    }
+                }
+                strSQL = "select * from ApplicationDetail where IsDelete = 0 and TransNo in (" + strTransNoList + ") ";
+                dtDetail = ah.SelectToDataTable(strSQL);
+                ah.Close();
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "EXCEL文件(*.xls)|*.xls";
+                // Show save file dialog box
+                DialogResult result = saveFileDialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    try
+                    {
+                        string localFilePath = saveFileDialog.FileName.ToString();
+                        pe = new PrintPDF();
+                        pe.WriteToExcel(dtDetail, localFilePath, "Sheet1");
+                        MessageBox.Show("保存成功", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("保存失败", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
 
