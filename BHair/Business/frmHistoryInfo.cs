@@ -345,7 +345,7 @@ namespace BHair.Business
                     {
                         string localFilePath = saveFileDialog.FileName.ToString();
                         pe = new PrintPDF();
-                        pe.WriteToExcel(dtDetail, localFilePath, "Sheet1");
+                        pe.WriteToExcel_hisDetail(dtDetail, localFilePath, "Sheet1");
                         MessageBox.Show("保存成功", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)

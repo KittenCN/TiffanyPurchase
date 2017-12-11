@@ -460,6 +460,115 @@ namespace BHair.Business
             return tempTable;
         }
 
+        public void WriteToExcel_hisDetail(DataTable thisTable, string FileName, string sheetName)
+        {
+            string strFilePath = FileName;
+            string XLSName = System.IO.Directory.GetCurrentDirectory() + @"\templet\历史明细模板.xls";
+            Excel.Application app = new Excel.Application();
+            app.DisplayAlerts = false;
+            Excel.Workbooks wbks = app.Workbooks;
+            Excel._Workbook _wbk = wbks.Add(XLSName);
+            Excel.Sheets shs = _wbk.Sheets;
+            Excel._Worksheet _wsh = (Excel._Worksheet)shs.get_Item(1);
+            try
+            {
+                int sheetRowsCount = _wsh.UsedRange.Rows.Count;
+                int count = thisTable.Columns.Count;
+
+                //设置列名
+                //foreach (DataColumn myNewColumn in thisTable.Columns)
+                //{
+                //    _wsh.Cells[0, count] = myNewColumn.ColumnName;
+                //    count = count + 1;
+                //}er
+                //for (int i = 0; i < count; i++)
+                //{
+                //    _wsh.Cells[1, i + 1] = thisTable.Columns[i].ColumnName;
+                //}
+
+                //加入內容
+                for (int i = 1; i <= thisTable.Rows.Count; i++)
+                {
+                    int intBlockRowsNum = 0;
+                    for (int j = 1; j <= thisTable.Columns.Count; j++)
+                    {
+                        int[] intBlockList = {1, 2, 8, 9, 10, 14,15,16,17,18,19 }; 
+                        if(Array.IndexOf(intBlockList, j) <0 && j != 7)
+                        {
+                            _wsh.Cells[i + sheetRowsCount, j - intBlockRowsNum] = thisTable.Rows[i - 1][j - 1];
+                        }
+                        else if(j == 7)
+                        {
+                            switch ((int)thisTable.Rows[i - 1][j - 1])
+                            {
+                                case 1:
+                                    _wsh.Cells[i + sheetRowsCount, j - intBlockRowsNum] = "人民币";
+                                    break;
+                                case 2:
+                                    _wsh.Cells[i + sheetRowsCount, j - intBlockRowsNum] = "美元";
+                                    break;
+                                case 3:
+                                    _wsh.Cells[i + sheetRowsCount, j - intBlockRowsNum] = "港币";
+                                    break;
+                                case 4:
+                                    _wsh.Cells[i + sheetRowsCount, j - intBlockRowsNum] = "澳元";
+                                    break;
+                                case 5:
+                                    _wsh.Cells[i + sheetRowsCount, j - intBlockRowsNum] = "新元";
+                                    break;
+                                case 6:
+                                    _wsh.Cells[i + sheetRowsCount, j - intBlockRowsNum] = "马币";
+                                    break;
+                                case 7:
+                                    _wsh.Cells[i + sheetRowsCount, j - intBlockRowsNum] = "英镑";
+                                    break;
+                                case 8:
+                                    _wsh.Cells[i + sheetRowsCount, j - intBlockRowsNum] = "欧元";
+                                    break;
+                                case 9:
+                                    _wsh.Cells[i + sheetRowsCount, j - intBlockRowsNum] = "日元";
+                                    break;
+                                case 10:
+                                    _wsh.Cells[i + sheetRowsCount, j - intBlockRowsNum] = "台币";
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            intBlockRowsNum++;
+                        }
+                       
+                    }
+                }
+                _wsh.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
+                _wsh.Cells.Columns.AutoFit();
+                _wsh.Cells.Rows.AutoFit();
+                //若為EXCEL2000, 將最後一個參數拿掉即可             
+                _wbk.SaveAs(strFilePath, Excel.XlFileFormat.xlWorkbookNormal,
+                    null, null, false, false, Excel.XlSaveAsAccessMode.xlShared,
+                    false, false, null, null, null);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                //關閉文件
+                _wbk.Close(false, Type.Missing, Type.Missing);
+                app.Workbooks.Close();
+                app.Quit();
+
+                //釋放資源
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(app);
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(_wsh);
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(_wbk);
+                _wsh = null;
+                _wbk = null;
+                app = null;
+            }
+        }
         //public bool XLSConvertToPDF(string sourcePath, string targetPath)
         //{
         //    bool result = false;

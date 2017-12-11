@@ -462,6 +462,12 @@
     <Compile Include="SystemSet\ComboDate.Designer.cs">
       <DependentUpon>ComboDate.cs</DependentUpon>
     </Compile>
+    <None Include="templet\历史明细模板.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="templet\报告模板.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bhair.ico" />
