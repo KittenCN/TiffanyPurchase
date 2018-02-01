@@ -413,6 +413,7 @@ namespace BHair.Business.BaseData
                         DataRow drNew = dtSQl.NewRow();
                         drNew["UID"] = dr["UID"];
                         drNew["UserName"] = dr["UserName"];
+                        drNew["UserPwd"] = dr["UserPwd"];
                         drNew["EmployeeID"] = dr["EmployeeID"];
                         drNew["Character"] = dr["Character"];
                         drNew["ManagerID"] = dr["ManagerID"];
@@ -423,6 +424,7 @@ namespace BHair.Business.BaseData
                         drNew["Email"] = dr["Email"];
                         drNew["Detail"] = dr["Detail"];
                         drNew["RestAmount"] = dr["RestAmount"];
+                        drNew["EmpDate"] = dr["EmpDate"];
                         drNew["IsAdmin"] = 0;
                         drNew["IsDelete"] = 0;
                         drNew["TotalAmount"] = 0;
