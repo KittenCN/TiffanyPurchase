@@ -62,6 +62,7 @@ namespace BHair.Business
                     catch (Exception)
                     {
                         ah.Close();
+                        MessageBox.Show("数据库更新失败！系统运行异常！", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 ah.Close();
@@ -91,6 +92,7 @@ namespace BHair.Business
                     catch (Exception)
                     {
                         ah.Close();
+                        MessageBox.Show("数据库更新失败！系统运行异常！", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     ah.Close();
                 }
@@ -112,6 +114,7 @@ namespace BHair.Business
                     catch (Exception)
                     {
                         ah.Close();
+                        MessageBox.Show("数据库更新失败！系统运行异常！", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["LoginNum"].ToString() != null)
@@ -140,6 +143,7 @@ namespace BHair.Business
                     catch (Exception)
                     {
                         ah.Close();
+                        MessageBox.Show("数据库更新失败！系统运行异常！", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     string strSQL = "select top 1 * from SetupConfig";
                     DataTable dtSQL = ah.SelectToDataTable(strSQL);
@@ -174,6 +178,7 @@ namespace BHair.Business
                     catch (Exception)
                     {
                         ah.Close();
+                        MessageBox.Show("数据库更新失败！系统运行异常！", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else if (dtSQL.Rows.Count > 0 && dtSQL.Rows[0]["Version"].ToString() != null)
@@ -202,6 +207,7 @@ namespace BHair.Business
                     catch (Exception )
                     {
                         ah.Close();
+                        MessageBox.Show("数据库更新失败！系统运行异常！", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     string strSQL = "select top 1 * from SetupConfig";
                     DataTable dtSQL = ah.SelectToDataTable(strSQL);
@@ -236,6 +242,7 @@ namespace BHair.Business
                     catch (Exception)
                     {
                         ah.Close();
+                        MessageBox.Show("数据库更新失败！系统运行异常！", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 ah.Close();
@@ -253,6 +260,7 @@ namespace BHair.Business
                     catch (Exception)
                     {
                         ah.Close();
+                        MessageBox.Show("数据库更新失败！系统运行异常！", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     ah.Close();
                 }
@@ -314,7 +322,14 @@ namespace BHair.Business
                 string strNullDB = ".\\null.accdb";
                 if (File.Exists(strNullDB))
                 {
-                    File.Copy(strNullDB, strTempDB, true);
+                    try
+                    {
+                        File.Copy(strNullDB, strTempDB, true);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("临时文件夹创建失败!数据库目录权限不足！系统运行异常！", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {

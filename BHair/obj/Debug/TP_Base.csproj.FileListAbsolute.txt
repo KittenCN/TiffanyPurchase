@@ -225,3 +225,4 @@ D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\Config.x
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\zxing.dll
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\templet\报告模板.xls
 D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\bin\Debug\templet\历史明细模板.xls
+D:\workstation\项目\麒佑项目\Tiffany\员工内购\BHair\obj\Debug\TP_Base.csproj.CopyComplete
