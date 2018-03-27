@@ -333,8 +333,25 @@ namespace BHair.Business
                 }
                 else
                 {
-                    MessageBox.Show("系统文件丢失!请重新安装!", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("系统文件null.accdb丢失!请重新安装!", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+            if(!File.Exists(".\\内购SQLQueue.accdb"))
+            {
+                MessageBox.Show("系统文件内购SQLQueue.accdb丢失!请重新安装!", "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                try
+                {
+                    //SqlQueue sq = new SqlQueue();
+                    //sq.InsertQuery("select * from ")
+                }
+                catch
+                {
+
+                }
+
             }
             if (!File.Exists(strlock) && File.Exists(strTempDB))
             {
