@@ -18,6 +18,7 @@ namespace BHair.Business
         Business.BaseData.Store store = new BaseData.Store();
         bool ExcitItemID = false;
         int codeID = 0;
+        int CalFlag = 0;
         DataTable AddApplicationDT;
         ApplicationInfo applicationInfo = new ApplicationInfo();
         ApplicationDetail applicationDetail = new ApplicationDetail();
@@ -98,6 +99,9 @@ namespace BHair.Business
             cbDiscount.SelectedIndex = 0;
 
             txtTransNo.Text = transNo;
+
+            txtIsSpecial.Visible = false;
+            txtApprovalCount.Visible = false;
         }
 
         //填写物品ID获取信息
@@ -451,7 +455,10 @@ namespace BHair.Business
                         MoneyDiscont = EmailControl.config.TWDrate;
                         break;
                 }
-                if (items.SelectItemByItemID(row["ItemID"].ToString()).Rows[0]["IsSpecial"].ToString() == "1") { }
+                if (items.SelectItemByItemID(row["ItemID"].ToString()).Rows[0]["IsSpecial"].ToString() == "1")
+                {
+
+                }
                 else
                 {
                     totalPrice += double.Parse(row["Price"].ToString()) * double.Parse(row["Count"].ToString()) * double.Parse(row["ApprovalDiscount"].ToString()) / 100.00 * Convert.ToDouble(MoneyDiscont);
@@ -610,6 +617,17 @@ namespace BHair.Business
                     txtApprovalDiscount.Value = 50;
                     break;
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            CalFlag++;
+            if (CalFlag > 5)
+            {
+                txtIsSpecial.Visible = true;
+                txtApprovalCount.Visible = true;
+            }
+
         }
     }
 }
