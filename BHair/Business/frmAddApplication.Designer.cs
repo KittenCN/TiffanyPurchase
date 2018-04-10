@@ -1049,6 +1049,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TabText = "内购申请单添加";
             this.Text = "内购申请单添加";
+            this.Load += new System.EventHandler(this.frmAddApplication_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

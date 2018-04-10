@@ -629,5 +629,10 @@ namespace BHair.Business
             }
 
         }
+
+        private void frmAddApplication_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

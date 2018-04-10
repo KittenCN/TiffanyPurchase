@@ -30,7 +30,6 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtPurchaseLocation = new System.Windows.Forms.TextBox();
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.txtApplicantsNo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -116,6 +115,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtPhoneNum = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.txtPurchaseLocation = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplyProducts)).BeginInit();
@@ -156,7 +156,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.txtPurchaseLocation, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtLocation, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtApplicantsNo, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 1);
@@ -164,6 +163,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label6, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtApplicantsName, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtPurchaseLocation, 3, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(34, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -171,13 +171,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(922, 72);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // txtPurchaseLocation
-            // 
-            this.txtPurchaseLocation.Location = new System.Drawing.Point(584, 39);
-            this.txtPurchaseLocation.Name = "txtPurchaseLocation";
-            this.txtPurchaseLocation.Size = new System.Drawing.Size(210, 21);
-            this.txtPurchaseLocation.TabIndex = 8;
             // 
             // txtLocation
             // 
@@ -1071,6 +1064,15 @@
             this.panel6.Size = new System.Drawing.Size(654, 444);
             this.panel6.TabIndex = 6;
             // 
+            // txtPurchaseLocation
+            // 
+            this.txtPurchaseLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtPurchaseLocation.FormattingEnabled = true;
+            this.txtPurchaseLocation.Location = new System.Drawing.Point(584, 39);
+            this.txtPurchaseLocation.Name = "txtPurchaseLocation";
+            this.txtPurchaseLocation.Size = new System.Drawing.Size(210, 20);
+            this.txtPurchaseLocation.TabIndex = 22;
+            // 
             // frmAlterApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1132,7 +1134,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtPurchaseLocation;
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.TextBox txtApplicantsNo;
         private System.Windows.Forms.TextBox txtApplicantsName;
@@ -1205,5 +1206,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Reason2;
         private System.Windows.Forms.DataGridViewTextBoxColumn SelforGift2;
         private System.Windows.Forms.TextBox txtIsSpecial;
+        private System.Windows.Forms.ComboBox txtPurchaseLocation;
     }
 }

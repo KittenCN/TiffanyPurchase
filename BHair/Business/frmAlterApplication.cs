@@ -13,6 +13,7 @@ namespace BHair.Business
     public partial class frmAlterApplication : WinFormsUI.Docking.DockContent
     {
         Business.BaseData.Items items = new BaseData.Items();
+        Business.BaseData.Store store = new BaseData.Store();
         int EditState = 0;
         string OldTransNo;
         bool ExcitItemID=false;
@@ -69,12 +70,6 @@ namespace BHair.Business
             }
         }
 
-
-
-     
-
-
-
         void LoadComBox()
         {
             txtMoneyUnit.Items.Add("人民币");
@@ -94,6 +89,10 @@ namespace BHair.Business
             txtSelforGift.Items.Add("送礼");
             txtSelforGift.SelectedIndex = 0;
 
+            store.StoreDT = store.SelectAllStoreInfo();
+            txtPurchaseLocation.DataSource = store.StoreDT;
+            txtPurchaseLocation.DisplayMember = "StoreName";
+            txtPurchaseLocation.ValueMember = "StoreName";
 
             cbDiscount.Items.Add("100%");
             cbDiscount.Items.Add("80%");
