@@ -100,6 +100,18 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="dll\BarcodeLib.dll" />
+    <Content Include="dll\Microsoft.Office.interop.access.dao.dll" />
+    <Content Include="dll\Microsoft.Office.Interop.Excel.dll" />
+    <Content Include="dll\Microsoft.Office.Interop.Excel.xml" />
+    <Content Include="dll\Microsoft.Vbe.Interop.dll" />
+    <Content Include="dll\office.dll" />
+    <Content Include="dll\office.xml" />
+    <Content Include="dll\WinFormsUI.Docking.dll" />
+    <Content Include="dll\XLuSharpLibrary.dll" />
+    <Content Include="dll\zxing.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
